@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FiyiStackWeb.Areas.BasicCore.Protocols;
+using FiyiStackWeb.Areas.CMSCore.Protocols;
 using FiyiStackWeb.Areas.BasicCore.Services;
+using FiyiStackWeb.Areas.CMSCore.Services;
 using FiyiStackWeb.Library;
 
 namespace FiyiStackWeb
@@ -38,6 +40,7 @@ namespace FiyiStackWeb
 
             services.AddScoped<FailureProtocol, FailureService>();
             services.AddScoped<ParameterProtocol, ParameterService>();
+            services.AddScoped<UserProtocol, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
