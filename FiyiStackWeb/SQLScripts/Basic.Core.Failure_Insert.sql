@@ -54,7 +54,7 @@ SELECT @NewEnteredId AS N'@NewEnteredId'
  *
  */
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:40
 
 INSERT INTO [Basic.Core.Failure]
 (
@@ -85,4 +85,4 @@ VALUES
     @DateTimeLastModification
 )
 
-SELECT @NewEnteredId = @@IDENTITY
+SELECT @NewEnteredId = @@IDENTITYY

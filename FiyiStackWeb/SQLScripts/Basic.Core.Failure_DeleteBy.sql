@@ -30,7 +30,7 @@ SELECT @RowsAffected AS N'@RowsAffected'
  *
  */
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:40
 
 DELETE FROM 
     [Basic.Core.Failure]
@@ -38,4 +38,4 @@ WHERE
     1 = 1
     AND [Basic.Core.Failure].[FailureId] = @FailureId
 
-SELECT @RowsAffected = @@ROWCOUNT
+SELECT @RowsAffected = @@ROWCOUNTT

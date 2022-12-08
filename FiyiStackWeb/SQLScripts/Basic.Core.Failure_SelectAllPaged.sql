@@ -38,7 +38,7 @@ EXEC [dbo].[Basic.Core.Failure.SelectAllPaged]
 SELECT @TotalRows AS N'@TotalRows'
 */
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:41
 
 SET DATEFORMAT DMY
 SET NOCOUNT ON
@@ -103,4 +103,4 @@ ORDER BY
 
 OFFSET (@ActualPageNumber - 1) * @RowsPerPage ROWS
 FETCH NEXT @RowsPerPage ROWS ONLY
-SELECT @TotalRows = COUNT(*) FROM [Basic.Core.Failure]
+SELECT @TotalRows = COUNT(*) FROM [Basic.Core.Failure]]

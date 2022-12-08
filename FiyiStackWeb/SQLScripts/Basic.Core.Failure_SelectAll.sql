@@ -22,7 +22,7 @@ EXEC [dbo].[Basic.Core.Failure.SelectAll]
  *
  */
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:40
 
 SET DATEFORMAT DMY
 
@@ -42,4 +42,4 @@ SELECT
 FROM 
     [Basic.Core.Failure]
 ORDER BY 
-    [Basic.Core.Failure].[FailureId]
+    [Basic.Core.Failure].[FailureId]]

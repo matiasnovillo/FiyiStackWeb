@@ -2,7 +2,7 @@ USE [fiyistack_FiyiStackWeb]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:41
 
 ALTER TABLE [dbo].[Failure] ADD [FailureId] INT IDENTITY(1,1) NOT NULL
 ALTER TABLE [dbo].[Failure] ADD [HTTPCode] INT NOT NULL
@@ -16,3 +16,4 @@ ALTER TABLE [dbo].[Failure] ADD [UserCreationId] INT NOT NULL
 ALTER TABLE [dbo].[Failure] ADD [UserLastModificationId] INT NOT NULL
 ALTER TABLE [dbo].[Failure] ADD [DateTimeCreation] DATETIME NOT NULL
 ALTER TABLE [dbo].[Failure] ADD [DateTimeLastModification] DATETIME NOT NULL
+

@@ -26,9 +26,9 @@ SELECT	'Counter' = @Counter
  *
  */
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:41
 
 SELECT 
 	COUNT(*)
 FROM 
-	[Basic.Core.Failure]
+	[Basic.Core.Failure]]

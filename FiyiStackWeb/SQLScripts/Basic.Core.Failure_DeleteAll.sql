@@ -22,6 +22,6 @@ EXEC [dbo].[Basic.Core.Failure.DeleteAll]
  *
  */
 
---Last modification on: 07/12/2022 17:01:54
+--Last modification on: 08/12/2022 6:38:41
 
-DELETE FROM [Basic.Core.Failure]
+DELETE FROM [Basic.Core.Failure]]

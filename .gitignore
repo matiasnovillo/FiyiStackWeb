@@ -1,2 +1,4 @@
 /.vs
 /FiyiStackWeb/obj
+/FiyiStackWeb/bin
+/FiyiStackWeb/node_modules
