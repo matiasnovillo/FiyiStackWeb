@@ -54,7 +54,9 @@
      entry: {
          main: ["./wwwroot/js/site", "./wwwroot/css/site.css"],  //Here we've got common modules used in the entire application
          failuretsmodel: ["./wwwroot/ts/BasicCore/Failure/TsModels/Failure_TsModel"],
-         failurejquery: ["./wwwroot/ts/BasicCore/Failure/jQuery/FailureQuery_jQuery"]
+         failurejquery: ["./wwwroot/ts/BasicCore/Failure/jQuery/FailureQuery_jQuery"],
+         parametertsmodel: ["./wwwroot/ts/BasicCore/Parameter/TsModels/Parameter_TsModel"],
+         parameterjquery: ["./wwwroot/ts/BasicCore/Parameter/jQuery/ParameterQuery_jQuery"]
      },
      output: {
          filename: "[name].bundle.js",                       //Path to save bundles: __dirname + "/wwwroot/dist" (__dirname is a Node.js variable)

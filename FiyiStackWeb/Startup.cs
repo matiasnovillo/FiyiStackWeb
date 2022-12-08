@@ -37,6 +37,7 @@ namespace FiyiStackWeb
             services.AddHttpContextAccessor();
 
             services.AddScoped<FailureProtocol, FailureService>();
+            services.AddScoped<ParameterProtocol, ParameterService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
