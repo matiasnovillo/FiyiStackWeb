@@ -1,0 +1,17 @@
+USE [fiyistack_FiyiStackWeb]
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+--Last modification on: 09/12/2022 19:23:03
+
+ALTER TABLE [dbo].[Menu] ADD [MenuId] INT IDENTITY(1,1) NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [Name] VARCHAR(200)NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [MenuFatherId] INT NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [Order] INT NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [URLPath] VARCHAR(8000)NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [IconURLPath] VARCHAR(8000)NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [Active] TINYINT NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [UserCreationId] INT NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [UserLastModificationId] INT NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [DateTimeCreation] DATETIME NOT NULL
+ALTER TABLE [dbo].[Menu] ADD [DateTimeLastModification] DATETIME NOT NULL

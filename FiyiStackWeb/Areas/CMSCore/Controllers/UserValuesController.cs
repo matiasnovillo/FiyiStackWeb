@@ -149,23 +149,44 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         [HttpPost("~/api/CMSCore/User/1/Login")]
         public IActionResult Login()
         {
-            string FantasyNameOrEmail = HttpContext.Request.Form["fantasynameoremail"];
-            string Password = HttpContext.Request.Form["password"];
-
-            UserModel UserModel = _UserProtocol.Login(FantasyNameOrEmail, Password);
-
-            if (UserModel.UserId != 0)
+            try
             {
-                HttpContext.Session.Set("User", BitConverter.GetBytes(UserModel.UserId));
-                //byte[] arrUserId = HttpContext.Session.Get("User");
-                //int UserId = BitConverter.ToInt32(arrUserId);
-                return StatusCode(200, "/CMSCore/Dashboard");
+                string FantasyNameOrEmail = HttpContext.Request.Form["fantasynameoremail"];
+                string Password = HttpContext.Request.Form["password"];
+
+                UserModel UserModel = _UserProtocol.Login(FantasyNameOrEmail, Password);
+
+                if (UserModel.UserId != 0)
+                {
+                    HttpContext.Session.SetInt32("UserId", UserModel.UserId);
+                    return StatusCode(200, "/CMSCore/DashboardIndex");
+                }
+                else
+                {
+                    return StatusCode(200, "User not found");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return StatusCode(200, "User not found");
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
             }
-            
+
         }
         #endregion
 

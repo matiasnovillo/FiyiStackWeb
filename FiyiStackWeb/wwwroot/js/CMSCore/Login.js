@@ -56,7 +56,7 @@ $("#loginbutton").on("click", function (e) {
                                     User not found`);
             }
             else {
-                window.location.replace(xmlHttpRequest.response);
+                window.location.href = xmlHttpRequest.response;
             }
         }
     };

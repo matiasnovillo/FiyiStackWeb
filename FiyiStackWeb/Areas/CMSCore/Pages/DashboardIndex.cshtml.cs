@@ -1,9 +1,11 @@
+using FiyiStackWeb.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FiyiStackWeb.Areas.CMSCore.Pages
 {
-    public class DashboardModel : PageModel
+    [DashboardFilter]
+    public class DashboardIndexModel : PageModel
     {
         public void OnGet()
         {

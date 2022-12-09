@@ -9,7 +9,12 @@
     <PackageReference Include="CsvHelper" Version="28.0.1" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="IronPdf" Version="2022.11.10347" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Filters\" />
   </ItemGroup>
 
 </Project>

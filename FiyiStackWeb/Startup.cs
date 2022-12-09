@@ -8,6 +8,7 @@ using FiyiStackWeb.Areas.CMSCore.Protocols;
 using FiyiStackWeb.Areas.BasicCore.Services;
 using FiyiStackWeb.Areas.CMSCore.Services;
 using FiyiStackWeb.Library;
+using System;
 
 namespace FiyiStackWeb
 {
@@ -42,9 +43,10 @@ namespace FiyiStackWeb
             services.AddScoped<ParameterProtocol, ParameterService>();
             services.AddScoped<UserProtocol, UserService>();
 
-            services.AddMvc()
-        .AddSessionStateTempDataProvider();
-            services.AddSession();
+            services.AddMvc();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +64,9 @@ namespace FiyiStackWeb
             }
 
             app.UseSession();
+
             app.UseHttpsRedirection();
+            
             app.UseStaticFiles();
 
             app.UseRouting();
