@@ -369,6 +369,48 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         }
         #endregion
 
+        public UserModel Login(string FantasyNameOrEmail, string Password)
+        {
+            try
+            {
+                UserModel UserModel = new UserModel();
+                List<UserModel> lstUserModel = new List<UserModel>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("FantasyNameOrEmail", FantasyNameOrEmail, DbType.String, ParameterDirection.Input);
+                dp.Add("Password", Password, DbType.String, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Login]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                if (lstUserModel.Count > 1)
+                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Login] returned more than one register/row"); }
+
+                foreach (UserModel user in lstUserModel)
+                {
+                    UserModel.UserId = user.UserId;
+                    UserModel.FantasyName = user.FantasyName;
+                    UserModel.Email = user.Email;
+                    UserModel.Password = user.Password;
+                    UserModel.ProfileImageURL = user.ProfileImageURL;
+                    UserModel.DateTimeBirth = user.DateTimeBirth;
+                    UserModel.VerificationToken = user.VerificationToken;
+                    UserModel.CookieToken = user.CookieToken;
+                    UserModel.RoleId = user.RoleId;
+                    UserModel.Active = user.Active;
+                    UserModel.UserCreationId = user.UserCreationId;
+                    UserModel.UserLastModificationId = user.UserLastModificationId;
+                    UserModel.DateTimeCreation = user.DateTimeCreation;
+                    UserModel.DateTimeLastModification = user.DateTimeLastModification;
+                }
+
+                return UserModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database

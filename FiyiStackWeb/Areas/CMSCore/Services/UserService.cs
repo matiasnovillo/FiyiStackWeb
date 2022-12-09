@@ -58,7 +58,15 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
         public usermodelQ SelectAllPagedToModel(usermodelQ userQ)
         {
             return new UserModel().SelectAllPagedToModel(userQ);
-        } 
+        }
+
+        public UserModel Login(string UserNameOrEmail, string Password)
+        {
+            Password = Security.EncodeString(Password);
+            UserModel UserModel = new UserModel().Login(UserNameOrEmail, Password);
+
+            return UserModel;
+        }
         #endregion
 
         #region Non-Queries

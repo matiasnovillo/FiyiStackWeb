@@ -145,6 +145,28 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return null;
             }
         }
+
+        [HttpPost("~/api/CMSCore/User/1/Login")]
+        public IActionResult Login()
+        {
+            string FantasyNameOrEmail = HttpContext.Request.Form["fantasynameoremail"];
+            string Password = HttpContext.Request.Form["password"];
+
+            UserModel UserModel = _UserProtocol.Login(FantasyNameOrEmail, Password);
+
+            if (UserModel.UserId != 0)
+            {
+                HttpContext.Session.Set("User", BitConverter.GetBytes(UserModel.UserId));
+                //byte[] arrUserId = HttpContext.Session.Get("User");
+                //int UserId = BitConverter.ToInt32(arrUserId);
+                return StatusCode(200, "/CMSCore/Dashboard");
+            }
+            else
+            {
+                return StatusCode(200, "User not found");
+            }
+            
+        }
         #endregion
 
         #region Non-Queries

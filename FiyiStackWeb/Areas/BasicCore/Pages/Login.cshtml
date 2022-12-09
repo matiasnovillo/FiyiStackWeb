@@ -96,6 +96,8 @@ Coded by www.creative-tim.com
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
               <small>Please, use your credentials</small>
+              <br/>
+              <button id="message" class="btn btn-white">Entering...</button>
             </div>
             <form role="form">
               <div class="form-group mb-3">
@@ -103,7 +105,7 @@ Coded by www.creative-tim.com
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                   </div>
-                  <input class="form-control" placeholder="User name or Email" type="email">
+                  <input id="fantasynameoremail" class="form-control" placeholder="User name or Email" type="email">
                 </div>
               </div>
               <div class="form-group">
@@ -111,15 +113,15 @@ Coded by www.creative-tim.com
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Password" type="password">
+                  <input id="password" class="form-control" placeholder="Password" type="password">
                 </div>
               </div>
               <div class="custom-control custom-control-alternative custom-checkbox">
-                <input class="custom-control-input" id=" customCheckLogin2" type="checkbox">
-                <label class="custom-control-label" for=" customCheckLogin2"><span class="text-default opacity-5">Remember me</span></label>
+                <input class="custom-control-input" id=" rememberme" type="checkbox">
+                <label class="custom-control-label" for=" rememberme"><span class="text-default opacity-5">Remember me</span></label>
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary my-4"><i class="fas fa-arrow-right"></i> Login</button>
+                <button id="loginbutton" type="button" class="btn btn-primary my-4"><i class="fas fa-arrow-right"></i> Login</button>
               </div>
             </form>
           </div>
@@ -151,6 +153,7 @@ Coded by www.creative-tim.com
         application: "argon-design-system-pro"
       });
   </script>
+  <script src="/js/CMSCore/Login.js"></script>
 </body>
 
 </html>

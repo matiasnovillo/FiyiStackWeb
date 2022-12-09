@@ -41,6 +41,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
         List<UserModel> SelectAllToList();
 
         usermodelQ SelectAllPagedToModel(usermodelQ userQ);
+
+        UserModel Login(string UserFantasyNameOrEmail, string Password);
         #endregion
 
         #region Non-Queries

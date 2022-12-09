@@ -41,6 +41,10 @@ namespace FiyiStackWeb
             services.AddScoped<FailureProtocol, FailureService>();
             services.AddScoped<ParameterProtocol, ParameterService>();
             services.AddScoped<UserProtocol, UserService>();
+
+            services.AddMvc()
+        .AddSessionStateTempDataProvider();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +61,7 @@ namespace FiyiStackWeb
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
