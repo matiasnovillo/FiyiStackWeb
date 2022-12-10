@@ -42,6 +42,9 @@ namespace FiyiStackWeb
             services.AddScoped<FailureProtocol, FailureService>();
             services.AddScoped<ParameterProtocol, ParameterService>();
             services.AddScoped<UserProtocol, UserService>();
+            services.AddScoped<MenuProtocol, MenuService>();
+            services.AddScoped<RoleMenuProtocol, RoleMenuService>();
+            services.AddScoped<RoleProtocol, RoleService>();
 
             services.AddMvc();
             services.AddSession(options => {

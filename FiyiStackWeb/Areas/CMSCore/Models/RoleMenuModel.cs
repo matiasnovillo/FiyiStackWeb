@@ -327,6 +327,28 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         }
         #endregion
 
+        public string SelectMenuesByRoleIdToString(int RoleId)
+        {
+            try
+            {
+                List<RoleMenuModel> lstRoleMenuModel = new List<RoleMenuModel>();
+                string Menues = "";
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Menues", Menues, DbType.String, ParameterDirection.Output);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleId]", dp, commandType: CommandType.StoredProcedure);
+                    Menues = dp.Get<string>("Menues");
+                }
+
+                return Menues;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
