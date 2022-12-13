@@ -1,0 +1,64 @@
+﻿@page
+@using Microsoft.AspNetCore.Http;
+@using FiyiStackWeb.Areas.CMSCore.Models;
+@model FiyiStackWeb.Areas.CMSCore.Pages.PagePermissionsModel
+@{
+    Layout = "_LayoutDashboard";
+
+    List<RoleModel> lstRoleModel = new RoleModel().SelectAllToList();
+}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+              <h1 id="title-page" class="mb-0 text-center">Permissions</h1>
+            </div>
+            <div class="card-body">
+                <button id="message" class="btn mb-4" type="button"></button>
+                <form role="form">
+                    <div class="form-group mb-3">
+                        <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
+                            Role
+                        </label>
+                        <div class="input-group input-group-merge input-group-alternative">
+                            <div class="input-group-prepend input-group-text">
+                                <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
+                                    <strong> Role </strong>
+                                </span>
+                            </div>
+                            <ul class="nav nav-pills nav-fill flex-column flex-sm-row" role="tablist">
+                                @{
+                                    foreach(RoleModel RoleModel in lstRoleModel)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link mb-sm-3 mb-md-0 role-a" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
+                                                @RoleModel.Name
+                                            </a>
+                                            <input type="hidden" value="@RoleModel.RoleId"/>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <button id="update-button" class="btn btn-primary ml-3 mt-3 mb-3" type="button">
+                        <i class="fas fa-pen"></i> Update
+                    </button>
+                </div>
+                <div id="checkboxes-permissions"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/dist/pagepermissions.bundle.js"></script>

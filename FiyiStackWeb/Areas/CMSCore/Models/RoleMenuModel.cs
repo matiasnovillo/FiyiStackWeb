@@ -349,6 +349,25 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             catch (Exception ex) { throw ex; }
         }
 
+        public List<RoleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
+        {
+            try
+            {
+                List<RoleMenuForChechboxes> lstRoleMenuForCheckboxes = new List<RoleMenuForChechboxes>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstRoleMenuForCheckboxes = (List<RoleMenuForChechboxes>)sqlConnection.Query<RoleMenuForChechboxes>("[dbo].[CMSCore.RoleMenu.SelectAllByRoleId]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                return lstRoleMenuForCheckboxes;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
@@ -640,6 +659,26 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
+
+        public void UpdateByRoleIdByMenuId(int RoleId, int MenuId, bool Selected)
+        {
+            try
+            {
+                DynamicParameters dp = new DynamicParameters();
+                DataTable DataTable = new DataTable();
+
+                dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("MenuId", MenuId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Selected", Selected, DbType.Boolean, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.RoleMenu.UpdateByRoleIdByMenuId]", commandType: CommandType.StoredProcedure, param: dp);
+                    DataTable.Load(dataReader);;
+                }
+            }
+            catch (Exception ex) { throw ex; }
+        }
         #endregion
 
         /// <summary>
@@ -746,5 +785,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         public int TotalRows { get; set; }
         public int TotalPages { get; set; }
         public List<RoleMenuModel> lstRoleMenuModel { get; set; }
+    }
+
+    public partial class RoleMenuForChechboxes
+    {
+        public int Value { get; set; }
+        public string Text { get; set; }
+        public bool Selected { get; set; }
     }
 }

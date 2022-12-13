@@ -53,6 +53,8 @@
      mode: "production", //development or production
      entry: {
          main: ["./wwwroot/js/site", "./wwwroot/css/site.css"],  //Here we've got common modules used in the entire application
+         ajaxlibrary: ["./wwwroot/ts/Library/Ajax"],
+         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"],
          failuretsmodel: ["./wwwroot/ts/BasicCore/Failure/TsModels/Failure_TsModel"],
          failurejquery: ["./wwwroot/ts/BasicCore/Failure/jQuery/FailureQuery_jQuery"],
          parametertsmodel: ["./wwwroot/ts/BasicCore/Parameter/TsModels/Parameter_TsModel"],

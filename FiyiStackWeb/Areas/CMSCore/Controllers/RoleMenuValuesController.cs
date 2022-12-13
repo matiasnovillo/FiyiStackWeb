@@ -145,6 +145,38 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return null;
             }
         }
+
+        [HttpGet("~/api/CMSCore/RoleMenu/1/SelectAllByRoleIdToRoleMenuForChechboxes/{RoleId:int}")]
+        public List<RoleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                return _RoleMenuProtocol.SelectAllByRoleIdToRoleMenuForChechboxes(RoleId);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return null;
+            }
+        }
         #endregion
 
         #region Non-Queries
@@ -238,6 +270,62 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             }
             catch (Exception ex) 
             { 
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+        }
+
+
+        [HttpPost("~/api/CMSCore/RoleMenu/1/InsertPermissions/")]
+        public IActionResult InsertPermissions()
+        {
+            try
+            {
+                int RoleId = Convert.ToInt32(HttpContext.Request.Form["RoleId"]);
+
+                int i = 0;
+                bool[] Selected = new bool[HttpContext.Request.Form["Selected"].Count];
+                int[] MenuId = new int[HttpContext.Request.Form["MenuId"].Count];
+
+                foreach (var selected in HttpContext.Request.Form["Selected"])
+                {
+                    Selected[i] = Convert.ToBoolean(selected);
+                    i += 1;
+                }
+
+                i = 0;
+                foreach (var menuId in HttpContext.Request.Form["MenuId"])
+                {
+                    MenuId[i] = Convert.ToInt32(menuId);
+                    i += 1;
+                }
+
+                for (i = 0; i < MenuId.Length; i++)
+                {
+                    _RoleMenuProtocol.UpdateByRoleIdByMenuId(RoleId, MenuId[i], Selected[i]);
+                }
+                
+
+
+                return StatusCode(200);
+            }
+            catch (Exception ex)
+            {
                 DateTime Now = DateTime.Now;
                 FailureModel FailureModel = new FailureModel()
                 {

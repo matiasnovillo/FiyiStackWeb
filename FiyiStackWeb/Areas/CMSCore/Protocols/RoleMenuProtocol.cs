@@ -41,6 +41,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
         List<RoleMenuModel> SelectAllToList();
 
         rolemenumodelQ SelectAllPagedToModel(rolemenumodelQ rolemenuQ);
+
+        List<RoleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId);
         #endregion
 
         #region Non-Queries
@@ -70,6 +72,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
         int CopyByRoleMenuId(int RoleMenuId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
+
+        void UpdateByRoleIdByMenuId(int RoleId, int MenuId, bool Selected);
         #endregion
 
         #region Other actions

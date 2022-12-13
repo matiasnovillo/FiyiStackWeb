@@ -58,7 +58,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
         public rolemenumodelQ SelectAllPagedToModel(rolemenumodelQ rolemenuQ)
         {
             return new RoleMenuModel().SelectAllPagedToModel(rolemenuQ);
-        } 
+        }
+
+        public List<RoleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
+        {
+            return new RoleMenuModel().SelectAllByRoleIdToRoleMenuForChechboxes(RoleId);
+        }
         #endregion
 
         #region Non-Queries
@@ -133,6 +138,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
 
                 return NewEnteredIds;
             }
+        }
+
+        public void UpdateByRoleIdByMenuId(int RoleId, int MenuId, bool Selected)
+        {
+            RoleMenuModel RoleMenuModel = new RoleMenuModel();
+            RoleMenuModel.UpdateByRoleIdByMenuId(RoleId, MenuId, Selected);
         }
         #endregion
 
