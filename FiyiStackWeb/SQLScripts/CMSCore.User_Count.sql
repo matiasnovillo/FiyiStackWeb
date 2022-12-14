@@ -26,7 +26,7 @@ SELECT	'Counter' = @Counter
  *
  */
 
---Last modification on: 08/12/2022 10:43:01
+--Last modification on: 14/12/2022 19:43:28
 
 SELECT 
 	COUNT(*)

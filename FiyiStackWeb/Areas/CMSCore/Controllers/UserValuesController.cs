@@ -26,7 +26,7 @@ using System.IO;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 08/12/2022 10:43:01
+//Last modification on: 14/12/2022 19:43:28
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 08/12/2022 10:43:01
+    /// Last modification: 14/12/2022 19:43:28
     /// </summary>
     [ApiController]
     [UserFilter]
@@ -176,6 +176,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 { throw new Exception("It's not allowed to save zero values in RoleId"); }
                 int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-user-usercreationid-input"]);
                 int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-user-userlastmodificationid-input"]);
+                string RegistrationToken = HttpContext.Request.Form["cmscore-user-registrationtoken-input"];
                 
 
                 UserModel UserModel = new UserModel()
@@ -190,6 +191,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     RoleId = RoleId,
                     UserCreationId = UserCreationId,
                     UserLastModificationId = UserLastModificationId,
+                    RegistrationToken = RegistrationToken,
                     
                 };
 

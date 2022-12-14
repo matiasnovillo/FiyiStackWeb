@@ -15,7 +15,7 @@
 
 //Stack: 10
 
-//Last modification on: 08/12/2022 10:43:01
+//Last modification on: 14/12/2022 19:43:28
 
 $(document).ready(function () {
     //This fix an style error in Quill
@@ -46,6 +46,7 @@ $("#cmscore-user-insert-or-update-button").on("click", function (e) {
     formData.append("cmscore-user-roleid-input", $("#cmscore-user-roleid-input").val());
     formData.append("cmscore-user-usercreationid-input", $("#cmscore-user-usercreationid-input").val());
     formData.append("cmscore-user-userlastmodificationid-input", $("#cmscore-user-userlastmodificationid-input").val());
+    formData.append("cmscore-user-registrationtoken-input", $("#cmscore-user-registrationtoken-input").val());
     
 
     //Setup request

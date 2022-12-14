@@ -22,7 +22,7 @@ EXEC [dbo].[CMSCore.User.SelectAll]
  *
  */
 
---Last modification on: 08/12/2022 10:43:01
+--Last modification on: 14/12/2022 19:43:28
 
 SET DATEFORMAT DMY
 
@@ -40,7 +40,8 @@ SELECT
     [CMSCore.User].[UserCreationId] AS [UserCreationId],
     [CMSCore.User].[UserLastModificationId] AS [UserLastModificationId],
     [CMSCore.User].[DateTimeCreation] AS [DateTimeCreation],
-    [CMSCore.User].[DateTimeLastModification] AS [DateTimeLastModification]
+    [CMSCore.User].[DateTimeLastModification] AS [DateTimeLastModification],
+    [CMSCore.User].[RegistrationToken] AS [RegistrationToken]
 FROM 
     [CMSCore.User]
 ORDER BY 

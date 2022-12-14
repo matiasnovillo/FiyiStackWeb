@@ -16,7 +16,7 @@ import { Ajax } from "../../../Library/Ajax";
  * Auto generated code. Add your custom code after the last line of auto generation
 */
 
-//14 fields | 0 models depend on this model | Last modification on: 08/12/2022 10:43:01 | Stack: 9
+//15 fields | 0 models depend on this model | Last modification on: 14/12/2022 19:43:28 | Stack: 9
 
 export class UserModel {
 
@@ -35,6 +35,7 @@ export class UserModel {
 	UserLastModificationId?: number;
 	DateTimeCreation?: string | string[] | number | undefined;
 	DateTimeLastModification?: string | string[] | number | undefined;
+	RegistrationToken?: string | string[] | number | undefined;
 
     //Queries
     static Select1ByUserId(UserId: number) {

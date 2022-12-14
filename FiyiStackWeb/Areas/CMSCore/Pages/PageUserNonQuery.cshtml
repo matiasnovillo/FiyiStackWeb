@@ -18,6 +18,7 @@
     int RoleId;
     int UserCreationId;
     int UserLastModificationId;
+    string RegistrationToken;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?UserId=0"))
@@ -35,6 +36,7 @@
         CookieToken = "";
         RoleId = 0;UserCreationId = 0;
         UserLastModificationId = 0;
+        RegistrationToken = "";
         
     }
     else
@@ -56,6 +58,7 @@
         RoleId = UserModel.RoleId;
         UserCreationId = UserModel.UserCreationId;
         UserLastModificationId = UserModel.UserLastModificationId;
+        RegistrationToken = UserModel.RegistrationToken;
         
     }
 
@@ -73,7 +76,7 @@
  */
     
 //Stack: 11
-//Last modification on: 08/12/2022 10:43:01
+//Last modification on: 14/12/2022 19:43:28
 
 }
 <!-- Header -->
@@ -368,6 +371,27 @@
                                 <input class="form-control" type="number" id="cmscore-user-userlastmodificationid-input" value="@UserLastModificationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="userlastmodificationid-info">
+                                        <i class="fas fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- RegistrationToken -->
+                        <div class="form-group mb-3">
+                            <label for="cmscore-user-registrationtoken-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
+                                <i class="fas fa-font"></i> RegistrationToken
+                            </label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
+                                    <span class="input-group-text ">
+                                        <strong>
+                                            <i class="fas fa-font"></i> RegistrationToken
+                                        </strong>
+                                    </span>
+                                </div>
+                                <input class="form-control" min="1" max="8000" type="text" id="cmscore-user-registrationtoken-input" value="@RegistrationToken" >
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="registrationtoken-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>

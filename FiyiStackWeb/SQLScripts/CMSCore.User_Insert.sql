@@ -13,6 +13,7 @@ CREATE PROCEDURE [dbo].[CMSCore.User.Insert]
     @UserLastModificationId INT,
     @DateTimeCreation DATETIME,
     @DateTimeLastModification DATETIME,
+    @RegistrationToken VARCHAR(8000),
 
     @NewEnteredId INT OUTPUT
 )
@@ -51,6 +52,7 @@ EXEC [dbo].[CMSCore.User.Insert]
     @UserLastModificationId = 1,
     @DateTimeCreation = N'01/01/1753 0:00:00.001',
     @DateTimeLastModification = N'01/01/1753 0:00:00.001',
+    @RegistrationToken = N'PutRegistrationToken',
 
 @NewEnteredId = @NewEnteredId OUTPUT
 
@@ -58,7 +60,7 @@ SELECT @NewEnteredId AS N'@NewEnteredId'
  *
  */
 
---Last modification on: 08/12/2022 10:43:01
+--Last modification on: 14/12/2022 19:43:28
 
 INSERT INTO [CMSCore.User]
 (
@@ -74,7 +76,8 @@ INSERT INTO [CMSCore.User]
     [UserCreationId],
     [UserLastModificationId],
     [DateTimeCreation],
-    [DateTimeLastModification]
+    [DateTimeLastModification],
+    [RegistrationToken]
 )
 VALUES
 (
@@ -90,7 +93,8 @@ VALUES
     @UserCreationId,
     @UserLastModificationId,
     @DateTimeCreation,
-    @DateTimeLastModification
+    @DateTimeLastModification,
+    @RegistrationToken
 )
 
 SELECT @NewEnteredId = @@IDENTITY

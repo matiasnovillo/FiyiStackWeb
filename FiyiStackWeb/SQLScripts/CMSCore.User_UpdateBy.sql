@@ -14,6 +14,7 @@ CREATE PROCEDURE [dbo].[CMSCore.User.UpdateByUserId]
     @UserLastModificationId INT,
     @DateTimeCreation DATETIME,
     @DateTimeLastModification DATETIME,
+    @RegistrationToken VARCHAR(8000),
 
     @RowsAffected INT OUTPUT
 )
@@ -44,7 +45,7 @@ SELECT @RowsAffected AS N'@RowsAffected'
  *
  */
 
---Last modification on: 08/12/2022 10:43:01
+--Last modification on: 14/12/2022 19:43:28
 
 UPDATE [CMSCore.User] SET
     [FantasyName] = @FantasyName,
@@ -59,7 +60,8 @@ UPDATE [CMSCore.User] SET
     [UserCreationId] = @UserCreationId,
     [UserLastModificationId] = @UserLastModificationId,
     [DateTimeCreation] = @DateTimeCreation,
-    [DateTimeLastModification] = @DateTimeLastModification
+    [DateTimeLastModification] = @DateTimeLastModification,
+    [RegistrationToken] = @RegistrationToken
 WHERE 
     1 = 1 
     AND [CMSCore.User].[UserId] = @UserId 

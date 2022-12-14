@@ -24,7 +24,7 @@ using System.IO;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 08/12/2022 10:43:01
+//Last modification on: 14/12/2022 19:43:28
 
 namespace FiyiStackWeb.Areas.CMSCore.Services
 {
@@ -33,7 +33,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 08/12/2022 10:43:01
+    /// Last modification: 14/12/2022 19:43:28
     /// </summary>
     public partial class UserService : UserProtocol
     {
@@ -58,7 +58,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
         public usermodelQ SelectAllPagedToModel(usermodelQ userQ)
         {
             return new UserModel().SelectAllPagedToModel(userQ);
-        }
+        } 
         #endregion
 
         #region Non-Queries
@@ -278,6 +278,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeLastModification&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">RegistrationToken&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
     </tr>
     {RowsAsHTML}
@@ -377,6 +382,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                     dtColumnDateTimeLastModificationFordtUserCopy.ColumnName = "DateTimeLastModification";
                     dtUserCopy.Columns.Add(dtColumnDateTimeLastModificationFordtUserCopy);
 
+                    DataColumn dtColumnRegistrationTokenFordtUserCopy = new DataColumn();
+                    dtColumnRegistrationTokenFordtUserCopy.DataType = typeof(string);
+                    dtColumnRegistrationTokenFordtUserCopy.ColumnName = "RegistrationToken";
+                    dtUserCopy.Columns.Add(dtColumnRegistrationTokenFordtUserCopy);
+
                     
                 #endregion
 
@@ -475,6 +485,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                     dtColumnDateTimeLastModificationFordtUserCopy.DataType = typeof(string);
                     dtColumnDateTimeLastModificationFordtUserCopy.ColumnName = "DateTimeLastModification";
                     dtUserCopy.Columns.Add(dtColumnDateTimeLastModificationFordtUserCopy);
+
+                    DataColumn dtColumnRegistrationTokenFordtUserCopy = new DataColumn();
+                    dtColumnRegistrationTokenFordtUserCopy.DataType = typeof(string);
+                    dtColumnRegistrationTokenFordtUserCopy.ColumnName = "RegistrationToken";
+                    dtUserCopy.Columns.Add(dtColumnRegistrationTokenFordtUserCopy);
 
                     
                     #endregion

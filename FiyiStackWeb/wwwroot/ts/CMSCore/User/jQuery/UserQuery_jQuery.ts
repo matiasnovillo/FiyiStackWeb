@@ -20,7 +20,7 @@ import { Ajax } from "../../../Library/Ajax";
 
 //Stack: 10
 
-//Last modification on: 08/12/2022 10:43:01
+//Last modification on: 14/12/2022 19:43:28
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -115,6 +115,11 @@ class UserQuery {
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
                 DateTimeLastModification
+            </button>
+        </th>
+        <th scope="col">
+            <button value="RegistrationToken" class="btn btn-outline-secondary btn-sm" type="button">
+                RegistrationToken
             </button>
         </th>
         
@@ -261,6 +266,11 @@ class UserQuery {
             <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
         </strong>
     </td>
+    <td class="text-left text-truncate">
+        <strong><i class="fas fa-font">
+            </i> ${row.RegistrationToken}
+        </strong>
+    </td>
     
     <!-- Actions -->
     <td class="text-right">
@@ -354,6 +364,10 @@ class UserQuery {
                         <br/>
                         <span class="text-white mb-4 text-truncate">
                            DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           RegistrationToken <i class="fas fa-font"></i> ${row.RegistrationToken}
                         </span>
                         <br/>
                         

@@ -16,7 +16,7 @@ using System.Collections.Generic;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 08/12/2022 10:43:01
+//Last modification on: 14/12/2022 19:43:28
 
 namespace FiyiStackWeb.Areas.CMSCore.Protocols
 {
@@ -26,7 +26,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
     /// Function:          This protocol/interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 08/12/2022 10:43:01
+    /// Last modification: 14/12/2022 19:43:28
     /// </summary>
     public partial interface UserProtocol
     {
