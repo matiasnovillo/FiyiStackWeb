@@ -327,7 +327,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         }
         #endregion
 
-        public string SelectMenuesByRoleIdToString(int RoleId)
+        public string SelectMenuesByRoleIdToStringForDashboardIndex(int RoleId)
         {
             try
             {
@@ -340,7 +340,29 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleId]", dp, commandType: CommandType.StoredProcedure);
+                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleIdForDashboardIndex]", dp, commandType: CommandType.StoredProcedure);
+                    Menues = dp.Get<string>("Menues");
+                }
+
+                return Menues;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public string SelectMenuesByRoleIdToStringForLayoutDashboard(int RoleId)
+        {
+            try
+            {
+                List<RoleMenuModel> lstRoleMenuModel = new List<RoleMenuModel>();
+                string Menues = "";
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Menues", Menues, DbType.String, ParameterDirection.Output);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleIdForLayoutDashboard]", dp, commandType: CommandType.StoredProcedure);
                     Menues = dp.Get<string>("Menues");
                 }
 

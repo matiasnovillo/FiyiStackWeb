@@ -1,5 +1,6 @@
 using FiyiStackWeb.Areas.CMSCore.Models;
 using FiyiStackWeb.Areas.CMSCore.Filters;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 
@@ -31,23 +32,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
     {
         public void OnGet()
         {
-            //#region User manipulation
-            //byte[] arrUser;
-            //HttpContext.Session.TryGetValue("User", out arrUser);
-            //User User = new User().ByteArrayToUser<User>(arrUser);
-            //User.ProfileImageURL = User.ProfileImageURL == "" || User.ProfileImageURL == null ? "/img/User.ProfileImageURL/NotFound.png" : User.ProfileImageURL;
-            //#endregion
+            int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
 
-            //#region Menu manipulation
-            //List<Menu> lstMenu = new Menu().SelectAllByRoleIdToModelList(User.RoleId);
-            //#endregion
+            string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
 
-            //#region Information to layout
-            //ViewData["Title"] = "Usuarios";
-            //ViewData["User.FantasyName"] = User.FantasyName;
-            //ViewData["User.ProfileImageURL"] = User.ProfileImageURL;
-            //ViewData["lstMenu"] = lstMenu;
-            //#endregion
-            }
+            ViewData["Menues"] = Menues;
+        }
     }
 }

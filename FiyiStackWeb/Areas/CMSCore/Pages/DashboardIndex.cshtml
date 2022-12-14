@@ -9,7 +9,7 @@
     UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
     string FantasyName = UserModel.FantasyName;
 
-    string Menues = new RoleMenuModel().SelectMenuesByRoleIdToString(UserModel.RoleId); 
+    string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForDashboardIndex(UserModel.RoleId); 
 }
 <div class="header bg-primary pb-6">
     <div class="container-fluid">

@@ -1,6 +1,8 @@
 using FiyiStackWeb.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
+using FiyiStackWeb.Areas.CMSCore.Models;
 
 namespace FiyiStackWeb.Areas.CMSCore.Pages
 {
@@ -9,6 +11,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
     {
         public void OnGet()
         {
+            int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+            UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
+
+            string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
+
+            ViewData["Menues"] = Menues;
         }
     }
 }
