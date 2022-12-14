@@ -14,6 +14,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
 
             string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
 
+            ViewData["FantasyName"] = UserModel.FantasyName;
             ViewData["Menues"] = Menues;
         }
     }
