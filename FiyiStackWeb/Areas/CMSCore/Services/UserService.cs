@@ -59,14 +59,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
         {
             return new UserModel().SelectAllPagedToModel(userQ);
         }
-
-        public UserModel Login(string UserNameOrEmail, string Password)
-        {
-            Password = Security.EncodeString(Password);
-            UserModel UserModel = new UserModel().Login(UserNameOrEmail, Password);
-
-            return UserModel;
-        }
         #endregion
 
         #region Non-Queries
@@ -140,6 +132,32 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 }
 
                 return NewEnteredIds;
+            }
+        }
+
+        public UserModel Login(string UserNameOrEmail, string Password)
+        {
+            Password = Security.EncodeString(Password);
+            UserModel UserModel = new UserModel().Login(UserNameOrEmail, Password);
+
+            return UserModel;
+        }
+
+        public string ChangePassword(int UserId, string ActualPassword, string NewPassword)
+        {
+            NewPassword = Security.EncodeString(NewPassword);
+            ActualPassword = Security.EncodeString(ActualPassword);
+
+            UserModel UserModel = new UserModel(UserId);
+
+            if (UserModel.Password == ActualPassword)
+            {
+                UserModel.ChangePassword(UserId, NewPassword);
+                return "Password changed";
+            }
+            else
+            {
+                return "The actual password is wrong";
             }
         }
         #endregion

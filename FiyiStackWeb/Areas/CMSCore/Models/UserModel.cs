@@ -367,7 +367,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
-        #endregion
 
         public UserModel Login(string FantasyNameOrEmail, string Password)
         {
@@ -410,6 +409,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
+        #endregion
 
         #region Non-Queries
         /// <summary>
@@ -732,6 +732,32 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }
                                 
+                if (RowsAffected == 0) { throw new Exception("RowsAffected with no value"); }
+
+                return RowsAffected;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public int ChangePassword(int UserId, string NewPassword)
+        {
+            try
+            {
+                int RowsAffected = 0;
+                DynamicParameters dp = new DynamicParameters();
+                DataTable DataTable = new DataTable();
+
+                dp.Add("UserId", UserId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("NewPassword", NewPassword, DbType.String, ParameterDirection.Input);
+                dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.User.ChangePassword]", commandType: CommandType.StoredProcedure, param: dp);
+                    DataTable.Load(dataReader);
+                    RowsAffected = dp.Get<int>("RowsAffected");
+                }
+
                 if (RowsAffected == 0) { throw new Exception("RowsAffected with no value"); }
 
                 return RowsAffected;

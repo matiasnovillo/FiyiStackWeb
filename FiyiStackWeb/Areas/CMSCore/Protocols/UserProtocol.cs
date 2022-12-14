@@ -41,8 +41,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
         List<UserModel> SelectAllToList();
 
         usermodelQ SelectAllPagedToModel(usermodelQ userQ);
-
-        UserModel Login(string UserFantasyNameOrEmail, string Password);
         #endregion
 
         #region Non-Queries
@@ -72,6 +70,10 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
         int CopyByUserId(int UserId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
+
+        UserModel Login(string UserFantasyNameOrEmail, string Password);
+
+        string ChangePassword(int UserId, string ActualPassword, string NewPassword);
         #endregion
 
         #region Other actions

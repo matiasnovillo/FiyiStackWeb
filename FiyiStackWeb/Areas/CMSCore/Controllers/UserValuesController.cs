@@ -145,49 +145,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return null;
             }
         }
-
-        [HttpPost("~/api/CMSCore/User/1/Login")]
-        public IActionResult Login()
-        {
-            try
-            {
-                string FantasyNameOrEmail = HttpContext.Request.Form["fantasynameoremail"];
-                string Password = HttpContext.Request.Form["password"];
-
-                UserModel UserModel = _UserProtocol.Login(FantasyNameOrEmail, Password);
-
-                if (UserModel.UserId != 0)
-                {
-                    HttpContext.Session.SetInt32("UserId", UserModel.UserId);
-                    return StatusCode(200, "/CMSCore/DashboardIndex");
-                }
-                else
-                {
-                    return StatusCode(200, "User not found");
-                }
-            }
-            catch (Exception ex)
-            {
-                DateTime Now = DateTime.Now;
-                FailureModel FailureModel = new FailureModel()
-                {
-                    HTTPCode = 500,
-                    Message = ex.Message,
-                    EmergencyLevel = 1,
-                    StackTrace = ex.StackTrace ?? "",
-                    Source = ex.Source ?? "",
-                    Comment = "",
-                    Active = true,
-                    UserCreationId = 1,
-                    UserLastModificationId = 1,
-                    DateTimeCreation = Now,
-                    DateTimeLastModification = Now
-                };
-                FailureModel.Insert();
-                return StatusCode(500, ex);
-            }
-
-        }
         #endregion
 
         #region Non-Queries
@@ -451,6 +408,92 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 FailureModel.Insert();
                 return StatusCode(500, ex);
             }
+        }
+
+        [HttpPost("~/api/CMSCore/User/1/Login")]
+        public IActionResult Login()
+        {
+            try
+            {
+                string FantasyNameOrEmail = HttpContext.Request.Form["fantasynameoremail"];
+                string Password = HttpContext.Request.Form["password"];
+
+                UserModel UserModel = _UserProtocol.Login(FantasyNameOrEmail, Password);
+
+                if (UserModel.UserId != 0)
+                {
+                    HttpContext.Session.SetInt32("UserId", UserModel.UserId);
+                    return StatusCode(200, "/CMSCore/DashboardIndex");
+                }
+                else
+                {
+                    return StatusCode(200, "User not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+
+        }
+
+        [HttpPut("~/api/CMSCore/User/1/ChangePassword")]
+        public IActionResult ChangePassword()
+        {
+            try
+            {
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+                string ActualPassword = HttpContext.Request.Form["actual-password"];
+                string NewPassword = HttpContext.Request.Form["new-password"];
+
+                string Message = _UserProtocol.ChangePassword(UserId, ActualPassword, NewPassword);
+
+                if (Message == "Password changed")
+                {
+                    return StatusCode(200, "Password changed");
+                }
+                else
+                {
+                    return StatusCode(200, Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+
         }
         #endregion
 
