@@ -466,14 +466,43 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
 
                 string Message = _UserProtocol.ChangePassword(UserId, ActualPassword, NewPassword);
 
-                if (Message == "Password changed")
+                return StatusCode(200, Message);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
                 {
-                    return StatusCode(200, "Password changed");
-                }
-                else
-                {
-                    return StatusCode(200, Message);
-                }
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+
+        }
+
+        [HttpPost("~/api/CMSCore/User/1/Register")]
+        public IActionResult Register()
+        {
+            try
+            {
+                string FantasyName = HttpContext.Request.Form["fantasy-name"];
+                string Email = HttpContext.Request.Form["email"];
+                string Password = HttpContext.Request.Form["password"];
+
+                string Message = _UserProtocol.Register(FantasyName, Email, Password);
+
+                return StatusCode(200, Message);
             }
             catch (Exception ex)
             {

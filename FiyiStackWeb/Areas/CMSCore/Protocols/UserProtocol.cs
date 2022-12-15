@@ -74,6 +74,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
         UserModel Login(string UserFantasyNameOrEmail, string Password);
 
         string ChangePassword(int UserId, string ActualPassword, string NewPassword);
+
+        string Register(string FantasyName, string Email, string Password);
         #endregion
 
         #region Other actions

@@ -333,6 +333,24 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         }
         #endregion
 
+        public string Select1ByName(string Name)
+        {
+            try
+            {
+                List<ParameterModel> lstParameterModel = new List<ParameterModel>();
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.Select1ByName]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                return lstParameterModel[0].Value;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database

@@ -403,6 +403,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.ProfileImageURL = user.ProfileImageURL;
                     UserModel.DateTimeBirth = user.DateTimeBirth;
                     UserModel.VerificationToken = user.VerificationToken;
+                    UserModel.RegistrationToken = user.RegistrationToken;
                     UserModel.CookieToken = user.CookieToken;
                     UserModel.RoleId = user.RoleId;
                     UserModel.Active = user.Active;
@@ -410,6 +411,90 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.UserLastModificationId = user.UserLastModificationId;
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
+                }
+
+                return UserModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public UserModel Select1ByEmail(string Email)
+        {
+            try
+            {
+                UserModel UserModel = new UserModel();
+                List<UserModel> lstUserModel = new List<UserModel>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("Email", Email, DbType.String, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Select1ByEmail]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                if (lstUserModel.Count > 1)
+                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Select1ByEmail] returned more than one register/row"); }
+
+                foreach (UserModel user in lstUserModel)
+                {
+                    UserModel.UserId = user.UserId;
+                    UserModel.FantasyName = user.FantasyName;
+                    UserModel.Email = user.Email;
+                    UserModel.Password = user.Password;
+                    UserModel.ProfileImageURL = user.ProfileImageURL;
+                    UserModel.DateTimeBirth = user.DateTimeBirth;
+                    UserModel.VerificationToken = user.VerificationToken;
+                    UserModel.RegistrationToken = user.RegistrationToken;
+                    UserModel.CookieToken = user.CookieToken;
+                    UserModel.RoleId = user.RoleId;
+                    UserModel.Active = user.Active;
+                    UserModel.UserCreationId = user.UserCreationId;
+                    UserModel.UserLastModificationId = user.UserLastModificationId;
+                    UserModel.DateTimeCreation = user.DateTimeCreation;
+                    UserModel.DateTimeLastModification = user.DateTimeLastModification;
+                }
+
+                return UserModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public UserModel Select1ByRegistrationTokenToModel(string RegistrationToken)
+        {
+            try
+            {
+                UserModel UserModel = new UserModel();
+                List<UserModel> lstUserModel = new List<UserModel>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Select1ByRegistrationToken]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                if (lstUserModel.Count > 1)
+                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Select1ByRegistrationToken] returned more than one register/row"); }
+
+                foreach (UserModel user in lstUserModel)
+                {
+                    UserModel.UserId = user.UserId;
+                    UserModel.FantasyName = user.FantasyName;
+                    UserModel.Email = user.Email;
+                    UserModel.Password = user.Password;
+                    UserModel.ProfileImageURL = user.ProfileImageURL;
+                    UserModel.DateTimeBirth = user.DateTimeBirth;
+                    UserModel.VerificationToken = user.VerificationToken;
+                    UserModel.CookieToken = user.CookieToken;
+                    UserModel.RoleId = user.RoleId;
+                    UserModel.Active = user.Active;
+                    UserModel.UserCreationId = user.UserCreationId;
+                    UserModel.UserLastModificationId = user.UserLastModificationId;
+                    UserModel.DateTimeCreation = user.DateTimeCreation;
+                    UserModel.DateTimeLastModification = user.DateTimeLastModification;
+                    UserModel.RegistrationToken = user.RegistrationToken;
                 }
 
                 return UserModel;

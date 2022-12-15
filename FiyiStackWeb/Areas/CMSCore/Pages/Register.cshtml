@@ -1,5 +1,5 @@
 ﻿@page
-@model FiyiStackWeb.Areas.CMSCore.Pages.ChangePasswordModel
+@model FiyiStackWeb.Areas.CMSCore.Pages.RegisterModel
 @{
 }
 <!--
@@ -24,7 +24,7 @@ Coded by www.creative-tim.com
   <link rel="apple-touch-icon" sizes="76x76" href="/icons/FiyiStack.ico">
   <link rel="icon" type="imageimage/x-icon" href="/icons/FiyiStack.ico">
   <title>
-    Change password - FiyiStack
+    Register - FiyiStack
   </title>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -64,8 +64,18 @@ Coded by www.creative-tim.com
         </div>
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
           <li class="nav-item">
-            <a href="/CMSCore/DashboardIndex" class="nav-link" role="button">
-              <span class="nav-link-inner--text">Back to dashboard</span>
+            <a href="/Index" class="nav-link" role="button">
+              <span class="nav-link-inner--text">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/CMSCore/Login" class="nav-link" role="button">
+              <span class="nav-link-inner--text">Do you already have an account? Enter</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:;" class="nav-link">
+              <span class="nav-link-inner--text">Forgot the password? Get it back</span>
             </a>
           </li>
         </ul>
@@ -81,7 +91,7 @@ Coded by www.creative-tim.com
                     <div class="card bg-secondary shadow border-0">
                         <div class="card-header">
                             <img class="card-img" src="../assets/img/ill/bg5-1.svg" alt="Card image">
-                            <h4 class="card-title text-center">Change password</h4>
+                            <h4 class="card-title text-center">Register</h4>
                         </div>
                         <div class="card-body px-lg-5 py-lg-5 text-center">
                             <button id="message" class="btn mb-4" type="button">Loading...</button>
@@ -89,9 +99,17 @@ Coded by www.creative-tim.com
                                 <div class="form-group mb-3">
                                     <div class="input-group input-group-alternative">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-asterisk"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-signature"></i></span>
                                         </div>
-                                        <input id="actual-password" class="form-control" placeholder="Actual password" type="password">
+                                        <input id="fantasy-name" class="form-control" placeholder="Name or alias" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        </div>
+                                        <input id="email" class="form-control" placeholder="Email" type="email">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
@@ -99,7 +117,7 @@ Coded by www.creative-tim.com
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-asterisk"></i></span>
                                         </div>
-                                        <input id="new-password" class="form-control" placeholder="New password" type="password">
+                                        <input id="password" class="form-control" placeholder="New password" type="password">
                                     </div>
                                 </div>
                                 <div class="form-group mb-3">
@@ -111,7 +129,7 @@ Coded by www.creative-tim.com
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button id="update-password" type="button" class="btn btn-primary my-4"><i class="fas fa-asterisk"></i> Change</button>
+                                    <button id="register-button" type="button" class="btn btn-primary my-4"><i class="fas fa-user-plus"></i> Register</button>
                                 </div>
                             </form>
                         </div>
@@ -145,7 +163,7 @@ Coded by www.creative-tim.com
       });
   </script>
 
-  <script src="/js/CMSCore/ChangePassword.js"></script>
+  <script src="/js/CMSCore/Register.js"></script>
 </body>
 
 </html>
