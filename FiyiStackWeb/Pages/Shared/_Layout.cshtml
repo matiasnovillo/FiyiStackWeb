@@ -38,7 +38,7 @@ Coded by www.creative-tim.com
 </head>
 <body>
     <!-- Navbar -->
-  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-default navbar-dark position-sticky top-0  py-2">
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg bg-default navbar-dark position-sticky top-0 py-2 mb-5">
     <div class="container">
       <a class="navbar-brand mr-lg-5" href="/Index">
         <img src="/img/FiyiStackImageTransparent.png" width="60">
@@ -64,22 +64,22 @@ Coded by www.creative-tim.com
         </div>
         <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
            <li class="nav-item">
-            <a href="/School/Index" class="nav-link">
+            <a href="/School/Index" class="nav-link ml-2">
               <span class="nav-link-inner--text">FiyiSchool</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/LearnMore" class="nav-link">
+            <a href="/LearnMore" class="nav-link ml-2">
               <span class="nav-link-inner--text">Learn more</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/ContactMe" class="nav-link">
+            <a href="/ContactMe" class="nav-link ml-2">
               <span class="nav-link-inner--text">Contact me</span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/CMSCore/Login" class="btn btn-outline-white">
+            <a href="/CMSCore/Login" class="btn btn-outline-white ml-2">
               <i class="ni ni-basket d-lg-none"></i>
               <span class="nav-link-inner--text">Login</span>
             </a>
@@ -94,13 +94,10 @@ Coded by www.creative-tim.com
       </div>
     </div>
   </nav>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    @RenderBody()
+        
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-5">
         <div class="container">
             &copy; 2022 - FiyiStackWeb - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
