@@ -2,7 +2,7 @@ USE [fiyistack_FiyiStackWeb]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
---Last modification on: 15/12/2022 8:21:21
+--Last modification on: 15/12/2022 12:54:59
 
 ALTER TABLE [dbo].[CMSCore.User] ADD [UserId] INT IDENTITY(1,1) NOT NULL
 ALTER TABLE [dbo].[CMSCore.User] ADD [FantasyName] VARCHAR(200) NOT NULL
@@ -15,4 +15,3 @@ ALTER TABLE [dbo].[CMSCore.User] ADD [UserLastModificationId] INT NOT NULL
 ALTER TABLE [dbo].[CMSCore.User] ADD [DateTimeCreation] DATETIME NOT NULL
 ALTER TABLE [dbo].[CMSCore.User] ADD [DateTimeLastModification] DATETIME NOT NULL
 ALTER TABLE [dbo].[CMSCore.User] ADD [RegistrationToken] VARCHAR(8000) NOT NULL
-ALTER TABLE [dbo].[CMSCore.User] ADD [NeedNewPassword] TINYINT NOT NULL

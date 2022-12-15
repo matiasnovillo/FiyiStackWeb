@@ -27,7 +27,7 @@ using System.Text;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 15/12/2022 8:21:21
+//Last modification on: 15/12/2022 12:54:59
 
 namespace FiyiStackWeb.Areas.CMSCore.Services
 {
@@ -36,7 +36,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 15/12/2022 8:21:21
+    /// Last modification: 15/12/2022 12:54:59
     /// </summary>
     public partial class UserService : UserProtocol
     {
@@ -182,7 +182,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 UserModel.Password = Password;
                 UserModel.RoleId = 2; //Client role
                 UserModel.RegistrationToken = RegistrationToken;
-                UserModel.NeedNewPassword = false;
                 UserModel.Active = false;
                 UserModel.DateTimeCreation = DateTime.Now;
                 UserModel.DateTimeLastModification = DateTime.Now;
@@ -670,11 +669,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">RegistrationToken&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NeedNewPassword&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
     </tr>
     {RowsAsHTML}
@@ -759,11 +753,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                     dtColumnRegistrationTokenFordtUserCopy.ColumnName = "RegistrationToken";
                     dtUserCopy.Columns.Add(dtColumnRegistrationTokenFordtUserCopy);
 
-                    DataColumn dtColumnNeedNewPasswordFordtUserCopy = new DataColumn();
-                    dtColumnNeedNewPasswordFordtUserCopy.DataType = typeof(string);
-                    dtColumnNeedNewPasswordFordtUserCopy.ColumnName = "NeedNewPassword";
-                    dtUserCopy.Columns.Add(dtColumnNeedNewPasswordFordtUserCopy);
-
                     
                 #endregion
 
@@ -847,11 +836,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                     dtColumnRegistrationTokenFordtUserCopy.DataType = typeof(string);
                     dtColumnRegistrationTokenFordtUserCopy.ColumnName = "RegistrationToken";
                     dtUserCopy.Columns.Add(dtColumnRegistrationTokenFordtUserCopy);
-
-                    DataColumn dtColumnNeedNewPasswordFordtUserCopy = new DataColumn();
-                    dtColumnNeedNewPasswordFordtUserCopy.DataType = typeof(string);
-                    dtColumnNeedNewPasswordFordtUserCopy.ColumnName = "NeedNewPassword";
-                    dtUserCopy.Columns.Add(dtColumnNeedNewPasswordFordtUserCopy);
 
                     
                     #endregion

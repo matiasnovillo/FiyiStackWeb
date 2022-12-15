@@ -17,7 +17,7 @@ using System.Collections.Generic;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 15/12/2022 8:21:21
+//Last modification on: 15/12/2022 12:54:59
 
 namespace FiyiStackWeb.Areas.CMSCore.Pages
 {
@@ -25,7 +25,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
     /// Stack:             9 <br/>
     /// Name:              C# Razor Page. <br/>
     /// Function:          Allow you to show HTML files using Razor Page technology. <br/>
-    /// Last modification: 15/12/2022 8:21:21
+    /// Last modification: 15/12/2022 12:54:59
     /// </summary>
     [UserFilter]
     public partial class PageUserNonQueryModel : PageModel

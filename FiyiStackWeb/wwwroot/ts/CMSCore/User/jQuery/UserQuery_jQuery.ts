@@ -20,7 +20,7 @@ import { Ajax } from "../../../Library/Ajax";
 
 //Stack: 10
 
-//Last modification on: 15/12/2022 8:21:21
+//Last modification on: 15/12/2022 12:55:00
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -100,11 +100,6 @@ class UserQuery {
         <th scope="col">
             <button value="RegistrationToken" class="btn btn-outline-secondary btn-sm" type="button">
                 RegistrationToken
-            </button>
-        </th>
-        <th scope="col">
-            <button value="NeedNewPassword" class="btn btn-outline-secondary btn-sm" type="button">
-                NeedNewPassword
             </button>
         </th>
         
@@ -234,11 +229,6 @@ class UserQuery {
             </i> ${row.RegistrationToken}
         </strong>
     </td>
-    <td class="text-left text-truncate">
-        <strong>
-            <i class="fas fa-toggle-on"></i> ${row.NeedNewPassword == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
-        </strong>
-    </td>
     
     <!-- Actions -->
     <td class="text-right">
@@ -318,10 +308,6 @@ class UserQuery {
                         <br/>
                         <span class="text-white mb-4 text-truncate">
                            RegistrationToken <i class="fas fa-font"></i> ${row.RegistrationToken}
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4 text-truncate">
-                           NeedNewPassword <i class="fas fa-toggle-on"></i> ${row.NeedNewPassword == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
                         </span>
                         <br/>
                         

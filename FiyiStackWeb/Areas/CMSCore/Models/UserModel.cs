@@ -28,9 +28,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     /// Function:          Allow you to manipulate information from database using stored procedures.
     ///                    Also, let you make other related actions with the model in question or
     ///                    make temporal copies with random data. <br/>
-    /// Fields:            12 <br/> 
+    /// Fields:            11 <br/> 
     /// Dependencies:      0 models <br/>
-    /// Last modification: 15/12/2022 8:21:21
+    /// Last modification: 15/12/2022 12:54:59
     /// </summary>
     [Serializable]
     public partial class UserModel
@@ -70,8 +70,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
         [Library.ModelAttributeValidator.String("RegistrationToken", false, 1, 8000, "")]
         public string RegistrationToken { get; set; }
-
-        public bool NeedNewPassword { get; set; }
         #endregion
 
         #region Models that depend on this model
@@ -84,7 +82,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Function:     Create fastly this model with field UserId = 0 <br/>
         /// Note 1:       Generally used to have fast access to functions of object. <br/>
         /// Note 2:       Need construction with [new] reserved word, as all constructors. <br/>
-        /// Fields:       12 <br/> 
+        /// Fields:       11 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
         public UserModel()
@@ -97,7 +95,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model with stored information in database using UserId <br/>
         /// Note:         Raise exception on duplicated IDs <br/>
-        /// Fields:       12 <br/> 
+        /// Fields:       11 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
         public UserModel(int UserId)
@@ -133,7 +131,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 					this.DateTimeCreation = user.DateTimeCreation;
 					this.DateTimeLastModification = user.DateTimeLastModification;
 					this.RegistrationToken = user.RegistrationToken;
-					this.NeedNewPassword = user.NeedNewPassword;
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -144,10 +141,10 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model with filled parameters <br/>
         /// Note:         Raise exception on duplicated IDs <br/>
-        /// Fields:       12 <br/> 
+        /// Fields:       11 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
-        public UserModel(int UserId, string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken, bool NeedNewPassword)
+        public UserModel(int UserId, string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken)
         {
             try
             {
@@ -162,7 +159,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				this.DateTimeCreation = DateTimeCreation;
 				this.DateTimeLastModification = DateTimeLastModification;
 				this.RegistrationToken = RegistrationToken;
-				this.NeedNewPassword = NeedNewPassword;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -171,7 +167,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model (copy) using the given model (original), user, passed by parameter. <br/>
         /// Note:         This constructor is generally used to execute functions using the copied fields <br/>
-        /// Fields:       12 <br/> 
+        /// Fields:       11 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
         public UserModel(UserModel user)
@@ -189,7 +185,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				DateTimeCreation = user.DateTimeCreation;
 				DateTimeLastModification = user.DateTimeLastModification;
 				RegistrationToken = user.RegistrationToken;
-				NeedNewPassword = user.NeedNewPassword;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -302,7 +297,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 					UserModel.DateTimeCreation = user.DateTimeCreation;
 					UserModel.DateTimeLastModification = user.DateTimeLastModification;
 					UserModel.RegistrationToken = user.RegistrationToken;
-					UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -385,7 +379,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
                     UserModel.RegistrationToken = user.RegistrationToken;
-                    UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -424,7 +417,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
                     UserModel.RegistrationToken = user.RegistrationToken;
-                    UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -463,7 +455,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
                     UserModel.RegistrationToken = user.RegistrationToken;
-                    UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -495,7 +486,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -534,7 +524,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", user.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", user.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", user.RegistrationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("NeedNewPassword", user.NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -555,7 +544,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
         /// <returns>The ID of the last registry inserted in User table</returns>
-        public int Insert(string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken, bool NeedNewPassword)
+        public int Insert(string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken)
         {
             try
             {
@@ -573,7 +562,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -613,7 +601,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -653,7 +640,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", user.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", user.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", user.RegistrationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("NeedNewPassword", user.NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -674,7 +660,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
         /// <returns>The number of rows updated in User table</returns>
-        public int UpdateByUserId(int UserId, string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken, bool NeedNewPassword)
+        public int UpdateByUserId(int UserId, string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken)
         {
             try
             {
@@ -693,7 +679,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -787,6 +772,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
+        #endregion
 
         public int ChangePassword(int UserId, string NewPassword)
         {
@@ -813,7 +799,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
-        #endregion
 
         /// <summary>
         /// Function: Take the model stored in the given byte array to return the model. <br/>
@@ -850,8 +835,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				$"UserLastModificationId: {UserLastModificationId}, " +
 				$"DateTimeCreation: {DateTimeCreation}, " +
 				$"DateTimeLastModification: {DateTimeLastModification}, " +
-				$"RegistrationToken: {RegistrationToken}, " +
-				$"NeedNewPassword: {NeedNewPassword}";
+				$"RegistrationToken: {RegistrationToken}";
         }
 
         public string ToStringOnlyValuesForHTML()
@@ -921,12 +905,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{RegistrationToken}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{NeedNewPassword}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>

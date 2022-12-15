@@ -22,6 +22,6 @@ EXEC [dbo].[CMSCore.User.DeleteAll]
  *
  */
 
---Last modification on: 15/12/2022 8:21:21
+--Last modification on: 15/12/2022 12:54:59
 
 DELETE FROM [CMSCore.User]

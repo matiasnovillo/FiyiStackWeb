@@ -38,7 +38,7 @@ EXEC [dbo].[CMSCore.User.SelectAllPaged]
 SELECT @TotalRows AS N'@TotalRows'
 */
 
---Last modification on: 15/12/2022 8:21:21
+--Last modification on: 15/12/2022 12:54:59
 
 SET DATEFORMAT DMY
 SET NOCOUNT ON
@@ -54,8 +54,7 @@ SELECT
     [CMSCore.User].[UserLastModificationId] AS [UserLastModificationId],
     [CMSCore.User].[DateTimeCreation] AS [DateTimeCreation],
     [CMSCore.User].[DateTimeLastModification] AS [DateTimeLastModification],
-    [CMSCore.User].[RegistrationToken] AS [RegistrationToken],
-    [CMSCore.User].[NeedNewPassword] AS [NeedNewPassword]
+    [CMSCore.User].[RegistrationToken] AS [RegistrationToken]
 FROM 
     [CMSCore.User]
 WHERE
@@ -72,7 +71,6 @@ WHERE
         OR ([CMSCore.User].[DateTimeCreation] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[DateTimeLastModification] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[RegistrationToken] LIKE  '%' + @QueryString + '%')
-        OR ([CMSCore.User].[NeedNewPassword] LIKE  '%' + @QueryString + '%')
 
     )
 ORDER BY 
@@ -97,9 +95,7 @@ ORDER BY
     CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 0) THEN [DateTimeLastModification] END ASC,
     CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 1) THEN [DateTimeLastModification] END DESC,
     CASE WHEN (@SorterColumn = 'RegistrationToken' AND @SortToggler = 0) THEN [RegistrationToken] END ASC,
-    CASE WHEN (@SorterColumn = 'RegistrationToken' AND @SortToggler = 1) THEN [RegistrationToken] END DESC,
-    CASE WHEN (@SorterColumn = 'NeedNewPassword' AND @SortToggler = 0) THEN [NeedNewPassword] END ASC,
-    CASE WHEN (@SorterColumn = 'NeedNewPassword' AND @SortToggler = 1) THEN [NeedNewPassword] END DESC
+    CASE WHEN (@SorterColumn = 'RegistrationToken' AND @SortToggler = 1) THEN [RegistrationToken] END DESC
 
 OFFSET (@ActualPageNumber - 1) * @RowsPerPage ROWS
 FETCH NEXT @RowsPerPage ROWS ONLY
