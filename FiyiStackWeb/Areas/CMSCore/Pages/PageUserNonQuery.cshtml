@@ -11,14 +11,11 @@
     string FantasyName;
     string Email;
     string Password;
-    string ProfileImageURL;
-    DateTime DateTimeBirth;
-    string VerificationToken;
-    string CookieToken;
     int RoleId;
     int UserCreationId;
     int UserLastModificationId;
     string RegistrationToken;
+    bool NeedNewPassword;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?UserId=0"))
@@ -30,13 +27,10 @@
         FantasyName = "";
         Email = "";
         Password = "";
-        ProfileImageURL = "";
-        DateTimeBirth = DateTime.Now;
-        VerificationToken = "";
-        CookieToken = "";
         RoleId = 0;UserCreationId = 0;
         UserLastModificationId = 0;
         RegistrationToken = "";
+        NeedNewPassword = false;
         
     }
     else
@@ -51,14 +45,11 @@
         FantasyName = UserModel.FantasyName;
         Email = UserModel.Email;
         Password = UserModel.Password;
-        ProfileImageURL = UserModel.ProfileImageURL;
-        DateTimeBirth = UserModel.DateTimeBirth;
-        VerificationToken = UserModel.VerificationToken;
-        CookieToken = UserModel.CookieToken;
         RoleId = UserModel.RoleId;
         UserCreationId = UserModel.UserCreationId;
         UserLastModificationId = UserModel.UserLastModificationId;
         RegistrationToken = UserModel.RegistrationToken;
+        NeedNewPassword = UserModel.NeedNewPassword;
         
     }
 
@@ -76,7 +67,7 @@
  */
     
 //Stack: 11
-//Last modification on: 14/12/2022 19:43:28
+//Last modification on: 15/12/2022 8:21:21
 
 }
 <!-- Header -->
@@ -221,90 +212,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ProfileImageURL -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-user-profileimageurl-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-globe"></i> ProfileImageURL
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-globe"></i> ProfileImageURL
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="url" id="cmscore-user-profileimageurl-input" value="@ProfileImageURL" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="profileimageurl-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- DateTimeBirth -->
-                        <div class="form-group mb-3">
-                            <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-calendar"></i> DateTimeBirth
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-calendar"></i> DateTimeBirth
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input id="cmscore-user-datetimebirth-input" value="@DateTimeBirth.ToString("yyyy'-'MM'-'dd'T'HH':'mm")" type="datetime-local" min="" max="" class="form-control">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="datetimebirth-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- VerificationToken -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-user-verificationtoken-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> VerificationToken
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-font"></i> VerificationToken
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" min="1" max="8000" type="text" id="cmscore-user-verificationtoken-input" value="@VerificationToken" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="verificationtoken-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- CookieToken -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-user-cookietoken-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> CookieToken
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-font"></i> CookieToken
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" min="1" max="8000" type="text" id="cmscore-user-cookietoken-input" value="@CookieToken" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="cookietoken-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                         <!-- RoleId -->
                         <div class="form-group mb-3">
                             <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
@@ -392,6 +299,153 @@
                                 <input class="form-control" min="1" max="8000" type="text" id="cmscore-user-registrationtoken-input" value="@RegistrationToken" >
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="registrationtoken-info">
+                                        <i class="fas fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- NeedNewPassword -->
+                        <div class="form-group mb-3">
+                            <label for="cmscore-user-neednewpassword-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
+                                <i class="fas fa-toggle-on"></i> NeedNewPassword
+                            </label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
+                                    <span class="input-group-text">
+                                        <strong>
+                                            <i class="fas fa-toggle-on"></i> NeedNewPassword
+                                        </strong>
+                                    </span>
+                                </div>
+                                <label class="custom-toggle ml-2 mt-2 mr-4">
+                                    <input type="checkbox" id="cmscore-user-neednewpassword-input" @(NeedNewPassword == true ? "checked" : "" )>
+                                    <span class="custom-toggle-slider rounded-circle" data-label-off="OFF" data-label-on="ON"></span>
+                                </label>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="neednewpassword-info">
+                                        <i class="fas fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <div class="row justify-content-between">
+                            <button id="cmscore-user-insert-or-update-button" class="btn btn-primary text-nowrap ml-3 mt-4" type="button"><i class="@NonQueryIcon"></i> @NonQueryText</button>
+                            <button id="cmscore-user-insert-or-update-message" data-toggle="modal" data-target="#cmscore-user-error-message-modal" class="btn mt-4" type="button"></button>
+                            <a href="/CMSCore/PageUserQuery" class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
+                                <i class="fas fa-angle-left"></i> Go back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer py-2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Error message in modal style -->
+<div class="row">
+    <div class="col-md-4 px-0">
+        <div class="modal fade" id="cmscore-user-error-message-modal" tabindex="-1" role="dialog" aria-labelledby="cmscore-user-error-message-modal" aria-hidden="true">
+            <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
+                <div class="modal-content bg-gradient-danger">
+                    <!-- Modal title -->
+                    <div class="modal-header">
+                        <h6 class="modal-title text-white" id="modal-title-notification">
+                            Error <i class="fas fa-exclamation-triangle"></i>
+                        </h6>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="py-3 text-center">
+                            <h4 id="/cmscore-user-error-message-title" class="heading mt-4 text-white"></h4>
+                            <p class="text-white text-truncate" id="cmscore-user-error-message-text"></p>
+                        </div>
+                    </div>
+                    <!-- Close button -->
+                    <div class="modal-footer pt-4">
+                        <button type="button" class="btn btn-white ml-auto" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ForeignKeyDropDown selector in Modal style -->
+<div class="row">
+    <div class="col-md-4">
+        <!-- Modal -->
+        <div class="modal fade" id="modal-foreign-key-code-selector" tabindex="-1" role="dialog" aria-labelledby="modal-foreign-key-selector" aria-hidden="true">
+            <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
+                <!-- Modal content -->
+                <div class="modal-content bg-gradient-secondary">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-primary" id="modal-title-notification">
+                            Choose a ForeignKeyDropDown value <i class="fas fa-hashtag"></i>
+                         </h6>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <select id="cmscore-user-foreignkeydropdown-select" class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Choose value" data-allow-reset="true">
+                                        <option value="0"></option> <!--This must be empty-->
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary ml-auto" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Phone code Selector in Modal style -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="modal fade" id="modal-phone-code-selector" tabindex="-1" role="dialog" aria-labelledby="modal-phone-code-selector" aria-hidden="true">
+            <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
+                <div class="modal-content bg-gradient-secondary">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-primary" id="modal-title-notification">Choose your phone code <i class="fas fa-globe-americas"></i></h6>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Country (+Code)" data-allow-reset="true">
+                                        <option></option> <!--This must be empty-->
+                                        <option>Argentina (+54)</option>
+                                        <option>USA (+1)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary ml-auto" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery-3.6.1.min.js"></script>
+<script src="/assets/vendor/quill/dist/quill.min.js"></script>
+<script src="/js/CMSCore/User/jQuery/UserNonQuery_jQuery.js"></script>
+e-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="cookietoken-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>

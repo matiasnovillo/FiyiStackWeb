@@ -4,10 +4,6 @@ CREATE PROCEDURE [dbo].[CMSCore.User.UpdateByUserId]
     @FantasyName VARCHAR(200),
     @Email VARCHAR(320),
     @Password VARCHAR(8000),
-    @ProfileImageURL VARCHAR(8000),
-    @DateTimeBirth DATETIME,
-    @VerificationToken VARCHAR(8000),
-    @CookieToken VARCHAR(8000),
     @RoleId INT,
     @Active TINYINT,
     @UserCreationId INT,
@@ -15,6 +11,7 @@ CREATE PROCEDURE [dbo].[CMSCore.User.UpdateByUserId]
     @DateTimeCreation DATETIME,
     @DateTimeLastModification DATETIME,
     @RegistrationToken VARCHAR(8000),
+    @NeedNewPassword TINYINT,
 
     @RowsAffected INT OUTPUT
 )
@@ -45,23 +42,20 @@ SELECT @RowsAffected AS N'@RowsAffected'
  *
  */
 
---Last modification on: 14/12/2022 19:43:28
+--Last modification on: 15/12/2022 8:21:21
 
 UPDATE [CMSCore.User] SET
     [FantasyName] = @FantasyName,
     [Email] = @Email,
     [Password] = @Password,
-    [ProfileImageURL] = @ProfileImageURL,
-    [DateTimeBirth] = @DateTimeBirth,
-    [VerificationToken] = @VerificationToken,
-    [CookieToken] = @CookieToken,
     [RoleId] = @RoleId,
     [Active] = @Active,
     [UserCreationId] = @UserCreationId,
     [UserLastModificationId] = @UserLastModificationId,
     [DateTimeCreation] = @DateTimeCreation,
     [DateTimeLastModification] = @DateTimeLastModification,
-    [RegistrationToken] = @RegistrationToken
+    [RegistrationToken] = @RegistrationToken,
+    [NeedNewPassword] = @NeedNewPassword
 WHERE 
     1 = 1 
     AND [CMSCore.User].[UserId] = @UserId 

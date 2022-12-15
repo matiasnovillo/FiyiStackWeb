@@ -20,7 +20,7 @@ import { Ajax } from "../../../Library/Ajax";
 
 //Stack: 10
 
-//Last modification on: 14/12/2022 19:43:28
+//Last modification on: 15/12/2022 8:21:21
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -68,26 +68,6 @@ class UserQuery {
             </button>
         </th>
         <th scope="col">
-            <button value="ProfileImageURL" class="btn btn-outline-secondary btn-sm" type="button">
-                ProfileImageURL
-            </button>
-        </th>
-        <th scope="col">
-            <button value="DateTimeBirth" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeBirth
-            </button>
-        </th>
-        <th scope="col">
-            <button value="VerificationToken" class="btn btn-outline-secondary btn-sm" type="button">
-                VerificationToken
-            </button>
-        </th>
-        <th scope="col">
-            <button value="CookieToken" class="btn btn-outline-secondary btn-sm" type="button">
-                CookieToken
-            </button>
-        </th>
-        <th scope="col">
             <button value="RoleId" class="btn btn-outline-secondary btn-sm" type="button">
                 RoleId
             </button>
@@ -120,6 +100,11 @@ class UserQuery {
         <th scope="col">
             <button value="RegistrationToken" class="btn btn-outline-secondary btn-sm" type="button">
                 RegistrationToken
+            </button>
+        </th>
+        <th scope="col">
+            <button value="NeedNewPassword" class="btn btn-outline-secondary btn-sm" type="button">
+                NeedNewPassword
             </button>
         </th>
         
@@ -215,28 +200,6 @@ class UserQuery {
         </strong>
     </td>
     <td class="text-left text-truncate">
-        <a href="${row.ProfileImageURL}" target="_blank">
-            <strong>
-                <i class="fas fa-globe"></i> ${row.ProfileImageURL}
-            </strong>
-        </a>
-    </td>
-    <td class="text-left text-truncate">
-        <strong>
-            <i class="fas fa-calendar"></i> ${row.DateTimeBirth}
-        </strong>
-    </td>
-    <td class="text-left text-truncate">
-        <strong><i class="fas fa-font">
-            </i> ${row.VerificationToken}
-        </strong>
-    </td>
-    <td class="text-left text-truncate">
-        <strong><i class="fas fa-font">
-            </i> ${row.CookieToken}
-        </strong>
-    </td>
-    <td class="text-left text-truncate">
         <strong>
             <i class="fas fa-key"></i> ${row.RoleId}
         </strong>
@@ -269,6 +232,11 @@ class UserQuery {
     <td class="text-left text-truncate">
         <strong><i class="fas fa-font">
             </i> ${row.RegistrationToken}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <strong>
+            <i class="fas fa-toggle-on"></i> ${row.NeedNewPassword == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
         </strong>
     </td>
     
@@ -324,24 +292,6 @@ class UserQuery {
                            Password <i class="fas fa-asterisk"></i> ${row.Password}
                         </span>
                         <br/>
-                        <span class="mb-4 text-truncate">
-                            <a href="${row.ProfileImageURL}" style="color:#FFFFFF" target="_blank">
-                               ProfileImageURL <i class="fas fa-globe"></i> ${row.ProfileImageURL}
-                            </a>
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4 text-truncate">
-                           DateTimeBirth <i class="fas fa-calendar"></i> ${row.DateTimeBirth}
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4 text-truncate">
-                           VerificationToken <i class="fas fa-font"></i> ${row.VerificationToken}
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4 text-truncate">
-                           CookieToken <i class="fas fa-font"></i> ${row.CookieToken}
-                        </span>
-                        <br/>
                         <span class="text-white mb-4 text-truncate">
                            RoleId <i class="fas fa-key"></i> ${row.RoleId}
                         </span>
@@ -368,6 +318,10 @@ class UserQuery {
                         <br/>
                         <span class="text-white mb-4 text-truncate">
                            RegistrationToken <i class="fas fa-font"></i> ${row.RegistrationToken}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           NeedNewPassword <i class="fas fa-toggle-on"></i> ${row.NeedNewPassword == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
                         </span>
                         <br/>
                         

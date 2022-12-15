@@ -16,7 +16,7 @@ import { Ajax } from "../../../Library/Ajax";
  * Auto generated code. Add your custom code after the last line of auto generation
 */
 
-//15 fields | 0 models depend on this model | Last modification on: 14/12/2022 19:43:28 | Stack: 9
+//12 fields | 0 models depend on this model | Last modification on: 15/12/2022 8:21:21 | Stack: 9
 
 export class UserModel {
 
@@ -25,10 +25,6 @@ export class UserModel {
 	FantasyName?: string | string[] | number | undefined;
 	Email?: string | string[] | number | undefined;
 	Password?: string | string[] | number | undefined;
-	ProfileImageURL?: string | string[] | number | undefined;
-	DateTimeBirth?: string | string[] | number | undefined;
-	VerificationToken?: string | string[] | number | undefined;
-	CookieToken?: string | string[] | number | undefined;
 	RoleId?: number;
 	Active?: boolean;
 	UserCreationId?: number;
@@ -36,6 +32,7 @@ export class UserModel {
 	DateTimeCreation?: string | string[] | number | undefined;
 	DateTimeLastModification?: string | string[] | number | undefined;
 	RegistrationToken?: string | string[] | number | undefined;
+	NeedNewPassword?: boolean;
 
     //Queries
     static Select1ByUserId(UserId: number) {

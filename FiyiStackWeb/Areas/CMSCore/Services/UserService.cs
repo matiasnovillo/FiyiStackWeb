@@ -27,7 +27,7 @@ using System.Text;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 14/12/2022 19:43:28
+//Last modification on: 15/12/2022 8:21:21
 
 namespace FiyiStackWeb.Areas.CMSCore.Services
 {
@@ -36,7 +36,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 14/12/2022 19:43:28
+    /// Last modification: 15/12/2022 8:21:21
     /// </summary>
     public partial class UserService : UserProtocol
     {
@@ -182,8 +182,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 UserModel.Password = Password;
                 UserModel.RoleId = 2; //Client role
                 UserModel.RegistrationToken = RegistrationToken;
+                UserModel.NeedNewPassword = false;
                 UserModel.Active = false;
-                UserModel.DateTimeBirth = DateTime.Now;
                 UserModel.DateTimeCreation = DateTime.Now;
                 UserModel.DateTimeLastModification = DateTime.Now;
                 UserModel.Insert();
@@ -342,7 +342,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                 string fPassword = ParameterModel.Select1ByName("Password"); //Start with f because Password is a parameter of this function
                 string Host = ParameterModel.Select1ByName("Host");
 
-                
+
                 MailMessage MailMessage = new MailMessage();
                 SmtpClient SmtpClient = new SmtpClient();
 
@@ -436,26 +436,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">ProfileImageURL&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeBirth&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">VerificationToken&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">CookieToken&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">RoleId&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
@@ -487,6 +467,11 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">RegistrationToken&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NeedNewPassword&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
@@ -538,26 +523,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                     dtColumnPasswordFordtUserCopy.ColumnName = "Password";
                     dtUserCopy.Columns.Add(dtColumnPasswordFordtUserCopy);
 
-                    DataColumn dtColumnProfileImageURLFordtUserCopy = new DataColumn();
-                    dtColumnProfileImageURLFordtUserCopy.DataType = typeof(string);
-                    dtColumnProfileImageURLFordtUserCopy.ColumnName = "ProfileImageURL";
-                    dtUserCopy.Columns.Add(dtColumnProfileImageURLFordtUserCopy);
-
-                    DataColumn dtColumnDateTimeBirthFordtUserCopy = new DataColumn();
-                    dtColumnDateTimeBirthFordtUserCopy.DataType = typeof(string);
-                    dtColumnDateTimeBirthFordtUserCopy.ColumnName = "DateTimeBirth";
-                    dtUserCopy.Columns.Add(dtColumnDateTimeBirthFordtUserCopy);
-
-                    DataColumn dtColumnVerificationTokenFordtUserCopy = new DataColumn();
-                    dtColumnVerificationTokenFordtUserCopy.DataType = typeof(string);
-                    dtColumnVerificationTokenFordtUserCopy.ColumnName = "VerificationToken";
-                    dtUserCopy.Columns.Add(dtColumnVerificationTokenFordtUserCopy);
-
-                    DataColumn dtColumnCookieTokenFordtUserCopy = new DataColumn();
-                    dtColumnCookieTokenFordtUserCopy.DataType = typeof(string);
-                    dtColumnCookieTokenFordtUserCopy.ColumnName = "CookieToken";
-                    dtUserCopy.Columns.Add(dtColumnCookieTokenFordtUserCopy);
-
                     DataColumn dtColumnRoleIdFordtUserCopy = new DataColumn();
                     dtColumnRoleIdFordtUserCopy.DataType = typeof(string);
                     dtColumnRoleIdFordtUserCopy.ColumnName = "RoleId";
@@ -592,6 +557,11 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                     dtColumnRegistrationTokenFordtUserCopy.DataType = typeof(string);
                     dtColumnRegistrationTokenFordtUserCopy.ColumnName = "RegistrationToken";
                     dtUserCopy.Columns.Add(dtColumnRegistrationTokenFordtUserCopy);
+
+                    DataColumn dtColumnNeedNewPasswordFordtUserCopy = new DataColumn();
+                    dtColumnNeedNewPasswordFordtUserCopy.DataType = typeof(string);
+                    dtColumnNeedNewPasswordFordtUserCopy.ColumnName = "NeedNewPassword";
+                    dtUserCopy.Columns.Add(dtColumnNeedNewPasswordFordtUserCopy);
 
                     
                 #endregion
@@ -642,26 +612,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                     dtColumnPasswordFordtUserCopy.ColumnName = "Password";
                     dtUserCopy.Columns.Add(dtColumnPasswordFordtUserCopy);
 
-                    DataColumn dtColumnProfileImageURLFordtUserCopy = new DataColumn();
-                    dtColumnProfileImageURLFordtUserCopy.DataType = typeof(string);
-                    dtColumnProfileImageURLFordtUserCopy.ColumnName = "ProfileImageURL";
-                    dtUserCopy.Columns.Add(dtColumnProfileImageURLFordtUserCopy);
-
-                    DataColumn dtColumnDateTimeBirthFordtUserCopy = new DataColumn();
-                    dtColumnDateTimeBirthFordtUserCopy.DataType = typeof(string);
-                    dtColumnDateTimeBirthFordtUserCopy.ColumnName = "DateTimeBirth";
-                    dtUserCopy.Columns.Add(dtColumnDateTimeBirthFordtUserCopy);
-
-                    DataColumn dtColumnVerificationTokenFordtUserCopy = new DataColumn();
-                    dtColumnVerificationTokenFordtUserCopy.DataType = typeof(string);
-                    dtColumnVerificationTokenFordtUserCopy.ColumnName = "VerificationToken";
-                    dtUserCopy.Columns.Add(dtColumnVerificationTokenFordtUserCopy);
-
-                    DataColumn dtColumnCookieTokenFordtUserCopy = new DataColumn();
-                    dtColumnCookieTokenFordtUserCopy.DataType = typeof(string);
-                    dtColumnCookieTokenFordtUserCopy.ColumnName = "CookieToken";
-                    dtUserCopy.Columns.Add(dtColumnCookieTokenFordtUserCopy);
-
                     DataColumn dtColumnRoleIdFordtUserCopy = new DataColumn();
                     dtColumnRoleIdFordtUserCopy.DataType = typeof(string);
                     dtColumnRoleIdFordtUserCopy.ColumnName = "RoleId";
@@ -696,6 +646,11 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                     dtColumnRegistrationTokenFordtUserCopy.DataType = typeof(string);
                     dtColumnRegistrationTokenFordtUserCopy.ColumnName = "RegistrationToken";
                     dtUserCopy.Columns.Add(dtColumnRegistrationTokenFordtUserCopy);
+
+                    DataColumn dtColumnNeedNewPasswordFordtUserCopy = new DataColumn();
+                    dtColumnNeedNewPasswordFordtUserCopy.DataType = typeof(string);
+                    dtColumnNeedNewPasswordFordtUserCopy.ColumnName = "NeedNewPassword";
+                    dtUserCopy.Columns.Add(dtColumnNeedNewPasswordFordtUserCopy);
 
                     
                     #endregion

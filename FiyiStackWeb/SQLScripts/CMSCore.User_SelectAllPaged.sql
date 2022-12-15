@@ -38,7 +38,7 @@ EXEC [dbo].[CMSCore.User.SelectAllPaged]
 SELECT @TotalRows AS N'@TotalRows'
 */
 
---Last modification on: 14/12/2022 19:43:28
+--Last modification on: 15/12/2022 8:21:21
 
 SET DATEFORMAT DMY
 SET NOCOUNT ON
@@ -48,17 +48,14 @@ SELECT
     [CMSCore.User].[FantasyName] AS [FantasyName],
     [CMSCore.User].[Email] AS [Email],
     [CMSCore.User].[Password] AS [Password],
-    [CMSCore.User].[ProfileImageURL] AS [ProfileImageURL],
-    [CMSCore.User].[DateTimeBirth] AS [DateTimeBirth],
-    [CMSCore.User].[VerificationToken] AS [VerificationToken],
-    [CMSCore.User].[CookieToken] AS [CookieToken],
     [CMSCore.User].[RoleId] AS [RoleId],
     [CMSCore.User].[Active] AS [Active],
     [CMSCore.User].[UserCreationId] AS [UserCreationId],
     [CMSCore.User].[UserLastModificationId] AS [UserLastModificationId],
     [CMSCore.User].[DateTimeCreation] AS [DateTimeCreation],
     [CMSCore.User].[DateTimeLastModification] AS [DateTimeLastModification],
-    [CMSCore.User].[RegistrationToken] AS [RegistrationToken]
+    [CMSCore.User].[RegistrationToken] AS [RegistrationToken],
+    [CMSCore.User].[NeedNewPassword] AS [NeedNewPassword]
 FROM 
     [CMSCore.User]
 WHERE
@@ -68,10 +65,6 @@ WHERE
         OR ([CMSCore.User].[FantasyName] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[Email] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[Password] LIKE  '%' + @QueryString + '%')
-        OR ([CMSCore.User].[ProfileImageURL] LIKE  '%' + @QueryString + '%')
-        OR ([CMSCore.User].[DateTimeBirth] LIKE  '%' + @QueryString + '%')
-        OR ([CMSCore.User].[VerificationToken] LIKE  '%' + @QueryString + '%')
-        OR ([CMSCore.User].[CookieToken] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[RoleId] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[Active] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[UserCreationId] LIKE  '%' + @QueryString + '%')
@@ -79,6 +72,7 @@ WHERE
         OR ([CMSCore.User].[DateTimeCreation] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[DateTimeLastModification] LIKE  '%' + @QueryString + '%')
         OR ([CMSCore.User].[RegistrationToken] LIKE  '%' + @QueryString + '%')
+        OR ([CMSCore.User].[NeedNewPassword] LIKE  '%' + @QueryString + '%')
 
     )
 ORDER BY 
@@ -90,14 +84,6 @@ ORDER BY
     CASE WHEN (@SorterColumn = 'Email' AND @SortToggler = 1) THEN [Email] END DESC,
     CASE WHEN (@SorterColumn = 'Password' AND @SortToggler = 0) THEN [Password] END ASC,
     CASE WHEN (@SorterColumn = 'Password' AND @SortToggler = 1) THEN [Password] END DESC,
-    CASE WHEN (@SorterColumn = 'ProfileImageURL' AND @SortToggler = 0) THEN [ProfileImageURL] END ASC,
-    CASE WHEN (@SorterColumn = 'ProfileImageURL' AND @SortToggler = 1) THEN [ProfileImageURL] END DESC,
-    CASE WHEN (@SorterColumn = 'DateTimeBirth' AND @SortToggler = 0) THEN [DateTimeBirth] END ASC,
-    CASE WHEN (@SorterColumn = 'DateTimeBirth' AND @SortToggler = 1) THEN [DateTimeBirth] END DESC,
-    CASE WHEN (@SorterColumn = 'VerificationToken' AND @SortToggler = 0) THEN [VerificationToken] END ASC,
-    CASE WHEN (@SorterColumn = 'VerificationToken' AND @SortToggler = 1) THEN [VerificationToken] END DESC,
-    CASE WHEN (@SorterColumn = 'CookieToken' AND @SortToggler = 0) THEN [CookieToken] END ASC,
-    CASE WHEN (@SorterColumn = 'CookieToken' AND @SortToggler = 1) THEN [CookieToken] END DESC,
     CASE WHEN (@SorterColumn = 'RoleId' AND @SortToggler = 0) THEN [RoleId] END ASC,
     CASE WHEN (@SorterColumn = 'RoleId' AND @SortToggler = 1) THEN [RoleId] END DESC,
     CASE WHEN (@SorterColumn = 'Active' AND @SortToggler = 0) THEN [Active] END ASC,
@@ -111,7 +97,9 @@ ORDER BY
     CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 0) THEN [DateTimeLastModification] END ASC,
     CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 1) THEN [DateTimeLastModification] END DESC,
     CASE WHEN (@SorterColumn = 'RegistrationToken' AND @SortToggler = 0) THEN [RegistrationToken] END ASC,
-    CASE WHEN (@SorterColumn = 'RegistrationToken' AND @SortToggler = 1) THEN [RegistrationToken] END DESC
+    CASE WHEN (@SorterColumn = 'RegistrationToken' AND @SortToggler = 1) THEN [RegistrationToken] END DESC,
+    CASE WHEN (@SorterColumn = 'NeedNewPassword' AND @SortToggler = 0) THEN [NeedNewPassword] END ASC,
+    CASE WHEN (@SorterColumn = 'NeedNewPassword' AND @SortToggler = 1) THEN [NeedNewPassword] END DESC
 
 OFFSET (@ActualPageNumber - 1) * @RowsPerPage ROWS
 FETCH NEXT @RowsPerPage ROWS ONLY

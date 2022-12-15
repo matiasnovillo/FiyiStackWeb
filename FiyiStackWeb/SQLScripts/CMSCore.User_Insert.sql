@@ -3,10 +3,6 @@ CREATE PROCEDURE [dbo].[CMSCore.User.Insert]
     @FantasyName VARCHAR(200),
     @Email VARCHAR(320),
     @Password VARCHAR(8000),
-    @ProfileImageURL VARCHAR(8000),
-    @DateTimeBirth DATETIME,
-    @VerificationToken VARCHAR(8000),
-    @CookieToken VARCHAR(8000),
     @RoleId INT,
     @Active TINYINT,
     @UserCreationId INT,
@@ -14,6 +10,7 @@ CREATE PROCEDURE [dbo].[CMSCore.User.Insert]
     @DateTimeCreation DATETIME,
     @DateTimeLastModification DATETIME,
     @RegistrationToken VARCHAR(8000),
+    @NeedNewPassword TINYINT,
 
     @NewEnteredId INT OUTPUT
 )
@@ -42,10 +39,6 @@ EXEC [dbo].[CMSCore.User.Insert]
     @FantasyName = N'PutFantasyName',
     @Email = N'PutEmail',
     @Password = N'PutPassword',
-    @ProfileImageURL = N'PutProfileImageURL',
-    @DateTimeBirth = N'01/01/1753 0:00:00.001',
-    @VerificationToken = N'PutVerificationToken',
-    @CookieToken = N'PutCookieToken',
      @RoleId = 1,
     @Active = 1,
     @UserCreationId = 1,
@@ -53,6 +46,7 @@ EXEC [dbo].[CMSCore.User.Insert]
     @DateTimeCreation = N'01/01/1753 0:00:00.001',
     @DateTimeLastModification = N'01/01/1753 0:00:00.001',
     @RegistrationToken = N'PutRegistrationToken',
+    @NeedNewPassword = 1,
 
 @NewEnteredId = @NewEnteredId OUTPUT
 
@@ -60,41 +54,35 @@ SELECT @NewEnteredId AS N'@NewEnteredId'
  *
  */
 
---Last modification on: 14/12/2022 19:43:28
+--Last modification on: 15/12/2022 8:21:21
 
 INSERT INTO [CMSCore.User]
 (
     [FantasyName],
     [Email],
     [Password],
-    [ProfileImageURL],
-    [DateTimeBirth],
-    [VerificationToken],
-    [CookieToken],
     [RoleId],
     [Active],
     [UserCreationId],
     [UserLastModificationId],
     [DateTimeCreation],
     [DateTimeLastModification],
-    [RegistrationToken]
+    [RegistrationToken],
+    [NeedNewPassword]
 )
 VALUES
 (
     @FantasyName,
     @Email,
     @Password,
-    @ProfileImageURL,
-    @DateTimeBirth,
-    @VerificationToken,
-    @CookieToken,
     @RoleId,
     @Active,
     @UserCreationId,
     @UserLastModificationId,
     @DateTimeCreation,
     @DateTimeLastModification,
-    @RegistrationToken
+    @RegistrationToken,
+    @NeedNewPassword
 )
 
 SELECT @NewEnteredId = @@IDENTITY

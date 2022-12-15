@@ -15,7 +15,7 @@
 
 //Stack: 10
 
-//Last modification on: 14/12/2022 19:43:28
+//Last modification on: 15/12/2022 8:21:21
 
 $(document).ready(function () {
     //This fix an style error in Quill
@@ -39,14 +39,11 @@ $("#cmscore-user-insert-or-update-button").on("click", function (e) {
     formData.append("cmscore-user-fantasyname-input", $("#cmscore-user-fantasyname-input").val());
     formData.append("cmscore-user-email-input", $("#cmscore-user-email-input").val());
     formData.append("cmscore-user-password-input", $("#cmscore-user-password-input").val());
-    formData.append("cmscore-user-profileimageurl-input", $("#cmscore-user-profileimageurl-input").val());
-    formData.append("cmscore-user-datetimebirth-input", $("#cmscore-user-datetimebirth-input").val());
-    formData.append("cmscore-user-verificationtoken-input", $("#cmscore-user-verificationtoken-input").val());
-    formData.append("cmscore-user-cookietoken-input", $("#cmscore-user-cookietoken-input").val());
     formData.append("cmscore-user-roleid-input", $("#cmscore-user-roleid-input").val());
     formData.append("cmscore-user-usercreationid-input", $("#cmscore-user-usercreationid-input").val());
     formData.append("cmscore-user-userlastmodificationid-input", $("#cmscore-user-userlastmodificationid-input").val());
     formData.append("cmscore-user-registrationtoken-input", $("#cmscore-user-registrationtoken-input").val());
+    formData.append("cmscore-user-neednewpassword-input", $("#cmscore-user-neednewpassword-input").is(":checked"));
     
 
     //Setup request

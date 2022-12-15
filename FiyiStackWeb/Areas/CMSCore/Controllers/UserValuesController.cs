@@ -26,7 +26,7 @@ using System.IO;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 14/12/2022 19:43:28
+//Last modification on: 15/12/2022 8:21:21
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 14/12/2022 19:43:28
+    /// Last modification: 15/12/2022 8:21:21
     /// </summary>
     [ApiController]
     [UserFilter]
@@ -163,10 +163,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 {
                     Password = Security.EncodeString(HttpContext.Request.Form["cmscore-user-password-input"]); 
                 }
-                string ProfileImageURL = HttpContext.Request.Form["cmscore-user-profileimageurl-input"];
-                DateTime DateTimeBirth = Convert.ToDateTime(HttpContext.Request.Form["cmscore-user-datetimebirth-input"]);
-                string VerificationToken = HttpContext.Request.Form["cmscore-user-verificationtoken-input"];
-                string CookieToken = HttpContext.Request.Form["cmscore-user-cookietoken-input"];
                 int RoleId = 0; 
                 if (Convert.ToInt32(HttpContext.Request.Form["cmscore-user-roleid-input"]) != 0)
                 {
@@ -177,6 +173,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-user-usercreationid-input"]);
                 int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-user-userlastmodificationid-input"]);
                 string RegistrationToken = HttpContext.Request.Form["cmscore-user-registrationtoken-input"];
+                bool NeedNewPassword = Convert.ToBoolean(HttpContext.Request.Form["cmscore-user-neednewpassword-input"]);
                 
 
                 UserModel UserModel = new UserModel()
@@ -184,14 +181,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     FantasyName = FantasyName,
                     Email = Email,
                     Password = Password,
-                    ProfileImageURL = ProfileImageURL,
-                    DateTimeBirth = DateTimeBirth,
-                    VerificationToken = VerificationToken,
-                    CookieToken = CookieToken,
                     RoleId = RoleId,
                     UserCreationId = UserCreationId,
                     UserLastModificationId = UserLastModificationId,
                     RegistrationToken = RegistrationToken,
+                    NeedNewPassword = NeedNewPassword,
                     
                 };
 
@@ -524,7 +518,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 FailureModel.Insert();
                 return StatusCode(500, ex);
             }
-
         }
         #endregion
 

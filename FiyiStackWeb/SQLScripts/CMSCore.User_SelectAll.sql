@@ -22,7 +22,7 @@ EXEC [dbo].[CMSCore.User.SelectAll]
  *
  */
 
---Last modification on: 14/12/2022 19:43:28
+--Last modification on: 15/12/2022 8:21:21
 
 SET DATEFORMAT DMY
 
@@ -31,17 +31,20 @@ SELECT
     [CMSCore.User].[FantasyName] AS [FantasyName],
     [CMSCore.User].[Email] AS [Email],
     [CMSCore.User].[Password] AS [Password],
-    [CMSCore.User].[ProfileImageURL] AS [ProfileImageURL],
-    [CMSCore.User].[DateTimeBirth] AS [DateTimeBirth],
-    [CMSCore.User].[VerificationToken] AS [VerificationToken],
-    [CMSCore.User].[CookieToken] AS [CookieToken],
     [CMSCore.User].[RoleId] AS [RoleId],
     [CMSCore.User].[Active] AS [Active],
     [CMSCore.User].[UserCreationId] AS [UserCreationId],
     [CMSCore.User].[UserLastModificationId] AS [UserLastModificationId],
     [CMSCore.User].[DateTimeCreation] AS [DateTimeCreation],
     [CMSCore.User].[DateTimeLastModification] AS [DateTimeLastModification],
-    [CMSCore.User].[RegistrationToken] AS [RegistrationToken]
+    [CMSCore.User].[RegistrationToken] AS [RegistrationToken],
+    [CMSCore.User].[NeedNewPassword] AS [NeedNewPassword]
+FROM 
+    [CMSCore.User]
+ORDER BY 
+    [CMSCore.User].[UserId][CMSCore.User].[DateTimeBirth] AS [DateTimeBirth],
+    [CMSCore.User].[VerificationToken] AS [VerificationToken],
+    [CMSCore.User].[CookieToken] AS [CookieToken]
 FROM 
     [CMSCore.User]
 ORDER BY 

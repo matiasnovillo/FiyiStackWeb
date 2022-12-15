@@ -28,9 +28,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     /// Function:          Allow you to manipulate information from database using stored procedures.
     ///                    Also, let you make other related actions with the model in question or
     ///                    make temporal copies with random data. <br/>
-    /// Fields:            15 <br/> 
+    /// Fields:            12 <br/> 
     /// Dependencies:      0 models <br/>
-    /// Last modification: 14/12/2022 19:43:28
+    /// Last modification: 15/12/2022 8:21:21
     /// </summary>
     [Serializable]
     public partial class UserModel
@@ -51,18 +51,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         [Library.ModelAttributeValidator.String("Password", false, 1, 8000, "")]
         public string Password { get; set; }
 
-        [Library.ModelAttributeValidator.String("ProfileImageURL", false, 1, 8000, "")]
-        public string ProfileImageURL { get; set; }
-
-        [Library.ModelAttributeValidator.DateTime("DateTimeBirth", false, "", "")]
-        public DateTime DateTimeBirth { get; set; }
-
-        [Library.ModelAttributeValidator.String("VerificationToken", false, 1, 8000, "")]
-        public string VerificationToken { get; set; }
-
-        [Library.ModelAttributeValidator.String("CookieToken", false, 1, 8000, "")]
-        public string CookieToken { get; set; }
-
         [Library.ModelAttributeValidator.Key("RoleId")]
         public int RoleId { get; set; }
 
@@ -82,6 +70,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
         [Library.ModelAttributeValidator.String("RegistrationToken", false, 1, 8000, "")]
         public string RegistrationToken { get; set; }
+
+        public bool NeedNewPassword { get; set; }
         #endregion
 
         #region Models that depend on this model
@@ -94,7 +84,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Function:     Create fastly this model with field UserId = 0 <br/>
         /// Note 1:       Generally used to have fast access to functions of object. <br/>
         /// Note 2:       Need construction with [new] reserved word, as all constructors. <br/>
-        /// Fields:       15 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
         public UserModel()
@@ -107,7 +97,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model with stored information in database using UserId <br/>
         /// Note:         Raise exception on duplicated IDs <br/>
-        /// Fields:       15 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
         public UserModel(int UserId)
@@ -136,10 +126,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 					this.FantasyName = user.FantasyName;
 					this.Email = user.Email;
 					this.Password = user.Password;
-					this.ProfileImageURL = user.ProfileImageURL;
-					this.DateTimeBirth = user.DateTimeBirth;
-					this.VerificationToken = user.VerificationToken;
-					this.CookieToken = user.CookieToken;
 					this.RoleId = user.RoleId;
 					this.Active = user.Active;
 					this.UserCreationId = user.UserCreationId;
@@ -147,6 +133,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 					this.DateTimeCreation = user.DateTimeCreation;
 					this.DateTimeLastModification = user.DateTimeLastModification;
 					this.RegistrationToken = user.RegistrationToken;
+					this.NeedNewPassword = user.NeedNewPassword;
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -157,10 +144,10 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model with filled parameters <br/>
         /// Note:         Raise exception on duplicated IDs <br/>
-        /// Fields:       15 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
-        public UserModel(int UserId, string FantasyName, string Email, string Password, string ProfileImageURL, DateTime DateTimeBirth, string VerificationToken, string CookieToken, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken)
+        public UserModel(int UserId, string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken, bool NeedNewPassword)
         {
             try
             {
@@ -168,10 +155,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				this.FantasyName = FantasyName;
 				this.Email = Email;
 				this.Password = Password;
-				this.ProfileImageURL = ProfileImageURL;
-				this.DateTimeBirth = DateTimeBirth;
-				this.VerificationToken = VerificationToken;
-				this.CookieToken = CookieToken;
 				this.RoleId = RoleId;
 				this.Active = Active;
 				this.UserCreationId = UserCreationId;
@@ -179,6 +162,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				this.DateTimeCreation = DateTimeCreation;
 				this.DateTimeLastModification = DateTimeLastModification;
 				this.RegistrationToken = RegistrationToken;
+				this.NeedNewPassword = NeedNewPassword;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -187,7 +171,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model (copy) using the given model (original), user, passed by parameter. <br/>
         /// Note:         This constructor is generally used to execute functions using the copied fields <br/>
-        /// Fields:       15 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
         public UserModel(UserModel user)
@@ -198,10 +182,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				FantasyName = user.FantasyName;
 				Email = user.Email;
 				Password = user.Password;
-				ProfileImageURL = user.ProfileImageURL;
-				DateTimeBirth = user.DateTimeBirth;
-				VerificationToken = user.VerificationToken;
-				CookieToken = user.CookieToken;
 				RoleId = user.RoleId;
 				Active = user.Active;
 				UserCreationId = user.UserCreationId;
@@ -209,6 +189,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				DateTimeCreation = user.DateTimeCreation;
 				DateTimeLastModification = user.DateTimeLastModification;
 				RegistrationToken = user.RegistrationToken;
+				NeedNewPassword = user.NeedNewPassword;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -314,10 +295,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 					UserModel.FantasyName = user.FantasyName;
 					UserModel.Email = user.Email;
 					UserModel.Password = user.Password;
-					UserModel.ProfileImageURL = user.ProfileImageURL;
-					UserModel.DateTimeBirth = user.DateTimeBirth;
-					UserModel.VerificationToken = user.VerificationToken;
-					UserModel.CookieToken = user.CookieToken;
 					UserModel.RoleId = user.RoleId;
 					UserModel.Active = user.Active;
 					UserModel.UserCreationId = user.UserCreationId;
@@ -325,6 +302,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 					UserModel.DateTimeCreation = user.DateTimeCreation;
 					UserModel.DateTimeLastModification = user.DateTimeLastModification;
 					UserModel.RegistrationToken = user.RegistrationToken;
+					UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -400,17 +378,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.FantasyName = user.FantasyName;
                     UserModel.Email = user.Email;
                     UserModel.Password = user.Password;
-                    UserModel.ProfileImageURL = user.ProfileImageURL;
-                    UserModel.DateTimeBirth = user.DateTimeBirth;
-                    UserModel.VerificationToken = user.VerificationToken;
-                    UserModel.RegistrationToken = user.RegistrationToken;
-                    UserModel.CookieToken = user.CookieToken;
                     UserModel.RoleId = user.RoleId;
                     UserModel.Active = user.Active;
                     UserModel.UserCreationId = user.UserCreationId;
                     UserModel.UserLastModificationId = user.UserLastModificationId;
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
+                    UserModel.RegistrationToken = user.RegistrationToken;
+                    UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -442,17 +417,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.FantasyName = user.FantasyName;
                     UserModel.Email = user.Email;
                     UserModel.Password = user.Password;
-                    UserModel.ProfileImageURL = user.ProfileImageURL;
-                    UserModel.DateTimeBirth = user.DateTimeBirth;
-                    UserModel.VerificationToken = user.VerificationToken;
-                    UserModel.RegistrationToken = user.RegistrationToken;
-                    UserModel.CookieToken = user.CookieToken;
                     UserModel.RoleId = user.RoleId;
                     UserModel.Active = user.Active;
                     UserModel.UserCreationId = user.UserCreationId;
                     UserModel.UserLastModificationId = user.UserLastModificationId;
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
+                    UserModel.RegistrationToken = user.RegistrationToken;
+                    UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -484,10 +456,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.FantasyName = user.FantasyName;
                     UserModel.Email = user.Email;
                     UserModel.Password = user.Password;
-                    UserModel.ProfileImageURL = user.ProfileImageURL;
-                    UserModel.DateTimeBirth = user.DateTimeBirth;
-                    UserModel.VerificationToken = user.VerificationToken;
-                    UserModel.CookieToken = user.CookieToken;
                     UserModel.RoleId = user.RoleId;
                     UserModel.Active = user.Active;
                     UserModel.UserCreationId = user.UserCreationId;
@@ -495,6 +463,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                     UserModel.DateTimeCreation = user.DateTimeCreation;
                     UserModel.DateTimeLastModification = user.DateTimeLastModification;
                     UserModel.RegistrationToken = user.RegistrationToken;
+                    UserModel.NeedNewPassword = user.NeedNewPassword;
                 }
 
                 return UserModel;
@@ -519,10 +488,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                 dp.Add("FantasyName", FantasyName, DbType.String, ParameterDirection.Input);
 				dp.Add("Email", Email, DbType.String, ParameterDirection.Input);
 				dp.Add("Password", Password, DbType.String, ParameterDirection.Input);
-				dp.Add("ProfileImageURL", ProfileImageURL, DbType.String, ParameterDirection.Input);
-				dp.Add("DateTimeBirth", DateTimeBirth, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("VerificationToken", VerificationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("CookieToken", CookieToken, DbType.String, ParameterDirection.Input);
 				dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
@@ -530,6 +495,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
+				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -561,10 +527,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                 dp.Add("FantasyName", user.FantasyName, DbType.String, ParameterDirection.Input);
 				dp.Add("Email", user.Email, DbType.String, ParameterDirection.Input);
 				dp.Add("Password", user.Password, DbType.String, ParameterDirection.Input);
-				dp.Add("ProfileImageURL", user.ProfileImageURL, DbType.String, ParameterDirection.Input);
-				dp.Add("DateTimeBirth", user.DateTimeBirth, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("VerificationToken", user.VerificationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("CookieToken", user.CookieToken, DbType.String, ParameterDirection.Input);
 				dp.Add("RoleId", user.RoleId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Active", user.Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("UserCreationId", user.UserCreationId, DbType.Int32, ParameterDirection.Input);
@@ -572,6 +534,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", user.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", user.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", user.RegistrationToken, DbType.String, ParameterDirection.Input);
+				dp.Add("NeedNewPassword", user.NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -592,7 +555,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
         /// <returns>The ID of the last registry inserted in User table</returns>
-        public int Insert(string FantasyName, string Email, string Password, string ProfileImageURL, DateTime DateTimeBirth, string VerificationToken, string CookieToken, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken)
+        public int Insert(string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken, bool NeedNewPassword)
         {
             try
             {
@@ -603,10 +566,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                 dp.Add("FantasyName", FantasyName, DbType.String, ParameterDirection.Input);
 				dp.Add("Email", Email, DbType.String, ParameterDirection.Input);
 				dp.Add("Password", Password, DbType.String, ParameterDirection.Input);
-				dp.Add("ProfileImageURL", ProfileImageURL, DbType.String, ParameterDirection.Input);
-				dp.Add("DateTimeBirth", DateTimeBirth, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("VerificationToken", VerificationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("CookieToken", CookieToken, DbType.String, ParameterDirection.Input);
 				dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
@@ -614,6 +573,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
+				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -646,10 +606,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("FantasyName", FantasyName, DbType.String, ParameterDirection.Input);
 				dp.Add("Email", Email, DbType.String, ParameterDirection.Input);
 				dp.Add("Password", Password, DbType.String, ParameterDirection.Input);
-				dp.Add("ProfileImageURL", ProfileImageURL, DbType.String, ParameterDirection.Input);
-				dp.Add("DateTimeBirth", DateTimeBirth, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("VerificationToken", VerificationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("CookieToken", CookieToken, DbType.String, ParameterDirection.Input);
 				dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
@@ -657,6 +613,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
+				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -689,10 +646,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("FantasyName", user.FantasyName, DbType.String, ParameterDirection.Input);
 				dp.Add("Email", user.Email, DbType.String, ParameterDirection.Input);
 				dp.Add("Password", user.Password, DbType.String, ParameterDirection.Input);
-				dp.Add("ProfileImageURL", user.ProfileImageURL, DbType.String, ParameterDirection.Input);
-				dp.Add("DateTimeBirth", user.DateTimeBirth, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("VerificationToken", user.VerificationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("CookieToken", user.CookieToken, DbType.String, ParameterDirection.Input);
 				dp.Add("RoleId", user.RoleId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Active", user.Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("UserCreationId", user.UserCreationId, DbType.Int32, ParameterDirection.Input);
@@ -700,6 +653,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", user.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", user.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", user.RegistrationToken, DbType.String, ParameterDirection.Input);
+				dp.Add("NeedNewPassword", user.NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -720,7 +674,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
         /// <returns>The number of rows updated in User table</returns>
-        public int UpdateByUserId(int UserId, string FantasyName, string Email, string Password, string ProfileImageURL, DateTime DateTimeBirth, string VerificationToken, string CookieToken, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken)
+        public int UpdateByUserId(int UserId, string FantasyName, string Email, string Password, int RoleId, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification, string RegistrationToken, bool NeedNewPassword)
         {
             try
             {
@@ -732,10 +686,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("FantasyName", FantasyName, DbType.String, ParameterDirection.Input);
 				dp.Add("Email", Email, DbType.String, ParameterDirection.Input);
 				dp.Add("Password", Password, DbType.String, ParameterDirection.Input);
-				dp.Add("ProfileImageURL", ProfileImageURL, DbType.String, ParameterDirection.Input);
-				dp.Add("DateTimeBirth", DateTimeBirth, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("VerificationToken", VerificationToken, DbType.String, ParameterDirection.Input);
-				dp.Add("CookieToken", CookieToken, DbType.String, ParameterDirection.Input);
 				dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
@@ -743,6 +693,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("RegistrationToken", RegistrationToken, DbType.String, ParameterDirection.Input);
+				dp.Add("NeedNewPassword", NeedNewPassword, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -893,17 +844,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 				$"FantasyName: {FantasyName}, " +
 				$"Email: {Email}, " +
 				$"Password: {Password}, " +
-				$"ProfileImageURL: {ProfileImageURL}, " +
-				$"DateTimeBirth: {DateTimeBirth}, " +
-				$"VerificationToken: {VerificationToken}, " +
-				$"CookieToken: {CookieToken}, " +
 				$"RoleId: {RoleId}, " +
 				$"Active: {Active}, " +
 				$"UserCreationId: {UserCreationId}, " +
 				$"UserLastModificationId: {UserLastModificationId}, " +
 				$"DateTimeCreation: {DateTimeCreation}, " +
 				$"DateTimeLastModification: {DateTimeLastModification}, " +
-				$"RegistrationToken: {RegistrationToken}";
+				$"RegistrationToken: {RegistrationToken}, " +
+				$"NeedNewPassword: {NeedNewPassword}";
         }
 
         public string ToStringOnlyValuesForHTML()
@@ -931,30 +879,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Password}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{ProfileImageURL}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTimeBirth}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{VerificationToken}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{CookieToken}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td><td align=""left"" valign=""top"">
@@ -997,6 +921,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{RegistrationToken}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{NeedNewPassword}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>
