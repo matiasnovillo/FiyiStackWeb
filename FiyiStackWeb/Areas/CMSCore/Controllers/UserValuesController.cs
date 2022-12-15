@@ -519,6 +519,39 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPut("~/api/CMSCore/User/1/RecoverPassword")]
+        public IActionResult RecoverPassword()
+        {
+            try
+            {
+                string Email = HttpContext.Request.Form["email"];
+
+                string Message = _UserProtocol.RecoverPassword(Email);
+
+                return StatusCode(200, Message);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+        }
         #endregion
 
         #region Other actions
