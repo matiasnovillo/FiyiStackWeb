@@ -15,7 +15,7 @@ using System;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 15/12/2022 12:54:59
+//Last modification on: 15/12/2022 13:47:27
 
 namespace FiyiStackWeb.Areas.CMSCore.Filters
 {
@@ -23,7 +23,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 15/12/2022 12:54:59
+    /// Last modification: 15/12/2022 13:47:27
     /// </summary>
     public class UserFilter : ActionFilterAttribute
     {

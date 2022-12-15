@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
@@ -14,7 +15,7 @@ using System;
  * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:22:56
+//Last modification on: 15/12/2022 13:47:42
 
 namespace FiyiStackWeb.Areas.CMSCore.Filters
 {
@@ -22,22 +23,33 @@ namespace FiyiStackWeb.Areas.CMSCore.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 09/12/2022 19:22:56
+    /// Last modification: 15/12/2022 13:47:42
     /// </summary>
-    public class RoleMenuFilter : Attribute, IActionFilter, IResultFilter
+    public class RoleMenuFilter : ActionFilterAttribute
     {
-        public void OnActionExecuting(ActionExecutingContext context)
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            if (UserId == null || UserId == 0)
+            {
+                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+            }
+        }
+
+        public override void OnActionExecuted(ActionExecutedContext context)
         {
         }
 
-        public void OnActionExecuted(ActionExecutedContext context)
+        public override void OnResultExecuting(ResultExecutingContext context)
         {
-        }
-        public void OnResultExecuting(ResultExecutingContext context)
-        {
+            int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            if (UserId == null || UserId == 0)
+            {
+                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+            }
         }
 
-        public void OnResultExecuted(ResultExecutedContext context)
+        public override void OnResultExecuted(ResultExecutedContext context)
         {
         }
     }
