@@ -36,9 +36,9 @@ Coded by www.creative-tim.com
     <link rel="stylesheet" href="/assets/css/argon-design-system.css?v=1.0.3"/>
 </head>
 
-<body class="login-page">
+<body class="reset-page">
   <!-- Navbar -->
-  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent  py-2">
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent py-2">
     <div class="container">
       <a class="navbar-brand mr-lg-5" href="/Index">
         <img src="/img/FiyiStackImageTransparent.png">
@@ -82,49 +82,46 @@ Coded by www.creative-tim.com
       </div>
     </div>
   </nav>
-  <!-- Page -->
-  <div class="section-shaped my-0 skew-separator skew-mini">
-    <div class="page-header page-header-small header-filter">
-      <div class="page-header-image" style="background-image: url('../assets/img/sections/unsplashs.jpg');">
-      </div>
-    </div>
-  </div>
-  <section class="upper">
-    <div class="container">
-      <div class="col-lg-5 col-md-8 mx-auto">
-        <div class="card bg-secondary shadow border-0">
-          <div class="card-body px-lg-5 py-lg-5">
-            <div class="text-center text-muted mb-4">
-              <small>Please, use your credentials</small>
-              <br/>
-              <button id="message" class="btn btn-white">Loading...</button>
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="page-header bg-default">
+        <div class="page-header-image" style="background-image: url('../assets/img/ill/reset.svg');"></div>
+            <div class="container">
+                <div class="col-lg-5 col-md-8 mx-auto">
+                    <div class="card bg-secondary shadow border-0">
+                        <div class="card-header">
+                            <img class="card-img" src="../assets/img/ill/bg5-1.svg" alt="Card image">
+                            <h4 class="card-title text-center">Login</h4>
+                        </div>
+                        <div class="card-body px-lg-5 py-lg-5 text-center">
+                            <button id="message" class="btn mb-4" type="button">Loading...</button>
+                            <form role="form">
+                              <div class="form-group mb-3">
+                                <div class="input-group input-group-alternative">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                  </div>
+                                  <input id="fantasynameoremail" class="form-control" placeholder="User name or Email" type="email">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="input-group input-group-alternative">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                  </div>
+                                  <input id="password" class="form-control" placeholder="Password" type="password">
+                                </div>
+                              </div>
+                              <div class="text-center">
+                                <button id="loginbutton" type="button" class="btn btn-primary my-4"><i class="fas fa-arrow-right"></i> Login</button>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form role="form">
-              <div class="form-group mb-3">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                  </div>
-                  <input id="fantasynameoremail" class="form-control" placeholder="User name or Email" type="email">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                  </div>
-                  <input id="password" class="form-control" placeholder="Password" type="password">
-                </div>
-              </div>
-              <div class="text-center">
-                <button id="loginbutton" type="button" class="btn btn-primary my-4"><i class="fas fa-arrow-right"></i> Login</button>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+  </div>
   <!--   Core JS Files   -->
   <script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
