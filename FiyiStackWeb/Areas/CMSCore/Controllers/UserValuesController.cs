@@ -552,6 +552,37 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPut("~/api/CMSCore/User/1/Logout")]
+        public IActionResult Logout()
+        {
+            try
+            {
+                    HttpContext.Session.Clear();
+                    return StatusCode(200, "/Index");
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+
+        }
         #endregion
 
         #region Other actions
