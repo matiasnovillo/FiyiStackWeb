@@ -53,13 +53,14 @@
      mode: "production", //development or production
      entry: {
          main: ["./wwwroot/js/site", "./wwwroot/css/site.css"],  //Here we've got common modules used in the entire application
-         ajaxlibrary: ["./wwwroot/ts/Library/Ajax"],
-         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"],
+
+         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"], //Area: BasicCore
          failuretsmodel: ["./wwwroot/ts/BasicCore/Failure/TsModels/Failure_TsModel"],
          failurejquery: ["./wwwroot/ts/BasicCore/Failure/jQuery/FailureQuery_jQuery"],
          parametertsmodel: ["./wwwroot/ts/BasicCore/Parameter/TsModels/Parameter_TsModel"],
          parameterjquery: ["./wwwroot/ts/BasicCore/Parameter/jQuery/ParameterQuery_jQuery"],
-         citytsmodel: ["./wwwroot/ts/BasicCulture/City/TsModels/City_TsModel"],
+
+         citytsmodel: ["./wwwroot/ts/BasicCulture/City/TsModels/City_TsModel"], //Area: BasicCulture
          cityjquery: ["./wwwroot/ts/BasicCulture/City/jQuery/CityQuery_jQuery"],
          countrytsmodel: ["./wwwroot/ts/BasicCulture/Country/TsModels/Country_TsModel"],
          countryjquery: ["./wwwroot/ts/BasicCulture/Country/jQuery/CountryQuery_jQuery"],
@@ -69,14 +70,20 @@
          planetjquery: ["./wwwroot/ts/BasicCulture/Planet/jQuery/PlanetQuery_jQuery"],
          sextsmodel: ["./wwwroot/ts/BasicCulture/Sex/TsModels/Sex_TsModel"],
          sexjquery: ["./wwwroot/ts/BasicCulture/Sex/jQuery/SexQuery_jQuery"],
-         usertsmodel: ["./wwwroot/ts/CMSCore/User/TsModels/User_TsModel"],
+
+         usertsmodel: ["./wwwroot/ts/CMSCore/User/TsModels/User_TsModel"],  //Area: CMSCore
          userjquery: ["./wwwroot/ts/CMSCore/User/jQuery/UserQuery_jQuery"],
          menutsmodel: ["./wwwroot/ts/CMSCore/Menu/TsModels/Menu_TsModel"],
          menujquery: ["./wwwroot/ts/CMSCore/Menu/jQuery/MenuQuery_jQuery"],
          roletsmodel: ["./wwwroot/ts/CMSCore/Role/TsModels/Role_TsModel"],
          rolejquery: ["./wwwroot/ts/CMSCore/Role/jQuery/RoleQuery_jQuery"],
          rolemenutsmodel: ["./wwwroot/ts/CMSCore/RoleMenu/TsModels/RoleMenu_TsModel"],
-         rolemenujquery: ["./wwwroot/ts/CMSCore/RoleMenu/jQuery/RoleMenuQuery_jQuery"]
+         rolemenujquery: ["./wwwroot/ts/CMSCore/RoleMenu/jQuery/RoleMenuQuery_jQuery"],
+
+         blogtsmodel: ["./wwwroot/ts/FiyiStack/Blog/TsModels/Blog_TsModel"],  //Area: FiyiStack
+         blogjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQuery_jQuery"],
+         commentforblogtsmodel: ["./wwwroot/ts/FiyiStack/CommentForBlog/TsModels/CommentForBlog_TsModel"],
+         commentforblogjquery: ["./wwwroot/ts/FiyiStack/CommentForBlog/jQuery/CommentForBlogQuery_jQuery"]
      },
      output: {
          filename: "[name].bundle.js",                       //Path to save bundles: __dirname + "/wwwroot/dist" (__dirname is a Node.js variable)

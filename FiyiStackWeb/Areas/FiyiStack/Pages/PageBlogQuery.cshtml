@@ -1,0 +1,138 @@
+@page
+@model FiyiStackWeb.Areas.FiyiStack.Pages.PageBlogQueryModel
+@{
+
+/*
+ * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
+ * Licensed to a unique person with this Token:IAmTheOwnerOfThis
+ * 
+ * Coded by www.fiyistack.com
+ * Copyright © 2021
+ * 
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ * Auto generated code. Add your custom code after the last line of auto generation
+ */
+    
+//Stack: 11
+//Last modification on: 16/12/2022 10:50:10
+
+    Layout = "_Layout";
+}
+<!-- Header -->
+<div class="header mt-5 pb-6">
+    <div class="container-fluid">
+        <!-- Header body -->
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-12 text-center">
+                    <!-- Page title -->
+                    <h2 id="fiyistack-blog-title-page" class="h2 text-default mt-5 mb-0">
+                        The FiyiStack blog
+                    </h2>
+                    <h4 class="h4 text-default mb-0">
+                        Come on, take a look
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Card -->
+            <div class="card shadow">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <!-- OK button -->
+                    <div class="row">
+                        <button type="button" class="btn btn-success btn-block mx-3 mb-3" id="fiyistack-blog-button-ok-message-in-card">
+                            <strong>
+                                <i class="fas fa-check"></i> OK
+                            </strong> 
+                                All going OK
+                        </button>
+                    </div>
+                    <!-- Error button -->
+                    <div class="row">
+                        <button id="fiyistack-blog-button-error-message-in-card" type="button" class="btn btn-danger btn-block mx-3 mb-3" data-toggle="modal" data-target="#fiyistack-blog-error-message-modal">
+                            <strong>
+                                <i class="fas fa-exclamation-triangle"></i> Error
+                            </strong> 
+                                View details
+                        </button>
+                    </div>
+                    <div class="row">
+                        <!-- Search Bar -->
+                        <div class="col-4">&nbsp;</div>
+                        <div class="col-4">
+                            <form>
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend" id="fiyistack-blog-search-button">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </div>
+                                    <input id="fiyistack-blog-query-string" class="form-control font-weight-bolder" type="search" placeholder="Search...">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-4">&nbsp;</div>
+                    </div>
+                </div>
+                <!-- Card body -->
+                <div class="card-body p-0 mb-4">
+                    <!-- Tab content -->
+                    <div class="tab-content">
+                        <!-- List View -->
+                        <div class="tab-pane fade show active" id="tab-list" role="tabpanel" aria-labelledby="fiyistack-blog-list-view-button">
+                            <div id="fiyistack-blog-body-list"></div>
+                            <div class="row mx-2">
+                                <div class="col-12 text-center">
+                                    <button id="fiyistack-blog-search-more-button-in-list" class="btn btn-link btn-block text-gray">
+                                        <i class="fas fa-2x fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Error message in modal style -->
+        <div class="row">
+            <div class="col-md-4 px-0">
+                <div class="modal fade" id="fiyistack-blog-error-message-modal" tabindex="-1" role="dialog" aria-labelledby="fiyistack-blog-error-message-modal" aria-hidden="true">
+                    <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
+                        <div class="modal-content bg-gradient-danger">
+                            <!-- Modal title -->
+                            <div class="modal-header">
+                                <h6 class="modal-title text-white" id="modal-title-notification">
+                                    Error <i class="fas fa-exclamation-triangle"></i>
+                                </h6>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <h4 id="fiyistack-blog-error-message-title" class="heading mt-4 text-white text-truncate"></h4>
+                                    <p id="fiyistack-blog-error-message-text" class="text-truncate"></p>
+                                  </div>
+                            </div>
+                            <!-- Close button -->
+                            <div class="modal-footer pt-4">
+                                <button type="button" class="btn btn-white ml-auto" data-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/dist/blogjquery.bundle.js"></script>

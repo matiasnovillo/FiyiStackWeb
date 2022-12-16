@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\FiyiStack\Models\" />
+    <Folder Include="wwwroot\Uploads\FiyiStack\Blog\" />
   </ItemGroup>
 
 </Project>
