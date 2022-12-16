@@ -9,6 +9,8 @@ using FiyiStackWeb.Areas.BasicCore.Services;
 using FiyiStackWeb.Areas.CMSCore.Services;
 using FiyiStackWeb.Library;
 using System;
+using FiyiStackWeb.Areas.FiyiStack.Protocols;
+using FiyiStackWeb.Areas.FiyiStack.Services;
 
 namespace FiyiStackWeb
 {
@@ -45,6 +47,7 @@ namespace FiyiStackWeb
             services.AddScoped<MenuProtocol, MenuService>();
             services.AddScoped<RoleMenuProtocol, RoleMenuService>();
             services.AddScoped<RoleProtocol, RoleService>();
+            services.AddScoped<FiyiStackProtocol, FiyiStackService>();
 
             services.AddMvc();
             services.AddSession(options => {
