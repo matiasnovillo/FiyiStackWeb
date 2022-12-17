@@ -153,6 +153,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         {
             try
             {
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+                if (UserId == 0)
+                {
+                    return StatusCode(401);
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["fiyistack-blog-title-page"];
 
@@ -161,7 +167,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 string BackgroundImage = "";
                 if (HttpContext.Request.Form.Files.Count != 0)
                 {
-                    BackgroundImage = $@"{_WebHostEnvironment.WebRootPath}/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
+                    BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
                 
 
@@ -170,18 +176,17 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     Title = Title,
                     Body = Body,
                     BackgroundImage = BackgroundImage,
-                    
                 };
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
                 BlogModel.DateTimeLastModification = DateTime.Now;
-                //BlogModel.UserLastModificationId = TODO Sacarlo de User logueado
+                BlogModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     BlogModel.DateTimeCreation = DateTime.Now;
-                    //BlogModel.UserCreationId = TODO Sacarlo de User logueado
+                    BlogModel.UserCreationId = UserId;
                     NewEnteredId = _BlogProtocol.Insert(BlogModel);
                 }
                 else

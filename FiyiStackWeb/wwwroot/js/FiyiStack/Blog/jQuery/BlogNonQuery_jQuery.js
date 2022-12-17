@@ -18,8 +18,26 @@
 //Last modification on: 16/12/2022 10:50:10
 
 $(document).ready(function () {
-    //This fix an style error in Quill
-    $("span.ql-picker-label svg[viewBox]").css("width", "20px");
+});
+
+let fiyistackblogbodytoolbaroptions = [
+    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+    ['link', 'blockquote', 'code-block'],
+
+    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+    [{ 'direction': 'rtl' }],                         // text direction
+    ['background', 'color'],
+    ['image', 'video'],
+    ['clean']                                         // remove formatting button
+];
+let fiyistackblogbodyquill = new Quill('#fiyistack-blog-body-input', {
+    modules: {
+        toolbar: fiyistackblogbodytoolbaroptions
+    },
+    theme: 'snow'
 });
 
 //Used for file input
@@ -41,8 +59,7 @@ $("#fiyistack-blog-insert-or-update-button").on("click", function (e) {
     formData.append("fiyistack-blog-blogid-input", $("#fiyistack-blog-blogid-input").val());
 
     formData.append("fiyistack-blog-title-input", $("#fiyistack-blog-title-input").val());
-    formData.append("fiyistack-blog-body-input", $("#fiyistack-blog-body-input").html());
-    
+    formData.append("fiyistack-blog-body-input", fiyistackblogbodyquill.root.innerHTML);
 
     //Setup request
     var xmlHttpRequest = new XMLHttpRequest();
@@ -101,7 +118,7 @@ $("#fiyistack-blog-insert-or-update-button").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/Testing/Test/1/InsertOrUpdateAsync", true);
+    xmlHttpRequest.open("POST", "/api/FiyiStack/Blog/1/InsertOrUpdateAsync", true);
     //Send request
     xmlHttpRequest.send(formData);
 });

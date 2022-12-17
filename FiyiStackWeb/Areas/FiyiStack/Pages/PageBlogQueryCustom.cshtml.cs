@@ -29,7 +29,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
     /// Last modification: 16/12/2022 10:50:10
     /// </summary>
     [BlogFilter]
-    public partial class PageBlogQueryModel : PageModel
+    public partial class PageBlogQueryCustomModel : PageModel
     {
         public void OnGet()
         {
