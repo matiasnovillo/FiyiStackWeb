@@ -1,9 +1,9 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noImplicitAny": false,
-    "noEmitOnError": false,
+    "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
     "target": "es5",

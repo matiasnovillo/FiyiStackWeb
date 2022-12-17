@@ -70,6 +70,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Protocols
         int CopyByCommentForBlogId(int CommentForBlogId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
+
+        string PostComment(int UserId, int BlogId, string Comment);
         #endregion
 
         #region Other actions

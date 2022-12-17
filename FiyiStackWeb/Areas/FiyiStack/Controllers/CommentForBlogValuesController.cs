@@ -389,6 +389,52 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPost("~/api/FiyiStack/CommentForBlog/1/PostComment")]
+        public IActionResult PostComment()
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+                int BlogId = Convert.ToInt32(HttpContext.Request.Form["BlogId"]);
+                string Comment = HttpContext.Request.Form["Comment"];
+
+                string Message = "";
+                if (UserId == 0)
+                {
+                    Message = "You have to login first";
+                }
+                else
+                {
+                     Message = _CommentForBlogProtocol.PostComment(UserId, BlogId, Comment);
+                }
+
+                return StatusCode(200, Message);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+        }
         #endregion
 
         #region Other actions

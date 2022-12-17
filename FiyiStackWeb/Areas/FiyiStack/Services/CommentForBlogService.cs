@@ -134,6 +134,25 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                 return NewEnteredIds;
             }
         }
+
+        public string PostComment(int UserId, int BlogId, string Comment)
+        {
+
+            CommentForBlogModel CommentForBlogModel = new CommentForBlogModel()
+            {
+                UserCreationId = UserId,
+                UserLastModificationId = UserId,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                Active = true,
+                BlogId = BlogId,
+                Comment = Comment
+            };
+
+            string NewEnteredId = CommentForBlogModel.Insert().ToString();
+
+            return NewEnteredId;
+        }
         #endregion
 
         #region Other services

@@ -63,8 +63,8 @@ var BlogQuery = /** @class */ (function () {
                     (_h = response_blogQuery === null || response_blogQuery === void 0 ? void 0 : response_blogQuery.lstBlogModel) === null || _h === void 0 ? void 0 : _h.forEach(function (row) {
                         var _a;
                         ListContent += "<section class=\"section section-blog-info\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-8 mx-auto\">\n          <div class=\"card\">\n            <div class=\"card-header\">\n              <h5 class=\"h3 mb-0\">" + row.Title + "</h5>\n            </div>\n            <div class=\"card-header d-flex align-items-center\">\n              <div class=\"d-flex align-items-center\">\n                <a href=\"javascript:;\">\n                  <img src=\"/img/Me.jpeg\" class=\"avatar\">\n                </a>\n                <div class=\"mx-3\">\n                  <a href=\"javascript:;\" class=\"text-dark font-weight-600 text-sm\">Matias Novillo</a>\n                  <small class=\"d-block text-muted\">" + row.DateTimeLastModification + "</small>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-body\">\n              <p class=\"mb-4\">\n                " + row.Body + "\n              </p>\n              <img alt=\"Image placeholder\" src=\"" + row.BackgroundImage + "\" class=\"img-fluid rounded mb-4\">\n              <!-- Comments -->\n              <div class=\"mb-1\">\n                " + ((_a = row.lstCommentForBlogModel) === null || _a === void 0 ? void 0 : _a.map(function (row2) {
-                            return "<div class=\"media media-comment\">\n                  <img alt=\"Image placeholder\" class=\"media-comment-avatar rounded-circle\" src=\"/img/User.png\">\n                  <div class=\"media-body\">\n                    <div class=\"media-comment-text\">\n                      <h6 class=\"h5 mt-0\">" + row2.FantasyName + "</h6>\n                      <p class=\"text-sm lh-160\">" + row2.Comment + "</p>\n                    </div>\n                  </div>\n                </div>";
-                        }).join("")) + "\n                <div class=\"media align-items-center mt-5\">\n                  <img alt=\"Image placeholder\" class=\"avatar rounded-circle mb-4\" src=\"/img/User.png\">\n                  <div class=\"media-body\">\n                    <form>\n                      <input class=\"form-control\" placeholder=\"Write your comment\" type=\"text\"></input>\n                    </form>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>";
+                            return "<div class=\"media media-comment\">\n                  <img alt=\"Image placeholder\" class=\"media-comment-avatar rounded-circle\" src=\"/img/User.png\">\n                  <div class=\"media-body\">\n                    <div class=\"media-comment-text\">\n                      <h6 class=\"h5 mt-0\">" + row2.FantasyName + "</h6>\n                      <p class=\"text-sm lh-160\">" + row2.Comment + "</p>\n                      <div class=\"icon-actions\">\n                          <p class=\"text-muted\">Posted on: " + row2.DateTimeCreation + "</p>\n                      </div>\n                    </div>\n                  </div>\n                </div>";
+                        }).join("")) + "\n                <div class=\"media align-items-center mt-5\">\n                  <img alt=\"Image placeholder\" class=\"avatar rounded-circle mb-4\" src=\"/img/User.png\">\n                  <div class=\"media-body\">\n                    <form>\n                        <div class=\"row\">\n                            <div class=\"col text-right\">\n                                <input class=\"form-control mt-4\" placeholder=\"Write your comment\" type=\"text\"></input>\n                                <button class=\"btn btn-sm mt-2 mr-0 btn-primary btn-post-comment\" type=\"button\">Post comment</button>\n                                <input type=\"hidden\" value=\"" + row.BlogId + "\"></input>\n                                </br>\n                                <p class=\"text-danger message-post-comment\"></p>\n                            </div>\n                        </div>\n                    </form>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>";
                     });
                     //If view table is activated, clear table view, if not, clear list view
                     if (ViewToggler === "Table") {
@@ -93,87 +93,71 @@ var BlogQuery = /** @class */ (function () {
             complete: function () {
                 //Execute ScrollDownNSearch function when the user scroll the page
                 $(window).on("scroll", ScrollDownNSearch);
-                //Check button inside list view
-                $(".fiyistack-blog-checkbox-list").on("click", function (e) {
-                    //Toggler
-                    if ($(this).hasClass("list-row-checked")) {
-                        $(this).html("<a class=\"icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"check\">\n                                                            <i class=\"fas fa-circle text-white\"></i>\n                                                        </a>");
-                        $(this).removeClass("list-row-checked").addClass("list-row-unchecked");
+                //Post comment button
+                $(".btn-post-comment").on("click", function (e) {
+                    var _a, _b;
+                    //Button -> Input -> Break -> Message
+                    var Message = $(this).next().next().next();
+                    if ($(this).prev().val() == "") {
+                        Message.html("Write a comment");
+                        return;
                     }
-                    else {
-                        $(this).html("<a class=\"icon icon-shape bg-white icon-sm text-primary rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"check\">\n                                                            <i class=\"fas fa-check\"></i>\n                                                        </a>");
-                        $(this).removeClass("list-row-unchecked").addClass("list-row-checked");
+                    var formData = new FormData();
+                    var BlogId = (_a = $(this).next().val()) === null || _a === void 0 ? void 0 : _a.toString();
+                    if (BlogId === undefined) {
+                        BlogId = "";
                     }
-                });
-                //Check all button inside table
-                $("#blog-table-check-all").on("click", function (e) {
-                    //Toggler
-                    if ($("tr td div input.blog-table-checkbox-for-row").is(":checked")) {
-                        $("tr td div input.blog-table-checkbox-for-row").removeAttr("checked");
+                    formData.append("BlogId", BlogId);
+                    var Comment = (_b = $(this).prev().val()) === null || _b === void 0 ? void 0 : _b.toString();
+                    if (Comment === undefined) {
+                        Comment = "";
                     }
-                    else {
-                        $("tr td div input.blog-table-checkbox-for-row").attr("checked", "checked");
-                    }
-                });
-                //Buttons inside head of table
-                $("tr th button").one("click", function (e) {
-                    //Toggler
-                    if (SorterColumn == $(this).attr("value")) {
-                        SorterColumn = "";
-                        SortToggler = true;
-                    }
-                    else {
-                        SorterColumn = $(this).attr("value");
-                        SortToggler = false;
-                    }
-                    ValidateAndSearch();
+                    formData.append("Comment", Comment);
+                    //Setup request
+                    var xmlHttpRequest = new XMLHttpRequest();
+                    //Set event listeners
+                    xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
+                    });
+                    xmlHttpRequest.upload.addEventListener("progress", function (e) {
+                        // While sending and loading data.
+                    });
+                    xmlHttpRequest.upload.addEventListener("load", function (e) {
+                        // When the request has successfully completed.
+                    });
+                    xmlHttpRequest.upload.addEventListener("loadend", function (e) {
+                        // When the request has completed (either in success or failure).
+                    });
+                    xmlHttpRequest.upload.addEventListener("error", function (e) {
+                        // When the request has failed.
+                    });
+                    xmlHttpRequest.upload.addEventListener("abort", function (e) {
+                        // When the request has been aborted. 
+                    });
+                    xmlHttpRequest.upload.addEventListener("timeout", function (e) {
+                        // When the author specified timeout has passed before the request could complete
+                    });
+                    xmlHttpRequest.onload = function () {
+                        if (xmlHttpRequest.status >= 400) {
+                            Message.html("An error has occurred, try again");
+                        }
+                        else {
+                            if (xmlHttpRequest.response == "You have to login first") {
+                                Message.html("You have to login first");
+                            }
+                            else {
+                                ValidateAndSearch();
+                            }
+                        }
+                    };
+                    //Open connection
+                    xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostComment", true);
+                    //Send request
+                    xmlHttpRequest.send(formData);
                 });
                 //Hide error message
                 $("#fiyistack-blog-error-message-title").html("");
                 $("#fiyistack-blog-error-message-text").html("");
                 $("#fiyistack-blog-button-error-message-in-card").hide();
-                //Delete button in table and list
-                $("div.dropdown-menu button.fiyistack-blog-table-delete-button, div.dropdown-menu button.fiyistack-blog-list-delete-button").on("click", function (e) {
-                    var BlogId = $(this).val();
-                    Blog_TsModel_1.BlogModel.DeleteByBlogId(BlogId).subscribe({
-                        next: function (newrow) {
-                        },
-                        complete: function () {
-                            ValidateAndSearch();
-                            //Show OK message
-                            $("#fiyistack-blog-button-error-message-in-card").hide();
-                            $("#fiyistack-blog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Row deleted successfully");
-                            $("#fiyistack-blog-button-ok-message-in-card").show();
-                        },
-                        error: function (err) {
-                            //Related to error message
-                            $("#fiyistack-blog-error-message-title").html("BlogModel.DeleteByBlogId(BlogId).subscribe(...)");
-                            $("#fiyistack-blog-error-message-text").html(err);
-                            $("#fiyistack-blog-button-error-message-in-card").show();
-                        }
-                    });
-                });
-                //Copy button in table and list
-                $("div.dropdown-menu button.fiyistack-blog-table-copy-button, div.dropdown-menu button.fiyistack-blog-list-copy-button").on("click", function (e) {
-                    var BlogId = $(this).val();
-                    Blog_TsModel_1.BlogModel.CopyByBlogId(BlogId).subscribe({
-                        next: function (newrow) {
-                        },
-                        complete: function () {
-                            ValidateAndSearch();
-                            //Show OK message
-                            $("#fiyistack-blog-button-error-message-in-card").hide();
-                            $("#fiyistack-blog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Row copied successfully");
-                            $("#fiyistack-blog-button-ok-message-in-card").show();
-                        },
-                        error: function (err) {
-                            //Show error message
-                            $("#fiyistack-blog-error-message-title").html("BlogModel.CopyByBlogId(BlogId).subscribe(...)");
-                            $("#fiyistack-blog-error-message-text").html(err);
-                            $("#fiyistack-blog-button-error-message-in-card").show();
-                        }
-                    });
-                });
             },
             error: function (err) {
                 //Show error message

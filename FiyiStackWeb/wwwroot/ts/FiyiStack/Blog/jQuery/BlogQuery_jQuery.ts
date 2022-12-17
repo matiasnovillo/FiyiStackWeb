@@ -106,6 +106,9 @@ class BlogQuery {
                     <div class="media-comment-text">
                       <h6 class="h5 mt-0">${row2.FantasyName}</h6>
                       <p class="text-sm lh-160">${row2.Comment}</p>
+                      <div class="icon-actions">
+                          <p class="text-muted">Posted on: ${row2.DateTimeCreation}</p>
+                      </div>
                     </div>
                   </div>
                 </div>` }).join("")}
@@ -113,7 +116,15 @@ class BlogQuery {
                   <img alt="Image placeholder" class="avatar rounded-circle mb-4" src="/img/User.png">
                   <div class="media-body">
                     <form>
-                      <input class="form-control" placeholder="Write your comment" type="text"></input>
+                        <div class="row">
+                            <div class="col text-right">
+                                <input class="form-control mt-4" placeholder="Write your comment" type="text"></input>
+                                <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
+                                <input type="hidden" value="${row.BlogId}"></input>
+                                </br>
+                                <p class="text-danger message-post-comment"></p>
+                            </div>
+                        </div>
                     </form>
                   </div>
                 </div>
@@ -154,103 +165,79 @@ class BlogQuery {
                     //Execute ScrollDownNSearch function when the user scroll the page
                     $(window).on("scroll", ScrollDownNSearch);
 
-                    //Check button inside list view
-                    $(".fiyistack-blog-checkbox-list").on("click", function (e) {
-                        //Toggler
-                        if ($(this).hasClass("list-row-checked")) {
-                            $(this).html(`<a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="check">
-                                                            <i class="fas fa-circle text-white"></i>
-                                                        </a>`);
-                            $(this).removeClass("list-row-checked").addClass("list-row-unchecked");
-                        }
-                        else {
-                            $(this).html(`<a class="icon icon-shape bg-white icon-sm text-primary rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="check">
-                                                            <i class="fas fa-check"></i>
-                                                        </a>`);
-                            $(this).removeClass("list-row-unchecked").addClass("list-row-checked");
-                        }
-                    });
+                    //Post comment button
+                    $(".btn-post-comment").on("click", function (e) {
 
-                    //Check all button inside table
-                    $("#blog-table-check-all").on("click", function (e) { 
-                        //Toggler
-                        if ($("tr td div input.blog-table-checkbox-for-row").is(":checked")) {
-                            $("tr td div input.blog-table-checkbox-for-row").removeAttr("checked");
-                        }
-                        else {
-                            $("tr td div input.blog-table-checkbox-for-row").attr("checked", "checked");
-                        }
-                    });
+                        //Button -> Input -> Break -> Message
+                        let Message = $(this).next().next().next();
 
-                    //Buttons inside head of table
-                    $("tr th button").one("click", function (e) {
-                        //Toggler
-                        if (SorterColumn == $(this).attr("value")) {
-                            SorterColumn = "";
-                            SortToggler = true;
-                        }
-                        else {
-                            SorterColumn = $(this).attr("value");
-                            SortToggler = false;
+                        if ($(this).prev().val() == "") {
+                            Message.html("Write a comment");
+                            return;
                         }
 
-                        ValidateAndSearch();
+                        let formData = new FormData();
+
+                        let BlogId = $(this).next().val()?.toString();
+                        if (BlogId === undefined) {
+                            BlogId = "";
+                        }
+                        formData.append("BlogId", BlogId);
+
+                        let Comment = $(this).prev().val()?.toString();
+                        if (Comment === undefined) {
+                            Comment = "";
+                        }
+                        formData.append("Comment", Comment);
+
+
+                        //Setup request
+                        var xmlHttpRequest = new XMLHttpRequest();
+                        //Set event listeners
+                        xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
+                        });
+                        xmlHttpRequest.upload.addEventListener("progress", function (e) {
+                            // While sending and loading data.
+                        });
+                        xmlHttpRequest.upload.addEventListener("load", function (e) {
+                            // When the request has successfully completed.
+                        });
+                        xmlHttpRequest.upload.addEventListener("loadend", function (e) {
+                            // When the request has completed (either in success or failure).
+                        });
+                        xmlHttpRequest.upload.addEventListener("error", function (e) {
+                            // When the request has failed.
+                        });
+                        xmlHttpRequest.upload.addEventListener("abort", function (e) {
+                            // When the request has been aborted. 
+                        });
+                        xmlHttpRequest.upload.addEventListener("timeout", function (e) {
+                            // When the author specified timeout has passed before the request could complete
+                        });
+                        xmlHttpRequest.onload = function () {
+                            if (xmlHttpRequest.status >= 400) {
+                                Message.html("An error has occurred, try again");
+                            }
+                            else {
+                                if (xmlHttpRequest.response == "You have to login first") {
+                                    Message.html("You have to login first");
+                                }
+                                else {
+                                    ValidateAndSearch();
+                                }
+                                
+                            }
+                        };
+                        //Open connection
+                        xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostComment", true);
+                        //Send request
+                        xmlHttpRequest.send(formData);
                     });
 
                     //Hide error message
                     $("#fiyistack-blog-error-message-title").html("");
                     $("#fiyistack-blog-error-message-text").html("");
                     $("#fiyistack-blog-button-error-message-in-card").hide();
-
-                    //Delete button in table and list
-                    $("div.dropdown-menu button.fiyistack-blog-table-delete-button, div.dropdown-menu button.fiyistack-blog-list-delete-button").on("click", function (e) {
-                        let BlogId = $(this).val();
-                        BlogModel.DeleteByBlogId(BlogId).subscribe({
-                            next: newrow => {
-                            },
-                            complete: () => {
-                                ValidateAndSearch();
-
-                                //Show OK message
-                                $("#fiyistack-blog-button-error-message-in-card").hide();
-                                $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Row deleted successfully`);
-                                $("#fiyistack-blog-button-ok-message-in-card").show();
-                            },
-                            error: err => {
-                                //Related to error message
-                                $("#fiyistack-blog-error-message-title").html("BlogModel.DeleteByBlogId(BlogId).subscribe(...)");
-                                $("#fiyistack-blog-error-message-text").html(err);
-                                $("#fiyistack-blog-button-error-message-in-card").show();
-                            }
-                        });
-                    });
-
-                    //Copy button in table and list
-                    $("div.dropdown-menu button.fiyistack-blog-table-copy-button, div.dropdown-menu button.fiyistack-blog-list-copy-button").on("click", function (e) {
-                        let BlogId = $(this).val();
-                        BlogModel.CopyByBlogId(BlogId).subscribe({
-                            next: newrow => {
-                            },
-                            complete: () => {
-                                ValidateAndSearch();
-
-                                //Show OK message
-                                $("#fiyistack-blog-button-error-message-in-card").hide();
-                                $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Row copied successfully`);
-                                $("#fiyistack-blog-button-ok-message-in-card").show();
-                            },
-                            error: err => {
-                                //Show error message
-                                $("#fiyistack-blog-error-message-title").html("BlogModel.CopyByBlogId(BlogId).subscribe(...)");
-                                $("#fiyistack-blog-error-message-text").html(err);
-                                $("#fiyistack-blog-button-error-message-in-card").show();
-                            }
-                        });
-                    });
                 },
                 error: err => {
                     //Show error message
