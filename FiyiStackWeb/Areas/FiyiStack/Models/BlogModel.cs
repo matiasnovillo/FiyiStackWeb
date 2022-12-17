@@ -96,7 +96,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// </summary>
         public BlogModel()
         {
-            try { BlogId = 0; }
+            try 
+            { 
+                BlogId = 0;
+                lstCommentForBlogModel = new List<CommentForBlogModel>();
+            }
             catch (Exception ex) { throw ex; }
         }
 
@@ -327,6 +331,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
             try
             {
                 blogmodelQ.lstBlogModel = new List<BlogModel>();
+
                 DynamicParameters dp = new DynamicParameters();
                 dp.Add("QueryString", blogmodelQ.QueryString, DbType.String, ParameterDirection.Input);
                 dp.Add("ActualPageNumber", blogmodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
@@ -342,6 +347,24 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 }
 
                 blogmodelQ.TotalPages = Library.Math.Divide(blogmodelQ.TotalRows, blogmodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+
+                //Loop through lists and sublists
+                for (int i = 0; i < blogmodelQ.lstBlogModel.Count; i++)
+                {
+                    DynamicParameters dp2 = new DynamicParameters();
+                    dp2.Add("BlogId", blogmodelQ.lstBlogModel[i].BlogId, DbType.Int32, ParameterDirection.Input);
+                    using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                    {
+                        List<CommentForBlogModel> lstCommentForBlogModel = new List<CommentForBlogModel>();
+                        lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogId]", dp2, commandType: CommandType.StoredProcedure);
+
+                        //Add list item inside another list
+                        foreach (var CommentForBlogModel in lstCommentForBlogModel)
+                        {
+                            blogmodelQ.lstBlogModel[i].lstCommentForBlogModel.Add(CommentForBlogModel); 
+                        }
+                    } 
+                }
 
                 return blogmodelQ;
             }

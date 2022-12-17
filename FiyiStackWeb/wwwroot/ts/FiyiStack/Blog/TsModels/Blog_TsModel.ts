@@ -1,6 +1,7 @@
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
+import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlog_TsModel";
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -28,7 +29,8 @@ export class BlogModel {
 	UserLastModificationId?: number;
 	Title?: string | string[] | number | undefined;
 	Body?: string | string[] | number | undefined;
-	BackgroundImage?: string | string[] | number | undefined;
+    BackgroundImage?: string | string[] | number | undefined;
+    lstCommentForBlogModel?: CommentForBlogModel[] | undefined;
 
     //Queries
     static Select1ByBlogId(BlogId: number) {
@@ -107,5 +109,5 @@ export class blogmodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstBlogModel?: BlogModel[];
+    lstBlogModel?: BlogModel[] | undefined;
 }

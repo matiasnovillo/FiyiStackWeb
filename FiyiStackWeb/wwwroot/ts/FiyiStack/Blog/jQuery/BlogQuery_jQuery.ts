@@ -4,6 +4,7 @@ import * as $ from "jquery";
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
+import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlog_TsModel";
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -97,24 +98,32 @@ class BlogQuery {
               <img alt="Image placeholder" src="${row.BackgroundImage}" class="img-fluid rounded mb-4">
               <!-- Comments -->
               <div class="mb-1">
-                <div class="media media-comment">
+                ${row.lstCommentForBlogModel?.forEach(row2 => {
+                    return `<div class="media media-comment">
+                          <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
+                          <div class="media-body">
+                            <div class="media-comment-text">
+                              <h6 class="h5 mt-0">${row2.UserCreationId}</h6>
+                              <p class="text-sm lh-160">${row2.Comment}</p>
+                            </div>
+                          </div>
+                    </div>`;
+                })}
+                ${row.lstCommentForBlogModel?.map(function (element, index, array) {
+
+                    console.log(element);
+                    console.log(index);
+                    console.log(array);
+
+                    return `<div class="media media-comment">
                   <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
                   <div class="media-body">
                     <div class="media-comment-text">
-                      <h6 class="h5 mt-0">Michael Lewis</h6>
-                      <p class="text-sm lh-160">You have the opportunity to play this game of life you need to appreciate every moment. A lot of people don’t appreciate the moment until it’s passed.</p>
+                      <h6 class="h5 mt-0">${element.UserCreationId}</h6>
+                      <p class="text-sm lh-160">${element.Comment}</p>
                     </div>
                   </div>
-                </div>
-                <div class="media media-comment">
-                  <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
-                  <div class="media-body">
-                    <div class="media-comment-text">
-                      <h6 class="h5 mt-0">Jessica Stones</h6>
-                      <p class="text-sm lh-160">I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their perception of themselves! They're slowed down.</p>
-                    </div>
-                  </div>
-                </div>
+                </div>` }).join("")}
                 <div class="media align-items-center mt-5">
                   <img alt="Image placeholder" class="avatar rounded-circle mb-4" src="/img/User.png">
                   <div class="media-body">
@@ -130,6 +139,8 @@ class BlogQuery {
       </div>
     </div>
   </section>`;
+
+                            ListContent = ListContent.replace("undefined", "");
                         })
 
                         //If view table is activated, clear table view, if not, clear list view
