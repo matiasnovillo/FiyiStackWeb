@@ -29,7 +29,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
     /// Last modification: 17/12/2022 19:24:21
     /// </summary>
     [BlogFilter]
-    public partial class PageBlogNonQueryModel : PageModel
+    public partial class PageBlogQueryModel : PageModel
     {
         public void OnGet()
         {
@@ -40,6 +40,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
 
             ViewData["FantasyName"] = UserModel.FantasyName;
             ViewData["Menues"] = Menues;
-        }
+            }
     }
 }

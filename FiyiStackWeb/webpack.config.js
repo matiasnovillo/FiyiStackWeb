@@ -82,6 +82,7 @@
 
          blogtsmodel: ["./wwwroot/ts/FiyiStack/Blog/TsModels/Blog_TsModel"],  //Area: FiyiStack
          blogjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQuery_jQuery"],
+         blogcustomjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQueryCustom_jQuery"],
          commentforblogtsmodel: ["./wwwroot/ts/FiyiStack/CommentForBlog/TsModels/CommentForBlog_TsModel"],
          commentforblogjquery: ["./wwwroot/ts/FiyiStack/CommentForBlog/jQuery/CommentForBlogQuery_jQuery"]
      },

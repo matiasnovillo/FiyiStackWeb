@@ -4,7 +4,6 @@ import * as $ from "jquery";
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
-import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlog_TsModel";
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -21,7 +20,7 @@ import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlo
 
 //Stack: 10
 
-//Last modification on: 16/12/2022 10:50:10
+//Last modification on: 17/12/2022 19:38:49
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -39,6 +38,65 @@ class BlogQuery {
     static SelectAllPagedToHTML(request_blogmodelQuery: blogmodelQuery) {
         //Used for list view
         $(window).off("scroll");
+
+        //Load some part of table
+        var TableContent: string = `<thead class="thead-light">
+    <tr>
+        <th scope="col">
+            <div>
+                <input id="blog-table-check-all" type="checkbox">
+            </div>
+        </th>
+        <th scope="col">
+            <button value="BlogId" class="btn btn-outline-secondary btn-sm" type="button">
+                BlogId
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Active" class="btn btn-outline-secondary btn-sm" type="button">
+                Active
+            </button>
+        </th>
+        <th scope="col">
+            <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
+                DateTimeCreation
+            </button>
+        </th>
+        <th scope="col">
+            <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
+                DateTimeLastModification
+            </button>
+        </th>
+        <th scope="col">
+            <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
+                UserCreationId
+            </button>
+        </th>
+        <th scope="col">
+            <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
+                UserLastModificationId
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Title" class="btn btn-outline-secondary btn-sm" type="button">
+                Title
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Body" class="btn btn-outline-secondary btn-sm" type="button">
+                Body
+            </button>
+        </th>
+        <th scope="col">
+            <button value="BackgroundImage" class="btn btn-outline-secondary btn-sm" type="button">
+                BackgroundImage
+            </button>
+        </th>
+        
+        <th scope="col"></th>
+    </tr>
+</thead>
+<tbody>`;
 
         var ListContent: string = ``;
 
@@ -60,86 +118,210 @@ class BlogQuery {
                         TotalPages = response_blogQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#fiyistack-blog-query-string").attr("placeholder", `Search... (${TotalRows} posts)`);
+                        $("#fiyistack-blog-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        //Total pages of pagination
+                        $("#fiyistack-blog-total-pages-lg, #fiyistack-blog-total-pages").html(TotalPages.toString());
+                        //Actual page number of pagination
+                        $("#fiyistack-blog-actual-page-number-lg, #fiyistack-blog-actual-page-number").html(ActualPageNumber.toString());
                         //If we are at the final of book disable next and last buttons in pagination
                         if (ActualPageNumber === TotalPages) {
+                            $("#fiyistack-blog-lnk-next-page-lg, #fiyistack-blog-lnk-next-page").attr("disabled", "disabled");
+                            $("#fiyistack-blog-lnk-last-page-lg, #fiyistack-blog-lnk-last-page").attr("disabled", "disabled");
                             $("#fiyistack-blog-search-more-button-in-list").html("");
                         }
                         else {
+                            $("#fiyistack-blog-lnk-next-page-lg, #fiyistack-blog-lnk-next-page").removeAttr("disabled");
+                            $("#fiyistack-blog-lnk-last-page-lg, #fiyistack-blog-lnk-last-page").removeAttr("disabled");
                             //Scroll arrow for list view
                             $("#fiyistack-blog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
+                        }
+                        //If we are at the begining of the book disable previous and first buttons in pagination
+                        if (ActualPageNumber === 1) {
+                            $("#fiyistack-blog-lnk-previous-page-lg, #fiyistack-blog-lnk-previous-page").attr("disabled", "disabled");
+                            $("#fiyistack-blog-lnk-first-page-lg, #fiyistack-blog-lnk-first-page").attr("disabled", "disabled");
+                        }
+                        else {
+                            $("#fiyistack-blog-lnk-previous-page-lg, #fiyistack-blog-lnk-previous-page").removeAttr("disabled");
+                            $("#fiyistack-blog-lnk-first-page-lg, #fiyistack-blog-lnk-first-page").removeAttr("disabled");
+                        }
+                        //If book is empty set to default pagination values
+                        if (response_blogQuery?.lstBlogModel?.length === 0) {
+                            $("#fiyistack-blog-lnk-previous-page-lg, #fiyistack-blog-lnk-previous-page").attr("disabled", "disabled");
+                            $("#fiyistack-blog-lnk-first-page-lg, #fiyistack-blog-lnk-first-page").attr("disabled", "disabled");
+                            $("#fiyistack-blog-lnk-next-page-lg, #fiyistack-blog-lnk-next-page").attr("disabled", "disabled");
+                            $("#fiyistack-blog-lnk-last-page-lg, #fiyistack-blog-lnk-last-page").attr("disabled", "disabled");
+                            $("#fiyistack-blog-total-pages-lg, #fiyistack-blog-total-pages").html("1");
+                            $("#fiyistack-blog-actual-page-number-lg, #fiyistack-blog-actual-page-number").html("1");
                         }
                         //Read data book
                         response_blogQuery?.lstBlogModel?.forEach(row => {
 
-                            ListContent += `<section class="section section-blog-info">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="h3 mb-0">${row.Title}</h5>
+                            TableContent += `<tr>
+    <!-- Checkbox -->
+    <td>
+        <div>
+            <input class="blog-table-checkbox-for-row" value="${row.BlogId}" type="checkbox">
+        </div>
+    </td>
+    <!-- Data -->
+    <td class="text-left text-light text-truncate">
+        <i class="fas fa-key"></i> ${row.BlogId}
+    </td>
+    <td class="text-left text-truncate">
+        <strong>
+            <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <strong>
+            <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <strong>
+            <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <strong>
+            <i class="fas fa-key"></i> ${row.UserCreationId}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <strong>
+            <i class="fas fa-key"></i> ${row.UserLastModificationId}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <strong><i class="fas fa-font">
+            </i> ${row.Title}
+        </strong>
+    </td>
+    <td class="text-left text-truncate">
+        <i class="fas fa-font"></i> ${row.Body}
+    </td>
+    <td class="text-left text-truncate">
+        <a href="${row.BackgroundImage}">
+            <strong>
+                <i class="fas fa-file"></i> ${row.BackgroundImage}
+            </strong>
+        </a>
+    </td>
+    
+    <!-- Actions -->
+    <td class="text-right">
+        <a class="btn btn-icon-only text-primary" href="/FiyiStack/PageBlogNonQuery?BlogId=${row.BlogId}" role="button" data-toggle="tooltip" data-original-title="Edit">
+            <i class="fas fa-edit"></i>
+        </a>
+        <div class="dropdown">
+            <button class="btn btn-icon-only text-danger" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-trash"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                <button class="dropdown-item text-danger fiyistack-blog-table-delete-button" value="${row.BlogId}" type="button">
+                    <i class="fas fa-exclamation-triangle"></i> Yes, delete
+                </button>
             </div>
-            <div class="card-header d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <a href="javascript:;">
-                  <img src="/img/Me.jpeg" class="avatar">
-                </a>
-                <div class="mx-3">
-                  <a href="javascript:;" class="text-dark font-weight-600 text-sm">Matias Novillo</a>
-                  <small class="d-block text-muted">${row.DateTimeLastModification}</small>
-                </div>
-              </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-sm btn-icon-only text-primary" href="#" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                <button type="button" class="dropdown-item fiyistack-blog-table-copy-button" value="${row.BlogId}">
+                    <i class="fas fa-copy text-primary"></i>&nbsp;Copy
+                </button>
             </div>
-            <div class="card-body">
-              <p class="mb-4">
-                ${row.Body}
-              </p>
-              <img alt="Image placeholder" src="${row.BackgroundImage}" class="img-fluid rounded mb-4">
-              <!-- Comments -->
-              <div class="mb-1">
-                ${row.lstCommentForBlogModel?.map(row2 => {
+        </div>
+    </td>
+</tr>`;
 
-                    return `<div class="media media-comment">
-                  <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
-                  <div class="media-body">
-                    <div class="media-comment-text">
-                      <h6 class="h5 mt-0">${row2.FantasyName}</h6>
-                      <p class="text-sm lh-160">${row2.Comment}</p>
-                      <div class="icon-actions">
-                          <p class="text-muted">Posted on: ${row2.DateTimeCreation}</p>
-                      </div>
+                            ListContent += `<div class="row mx-2">
+    <div class="col-sm">
+        <div class="card bg-gradient-primary mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="text-white text-light mb-4 text-truncate">
+                           BlogId <i class="fas fa-key"></i> ${row.BlogId}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           Active <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           UserCreationId <i class="fas fa-key"></i> ${row.UserCreationId}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           UserLastModificationId <i class="fas fa-key"></i> ${row.UserLastModificationId}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           Title <i class="fas fa-font"></i> ${row.Title}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           Body <i class="fas fa-font"></i> ${row.Body}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4 text-truncate">
+                           BackgroundImage <i class="fas fa-file"></i> ${row.BackgroundImage}
+                        </span>
+                        <br/>
+                        
                     </div>
-                  </div>
-                </div>` }).join("")}
-                <div class="media align-items-center mt-5">
-                  <img alt="Image placeholder" class="avatar rounded-circle mb-4" src="/img/User.png">
-                  <div class="media-body">
-                    <form>
-                        <div class="row">
-                            <div class="col text-right">
-                                <input class="form-control mt-4" placeholder="Write your comment" type="text"></input>
-                                <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
-                                <input type="hidden" value="${row.BlogId}"></input>
-                                </br>
-                                <p class="text-danger message-post-comment"></p>
+                    <div class="col-auto">
+                    </div>
+                </div>
+                <!-- Actions -->
+                <div class="row">
+                    <div class="col">
+                        <div class="justify-content-end text-right mt-2">
+                            <div class="fiyistack-blog-checkbox-list list-row-unchecked mb-2">
+                                <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="check">
+                                    <i class="fas fa-circle text-white"></i>
+                                </a>
+                            </div>
+                            <input type="hidden" value="${row.BlogId}"/>
+                            <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="/FiyiStack/PageBlogNonQuery?BlogId=${row.BlogId}" role="button" data-toggle="tooltip" data-original-title="edit">
+                                <i class="fas fa-edit text-primary"></i>
+                            </a>
+                            <div class="dropup">
+                                <a class="icon icon-shape bg-white icon-sm text-primary rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <button value="${row.BlogId}" class="dropdown-item text-primary fiyistack-blog-list-copy-button" type="button">
+                                        <i class="fas fa-copy"></i>&nbsp;Copy
+                                    </button>
+                                    <button value="${row.BlogId}" class="dropdown-item text-danger fiyistack-blog-list-delete-button" type="button">
+                                        <i class="fas fa-trash"></i>&nbsp;Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                  </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>`;
+</div>`;
                         })
 
                         //If view table is activated, clear table view, if not, clear list view
                         if (ViewToggler === "Table") {
-                            //Table view is not activated
+                            $("#fiyistack-blog-body-and-head-table").html("");
+                            $("#fiyistack-blog-body-and-head-table").html(TableContent);
                         }
                         else {
                             //Used for list view
@@ -165,79 +347,107 @@ class BlogQuery {
                     //Execute ScrollDownNSearch function when the user scroll the page
                     $(window).on("scroll", ScrollDownNSearch);
 
-                    //Post comment button
-                    $(".btn-post-comment").on("click", function (e) {
+                    //Add final content to TableContent
+                    TableContent += `</tbody>
+                                </table>`;
 
-                        //Button -> Input -> Break -> Message
-                        let Message = $(this).next().next().next();
+                    //Check button inside list view
+                    $(".fiyistack-blog-checkbox-list").on("click", function (e) {
+                        //Toggler
+                        if ($(this).hasClass("list-row-checked")) {
+                            $(this).html(`<a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="check">
+                                                            <i class="fas fa-circle text-white"></i>
+                                                        </a>`);
+                            $(this).removeClass("list-row-checked").addClass("list-row-unchecked");
+                        }
+                        else {
+                            $(this).html(`<a class="icon icon-shape bg-white icon-sm text-primary rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="check">
+                                                            <i class="fas fa-check"></i>
+                                                        </a>`);
+                            $(this).removeClass("list-row-unchecked").addClass("list-row-checked");
+                        }
+                    });
 
-                        if ($(this).prev().val() == "") {
-                            Message.html("Write a comment");
-                            return;
+                    //Check all button inside table
+                    $("#blog-table-check-all").on("click", function (e) { 
+                        //Toggler
+                        if ($("tr td div input.blog-table-checkbox-for-row").is(":checked")) {
+                            $("tr td div input.blog-table-checkbox-for-row").removeAttr("checked");
+                        }
+                        else {
+                            $("tr td div input.blog-table-checkbox-for-row").attr("checked", "checked");
+                        }
+                    });
+
+                    //Buttons inside head of table
+                    $("tr th button").one("click", function (e) {
+                        //Toggler
+                        if (SorterColumn == $(this).attr("value")) {
+                            SorterColumn = "";
+                            SortToggler = true;
+                        }
+                        else {
+                            SorterColumn = $(this).attr("value");
+                            SortToggler = false;
                         }
 
-                        let formData = new FormData();
-
-                        let BlogId = $(this).next().val()?.toString();
-                        if (BlogId === undefined) {
-                            BlogId = "";
-                        }
-                        formData.append("BlogId", BlogId);
-
-                        let Comment = $(this).prev().val()?.toString();
-                        if (Comment === undefined) {
-                            Comment = "";
-                        }
-                        formData.append("Comment", Comment);
-
-
-                        //Setup request
-                        var xmlHttpRequest = new XMLHttpRequest();
-                        //Set event listeners
-                        xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
-                        });
-                        xmlHttpRequest.upload.addEventListener("progress", function (e) {
-                            // While sending and loading data.
-                        });
-                        xmlHttpRequest.upload.addEventListener("load", function (e) {
-                            // When the request has successfully completed.
-                        });
-                        xmlHttpRequest.upload.addEventListener("loadend", function (e) {
-                            // When the request has completed (either in success or failure).
-                        });
-                        xmlHttpRequest.upload.addEventListener("error", function (e) {
-                            // When the request has failed.
-                        });
-                        xmlHttpRequest.upload.addEventListener("abort", function (e) {
-                            // When the request has been aborted. 
-                        });
-                        xmlHttpRequest.upload.addEventListener("timeout", function (e) {
-                            // When the author specified timeout has passed before the request could complete
-                        });
-                        xmlHttpRequest.onload = function () {
-                            if (xmlHttpRequest.status >= 400) {
-                                Message.html("An error has occurred, try again");
-                            }
-                            else {
-                                if (xmlHttpRequest.response == "You have to login first") {
-                                    Message.html("You have to login first");
-                                }
-                                else {
-                                    ValidateAndSearch();
-                                }
-                                
-                            }
-                        };
-                        //Open connection
-                        xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostComment", true);
-                        //Send request
-                        xmlHttpRequest.send(formData);
+                        ValidateAndSearch();
                     });
 
                     //Hide error message
                     $("#fiyistack-blog-error-message-title").html("");
                     $("#fiyistack-blog-error-message-text").html("");
                     $("#fiyistack-blog-button-error-message-in-card").hide();
+
+                    //Delete button in table and list
+                    $("div.dropdown-menu button.fiyistack-blog-table-delete-button, div.dropdown-menu button.fiyistack-blog-list-delete-button").on("click", function (e) {
+                        let BlogId = $(this).val();
+                        BlogModel.DeleteByBlogId(BlogId).subscribe({
+                            next: newrow => {
+                            },
+                            complete: () => {
+                                ValidateAndSearch();
+
+                                //Show OK message
+                                $("#fiyistack-blog-button-error-message-in-card").hide();
+                                $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Row deleted successfully`);
+                                $("#fiyistack-blog-button-ok-message-in-card").show();
+                            },
+                            error: err => {
+                                //Related to error message
+                                $("#fiyistack-blog-error-message-title").html("BlogModel.DeleteByBlogId(BlogId).subscribe(...)");
+                                $("#fiyistack-blog-error-message-text").html(err);
+                                $("#fiyistack-blog-button-error-message-in-card").show();
+                            }
+                        });
+                    });
+
+                    //Copy button in table and list
+                    $("div.dropdown-menu button.fiyistack-blog-table-copy-button, div.dropdown-menu button.fiyistack-blog-list-copy-button").on("click", function (e) {
+                        let BlogId = $(this).val();
+                        BlogModel.CopyByBlogId(BlogId).subscribe({
+                            next: newrow => {
+                            },
+                            complete: () => {
+                                ValidateAndSearch();
+
+                                //Show OK message
+                                $("#fiyistack-blog-button-error-message-in-card").hide();
+                                $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Row copied successfully`);
+                                $("#fiyistack-blog-button-ok-message-in-card").show();
+                            },
+                            error: err => {
+                                //Show error message
+                                $("#fiyistack-blog-error-message-title").html("BlogModel.CopyByBlogId(BlogId).subscribe(...)");
+                                $("#fiyistack-blog-error-message-text").html(err);
+                                $("#fiyistack-blog-button-error-message-in-card").show();
+                            }
+                        });
+                    });
                 },
                 error: err => {
                     //Show error message
@@ -269,7 +479,7 @@ function ValidateAndSearch() {
 }
 
 //LOAD EVENT
-if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
+if ($("#fiyistack-blog-title-page").html().includes("Query blog")) {
     //Set to default values
     QueryString = "";
     ActualPageNumber = 1;
@@ -279,7 +489,11 @@ if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
     TotalRows = 0;
     TotalPages = 0;
     ViewToggler = "List";
+    //Disable first and previous links in pagination
+    $("#fiyistack-blog-lnk-first-page-lg, #fiyistack-blog-lnk-first-page").attr("disabled", "disabled");
+    $("#fiyistack-blog-lnk-previous-page-lg, #fiyistack-blog-lnk-previous-page").attr("disabled", "disabled");
     //Hide messages
+    $("#fiyistack-blog-export-message").html("");
     $("#fiyistack-blog-button-error-message-in-card").hide();
     $("#fiyistack-blog-button-ok-message-in-card").hide();
 
@@ -295,6 +509,52 @@ $($("#fiyistack-blog-search-button")).on("click", function () {
 $("#fiyistack-blog-query-string").on("change keyup input", function (e) {
     //If undefined, set QueryString to "" value
     QueryString = ($(this).val()?.toString()) ?? "" ;
+    ValidateAndSearch();
+});
+
+//First page link in pagination
+$("#fiyistack-blog-lnk-first-page-lg, #fiyistack-blog-lnk-first-page").on("click", function (e) {
+    ActualPageNumber = 1;
+    ValidateAndSearch();
+});
+
+//Previous page link in pagination
+$("#fiyistack-blog-lnk-previous-page-lg, #fiyistack-blog-lnk-previous-page").on("click", function (e) {
+    ActualPageNumber -= 1;
+    ValidateAndSearch();
+});
+
+//Next page link in pagination
+$("#fiyistack-blog-lnk-next-page-lg, #fiyistack-blog-lnk-next-page").on("click", function (e) {
+    ActualPageNumber += 1;
+    ValidateAndSearch();
+});
+
+//Last page link in pagination
+$("#fiyistack-blog-lnk-last-page-lg, #fiyistack-blog-lnk-last-page").on("click", function (e) {
+    ActualPageNumber = TotalPages;
+    ValidateAndSearch();
+});
+
+//Table view button
+$("#fiyistack-blog-table-view-button").on("click", function (e) {
+    $("#fiyistack-blog-view-toggler").val("Table");
+    ViewToggler = "Table";
+    //Reset some values to default
+    ActualPageNumber = 1;
+    //Clear table view
+    $("#fiyistack-blog-body-and-head-table").html("");
+    ValidateAndSearch();
+});
+
+//List view button
+$("#fiyistack-blog-list-view-button").on("click", function (e) {
+    $("#fiyistack-blog-view-toggler").val("List");
+    ViewToggler = "List";
+    //Reset some values to default
+    ActualPageNumber = 1;
+    //Clear list view
+    $("#fiyistack-blog-body-list").html("");
     ValidateAndSearch();
 });
 
@@ -323,3 +583,309 @@ function ScrollDownNSearch() {
 
 //Used to list view
 $(window).on("scroll", ScrollDownNSearch);
+
+//Export as PDF button
+$("#fiyistack-blog-export-as-pdf").on("click", function (e) {
+    //There are two exportation types, All and JustChecked
+    let ExportationType: string = "";
+    let DateTimeNow: Ajax;
+    let Body: Ajax = {};
+    //Define a header for HTTP protocol with Accept (receiver data type) and Content-Type (sender data type)
+    let Header: any = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+    };
+
+    if ($("#fiyistack-blog-export-rows-all-checkbox").is(":checked")) {
+        ExportationType = "All";
+    }
+    else{
+        ExportationType = "JustChecked";
+        let CheckedRows = new Array();
+
+        if (ViewToggler == "Table") {
+            $("tr td div input.blog-table-checkbox-for-row:checked").each(function () {
+                CheckedRows.push($(this).val());
+            });
+
+            Body = {
+                AjaxForString: CheckedRows.toString()
+            };
+        }
+        else {
+            $("div .list-row-checked").each(function () {
+                //With .next() we access to input type hidden
+                CheckedRows.push($(this).next().val());
+            });
+
+            Body = {
+                AjaxForString: CheckedRows.toString()
+            };
+        }
+    }
+
+    Rx.from(ajax.post("/api/FiyiStack/Blog/1/ExportAsPDF/" + ExportationType, Body, Header)).subscribe({
+        next: newrow => {
+            $("#fiyistack-blog-export-message").html("<strong>Exporting as PDF</strong>");
+            DateTimeNow = newrow.response as Ajax;
+        },
+        complete: () => {
+            //Show download button for PDF file
+            $("#fiyistack-blog-export-message").html(`<a class="btn btn-icon btn-success" href="/PDFFiles/FiyiStack/Blog/Blog_${DateTimeNow.AjaxForString}.pdf" type="button" download>
+                                            <span class="btn-inner--icon"><i class="fas fa-file-pdf"></i></span>
+                                            <span class="btn-inner--text">Download</span>
+                                        </a>`);
+
+            //Show OK message
+            $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Conversion completed`);
+            $("#fiyistack-blog-button-ok-message-in-card").show();
+        },
+        error: err => {
+            //Show error message
+            $("#fiyistack-blog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/Blog/1/ExportAsPDF/' + ExportationType, Body, Header)).subscribe(...)");
+            $("#fiyistack-blog-error-message-text").html(err);
+            $("#fiyistack-blog-button-error-message-in-card").show();
+        }
+    });
+});
+
+//Export as Excel button
+$("#fiyistack-blog-export-as-excel").on("click", function (e) {
+    //There are two exportation types, All and JustChecked
+    let ExportationType: string = "";
+    let DateTimeNow: Ajax;
+    let Body: Ajax = {};
+    //Define a header for HTTP protocol with Accept (receiver data type) and Content-Type (sender data type)
+    let Header: any = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+    };
+
+    if ($("#fiyistack-blog-export-rows-all-checkbox").is(":checked")) {
+        ExportationType = "All";
+    }
+    else {
+        ExportationType = "JustChecked";
+        let CheckedRows = new Array();
+
+        if (ViewToggler == "Table") {
+            $("tr td div input.blog-table-checkbox-for-row:checked").each(function () {
+                CheckedRows.push($(this).val());
+            });
+
+            Body = {
+                AjaxForString: CheckedRows.toString()
+            };
+        }
+        else {
+            $("div .list-row-checked").each(function () {
+                //With .next() we access to input type hidden
+                CheckedRows.push($(this).next().val());
+            });
+
+            Body = {
+                AjaxForString: CheckedRows.toString()
+            };
+        }
+    }
+
+    Rx.from(ajax.post("/api/FiyiStack/Blog/1/ExportAsExcel/" + ExportationType, Body, Header)).subscribe({
+        next: newrow => {
+            $("#fiyistack-blog-export-message").html("<strong>Exporting as Excel</strong>");
+            DateTimeNow = newrow.response as Ajax;
+        },
+        complete: () => {
+            //Show download button for Excel file
+            $("#fiyistack-blog-export-message").html(`<a class="btn btn-icon btn-success" href="/ExcelFiles/FiyiStack/Blog/Blog_${DateTimeNow.AjaxForString}.xlsx" type="button" download>
+                                            <span class="btn-inner--icon"><i class="fas fa-file-excel"></i></span>
+                                            <span class="btn-inner--text">Download</span>
+                                        </a>`);
+
+            //Show OK message
+            $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Conversion completed`);
+            $("#fiyistack-blog-button-ok-message-in-card").show();
+        },
+        error: err => {
+            //Show error message
+            $("#fiyistack-blog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/Blog/1/ExportAsExcel/' + ExportationType, Body, Header)).subscribe(...)");
+            $("#fiyistack-blog-error-message-text").html(err);
+            $("#fiyistack-blog-button-error-message-in-card").show();
+        }
+    });
+});
+
+//Export as CSV button
+$("#fiyistack-blog-export-as-csv").on("click", function (e) {
+    //There are two exportation types, All and JustChecked
+    let ExportationType: string = "";
+    let DateTimeNow: Ajax;
+    let Body: Ajax = {};
+    //Define a header for HTTP protocol with Accept (receiver data type) and Content-Type (sender data type)
+    let Header: any = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json; charset=utf-8'
+    };
+
+    if ($("#fiyistack-blog-export-rows-all-checkbox").is(":checked")) {
+        ExportationType = "All";
+    }
+    else {
+        ExportationType = "JustChecked";
+        let CheckedRows = new Array();
+
+        if (ViewToggler == "Table") {
+            $("tr td div input.blog-table-checkbox-for-row:checked").each(function () {
+                CheckedRows.push($(this).val());
+            });
+
+            Body = {
+                AjaxForString: CheckedRows.toString()
+            };
+        }
+        else {
+            $("div .list-row-checked").each(function () {
+                //With .next() we access to input type hidden
+                CheckedRows.push($(this).next().val());
+            });
+
+            Body = {
+                AjaxForString: CheckedRows.toString()
+            };
+        }
+    }
+
+    Rx.from(ajax.post("/api/FiyiStack/Blog/1/ExportAsCSV/" + ExportationType, Body, Header)).subscribe({
+        next: newrow => {
+            $("#fiyistack-blog-export-message").html("<strong>Exporting as CSV</strong>");
+            DateTimeNow = newrow.response as Ajax;
+        },
+        complete: () => {
+            //Show download button for CSV file
+            $("#fiyistack-blog-export-message").html(`<a class="btn btn-icon btn-success" href="/CSVFiles/FiyiStack/Blog/Blog_${DateTimeNow.AjaxForString}.csv" type="button" download>
+                                            <span class="btn-inner--icon"><i class="fas fa-file-csv"></i></span>
+                                            <span class="btn-inner--text">Download</span>
+                                        </a>`);
+
+            //Show OK message
+            $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Conversion completed`);
+            $("#fiyistack-blog-button-ok-message-in-card").show();
+        },
+        error: err => {
+            //Show error message
+            $("#fiyistack-blog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/Blog/1/ExportAsCSV/' + ExportationType, Body, Header)).subscribe(...)");
+            $("#fiyistack-blog-error-message-text").html(err);
+            $("#fiyistack-blog-button-error-message-in-card").show();
+        }
+    });
+});
+
+//Export close button in modal
+$("#fiyistack-blog-export-close-button").on("click", function (e) {
+    $("#fiyistack-blog-export-message").html("");
+});
+
+//Massive action Copy
+$("#fiyistack-blog-massive-action-copy").on("click", function (e) {
+    //There are two deletion types, All and JustChecked
+    let CopyType: string = "";
+    let Body: Ajax = {};
+
+    if ($("#fiyistack-blog-copy-rows-all-checkbox").is(":checked")) {
+        CopyType = "All";
+    }
+    else {
+        CopyType = "JustChecked";
+        let CheckedRows = new Array();
+
+        if (ViewToggler == "Table") {
+            $("tr td div input.blog-table-checkbox-for-row:checked").each(function () {
+                CheckedRows.push($(this).val());
+            });
+        }
+        else {
+            $("div .list-row-checked").each(function () {
+                //With .next() we access to input type hidden
+                CheckedRows.push($(this).next().val());
+            });
+        }
+        Body = {
+            AjaxForString: CheckedRows.toString()
+        };
+    }
+
+    BlogModel.CopyManyOrAll(CopyType, Body).subscribe({
+        next: newrow => {
+        },
+        complete: () => {
+            ValidateAndSearch();
+
+            //Show OK message
+            $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Rows copied successfully`);
+            $("#fiyistack-blog-button-ok-message-in-card").show();
+        },
+        error: err => {
+            //Show error message
+            $("#fiyistack-blog-error-message-title").html("BlogModel.Copy(CopyType).subscribe(...)");
+            $("#fiyistack-blog-error-message-text").html(err);
+            $("#fiyistack-blog-button-error-message-in-card").show();
+        }
+    });
+});
+
+//Massive action Delete
+$("#fiyistack-blog-massive-action-delete").on("click", function (e) {
+    //There are two deletion types, All and JustChecked
+    let DeleteType: string = "";
+    let Body: Ajax = {};
+
+    if ($("#fiyistack-blog-copy-rows-all-checkbox").is(":checked")) {
+        DeleteType = "All";
+    }
+    else {
+        DeleteType = "JustChecked";
+        let CheckedRows = new Array();
+
+        if (ViewToggler == "Table") {
+            $("tr td div input.blog-table-checkbox-for-row:checked").each(function () {
+                CheckedRows.push($(this).val());
+            });
+        }
+        else {
+            $("div .list-row-checked").each(function () {
+                //With .next() we access to input type hidden
+                CheckedRows.push($(this).next().val());
+            });
+        }
+        Body = {
+            AjaxForString: CheckedRows.toString()
+        };
+    }
+
+    BlogModel.DeleteManyOrAll(DeleteType, Body).subscribe({
+        next: newrow => {
+        },
+        complete: () => {
+            ValidateAndSearch();
+
+            //Show OK message
+            $("#fiyistack-blog-button-ok-message-in-card").html(`<strong>
+                                                                    <i class="fas fa-check"></i>
+                                                                </strong> Rows deleted successfully`);
+            $("#fiyistack-blog-button-ok-message-in-card").show();
+        },
+        error: err => {
+            //Show error message
+            $("#fiyistack-blog-error-message-title").html("BlogModel.Copy(CopyType).subscribe(...)");
+            $("#fiyistack-blog-error-message-text").html(err);
+            $("#fiyistack-blog-button-error-message-in-card").show();
+        }
+    });
+});

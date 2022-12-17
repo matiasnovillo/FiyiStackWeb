@@ -7,13 +7,37 @@
     string NonQueryText = "";
     string NonQueryIcon = "";
 
-    int BlogId = 0;
-    string Title = "";
-    string Body = "";
-    string BackgroundImage = "";
+    int BlogId;
+    string Title;
+    string Body;
+    string BackgroundImage;
     
-    NonQueryText = "Add";
-    NonQueryIcon = "fas fa-plus";
+
+    if(HttpContext.Request.QueryString.Value.Contains("?BlogId=0"))
+    {
+        NonQueryText = "Add";
+        NonQueryIcon = "fas fa-plus";
+
+        BlogId = 0;
+        Title = "";
+        Body = "";
+        BackgroundImage = "";
+        
+    }
+    else
+    {
+        NonQueryText = "Edit";
+        NonQueryIcon = "fas fa-pen";
+
+        BlogModel BlogModel = new BlogModel().Select1ByBlogIdToModel
+        (Convert.ToInt32(HttpContext.Request.QueryString.Value.Replace("?BlogId=","")));
+
+        BlogId = BlogModel.BlogId;
+        Title = BlogModel.Title;
+        Body = BlogModel.Body;
+        BackgroundImage = BlogModel.BackgroundImage;
+        
+    }
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -29,7 +53,7 @@
  */
     
 //Stack: 11
-//Last modification on: 16/12/2022 10:50:10
+//Last modification on: 17/12/2022 19:24:21
 
 }
 <!-- Header -->
@@ -139,6 +163,7 @@
                         </label>
                         <div id="fiyistack-blog-body-input">
                         </div>
+                        <input type="hidden" value="@Body" id="fiyistack-blog-body-hidden-value">
                         <div class="mb-3"></div>
                         <!-- BackgroundImage -->
                         <div class="form-group">
