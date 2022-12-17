@@ -98,29 +98,14 @@ class BlogQuery {
               <img alt="Image placeholder" src="${row.BackgroundImage}" class="img-fluid rounded mb-4">
               <!-- Comments -->
               <div class="mb-1">
-                ${row.lstCommentForBlogModel?.forEach(row2 => {
-                    return `<div class="media media-comment">
-                          <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
-                          <div class="media-body">
-                            <div class="media-comment-text">
-                              <h6 class="h5 mt-0">${row2.UserCreationId}</h6>
-                              <p class="text-sm lh-160">${row2.Comment}</p>
-                            </div>
-                          </div>
-                    </div>`;
-                })}
-                ${row.lstCommentForBlogModel?.map(function (element, index, array) {
-
-                    console.log(element);
-                    console.log(index);
-                    console.log(array);
+                ${row.lstCommentForBlogModel?.map(row2 => {
 
                     return `<div class="media media-comment">
                   <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
                   <div class="media-body">
                     <div class="media-comment-text">
-                      <h6 class="h5 mt-0">${element.UserCreationId}</h6>
-                      <p class="text-sm lh-160">${element.Comment}</p>
+                      <h6 class="h5 mt-0">${row2.FantasyName}</h6>
+                      <p class="text-sm lh-160">${row2.Comment}</p>
                     </div>
                   </div>
                 </div>` }).join("")}
@@ -139,8 +124,6 @@ class BlogQuery {
       </div>
     </div>
   </section>`;
-
-                            ListContent = ListContent.replace("undefined", "");
                         })
 
                         //If view table is activated, clear table view, if not, clear list view

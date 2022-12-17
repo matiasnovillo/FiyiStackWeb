@@ -22,11 +22,11 @@ var CommentForBlogModel = /** @class */ (function () {
     //Queries
     CommentForBlogModel.Select1ByCommentForBlogId = function (CommentForBlogId) {
         var URL = "/api/FiyiStack/CommentForBlog/1/Select1ByCommentForBlogIdToJSON/" + CommentForBlogId;
-        return Rx.from((0, ajax_1.ajax)(URL));
+        return Rx.from(ajax_1.ajax(URL));
     };
     CommentForBlogModel.SelectAll = function () {
         var URL = "/api/FiyiStack/CommentForBlog/1/SelectAllToJSON";
-        return Rx.from((0, ajax_1.ajax)(URL));
+        return Rx.from(ajax_1.ajax(URL));
     };
     CommentForBlogModel.SelectAllPaged = function (commentforblogmodelQuery) {
         var URL = "/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON";

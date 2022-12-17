@@ -76,6 +76,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 
         [Library.ModelAttributeValidator.Key("BlogId")]
         public int BlogId { get; set; }
+
+        public string FantasyName { get; set; }
         #endregion
 
         #region Models that depend on this model

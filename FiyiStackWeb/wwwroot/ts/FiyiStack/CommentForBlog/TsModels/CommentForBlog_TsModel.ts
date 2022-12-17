@@ -27,7 +27,8 @@ export class CommentForBlogModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	Comment?: string | string[] | number | undefined;
-	BlogId?: number;
+    BlogId?: number;
+    FantasyName?: string | string[] | number | undefined;
 
     //Queries
     static Select1ByCommentForBlogId(CommentForBlogId: number) {
