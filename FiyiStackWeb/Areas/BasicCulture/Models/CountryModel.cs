@@ -28,7 +28,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     ///                    make temporal copies with random data. <br/>
     /// Fields:            10 <br/> 
     /// Dependencies:      1 models <br/>
-    /// Last modification: 20/12/2022 18:34:52
+    /// Last modification: 20/12/2022 20:09:01
     /// </summary>
     [Serializable]
     public partial class CountryModel

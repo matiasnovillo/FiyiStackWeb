@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 18:34:52
+//Last modification on: 20/12/2022 20:09:01
 
 $(document).ready(function () {
 
@@ -40,8 +40,6 @@ $("#basicculture-country-insert-or-update-button").on("click", function (e) {
     formData.append("basicculture-country-geographicalcoordinates-input", $("#basicculture-country-geographicalcoordinates-input").val());
     formData.append("basicculture-country-code-input", $("#basicculture-country-code-input").val());
     formData.append("basicculture-country-planetid-input", $("#basicculture-country-planetid-input").val());
-    formData.append("basicculture-country-usercreationid-input", $("#basicculture-country-usercreationid-input").val());
-    formData.append("basicculture-country-userlastmodificationid-input", $("#basicculture-country-userlastmodificationid-input").val());
     
 
     //Setup request

@@ -38,7 +38,7 @@ SELECT @RowsAffected AS N'@RowsAffected'
  *
  */
 
---Last modification on: 20/12/2022 18:34:52
+--Last modification on: 20/12/2022 20:09:00
 
 UPDATE [BasicCulture.Country] SET
     [Name] = @Name,

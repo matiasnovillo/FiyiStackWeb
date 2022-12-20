@@ -48,7 +48,7 @@ SELECT @NewEnteredId AS N'@NewEnteredId'
  *
  */
 
---Last modification on: 20/12/2022 18:34:52
+--Last modification on: 20/12/2022 20:09:00
 
 INSERT INTO [BasicCulture.Country]
 (

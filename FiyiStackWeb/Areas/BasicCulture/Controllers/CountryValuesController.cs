@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 18:34:52
+//Last modification on: 20/12/2022 20:09:01
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 18:34:52
+    /// Last modification: 20/12/2022 20:09:01
     /// </summary>
     [ApiController]
     [CountryFilter]
@@ -171,9 +171,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     PlanetId = Convert.ToInt32(HttpContext.Request.Form["basicculture-country-planetid-input"]);
                 }
                 else
-                { throw new Exception("It's not allowed to save zero values in PlanetId"); }
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-country-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-country-userlastmodificationid-input"]);
+                { return StatusCode(400, "It's not allowed to save zero values in PlanetId"); }
                 
 
                 CountryModel CountryModel = new CountryModel()
@@ -182,8 +180,6 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     GeographicalCoordinates = GeographicalCoordinates,
                     Code = Code,
                     PlanetId = PlanetId,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 
