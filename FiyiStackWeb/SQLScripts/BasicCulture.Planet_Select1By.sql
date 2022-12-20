@@ -7,15 +7,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,21 +24,23 @@ EXEC [dbo].[Planet.Select1ByPlanetId]
  *
  */
 
---Last modification on: 09/12/2022 19:23:24
+--Last modification on: 20/12/2022 18:48:59
 
 SET DATEFORMAT DMY
 
 SELECT
-    [BasicCulture.Planet].[PlanetId] AS [PlanetId],
-    [BasicCulture.Planet].[Name] AS [Name],
-    [BasicCulture.Planet].[Code] AS [Code],
-    [BasicCulture.Planet].[Active] AS [Active],
-    [BasicCulture.Planet].[UserCreationId] AS [UserCreationId],
-    [BasicCulture.Planet].[UserLastModificationId] AS [UserLastModificationId],
-    [BasicCulture.Planet].[DateTimeCreation] AS [DateTimeCreation],
-    [BasicCulture.Planet].[DateTimeLastModification] AS [DateTimeLastModification]
+    [BasicCulture.Planet].[PlanetId],
+    [BasicCulture.Planet].[Name],
+    [BasicCulture.Planet].[Code],
+    [BasicCulture.Planet].[Active],
+    [BasicCulture.Planet].[UserCreationId],
+    [BasicCulture.Planet].[UserLastModificationId],
+    [BasicCulture.Planet].[DateTimeCreation],
+    [BasicCulture.Planet].[DateTimeLastModification]
 FROM 
     [BasicCulture.Planet]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [BasicCulture.Planet].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [BasicCulture.Planet].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE 
     1 = 1
     AND [BasicCulture.Planet].[PlanetId] = @PlanetId

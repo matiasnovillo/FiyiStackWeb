@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:23:24
+//Last modification on: 20/12/2022 18:48:59
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 09/12/2022 19:23:24
+    /// Last modification: 20/12/2022 18:48:59
     /// </summary>
     [ApiController]
     [PlanetFilter]
@@ -153,6 +151,14 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["basicculture-planet-title-page"];
 
@@ -175,16 +181,16 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 int RowsAffected = 0;
 
                 PlanetModel.DateTimeLastModification = DateTime.Now;
-                //PlanetModel.UserLastModificationId = TODO Sacarlo de User logueado
+                PlanetModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     PlanetModel.DateTimeCreation = DateTime.Now;
-                    //PlanetModel.UserCreationId = TODO Sacarlo de User logueado
+                    PlanetModel.UserCreationId = UserId;
                     NewEnteredId = _PlanetProtocol.Insert(PlanetModel);
                 }
                 else
                 {
-                    int PlanetId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int PlanetId = Convert.ToInt32(HttpContext.Request.Form["basicculture-planet-planetid-input"]);
                     PlanetModel.PlanetId = PlanetId;
                     RowsAffected = _PlanetProtocol.UpdateByPlanetId(PlanetModel);
                 }
@@ -242,7 +248,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -275,7 +281,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -309,7 +315,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -343,7 +349,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -384,7 +390,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -420,7 +426,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -454,7 +460,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -488,7 +494,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
