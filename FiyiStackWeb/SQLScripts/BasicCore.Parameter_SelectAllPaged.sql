@@ -12,15 +12,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*Execute this stored procedure with the next script as example
@@ -38,23 +36,25 @@ EXEC [dbo].[BasicCore.Parameter.SelectAllPaged]
 SELECT @TotalRows AS N'@TotalRows'
 */
 
---Last modification on: 08/12/2022 8:07:23
+--Last modification on: 20/12/2022 18:17:17
 
 SET DATEFORMAT DMY
 SET NOCOUNT ON
 
 SELECT
-    [BasicCore.Parameter].[ParameterId] AS [ParameterId],
-    [BasicCore.Parameter].[Name] AS [Name],
-    [BasicCore.Parameter].[Value] AS [Value],
-    [BasicCore.Parameter].[IsPrivate] AS [IsPrivate],
-    [BasicCore.Parameter].[Active] AS [Active],
-    [BasicCore.Parameter].[UserCreationId] AS [UserCreationId],
-    [BasicCore.Parameter].[UserLastModificationId] AS [UserLastModificationId],
-    [BasicCore.Parameter].[DateTimeCreation] AS [DateTimeCreation],
-    [BasicCore.Parameter].[DateTimeLastModification] AS [DateTimeLastModification]
+    [BasicCore.Parameter].[ParameterId],
+    [BasicCore.Parameter].[Name],
+    [BasicCore.Parameter].[Value],
+    [BasicCore.Parameter].[IsPrivate],
+    [BasicCore.Parameter].[Active],
+    [BasicCore.Parameter].[UserCreationId],
+    [BasicCore.Parameter].[UserLastModificationId],
+    [BasicCore.Parameter].[DateTimeCreation],
+    [BasicCore.Parameter].[DateTimeLastModification]
 FROM 
     [BasicCore.Parameter]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [BasicCore.Parameter].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [BasicCore.Parameter].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE
     1=1
     AND (@QueryString = '' 
@@ -70,24 +70,24 @@ WHERE
 
     )
 ORDER BY 
-    CASE WHEN (@SorterColumn = 'ParameterId' AND @SortToggler = 0) THEN [ParameterId] END ASC,
-    CASE WHEN (@SorterColumn = 'ParameterId' AND @SortToggler = 1) THEN [ParameterId] END DESC,
-    CASE WHEN (@SorterColumn = 'Name' AND @SortToggler = 0) THEN [Name] END ASC,
-    CASE WHEN (@SorterColumn = 'Name' AND @SortToggler = 1) THEN [Name] END DESC,
-    CASE WHEN (@SorterColumn = 'Value' AND @SortToggler = 0) THEN [Value] END ASC,
-    CASE WHEN (@SorterColumn = 'Value' AND @SortToggler = 1) THEN [Value] END DESC,
-    CASE WHEN (@SorterColumn = 'IsPrivate' AND @SortToggler = 0) THEN [IsPrivate] END ASC,
-    CASE WHEN (@SorterColumn = 'IsPrivate' AND @SortToggler = 1) THEN [IsPrivate] END DESC,
-    CASE WHEN (@SorterColumn = 'Active' AND @SortToggler = 0) THEN [Active] END ASC,
-    CASE WHEN (@SorterColumn = 'Active' AND @SortToggler = 1) THEN [Active] END DESC,
-    CASE WHEN (@SorterColumn = 'UserCreationId' AND @SortToggler = 0) THEN [UserCreationId] END ASC,
-    CASE WHEN (@SorterColumn = 'UserCreationId' AND @SortToggler = 1) THEN [UserCreationId] END DESC,
-    CASE WHEN (@SorterColumn = 'UserLastModificationId' AND @SortToggler = 0) THEN [UserLastModificationId] END ASC,
-    CASE WHEN (@SorterColumn = 'UserLastModificationId' AND @SortToggler = 1) THEN [UserLastModificationId] END DESC,
-    CASE WHEN (@SorterColumn = 'DateTimeCreation' AND @SortToggler = 0) THEN [DateTimeCreation] END ASC,
-    CASE WHEN (@SorterColumn = 'DateTimeCreation' AND @SortToggler = 1) THEN [DateTimeCreation] END DESC,
-    CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 0) THEN [DateTimeLastModification] END ASC,
-    CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 1) THEN [DateTimeLastModification] END DESC
+    CASE WHEN (@SorterColumn = 'ParameterId' AND @SortToggler = 0) THEN [BasicCore.Parameter].[ParameterId] END ASC,
+    CASE WHEN (@SorterColumn = 'ParameterId' AND @SortToggler = 1) THEN [BasicCore.Parameter].[ParameterId] END DESC,
+    CASE WHEN (@SorterColumn = 'Name' AND @SortToggler = 0) THEN [BasicCore.Parameter].[Name] END ASC,
+    CASE WHEN (@SorterColumn = 'Name' AND @SortToggler = 1) THEN [BasicCore.Parameter].[Name] END DESC,
+    CASE WHEN (@SorterColumn = 'Value' AND @SortToggler = 0) THEN [BasicCore.Parameter].[Value] END ASC,
+    CASE WHEN (@SorterColumn = 'Value' AND @SortToggler = 1) THEN [BasicCore.Parameter].[Value] END DESC,
+    CASE WHEN (@SorterColumn = 'IsPrivate' AND @SortToggler = 0) THEN [BasicCore.Parameter].[IsPrivate] END ASC,
+    CASE WHEN (@SorterColumn = 'IsPrivate' AND @SortToggler = 1) THEN [BasicCore.Parameter].[IsPrivate] END DESC,
+    CASE WHEN (@SorterColumn = 'Active' AND @SortToggler = 0) THEN [BasicCore.Parameter].[Active] END ASC,
+    CASE WHEN (@SorterColumn = 'Active' AND @SortToggler = 1) THEN [BasicCore.Parameter].[Active] END DESC,
+    CASE WHEN (@SorterColumn = 'UserCreationId' AND @SortToggler = 0) THEN [BasicCore.Parameter].[UserCreationId] END ASC,
+    CASE WHEN (@SorterColumn = 'UserCreationId' AND @SortToggler = 1) THEN [BasicCore.Parameter].[UserCreationId] END DESC,
+    CASE WHEN (@SorterColumn = 'UserLastModificationId' AND @SortToggler = 0) THEN [BasicCore.Parameter].[UserLastModificationId] END ASC,
+    CASE WHEN (@SorterColumn = 'UserLastModificationId' AND @SortToggler = 1) THEN [BasicCore.Parameter].[UserLastModificationId] END DESC,
+    CASE WHEN (@SorterColumn = 'DateTimeCreation' AND @SortToggler = 0) THEN [BasicCore.Parameter].[DateTimeCreation] END ASC,
+    CASE WHEN (@SorterColumn = 'DateTimeCreation' AND @SortToggler = 1) THEN [BasicCore.Parameter].[DateTimeCreation] END DESC,
+    CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 0) THEN [BasicCore.Parameter].[DateTimeLastModification] END ASC,
+    CASE WHEN (@SorterColumn = 'DateTimeLastModification' AND @SortToggler = 1) THEN [BasicCore.Parameter].[DateTimeLastModification] END DESC
 
 OFFSET (@ActualPageNumber - 1) * @RowsPerPage ROWS
 FETCH NEXT @RowsPerPage ROWS ONLY

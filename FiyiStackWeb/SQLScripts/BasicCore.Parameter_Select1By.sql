@@ -7,15 +7,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,22 +24,24 @@ EXEC [dbo].[Parameter.Select1ByParameterId]
  *
  */
 
---Last modification on: 08/12/2022 8:07:23
+--Last modification on: 20/12/2022 18:17:17
 
 SET DATEFORMAT DMY
 
 SELECT
-    [BasicCore.Parameter].[ParameterId] AS [ParameterId],
-    [BasicCore.Parameter].[Name] AS [Name],
-    [BasicCore.Parameter].[Value] AS [Value],
-    [BasicCore.Parameter].[IsPrivate] AS [IsPrivate],
-    [BasicCore.Parameter].[Active] AS [Active],
-    [BasicCore.Parameter].[UserCreationId] AS [UserCreationId],
-    [BasicCore.Parameter].[UserLastModificationId] AS [UserLastModificationId],
-    [BasicCore.Parameter].[DateTimeCreation] AS [DateTimeCreation],
-    [BasicCore.Parameter].[DateTimeLastModification] AS [DateTimeLastModification]
+    [BasicCore.Parameter].[ParameterId],
+    [BasicCore.Parameter].[Name],
+    [BasicCore.Parameter].[Value],
+    [BasicCore.Parameter].[IsPrivate],
+    [BasicCore.Parameter].[Active],
+    [BasicCore.Parameter].[UserCreationId],
+    [BasicCore.Parameter].[UserLastModificationId],
+    [BasicCore.Parameter].[DateTimeCreation],
+    [BasicCore.Parameter].[DateTimeLastModification]
 FROM 
     [BasicCore.Parameter]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [BasicCore.Parameter].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [BasicCore.Parameter].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE 
     1 = 1
     AND [BasicCore.Parameter].[ParameterId] = @ParameterId
