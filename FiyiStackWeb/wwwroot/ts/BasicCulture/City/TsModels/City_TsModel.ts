@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//10 fields | Last modification on: 20/12/2022 18:25:58 | Stack: 9
+//10 fields | Last modification on: 20/12/2022 20:06:24 | Stack: 9
 
 export class CityModel {
 

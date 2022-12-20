@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 18:25:58
+//Last modification on: 20/12/2022 20:06:24
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 18:25:58
+    /// Last modification: 20/12/2022 20:06:24
     /// </summary>
     [ApiController]
     [CityFilter]
@@ -171,9 +171,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     ProvinceId = Convert.ToInt32(HttpContext.Request.Form["basicculture-city-provinceid-input"]);
                 }
                 else
-                { throw new Exception("It's not allowed to save zero values in ProvinceId"); }
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-city-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-city-userlastmodificationid-input"]);
+                { return StatusCode(400, "It's not allowed to save zero values in ProvinceId"); }
                 
 
                 CityModel CityModel = new CityModel()
@@ -182,8 +180,6 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     GeographicalCoordinates = GeographicalCoordinates,
                     Code = Code,
                     ProvinceId = ProvinceId,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 

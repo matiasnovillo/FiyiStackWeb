@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 18:25:58
+//Last modification on: 20/12/2022 20:06:24
 
 $(document).ready(function () {
 
@@ -40,8 +40,6 @@ $("#basicculture-city-insert-or-update-button").on("click", function (e) {
     formData.append("basicculture-city-geographicalcoordinates-input", $("#basicculture-city-geographicalcoordinates-input").val());
     formData.append("basicculture-city-code-input", $("#basicculture-city-code-input").val());
     formData.append("basicculture-city-provinceid-input", $("#basicculture-city-provinceid-input").val());
-    formData.append("basicculture-city-usercreationid-input", $("#basicculture-city-usercreationid-input").val());
-    formData.append("basicculture-city-userlastmodificationid-input", $("#basicculture-city-userlastmodificationid-input").val());
     
 
     //Setup request

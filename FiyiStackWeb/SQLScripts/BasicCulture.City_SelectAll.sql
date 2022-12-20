@@ -20,7 +20,7 @@ EXEC [dbo].[BasicCulture.City.SelectAll]
  *
  */
 
---Last modification on: 20/12/2022 18:25:58
+--Last modification on: 20/12/2022 20:06:24
 
 SET DATEFORMAT DMY
 
