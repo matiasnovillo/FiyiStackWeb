@@ -50,17 +50,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             _UserProtocol = UserProtocol;
         }
 
-        [HttpGet("~/api/CMSCore/User/1/GetCaptchaImage")]
-        public FileResult GetCaptchaImage([FromServices] ISixLaborsCaptchaModule sixLaborsCaptcha)
-        {
-            string CaptchaKey = Extensions.GetUniqueKey(6);
-            var Image = sixLaborsCaptcha.Generate(CaptchaKey);
-
-            HttpContext.Session.SetString("CaptchaKey", CaptchaKey);
-
-            return File(Image, "Image/Png");
-        }
-
         #region Queries
         [HttpGet("~/api/CMSCore/User/1/Select1ByUserIdToJSON/{UserId:int}")]
         public UserModel Select1ByUserIdToJSON(int UserId)
@@ -708,6 +697,17 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 FailureModel.Insert();
                 return StatusCode(500, ex);
             }
+        }
+
+        [HttpGet("~/api/CMSCore/User/1/GetCaptchaImage")]
+        public FileResult GetCaptchaImage([FromServices] ISixLaborsCaptchaModule sixLaborsCaptcha)
+        {
+            string CaptchaKey = Extensions.GetUniqueKey(6);
+            var Image = sixLaborsCaptcha.Generate(CaptchaKey);
+
+            HttpContext.Session.SetString("CaptchaKey", CaptchaKey);
+
+            return File(Image, "Image/Png");
         }
         #endregion
     }
