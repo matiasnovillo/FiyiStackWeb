@@ -7,15 +7,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,23 +24,25 @@ EXEC [dbo].[Province.Select1ByProvinceId]
  *
  */
 
---Last modification on: 09/12/2022 19:23:15
+--Last modification on: 20/12/2022 20:14:58
 
 SET DATEFORMAT DMY
 
 SELECT
-    [BasicCulture.Province].[ProvinceId] AS [ProvinceId],
-    [BasicCulture.Province].[Name] AS [Name],
-    [BasicCulture.Province].[GeographicalCoordinates] AS [GeographicalCoordinates],
-    [BasicCulture.Province].[Code] AS [Code],
-    [BasicCulture.Province].[CountryId] AS [CountryId],
-    [BasicCulture.Province].[Active] AS [Active],
-    [BasicCulture.Province].[UserCreationId] AS [UserCreationId],
-    [BasicCulture.Province].[UserLastModificationId] AS [UserLastModificationId],
-    [BasicCulture.Province].[DateTimeCreation] AS [DateTimeCreation],
-    [BasicCulture.Province].[DateTimeLastModification] AS [DateTimeLastModification]
+    [BasicCulture.Province].[ProvinceId],
+    [BasicCulture.Province].[Name],
+    [BasicCulture.Province].[GeographicalCoordinates],
+    [BasicCulture.Province].[Code],
+    [BasicCulture.Province].[CountryId],
+    [BasicCulture.Province].[Active],
+    [BasicCulture.Province].[UserCreationId],
+    [BasicCulture.Province].[UserLastModificationId],
+    [BasicCulture.Province].[DateTimeCreation],
+    [BasicCulture.Province].[DateTimeLastModification]
 FROM 
     [BasicCulture.Province]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [BasicCulture.Province].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [BasicCulture.Province].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE 
     1 = 1
     AND [BasicCulture.Province].[ProvinceId] = @ProvinceId

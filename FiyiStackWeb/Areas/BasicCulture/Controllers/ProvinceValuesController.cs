@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:23:16
+//Last modification on: 20/12/2022 20:14:59
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 09/12/2022 19:23:16
+    /// Last modification: 20/12/2022 20:14:59
     /// </summary>
     [ApiController]
     [ProvinceFilter]
@@ -153,6 +151,14 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["basicculture-province-title-page"];
 
@@ -165,9 +171,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     CountryId = Convert.ToInt32(HttpContext.Request.Form["basicculture-province-countryid-input"]);
                 }
                 else
-                { throw new Exception("It's not allowed to save zero values in CountryId"); }
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-province-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-province-userlastmodificationid-input"]);
+                { return StatusCode(400, "It's not allowed to save zero values in CountryId"); }
                 
 
                 ProvinceModel ProvinceModel = new ProvinceModel()
@@ -176,8 +180,6 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     GeographicalCoordinates = GeographicalCoordinates,
                     Code = Code,
                     CountryId = CountryId,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 
@@ -185,16 +187,16 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 int RowsAffected = 0;
 
                 ProvinceModel.DateTimeLastModification = DateTime.Now;
-                //ProvinceModel.UserLastModificationId = TODO Sacarlo de User logueado
+                ProvinceModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     ProvinceModel.DateTimeCreation = DateTime.Now;
-                    //ProvinceModel.UserCreationId = TODO Sacarlo de User logueado
+                    ProvinceModel.UserCreationId = UserId;
                     NewEnteredId = _ProvinceProtocol.Insert(ProvinceModel);
                 }
                 else
                 {
-                    int ProvinceId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int ProvinceId = Convert.ToInt32(HttpContext.Request.Form["basicculture-province-provinceid-input"]);
                     ProvinceModel.ProvinceId = ProvinceId;
                     RowsAffected = _ProvinceProtocol.UpdateByProvinceId(ProvinceModel);
                 }
@@ -252,7 +254,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -285,7 +287,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -319,7 +321,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -353,7 +355,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -394,7 +396,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -430,7 +432,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -464,7 +466,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -498,7 +500,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
