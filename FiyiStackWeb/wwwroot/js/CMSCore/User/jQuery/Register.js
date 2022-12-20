@@ -2,13 +2,17 @@
     $("#message").hide();
 });
 
+$("#reset-captcha").on("click", function (e) {
+    $("#captcha-image").attr("src", "/api/CMSCore/User/1/GetCaptchaImage");
+});
+
 //Create a formdata object
 var formData = new FormData();
 
 $("#register-button").on("click", function (e) {
     $("#message").show();
 
-    if ($("#fantasy-name").val() == "" || $("#email").val() == "" || $("#password").val() == "" || $("#confirm-password").val() == "") {
+    if ($("#fantasy-name").val() == "" || $("#email").val() == "" || $("#password").val() == "" || $("#confirm-password").val() == "" || $("#captcha-text").val() == "") {
         $("#message").addClass("btn-danger");
         $("#message").removeClass("btn-white");
         $("#message").removeClass("btn-success");
@@ -31,6 +35,7 @@ $("#register-button").on("click", function (e) {
     formData.append("fantasy-name", $("#fantasy-name").val());
     formData.append("email", $("#email").val());
     formData.append("password", $("#password").val());
+    formData.append("captcha-text", $("#captcha-text").val());
 
     //Setup request
     var xmlHttpRequest = new XMLHttpRequest();
@@ -86,6 +91,14 @@ $("#register-button").on("click", function (e) {
                 $("#message").removeClass("btn-success");
                 $("#message").html(`<i class="fas fa-exclamation-triangle"></i>
                                 The email is already registered`);
+            }
+            else if (xmlHttpRequest.response == "The captcha is invalid"){
+                //Show danger button
+                $("#message").addClass("btn-danger");
+                $("#message").removeClass("btn-white");
+                $("#message").removeClass("btn-success");
+                $("#message").html(`<i class="fas fa-exclamation-triangle"></i>
+                                The captcha is invalid`);
             }
             else {
                 //Show danger button

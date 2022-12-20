@@ -11,6 +11,7 @@ using FiyiStackWeb.Library;
 using System;
 using FiyiStackWeb.Areas.FiyiStack.Protocols;
 using FiyiStackWeb.Areas.FiyiStack.Services;
+using SixLaborsCaptcha.Mvc.Core;
 
 namespace FiyiStackWeb
 {
@@ -57,6 +58,11 @@ namespace FiyiStackWeb
             services.AddMvc();
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
+            services.AddSixLabCaptcha(x =>
+            {
+                x.DrawLines = 4;
             });
         }
 

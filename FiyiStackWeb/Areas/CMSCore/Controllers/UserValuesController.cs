@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using System.Text;
 using System.IO;
+using SixLaborsCaptcha.Core;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -47,6 +48,17 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         {
             _WebHostEnvironment = WebHostEnvironment;
             _UserProtocol = UserProtocol;
+        }
+
+        [HttpGet("~/api/CMSCore/User/1/GetCaptchaImage")]
+        public FileResult GetCaptchaImage([FromServices] ISixLaborsCaptchaModule sixLaborsCaptcha)
+        {
+            string CaptchaKey = Extensions.GetUniqueKey(6);
+            var Image = sixLaborsCaptcha.Generate(CaptchaKey);
+
+            HttpContext.Session.SetString("CaptchaKey", CaptchaKey);
+
+            return File(Image, "Image/Png");
         }
 
         #region Queries
@@ -495,6 +507,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 string FantasyName = HttpContext.Request.Form["fantasy-name"];
                 string Email = HttpContext.Request.Form["email"];
                 string Password = HttpContext.Request.Form["password"];
+                string CaptchaText = HttpContext.Request.Form["captcha-text"];
+
+                string CaptchaTextInSession = HttpContext.Session.GetString("CaptchaKey");
+
+                if (CaptchaText != CaptchaTextInSession)
+                {
+                    return StatusCode(200, "The captcha is invalid");
+                }
 
                 string Message = _UserProtocol.Register(FantasyName, Email, Password);
 
