@@ -22,6 +22,16 @@ $("#register-button").on("click", function (e) {
         return;
     }
 
+    if ($("#password").val().length < 6 || $("#confirm-password").val().length < 6) {
+        $("#message").addClass("btn-danger");
+        $("#message").removeClass("btn-white");
+        $("#message").removeClass("btn-success");
+        $("#message").html(`<i class="fas fa-exclamation-triangle"></i>
+                                    Minimum required for password = 6 characters`);
+
+        return;
+    }
+
     if ($("#password").val() != $("#confirm-password").val()) {
         $("#message").addClass("btn-danger");
         $("#message").removeClass("btn-white");
