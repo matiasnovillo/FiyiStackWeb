@@ -28,7 +28,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
     ///                    make temporal copies with random data. <br/>
     /// Fields:            12 <br/> 
     /// Dependencies:      0 models <br/>
-    /// Last modification: 20/12/2022 18:01:28
+    /// Last modification: 20/12/2022 19:54:13
     /// </summary>
     [Serializable]
     public partial class FailureModel

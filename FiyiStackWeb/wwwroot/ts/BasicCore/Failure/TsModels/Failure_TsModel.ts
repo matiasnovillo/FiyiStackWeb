@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//12 fields | Last modification on: 20/12/2022 18:01:29 | Stack: 9
+//12 fields | Last modification on: 20/12/2022 19:54:13 | Stack: 9
 
 export class FailureModel {
 

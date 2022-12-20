@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 18:01:29
+//Last modification on: 20/12/2022 19:54:13
 
 $(document).ready(function () {
 
@@ -42,8 +42,6 @@ $("#basiccore-failure-insert-or-update-button").on("click", function (e) {
     formData.append("basiccore-failure-stacktrace-input", $("#basiccore-failure-stacktrace-input").val());
     formData.append("basiccore-failure-source-input", $("#basiccore-failure-source-input").val());
     formData.append("basiccore-failure-comment-input", $("#basiccore-failure-comment-input").val());
-    formData.append("basiccore-failure-usercreationid-input", $("#basiccore-failure-usercreationid-input").val());
-    formData.append("basiccore-failure-userlastmodificationid-input", $("#basiccore-failure-userlastmodificationid-input").val());
     
 
     //Setup request

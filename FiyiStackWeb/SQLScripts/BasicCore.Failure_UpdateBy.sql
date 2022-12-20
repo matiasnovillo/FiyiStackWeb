@@ -40,7 +40,7 @@ SELECT @RowsAffected AS N'@RowsAffected'
  *
  */
 
---Last modification on: 20/12/2022 18:01:28
+--Last modification on: 20/12/2022 19:54:13
 
 UPDATE [BasicCore.Failure] SET
     [HTTPCode] = @HTTPCode,

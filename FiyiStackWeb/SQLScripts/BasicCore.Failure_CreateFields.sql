@@ -2,7 +2,7 @@ USE [fiyistack_FiyiStackWeb]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
---Last modification on: 20/12/2022 18:01:28
+--Last modification on: 20/12/2022 19:54:13
 
 ALTER TABLE [dbo].[BasicCore.Failure] ADD [FailureId] INT IDENTITY(1,1) NOT NULL
 ALTER TABLE [dbo].[BasicCore.Failure] ADD [HTTPCode] INT NOT NULL

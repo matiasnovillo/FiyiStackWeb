@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 18:01:28
+//Last modification on: 20/12/2022 19:54:13
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 18:01:28
+    /// Last modification: 20/12/2022 19:54:13
     /// </summary>
     [ApiController]
     [FailureFilter]
@@ -168,8 +168,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 string StackTrace = HttpContext.Request.Form["basiccore-failure-stacktrace-input"];
                 string Source = HttpContext.Request.Form["basiccore-failure-source-input"];
                 string Comment = HttpContext.Request.Form["basiccore-failure-comment-input"];
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basiccore-failure-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basiccore-failure-userlastmodificationid-input"]);
                 
 
                 FailureModel FailureModel = new FailureModel()
@@ -180,8 +178,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     StackTrace = StackTrace,
                     Source = Source,
                     Comment = Comment,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 

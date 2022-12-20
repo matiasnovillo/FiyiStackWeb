@@ -20,6 +20,6 @@ EXEC [dbo].[BasicCore.Failure.DeleteAll]
  *
  */
 
---Last modification on: 20/12/2022 18:01:28
+--Last modification on: 20/12/2022 19:54:13
 
 DELETE FROM [BasicCore.Failure]

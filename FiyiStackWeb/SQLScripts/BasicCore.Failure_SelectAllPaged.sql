@@ -36,7 +36,7 @@ EXEC [dbo].[BasicCore.Failure.SelectAllPaged]
 SELECT @TotalRows AS N'@TotalRows'
 */
 
---Last modification on: 20/12/2022 18:01:28
+--Last modification on: 20/12/2022 19:54:13
 
 SET DATEFORMAT DMY
 SET NOCOUNT ON
