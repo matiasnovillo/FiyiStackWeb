@@ -163,6 +163,10 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 {
                     Password = Security.EncodeString(HttpContext.Request.Form["cmscore-user-password-input"]); 
                 }
+                else
+                {
+                    return StatusCode(200, "Please, enter a password");
+                }
                 int RoleId = 0; 
                 if (Convert.ToInt32(HttpContext.Request.Form["cmscore-user-roleid-input"]) != 0)
                 {
