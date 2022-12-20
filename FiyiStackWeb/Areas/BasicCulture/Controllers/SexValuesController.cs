@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:23:30
+//Last modification on: 20/12/2022 20:18:05
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 09/12/2022 19:23:30
+    /// Last modification: 20/12/2022 20:18:05
     /// </summary>
     [ApiController]
     [SexFilter]
@@ -153,19 +151,23 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["basicculture-sex-title-page"];
 
                 string Name = HttpContext.Request.Form["basicculture-sex-name-input"];
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-sex-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-sex-userlastmodificationid-input"]);
                 
 
                 SexModel SexModel = new SexModel()
                 {
                     Name = Name,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 
@@ -173,16 +175,16 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 int RowsAffected = 0;
 
                 SexModel.DateTimeLastModification = DateTime.Now;
-                //SexModel.UserLastModificationId = TODO Sacarlo de User logueado
+                SexModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     SexModel.DateTimeCreation = DateTime.Now;
-                    //SexModel.UserCreationId = TODO Sacarlo de User logueado
+                    SexModel.UserCreationId = UserId;
                     NewEnteredId = _SexProtocol.Insert(SexModel);
                 }
                 else
                 {
-                    int SexId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int SexId = Convert.ToInt32(HttpContext.Request.Form["basicculture-sex-sexid-input"]);
                     SexModel.SexId = SexId;
                     RowsAffected = _SexProtocol.UpdateBySexId(SexModel);
                 }
@@ -240,7 +242,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -273,7 +275,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -307,7 +309,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -341,7 +343,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -382,7 +384,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -418,7 +420,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -452,7 +454,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -486,7 +488,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion

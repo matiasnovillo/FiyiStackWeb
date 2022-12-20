@@ -2,25 +2,25 @@
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
 */
 
 //Stack: 10
 
-//Last modification on: 09/12/2022 19:23:30
+//Last modification on: 20/12/2022 20:18:05
 
 $(document).ready(function () {
-    //This fix an style error in Quill
-    $("span.ql-picker-label svg[viewBox]").css("width", "20px");
+
 });
+
+//Used for Quill Editor
+
 
 //Used for file input
 
@@ -37,8 +37,6 @@ $("#basicculture-sex-insert-or-update-button").on("click", function (e) {
     formData.append("basicculture-sex-sexid-input", $("#basicculture-sex-sexid-input").val());
 
     formData.append("basicculture-sex-name-input", $("#basicculture-sex-name-input").val());
-    formData.append("basicculture-sex-usercreationid-input", $("#basicculture-sex-usercreationid-input").val());
-    formData.append("basicculture-sex-userlastmodificationid-input", $("#basicculture-sex-userlastmodificationid-input").val());
     
 
     //Setup request
@@ -98,7 +96,7 @@ $("#basicculture-sex-insert-or-update-button").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/Testing/Test/1/InsertOrUpdateAsync", true);
+    xmlHttpRequest.open("POST", "/api/BasicCulture/Sex/1/InsertOrUpdateAsync", true);
     //Send request
     xmlHttpRequest.send(formData);
 });
