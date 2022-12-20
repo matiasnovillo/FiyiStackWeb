@@ -20,11 +20,11 @@ var CityModel = /** @class */ (function () {
     //Queries
     CityModel.Select1ByCityId = function (CityId) {
         var URL = "/api/BasicCulture/City/1/Select1ByCityIdToJSON/" + CityId;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     CityModel.SelectAll = function () {
         var URL = "/api/BasicCulture/City/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     CityModel.SelectAllPaged = function (citymodelQuery) {
         var URL = "/api/BasicCulture/City/1/SelectAllPagedToJSON";

@@ -20,11 +20,11 @@ var CountryModel = /** @class */ (function () {
     //Queries
     CountryModel.Select1ByCountryId = function (CountryId) {
         var URL = "/api/BasicCulture/Country/1/Select1ByCountryIdToJSON/" + CountryId;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     CountryModel.SelectAll = function () {
         var URL = "/api/BasicCulture/Country/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     CountryModel.SelectAllPaged = function (countrymodelQuery) {
         var URL = "/api/BasicCulture/Country/1/SelectAllPagedToJSON";
