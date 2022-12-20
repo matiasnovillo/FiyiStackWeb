@@ -20,11 +20,11 @@ var ParameterModel = /** @class */ (function () {
     //Queries
     ParameterModel.Select1ByParameterId = function (ParameterId) {
         var URL = "/api/BasicCore/Parameter/1/Select1ByParameterIdToJSON/" + ParameterId;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     ParameterModel.SelectAll = function () {
         var URL = "/api/BasicCore/Parameter/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     ParameterModel.SelectAllPaged = function (parametermodelQuery) {
         var URL = "/api/BasicCore/Parameter/1/SelectAllPagedToJSON";
