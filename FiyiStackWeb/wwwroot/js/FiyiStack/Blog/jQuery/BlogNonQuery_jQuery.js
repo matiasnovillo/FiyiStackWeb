@@ -22,22 +22,22 @@ $(document).ready(function () {
 });
 
 let fiyistackblogbodytoolbaroptions = [
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['link', 'blockquote', 'code-block'],
+    ["bold", "italic", "underline", "strike"],        // toggled buttons
+    ["link", "blockquote", "code-block"],
 
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-    [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
-    ['image', 'video'],
-    ['clean']                                         // remove formatting button
+    [{ "header": 1 }, { "header": 2 }],               // custom button values
+    [{ "list": "ordered" }, { "list": "bullet" }],
+    [{ "script": "sub" }, { "script": "super" }],      // superscript/subscript
+    [{ "indent": "-1" }, { "indent": "+1" }],          // outdent/indent
+    [{ "direction": "rtl" }],                         // text direction
+    ["image", "video"],
+    ["clean"]                                         // remove formatting button
 ];
-let fiyistackblogbodyquill = new Quill('#fiyistack-blog-body-input', {
+let fiyistackblogbodyquill = new Quill("#fiyistack-blog-body-input", {
     modules: {
         toolbar: fiyistackblogbodytoolbaroptions
     },
-    theme: 'snow'
+    theme: "snow"
 });
 
 //Used for file input
