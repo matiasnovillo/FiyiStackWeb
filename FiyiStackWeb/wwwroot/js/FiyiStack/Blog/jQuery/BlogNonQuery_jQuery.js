@@ -18,6 +18,7 @@
 //Last modification on: 16/12/2022 10:50:10
 
 $(document).ready(function () {
+    fiyistackblogbodyquill.root.innerHTML = $("#fiyistack-blog-body-hidden-value").val();
 });
 
 let fiyistackblogbodytoolbaroptions = [
@@ -29,7 +30,6 @@ let fiyistackblogbodytoolbaroptions = [
     [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
     [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
     [{ 'direction': 'rtl' }],                         // text direction
-    ['background', 'color'],
     ['image', 'video'],
     ['clean']                                         // remove formatting button
 ];
@@ -41,9 +41,11 @@ let fiyistackblogbodyquill = new Quill('#fiyistack-blog-body-input', {
 });
 
 //Used for file input
-var fiyistackblogbackgroundimageinput;
+let fiyistackblogbackgroundimageinput;
+let fiyistackblogbackgroundimageboolfileadded;
 $("#fiyistack-blog-backgroundimage-input").on("change", function (e) {
     fiyistackblogbackgroundimageinput = $(this).get(0).files;
+    fiyistackblogbackgroundimageboolfileadded = true;
     formData.append("fiyistack-blog-backgroundimage-input", fiyistackblogbackgroundimageinput[0], fiyistackblogbackgroundimageinput[0].name);
 });
 
@@ -60,6 +62,9 @@ $("#fiyistack-blog-insert-or-update-button").on("click", function (e) {
 
     formData.append("fiyistack-blog-title-input", $("#fiyistack-blog-title-input").val());
     formData.append("fiyistack-blog-body-input", fiyistackblogbodyquill.root.innerHTML);
+    if (!fiyistackblogbackgroundimageboolfileadded) {
+        formData.append("fiyistack-blog-backgroundimage-input", $("#fiyistack-blog-backgroundimage-readonly").val());
+    }
 
     //Setup request
     var xmlHttpRequest = new XMLHttpRequest();

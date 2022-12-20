@@ -164,35 +164,44 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 
                 string Title = HttpContext.Request.Form["fiyistack-blog-title-input"];
                 string Body = HttpContext.Request.Form["fiyistack-blog-body-input"];
-                string BackgroundImage = "";
+                string BackgroundImage = HttpContext.Request.Form["fiyistack-blog-backgroundimage-input"];
                 if (HttpContext.Request.Form.Files.Count != 0)
                 {
                     BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
                 
-
-                BlogModel BlogModel = new BlogModel()
-                {
-                    Title = Title,
-                    Body = Body,
-                    BackgroundImage = BackgroundImage,
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                BlogModel.DateTimeLastModification = DateTime.Now;
-                BlogModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    BlogModel.DateTimeCreation = DateTime.Now;
-                    BlogModel.UserCreationId = UserId;
+                    //Add
+                    BlogModel BlogModel = new BlogModel()
+                    {
+                        Title = Title,
+                        Body = Body,
+                        BackgroundImage = BackgroundImage,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        Active = true
+
+                    };
+
                     NewEnteredId = _BlogProtocol.Insert(BlogModel);
                 }
                 else
                 {
-                    int BlogId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
-                    BlogModel.BlogId = BlogId;
+                    //Edit
+                    int BlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-blogid-input"]);
+
+                    BlogModel BlogModel = new BlogModel(BlogId);
+
+                    BlogModel.Title = Title;
+                    BlogModel.Body = Body;
+                    BlogModel.BackgroundImage = BackgroundImage;
+
                     RowsAffected = _BlogProtocol.UpdateByBlogId(BlogModel);
                 }
                 
