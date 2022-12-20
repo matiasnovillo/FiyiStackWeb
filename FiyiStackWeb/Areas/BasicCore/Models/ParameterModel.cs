@@ -28,7 +28,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
     ///                    make temporal copies with random data. <br/>
     /// Fields:            9 <br/> 
     /// Dependencies:      0 models <br/>
-    /// Last modification: 20/12/2022 18:17:17
+    /// Last modification: 20/12/2022 19:56:32
     /// </summary>
     [Serializable]
     public partial class ParameterModel
@@ -329,7 +329,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
-        #endregion
 
         public string Select1ByName(string Name)
         {
@@ -348,6 +347,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
+
+        #endregion
 
         #region Non-Queries
         /// <summary>

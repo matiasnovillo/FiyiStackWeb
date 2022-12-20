@@ -20,7 +20,7 @@ EXEC [dbo].[BasicCore.Parameter.DeleteAll]
  *
  */
 
---Last modification on: 20/12/2022 18:17:17
+--Last modification on: 20/12/2022 19:56:32
 
 DELETE FROM [BasicCore.Parameter]C [dbo].[BasicCore.Parameter.DeleteAll]
  *

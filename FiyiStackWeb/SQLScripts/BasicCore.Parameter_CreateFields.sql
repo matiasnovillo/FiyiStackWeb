@@ -2,7 +2,7 @@ USE [fiyistack_FiyiStackWeb]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
---Last modification on: 20/12/2022 18:17:17
+--Last modification on: 20/12/2022 19:56:32
 
 ALTER TABLE [dbo].[BasicCore.Parameter] ADD [ParameterId] INT IDENTITY(1,1) NOT NULL
 ALTER TABLE [dbo].[BasicCore.Parameter] ADD [Name] VARCHAR(200) NOT NULL

@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//9 fields | Last modification on: 20/12/2022 18:17:17 | Stack: 9
+//9 fields | Last modification on: 20/12/2022 19:56:32 | Stack: 9
 
 export class ParameterModel {
 

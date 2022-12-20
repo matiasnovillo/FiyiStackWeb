@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 18:17:17
+//Last modification on: 20/12/2022 19:56:32
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 18:17:17
+    /// Last modification: 20/12/2022 19:56:32
     /// </summary>
     [ApiController]
     [ParameterFilter]
@@ -165,8 +165,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 string Name = HttpContext.Request.Form["basiccore-parameter-name-input"];
                 string Value = HttpContext.Request.Form["basiccore-parameter-value-input"];
                 bool IsPrivate = Convert.ToBoolean(HttpContext.Request.Form["basiccore-parameter-isprivate-input"]);
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basiccore-parameter-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basiccore-parameter-userlastmodificationid-input"]);
                 
 
                 ParameterModel ParameterModel = new ParameterModel()
@@ -174,8 +172,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     Name = Name,
                     Value = Value,
                     IsPrivate = IsPrivate,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 

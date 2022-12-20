@@ -28,7 +28,7 @@ SELECT @RowsAffected AS N'@RowsAffected'
  *
  */
 
---Last modification on: 20/12/2022 18:17:17
+--Last modification on: 20/12/2022 19:56:32
 
 DELETE FROM 
     [BasicCore.Parameter]

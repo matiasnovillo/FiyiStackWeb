@@ -14,7 +14,7 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 20/12/2022 18:17:17
+//Last modification on: 20/12/2022 19:56:32
 
 namespace FiyiStackWeb.Areas.BasicCore.Protocols
 {
@@ -24,7 +24,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Protocols
     /// Function:          This protocol/interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 20/12/2022 18:17:17
+    /// Last modification: 20/12/2022 19:56:32
     /// </summary>
     public partial interface ParameterProtocol
     {
