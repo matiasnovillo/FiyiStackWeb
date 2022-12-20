@@ -4,15 +4,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,7 +24,7 @@ SELECT	'Counter' = @Counter
  *
  */
 
---Last modification on: 09/12/2022 19:23:19
+--Last modification on: 20/12/2022 18:34:52
 
 SELECT 
 	COUNT(*)
