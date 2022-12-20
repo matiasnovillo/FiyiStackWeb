@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:22:49
+//Last modification on: 20/12/2022 20:47:32
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 09/12/2022 19:22:49
+    /// Last modification: 20/12/2022 20:47:32
     /// </summary>
     [ApiController]
     [RoleFilter]
@@ -153,19 +151,23 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["cmscore-role-title-page"];
 
                 string Name = HttpContext.Request.Form["cmscore-role-name-input"];
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-role-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-role-userlastmodificationid-input"]);
                 
 
                 RoleModel RoleModel = new RoleModel()
                 {
                     Name = Name,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 
@@ -173,16 +175,16 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 int RowsAffected = 0;
 
                 RoleModel.DateTimeLastModification = DateTime.Now;
-                //RoleModel.UserLastModificationId = TODO Sacarlo de User logueado
+                RoleModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     RoleModel.DateTimeCreation = DateTime.Now;
-                    //RoleModel.UserCreationId = TODO Sacarlo de User logueado
+                    RoleModel.UserCreationId = UserId;
                     NewEnteredId = _RoleProtocol.Insert(RoleModel);
                 }
                 else
                 {
-                    int RoleId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int RoleId = Convert.ToInt32(HttpContext.Request.Form["cmscore-role-roleid-input"]);
                     RoleModel.RoleId = RoleId;
                     RowsAffected = _RoleProtocol.UpdateByRoleId(RoleModel);
                 }
@@ -240,7 +242,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -273,7 +275,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -307,7 +309,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -341,7 +343,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -382,7 +384,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -418,7 +420,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -452,7 +454,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -486,7 +488,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
