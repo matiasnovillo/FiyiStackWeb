@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 08/12/2022 7:45:13
+//Last modification on: 20/12/2022 18:01:28
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 08/12/2022 7:45:13
+    /// Last modification: 20/12/2022 18:01:28
     /// </summary>
     [ApiController]
     [FailureFilter]
@@ -153,6 +151,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["basiccore-failure-title-page"];
 
@@ -183,16 +189,16 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 int RowsAffected = 0;
 
                 FailureModel.DateTimeLastModification = DateTime.Now;
-                //FailureModel.UserLastModificationId = TODO Sacarlo de User logueado
+                FailureModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     FailureModel.DateTimeCreation = DateTime.Now;
-                    //FailureModel.UserCreationId = TODO Sacarlo de User logueado
+                    FailureModel.UserCreationId = UserId;
                     NewEnteredId = _FailureProtocol.Insert(FailureModel);
                 }
                 else
                 {
-                    int FailureId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int FailureId = Convert.ToInt32(HttpContext.Request.Form["basiccore-failure-failureid-input"]);
                     FailureModel.FailureId = FailureId;
                     RowsAffected = _FailureProtocol.UpdateByFailureId(FailureModel);
                 }
@@ -250,7 +256,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -283,7 +289,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -317,7 +323,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -351,7 +357,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -392,7 +398,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -428,7 +434,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -462,7 +468,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -496,7 +502,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
