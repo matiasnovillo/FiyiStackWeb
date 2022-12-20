@@ -9,15 +9,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
 namespace FiyiStackWeb.Areas.CMSCore.Models
@@ -30,7 +28,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     ///                    make temporal copies with random data. <br/>
     /// Fields:            8 <br/> 
     /// Dependencies:      0 models <br/>
-    /// Last modification: 09/12/2022 19:22:56
+    /// Last modification: 20/12/2022 20:28:32
     /// </summary>
     [Serializable]
     public partial class RoleMenuModel
@@ -371,18 +369,18 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public List<RoleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
+        public List<roleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
         {
             try
             {
-                List<RoleMenuForChechboxes> lstRoleMenuForCheckboxes = new List<RoleMenuForChechboxes>();
+                List<roleMenuForChechboxes> lstRoleMenuForCheckboxes = new List<roleMenuForChechboxes>();
                 DynamicParameters dp = new DynamicParameters();
 
                 dp.Add("RoleId", RoleId, DbType.Int32, ParameterDirection.Input);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstRoleMenuForCheckboxes = (List<RoleMenuForChechboxes>)sqlConnection.Query<RoleMenuForChechboxes>("[dbo].[CMSCore.RoleMenu.SelectAllByRoleId]", dp, commandType: CommandType.StoredProcedure);
+                    lstRoleMenuForCheckboxes = (List<roleMenuForChechboxes>)sqlConnection.Query<roleMenuForChechboxes>("[dbo].[CMSCore.RoleMenu.SelectAllByRoleId]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 return lstRoleMenuForCheckboxes;
@@ -696,7 +694,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
                     var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.RoleMenu.UpdateByRoleIdByMenuId]", commandType: CommandType.StoredProcedure, param: dp);
-                    DataTable.Load(dataReader);;
+                    DataTable.Load(dataReader);
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -809,7 +807,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
         public List<RoleMenuModel> lstRoleMenuModel { get; set; }
     }
 
-    public partial class RoleMenuForChechboxes
+    public partial class roleMenuForChechboxes
     {
         public int Value { get; set; }
         public string Text { get; set; }

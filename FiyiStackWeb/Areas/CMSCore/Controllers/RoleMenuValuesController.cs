@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:22:56
+//Last modification on: 20/12/2022 20:28:32
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 09/12/2022 19:22:56
+    /// Last modification: 20/12/2022 20:28:32
     /// </summary>
     [ApiController]
     [RoleMenuFilter]
@@ -147,7 +145,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpGet("~/api/CMSCore/RoleMenu/1/SelectAllByRoleIdToRoleMenuForChechboxes/{RoleId:int}")]
-        public List<RoleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
+        public List<roleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
         {
             try
             {
@@ -185,6 +183,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["cmscore-rolemenu-title-page"];
 
@@ -194,24 +200,20 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     RoleId = Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-roleid-input"]);
                 }
                 else
-                { throw new Exception("It's not allowed to save zero values in RoleId"); }
+                { return StatusCode(400, "It's not allowed to save zero values in RoleId"); }
                 int MenuId = 0; 
                 if (Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-menuid-input"]) != 0)
                 {
                     MenuId = Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-menuid-input"]);
                 }
                 else
-                { throw new Exception("It's not allowed to save zero values in MenuId"); }
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-userlastmodificationid-input"]);
+                { return StatusCode(400, "It's not allowed to save zero values in MenuId"); }
                 
 
                 RoleMenuModel RoleMenuModel = new RoleMenuModel()
                 {
                     RoleId = RoleId,
                     MenuId = MenuId,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 
@@ -219,16 +221,16 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 int RowsAffected = 0;
 
                 RoleMenuModel.DateTimeLastModification = DateTime.Now;
-                //RoleMenuModel.UserLastModificationId = TODO Sacarlo de User logueado
+                RoleMenuModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     RoleMenuModel.DateTimeCreation = DateTime.Now;
-                    //RoleMenuModel.UserCreationId = TODO Sacarlo de User logueado
+                    RoleMenuModel.UserCreationId = UserId;
                     NewEnteredId = _RoleMenuProtocol.Insert(RoleMenuModel);
                 }
                 else
                 {
-                    int RoleMenuId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int RoleMenuId = Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-rolemenuid-input"]);
                     RoleMenuModel.RoleMenuId = RoleMenuId;
                     RowsAffected = _RoleMenuProtocol.UpdateByRoleMenuId(RoleMenuModel);
                 }
@@ -286,10 +288,10 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
-        }
 
+        }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/InsertPermissions/")]
         public IActionResult InsertPermissions()
@@ -319,7 +321,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 {
                     _RoleMenuProtocol.UpdateByRoleIdByMenuId(RoleId, MenuId[i], Selected[i]);
                 }
-                
+
 
 
                 return StatusCode(200);
@@ -375,7 +377,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -409,7 +411,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -443,7 +445,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -484,7 +486,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -520,7 +522,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -554,7 +556,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -588,7 +590,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion

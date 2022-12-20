@@ -2,25 +2,25 @@
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
 */
 
 //Stack: 10
 
-//Last modification on: 09/12/2022 19:22:56
+//Last modification on: 20/12/2022 20:28:32
 
 $(document).ready(function () {
-    //This fix an style error in Quill
-    $("span.ql-picker-label svg[viewBox]").css("width", "20px");
+
 });
+
+//Used for Quill Editor
+
 
 //Used for file input
 
@@ -38,8 +38,6 @@ $("#cmscore-rolemenu-insert-or-update-button").on("click", function (e) {
 
     formData.append("cmscore-rolemenu-roleid-input", $("#cmscore-rolemenu-roleid-input").val());
     formData.append("cmscore-rolemenu-menuid-input", $("#cmscore-rolemenu-menuid-input").val());
-    formData.append("cmscore-rolemenu-usercreationid-input", $("#cmscore-rolemenu-usercreationid-input").val());
-    formData.append("cmscore-rolemenu-userlastmodificationid-input", $("#cmscore-rolemenu-userlastmodificationid-input").val());
     
 
     //Setup request
@@ -99,7 +97,7 @@ $("#cmscore-rolemenu-insert-or-update-button").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/Testing/Test/1/InsertOrUpdateAsync", true);
+    xmlHttpRequest.open("POST", "/api/CMSCore/RoleMenu/1/InsertOrUpdateAsync", true);
     //Send request
     xmlHttpRequest.send(formData);
 });
