@@ -44,7 +44,7 @@ SELECT @NewEnteredId AS N'@NewEnteredId'
  *
  */
 
---Last modification on: 20/12/2022 18:48:59
+--Last modification on: 20/12/2022 20:12:21
 
 INSERT INTO [BasicCulture.Planet]
 (

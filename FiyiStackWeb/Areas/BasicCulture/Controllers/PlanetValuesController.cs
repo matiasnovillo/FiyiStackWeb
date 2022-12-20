@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 18:48:59
+//Last modification on: 20/12/2022 20:12:21
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 18:48:59
+    /// Last modification: 20/12/2022 20:12:21
     /// </summary>
     [ApiController]
     [PlanetFilter]
@@ -164,16 +164,12 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 
                 string Name = HttpContext.Request.Form["basicculture-planet-name-input"];
                 string Code = HttpContext.Request.Form["basicculture-planet-code-input"];
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-planet-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["basicculture-planet-userlastmodificationid-input"]);
                 
 
                 PlanetModel PlanetModel = new PlanetModel()
                 {
                     Name = Name,
                     Code = Code,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 

@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 18:49:00
+//Last modification on: 20/12/2022 20:12:21
 
 $(document).ready(function () {
 
@@ -38,8 +38,6 @@ $("#basicculture-planet-insert-or-update-button").on("click", function (e) {
 
     formData.append("basicculture-planet-name-input", $("#basicculture-planet-name-input").val());
     formData.append("basicculture-planet-code-input", $("#basicculture-planet-code-input").val());
-    formData.append("basicculture-planet-usercreationid-input", $("#basicculture-planet-usercreationid-input").val());
-    formData.append("basicculture-planet-userlastmodificationid-input", $("#basicculture-planet-userlastmodificationid-input").val());
     
 
     //Setup request

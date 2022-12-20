@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//8 fields | Last modification on: 20/12/2022 18:49:00 | Stack: 9
+//8 fields | Last modification on: 20/12/2022 20:12:21 | Stack: 9
 
 export class PlanetModel {
 

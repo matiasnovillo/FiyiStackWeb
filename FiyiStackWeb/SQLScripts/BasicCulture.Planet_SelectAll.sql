@@ -20,7 +20,7 @@ EXEC [dbo].[BasicCulture.Planet.SelectAll]
  *
  */
 
---Last modification on: 20/12/2022 18:48:59
+--Last modification on: 20/12/2022 20:12:21
 
 SET DATEFORMAT DMY
 

@@ -13,7 +13,7 @@ var ajax_1 = require("rxjs/ajax");
  * in all copies or substantial portions of the Software.
  *
 */
-//8 fields | Last modification on: 20/12/2022 18:49:00 | Stack: 9
+//8 fields | Last modification on: 20/12/2022 20:12:21 | Stack: 9
 var PlanetModel = /** @class */ (function () {
     function PlanetModel() {
     }
