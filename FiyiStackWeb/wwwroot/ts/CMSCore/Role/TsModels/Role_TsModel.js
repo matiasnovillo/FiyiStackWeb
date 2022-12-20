@@ -20,11 +20,11 @@ var RoleModel = /** @class */ (function () {
     //Queries
     RoleModel.Select1ByRoleId = function (RoleId) {
         var URL = "/api/CMSCore/Role/1/Select1ByRoleIdToJSON/" + RoleId;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     RoleModel.SelectAll = function () {
         var URL = "/api/CMSCore/Role/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     RoleModel.SelectAllPaged = function (rolemodelQuery) {
         var URL = "/api/CMSCore/Role/1/SelectAllPagedToJSON";
