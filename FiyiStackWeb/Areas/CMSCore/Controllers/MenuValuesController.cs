@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 09/12/2022 19:23:03
+//Last modification on: 20/12/2022 20:22:13
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 09/12/2022 19:23:03
+    /// Last modification: 20/12/2022 20:22:13
     /// </summary>
     [ApiController]
     [MenuFilter]
@@ -153,6 +151,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["cmscore-menu-title-page"];
 
@@ -161,8 +167,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 int Order = Convert.ToInt32(HttpContext.Request.Form["cmscore-menu-order-input"]);
                 string URLPath = HttpContext.Request.Form["cmscore-menu-urlpath-input"];
                 string IconURLPath = HttpContext.Request.Form["cmscore-menu-iconurlpath-input"];
-                int UserCreationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-menu-usercreationid-input"]);
-                int UserLastModificationId = Convert.ToInt32(HttpContext.Request.Form["cmscore-menu-userlastmodificationid-input"]);
                 
 
                 MenuModel MenuModel = new MenuModel()
@@ -172,8 +176,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Order = Order,
                     URLPath = URLPath,
                     IconURLPath = IconURLPath,
-                    UserCreationId = UserCreationId,
-                    UserLastModificationId = UserLastModificationId,
                     
                 };
 
@@ -181,16 +183,16 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 int RowsAffected = 0;
 
                 MenuModel.DateTimeLastModification = DateTime.Now;
-                //MenuModel.UserLastModificationId = TODO Sacarlo de User logueado
+                MenuModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     MenuModel.DateTimeCreation = DateTime.Now;
-                    //MenuModel.UserCreationId = TODO Sacarlo de User logueado
+                    MenuModel.UserCreationId = UserId;
                     NewEnteredId = _MenuProtocol.Insert(MenuModel);
                 }
                 else
                 {
-                    int MenuId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int MenuId = Convert.ToInt32(HttpContext.Request.Form["cmscore-menu-menuid-input"]);
                     MenuModel.MenuId = MenuId;
                     RowsAffected = _MenuProtocol.UpdateByMenuId(MenuModel);
                 }
@@ -248,7 +250,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -281,7 +283,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -315,7 +317,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -349,7 +351,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -390,7 +392,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -426,7 +428,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -460,7 +462,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -494,7 +496,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion

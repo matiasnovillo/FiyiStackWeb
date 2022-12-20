@@ -7,15 +7,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,26 +24,28 @@ EXEC [dbo].[Menu.Select1ByMenuId]
  *
  */
 
---Last modification on: 09/12/2022 19:23:03
+--Last modification on: 20/12/2022 20:22:13
 
 SET DATEFORMAT DMY
 
 SELECT
-    [CMSCore.Menu].[MenuId] AS [MenuId],
-    [CMSCore.Menu].[Name] AS [Name],
-    [CMSCore.Menu].[MenuFatherId] AS [MenuFatherId],
-    [CMSCore.Menu].[Order] AS [Order],
-    [CMSCore.Menu].[URLPath] AS [URLPath],
-    [CMSCore.Menu].[IconURLPath] AS [IconURLPath],
-    [CMSCore.Menu].[Active] AS [Active],
-    [CMSCore.Menu].[UserCreationId] AS [UserCreationId],
-    [CMSCore.Menu].[UserLastModificationId] AS [UserLastModificationId],
-    [CMSCore.Menu].[DateTimeCreation] AS [DateTimeCreation],
-    [CMSCore.Menu].[DateTimeLastModification] AS [DateTimeLastModification]
+    [CMSCore.Menu].[MenuId],
+    [CMSCore.Menu].[Name],
+    [CMSCore.Menu].[MenuFatherId],
+    [CMSCore.Menu].[Order],
+    [CMSCore.Menu].[URLPath],
+    [CMSCore.Menu].[IconURLPath],
+    [CMSCore.Menu].[Active],
+    [CMSCore.Menu].[UserCreationId],
+    [CMSCore.Menu].[UserLastModificationId],
+    [CMSCore.Menu].[DateTimeCreation],
+    [CMSCore.Menu].[DateTimeLastModification]
 FROM 
     [CMSCore.Menu]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [CMSCore.Menu].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [CMSCore.Menu].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE 
     1 = 1
     AND [CMSCore.Menu].[MenuId] = @MenuId
 ORDER BY 
-    [CMSCore.Menu].[MenuId]
+    [CMSCore.Menu].[MenuId]Menu].[MenuId]
