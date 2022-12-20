@@ -20,11 +20,11 @@ var FailureModel = /** @class */ (function () {
     //Queries
     FailureModel.Select1ByFailureId = function (FailureId) {
         var URL = "/api/BasicCore/Failure/1/Select1ByFailureIdToJSON/" + FailureId;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     FailureModel.SelectAll = function () {
         var URL = "/api/BasicCore/Failure/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     FailureModel.SelectAllPaged = function (failuremodelQuery) {
         var URL = "/api/BasicCore/Failure/1/SelectAllPagedToJSON";
