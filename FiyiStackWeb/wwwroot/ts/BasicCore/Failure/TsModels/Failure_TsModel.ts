@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//12 fields | Last modification on: 20/12/2022 19:54:13 | Stack: 9
+//12 fields | Last modification on: 21/12/2022 9:25:46 | Stack: 9
 
 export class FailureModel {
 
@@ -108,5 +108,5 @@ export class failuremodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstFailureModel?: FailureModel[];
+    lstFailureModel?: FailureModel[] | undefined;
 }

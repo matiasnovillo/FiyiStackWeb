@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 19:54:13
+//Last modification on: 21/12/2022 9:25:46
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 19:54:13
+    /// Last modification: 21/12/2022 9:25:46
     /// </summary>
     [ApiController]
     [FailureFilter]
@@ -170,32 +170,46 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 string Comment = HttpContext.Request.Form["basiccore-failure-comment-input"];
                 
 
-                FailureModel FailureModel = new FailureModel()
-                {
-                    HTTPCode = HTTPCode,
-                    EmergencyLevel = EmergencyLevel,
-                    Message = Message,
-                    StackTrace = StackTrace,
-                    Source = Source,
-                    Comment = Comment,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                FailureModel.DateTimeLastModification = DateTime.Now;
-                FailureModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    FailureModel.DateTimeCreation = DateTime.Now;
-                    FailureModel.UserCreationId = UserId;
+                    //Add
+                    FailureModel FailureModel = new FailureModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        HTTPCode = HTTPCode,
+                        EmergencyLevel = EmergencyLevel,
+                        Message = Message,
+                        StackTrace = StackTrace,
+                        Source = Source,
+                        Comment = Comment,
+                        
+                    };
+                    
                     NewEnteredId = _FailureProtocol.Insert(FailureModel);
                 }
                 else
                 {
+                    //Update
                     int FailureId = Convert.ToInt32(HttpContext.Request.Form["basiccore-failure-failureid-input"]);
-                    FailureModel.FailureId = FailureId;
+                    FailureModel FailureModel = new FailureModel(FailureId);
+                    
+                    FailureModel.UserLastModificationId = UserId;
+                    FailureModel.DateTimeLastModification = DateTime.Now;
+                    FailureModel.HTTPCode = HTTPCode;
+                    FailureModel.EmergencyLevel = EmergencyLevel;
+                    FailureModel.Message = Message;
+                    FailureModel.StackTrace = StackTrace;
+                    FailureModel.Source = Source;
+                    FailureModel.Comment = Comment;
+                                       
+
                     RowsAffected = _FailureProtocol.UpdateByFailureId(FailureModel);
                 }
                 

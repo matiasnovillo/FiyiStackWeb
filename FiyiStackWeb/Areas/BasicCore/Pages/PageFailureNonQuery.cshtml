@@ -14,8 +14,6 @@
     string StackTrace;
     string Source;
     string Comment;
-    int UserCreationId;
-    int UserLastModificationId;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?FailureId=0"))
@@ -30,8 +28,6 @@
         StackTrace = "";
         Source = "";
         Comment = "";
-        UserCreationId = 0;
-        UserLastModificationId = 0;
         
     }
     else
@@ -49,8 +45,6 @@
         StackTrace = FailureModel.StackTrace;
         Source = FailureModel.Source;
         Comment = FailureModel.Comment;
-        UserCreationId = FailureModel.UserCreationId;
-        UserLastModificationId = FailureModel.UserLastModificationId;
         
     }
 
@@ -66,7 +60,7 @@
  */
     
 //Stack: 11
-//Last modification on: 20/12/2022 19:54:13
+//Last modification on: 21/12/2022 9:25:46
 
 }
 <!-- Header -->
@@ -278,48 +272,6 @@
                                 </textarea>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="comment-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserCreationId -->
-                        <div class="form-group mb-3">
-                            <label for="basiccore-failure-usercreationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserCreationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserCreationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="basiccore-failure-usercreationid-input" value="@UserCreationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="usercreationid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserLastModificationId -->
-                        <div class="form-group mb-3">
-                            <label for="basiccore-failure-userlastmodificationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserLastModificationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserLastModificationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="basiccore-failure-userlastmodificationid-input" value="@UserLastModificationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="userlastmodificationid-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>
