@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//11 fields | Last modification on: 20/12/2022 21:44:06 | Stack: 9
+//11 fields | Last modification on: 21/12/2022 11:12:12 | Stack: 9
 
 export class UserModel {
 
@@ -107,5 +107,5 @@ export class usermodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstUserModel?: UserModel[];
+    lstUserModel?: UserModel[] | undefined;
 }

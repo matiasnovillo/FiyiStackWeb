@@ -12,8 +12,6 @@
     string Email;
     string Password;
     int RoleId;
-    int UserCreationId;
-    int UserLastModificationId;
     string RegistrationToken;
     
 
@@ -26,9 +24,7 @@
         FantasyName = "";
         Email = "";
         Password = "";
-        RoleId = 0;UserCreationId = 0;
-        UserLastModificationId = 0;
-        RegistrationToken = "";
+        RoleId = 0;RegistrationToken = "";
         
     }
     else
@@ -44,8 +40,6 @@
         Email = UserModel.Email;
         Password = UserModel.Password;
         RoleId = UserModel.RoleId;
-        UserCreationId = UserModel.UserCreationId;
-        UserLastModificationId = UserModel.UserLastModificationId;
         RegistrationToken = UserModel.RegistrationToken;
         
     }
@@ -62,7 +56,7 @@
  */
     
 //Stack: 11
-//Last modification on: 20/12/2022 21:44:06
+//Last modification on: 21/12/2022 11:12:12
 
 }
 <!-- Header -->
@@ -79,7 +73,7 @@
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item">
-                                <a href="javascript:void(0)">
+                                <a href="/CMSCore/DashboardIndex">
                                     <i class="fas fa-home"></i>
                                 </a>
                             </li>
@@ -231,48 +225,6 @@
                                 </ul>
                                 <div class="input-group-append">
                                     <button class="btn btn-danger border-0 ml-2" data-toggle="tooltip" data-placement="left" title="This value is required" type="button" id="roleid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserCreationId -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-user-usercreationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserCreationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserCreationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="cmscore-user-usercreationid-input" value="@UserCreationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="usercreationid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserLastModificationId -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-user-userlastmodificationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserLastModificationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserLastModificationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="cmscore-user-userlastmodificationid-input" value="@UserLastModificationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="userlastmodificationid-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>
