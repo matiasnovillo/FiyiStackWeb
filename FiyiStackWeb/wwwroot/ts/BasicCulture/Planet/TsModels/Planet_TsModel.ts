@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//8 fields | Last modification on: 20/12/2022 20:12:21 | Stack: 9
+//8 fields | Last modification on: 21/12/2022 10:33:37 | Stack: 9
 
 export class PlanetModel {
 
@@ -104,5 +104,5 @@ export class planetmodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstPlanetModel?: PlanetModel[];
+    lstPlanetModel?: PlanetModel[] | undefined;
 }
