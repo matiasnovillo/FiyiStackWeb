@@ -143,6 +143,38 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return null;
             }
         }
+
+        [HttpGet("~/api/CMSCore/RoleMenu/1/SelectAllByRoleIdToRoleMenuForChechboxes/{RoleId:int}")]
+        public List<roleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                return _RoleMenuProtocol.SelectAllByRoleIdToRoleMenuForChechboxes(RoleId);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return null;
+            }
+        }
         #endregion
 
         #region Non-Queries
