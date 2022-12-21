@@ -18,7 +18,7 @@ import { Ajax } from "../../../Library/Ajax";
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 20:18:05
+//Last modification on: 21/12/2022 10:42:03
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -152,35 +152,35 @@ class SexQuery {
         </div>
     </td>
     <!-- Data -->
-    <td class="text-left text-light text-truncate">
+    <td class="text-left text-light">
         <i class="fas fa-key"></i> ${row.SexId}
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong><i class="fas fa-font">
             </i> ${row.Name}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong><i class="fas fa-divide">
             </i> ${row.UserCreationId}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong><i class="fas fa-divide">
             </i> ${row.UserLastModificationId}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
         </strong>
@@ -219,32 +219,32 @@ class SexQuery {
         <div class="card bg-gradient-primary mb-2">
             <div class="card-body">
                 <div class="row">
-                    <div class="col">
-                        <span class="text-white text-light mb-4 text-truncate">
+                    <div class="col text-truncate">
+                        <span class="text-white text-light mb-4">
                            SexId <i class="fas fa-key"></i> ${row.SexId}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            Name <i class="fas fa-font"></i> ${row.Name}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            Active <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                             UserCreationId <i class="fas fa-divide"></i> ${row.UserCreationId}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                             UserLastModificationId <i class="fas fa-divide"></i> ${row.UserLastModificationId}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>

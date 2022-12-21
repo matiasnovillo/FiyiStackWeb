@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:18:05
+//Last modification on: 21/12/2022 10:42:03
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:18:05
+    /// Last modification: 21/12/2022 10:42:03
     /// </summary>
     [ApiController]
     [SexFilter]
@@ -165,27 +165,36 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 string Name = HttpContext.Request.Form["basicculture-sex-name-input"];
                 
 
-                SexModel SexModel = new SexModel()
-                {
-                    Name = Name,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                SexModel.DateTimeLastModification = DateTime.Now;
-                SexModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    SexModel.DateTimeCreation = DateTime.Now;
-                    SexModel.UserCreationId = UserId;
+                    //Add
+                    SexModel SexModel = new SexModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        
+                    };
+                    
                     NewEnteredId = _SexProtocol.Insert(SexModel);
                 }
                 else
                 {
+                    //Update
                     int SexId = Convert.ToInt32(HttpContext.Request.Form["basicculture-sex-sexid-input"]);
-                    SexModel.SexId = SexId;
+                    SexModel SexModel = new SexModel(SexId);
+                    
+                    SexModel.UserLastModificationId = UserId;
+                    SexModel.DateTimeLastModification = DateTime.Now;
+                    SexModel.Name = Name;
+                                       
+
                     RowsAffected = _SexProtocol.UpdateBySexId(SexModel);
                 }
                 

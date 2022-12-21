@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//7 fields | Last modification on: 20/12/2022 20:18:05 | Stack: 9
+//7 fields | Last modification on: 21/12/2022 10:42:03 | Stack: 9
 
 export class SexModel {
 
@@ -103,5 +103,5 @@ export class sexmodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstSexModel?: SexModel[];
+    lstSexModel?: SexModel[] | undefined;
 }
