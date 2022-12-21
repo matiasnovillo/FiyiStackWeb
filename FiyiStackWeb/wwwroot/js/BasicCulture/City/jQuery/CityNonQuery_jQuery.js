@@ -16,7 +16,14 @@
 //Last modification on: 21/12/2022 9:41:41
 
 $(document).ready(function () {
-
+    $("#basicculture-city-provinceid-select").on("change", function (e) {
+        $("#basicculture-city-provinceid-list").html(`<li class="nav-item">
+            <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
+                ${$("#basicculture-city-provinceid-select option:selected").text()}
+            </a>
+            <input type="hidden" id="basicculture-city-provinceid-input" value="${$("#basicculture-city-provinceid-select option:selected").val()}"/>
+        </li>`);
+    });
 });
 
 //Used for Quill Editor

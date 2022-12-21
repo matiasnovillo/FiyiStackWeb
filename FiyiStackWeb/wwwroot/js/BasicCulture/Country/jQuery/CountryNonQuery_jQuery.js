@@ -17,12 +17,12 @@
 
 $(document).ready(function () {
     //PlanetId select tag
-    $("#basicculture-country-foreignkeydropdown-select").on("change", function (e) {
+    $("#basicculture-country-planetid-select").on("change", function (e) {
         $("#basicculture-country-planetid-list").html(`<li class="nav-item">
             <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                ${$("#basicculture-country-foreignkeydropdown-select option:selected").text()}
+                ${$("#basicculture-country-planetid-select option:selected").text()}
             </a>
-            <input type="hidden" id="basicculture-country-planetid-input" value="${$("#basicculture-country-foreignkeydropdown-select option:selected").val()}"/>
+            <input type="hidden" id="basicculture-country-planetid-input" value="${$("#basicculture-country-planetid-select option:selected").val()}"/>
         </li>`);
     });
 });
