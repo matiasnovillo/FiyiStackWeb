@@ -9,15 +9,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
 namespace FiyiStackWeb.Areas.CMSCore.Models
@@ -30,7 +28,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     ///                    make temporal copies with random data. <br/>
     /// Fields:            11 <br/> 
     /// Dependencies:      0 models <br/>
-    /// Last modification: 15/12/2022 12:54:59
+    /// Last modification: 20/12/2022 21:44:06
     /// </summary>
     [Serializable]
     public partial class UserModel
@@ -321,28 +319,28 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public usermodelQ SelectAllPagedToModel(usermodelQ usermodelQ)
+        public userModelQuery SelectAllPagedToModel(userModelQuery userModelQuery)
         {
             try
             {
-                usermodelQ.lstUserModel = new List<UserModel>();
+                userModelQuery.lstUserModel = new List<UserModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", usermodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", usermodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", usermodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", usermodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", usermodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", usermodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", userModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", userModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", userModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", userModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", userModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", userModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    usermodelQ.lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    usermodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    userModelQuery.lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    userModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                usermodelQ.TotalPages = Library.Math.Divide(usermodelQ.TotalRows, usermodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                userModelQuery.TotalPages = Library.Math.Divide(userModelQuery.TotalRows, userModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return usermodelQ;
+                return userModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -772,8 +770,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
-        #endregion
-
+        
         public int ChangePassword(int UserId, string NewPassword)
         {
             try
@@ -799,6 +796,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
+        #endregion
 
         /// <summary>
         /// Function: Take the model stored in the given byte array to return the model. <br/>
@@ -915,7 +913,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     /// <summary>
     /// Virtual model used for [dbo].[CMSCore.User.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class usermodelQ 
+    public partial class userModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

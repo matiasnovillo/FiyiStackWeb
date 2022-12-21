@@ -7,15 +7,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,26 +24,28 @@ EXEC [dbo].[User.Select1ByUserId]
  *
  */
 
---Last modification on: 15/12/2022 12:54:59
+--Last modification on: 20/12/2022 21:44:06
 
 SET DATEFORMAT DMY
 
 SELECT
-    [CMSCore.User].[UserId] AS [UserId],
-    [CMSCore.User].[FantasyName] AS [FantasyName],
-    [CMSCore.User].[Email] AS [Email],
-    [CMSCore.User].[Password] AS [Password],
-    [CMSCore.User].[RoleId] AS [RoleId],
-    [CMSCore.User].[Active] AS [Active],
-    [CMSCore.User].[UserCreationId] AS [UserCreationId],
-    [CMSCore.User].[UserLastModificationId] AS [UserLastModificationId],
-    [CMSCore.User].[DateTimeCreation] AS [DateTimeCreation],
-    [CMSCore.User].[DateTimeLastModification] AS [DateTimeLastModification],
-    [CMSCore.User].[RegistrationToken] AS [RegistrationToken]
+    [CMSCore.User].[UserId],
+    [CMSCore.User].[FantasyName],
+    [CMSCore.User].[Email],
+    [CMSCore.User].[Password],
+    [CMSCore.User].[RoleId],
+    [CMSCore.User].[Active],
+    [CMSCore.User].[UserCreationId],
+    [CMSCore.User].[UserLastModificationId],
+    [CMSCore.User].[DateTimeCreation],
+    [CMSCore.User].[DateTimeLastModification],
+    [CMSCore.User].[RegistrationToken]
 FROM 
     [CMSCore.User]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [CMSCore.User].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [CMSCore.User].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE 
     1 = 1
     AND [CMSCore.User].[UserId] = @UserId
 ORDER BY 
-    [CMSCore.User].[UserId]
+    [CMSCore.User].[UserId]CMSCore.User].[UserId]

@@ -2,25 +2,25 @@
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
 */
 
 //Stack: 10
 
-//Last modification on: 15/12/2022 12:55:00
+//Last modification on: 20/12/2022 21:44:06
 
 $(document).ready(function () {
-    //This fix an style error in Quill
-    $("span.ql-picker-label svg[viewBox]").css("width", "20px");
+
 });
+
+//Used for Quill Editor
+
 
 //Used for file input
 
@@ -40,8 +40,6 @@ $("#cmscore-user-insert-or-update-button").on("click", function (e) {
     formData.append("cmscore-user-email-input", $("#cmscore-user-email-input").val());
     formData.append("cmscore-user-password-input", $("#cmscore-user-password-input").val());
     formData.append("cmscore-user-roleid-input", $("#cmscore-user-roleid-input").val());
-    formData.append("cmscore-user-usercreationid-input", $("#cmscore-user-usercreationid-input").val());
-    formData.append("cmscore-user-userlastmodificationid-input", $("#cmscore-user-userlastmodificationid-input").val());
     formData.append("cmscore-user-registrationtoken-input", $("#cmscore-user-registrationtoken-input").val());
     
 
@@ -102,7 +100,7 @@ $("#cmscore-user-insert-or-update-button").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/Testing/Test/1/InsertOrUpdateAsync", true);
+    xmlHttpRequest.open("POST", "/api/CMSCore/User/1/InsertOrUpdateAsync", true);
     //Send request
     xmlHttpRequest.send(formData);
 });

@@ -2,7 +2,7 @@ USE [fiyistack_FiyiStackWeb]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
---Last modification on: 15/12/2022 12:54:59
+--Last modification on: 20/12/2022 21:44:06
 
 ALTER TABLE [dbo].[CMSCore.User] ADD [UserId] INT IDENTITY(1,1) NOT NULL
 ALTER TABLE [dbo].[CMSCore.User] ADD [FantasyName] VARCHAR(200) NOT NULL
