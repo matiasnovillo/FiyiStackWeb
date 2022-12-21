@@ -47,17 +47,17 @@ class FailureQuery {
         </th>
         <th scope="col">
             <button value="FailureId" class="btn btn-outline-secondary btn-sm" type="button">
-                FailureId
+                Failure ID
             </button>
         </th>
         <th scope="col">
             <button value="HTTPCode" class="btn btn-outline-secondary btn-sm" type="button">
-                HTTPCode
+                HTTP Code
             </button>
         </th>
         <th scope="col">
             <button value="EmergencyLevel" class="btn btn-outline-secondary btn-sm" type="button">
-                EmergencyLevel
+                Emergency Level
             </button>
         </th>
         <th scope="col">
@@ -67,7 +67,7 @@ class FailureQuery {
         </th>
         <th scope="col">
             <button value="StackTrace" class="btn btn-outline-secondary btn-sm" type="button">
-                StackTrace
+                Stack Trace
             </button>
         </th>
         <th scope="col">
@@ -87,22 +87,22 @@ class FailureQuery {
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+                User Creation ID
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+                User Last Modification ID
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+                Date Time Creation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+                Date Time Last Modification
             </button>
         </th>
         
@@ -131,7 +131,7 @@ class FailureQuery {
                         TotalPages = response_failureQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#basiccore-failure-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        $("#basiccore-failure-query-string").attr("placeholder", `Search... (${TotalRows} failures)`);
                         //Total pages of pagination
                         $("#basiccore-failure-total-pages-lg, #basiccore-failure-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
@@ -271,15 +271,15 @@ class FailureQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           FailureId <i class="fas fa-key"></i> ${row.FailureId}
+                           Failure ID <i class="fas fa-key"></i> ${row.FailureId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            HTTPCode <i class="fas fa-divide"></i> ${row.HTTPCode}
+                            HTTP Code <i class="fas fa-divide"></i> ${row.HTTPCode}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            EmergencyLevel <i class="fas fa-divide"></i> ${row.EmergencyLevel}
+                            Emergency Level <i class="fas fa-divide"></i> ${row.EmergencyLevel}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -287,7 +287,7 @@ class FailureQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           StackTrace <i class="fas fa-font"></i> ${row.StackTrace}
+                           Stack Trace <i class="fas fa-font"></i> ${row.StackTrace}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -303,19 +303,19 @@ class FailureQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserCreationId <i class="fas fa-divide"></i> ${row.UserCreationId}
+                            User Creation ID <i class="fas fa-divide"></i> ${row.UserCreationId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserLastModificationId <i class="fas fa-divide"></i> ${row.UserLastModificationId}
+                            User Last Modification ID <i class="fas fa-divide"></i> ${row.UserLastModificationId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         
