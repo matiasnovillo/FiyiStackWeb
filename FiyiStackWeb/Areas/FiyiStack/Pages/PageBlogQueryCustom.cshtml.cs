@@ -32,13 +32,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
     {
         public void OnGet()
         {
+            //Get UserId from Session
             int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
-            UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
-
-            string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
-
-            ViewData["FantasyName"] = UserModel.FantasyName;
-            ViewData["Menues"] = Menues;
 
             if (UserId == 0)
             {
