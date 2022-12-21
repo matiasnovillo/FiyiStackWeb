@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//8 fields | Last modification on: 20/12/2022 20:28:32 | Stack: 9
+//8 fields | Last modification on: 21/12/2022 11:04:02 | Stack: 9
 
 export class RoleMenuModel {
 
@@ -104,5 +104,5 @@ export class rolemenumodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstRoleMenuModel?: RoleMenuModel[];
+    lstRoleMenuModel?: RoleMenuModel[] | undefined;
 }

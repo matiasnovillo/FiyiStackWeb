@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:28:32
+//Last modification on: 21/12/2022 11:04:02
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:28:32
+    /// Last modification: 21/12/2022 11:04:02
     /// </summary>
     [ApiController]
     [RoleMenuFilter]
@@ -143,38 +143,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 return null;
             }
         }
-
-        [HttpGet("~/api/CMSCore/RoleMenu/1/SelectAllByRoleIdToRoleMenuForChechboxes/{RoleId:int}")]
-        public List<roleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)
-        {
-            try
-            {
-                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
-                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
-
-                return _RoleMenuProtocol.SelectAllByRoleIdToRoleMenuForChechboxes(RoleId);
-            }
-            catch (Exception ex)
-            {
-                DateTime Now = DateTime.Now;
-                FailureModel FailureModel = new FailureModel()
-                {
-                    HTTPCode = 500,
-                    Message = ex.Message,
-                    EmergencyLevel = 1,
-                    StackTrace = ex.StackTrace ?? "",
-                    Source = ex.Source ?? "",
-                    Comment = "",
-                    Active = true,
-                    UserCreationId = 1,
-                    UserLastModificationId = 1,
-                    DateTimeCreation = Now,
-                    DateTimeLastModification = Now
-                };
-                FailureModel.Insert();
-                return null;
-            }
-        }
         #endregion
 
         #region Non-Queries
@@ -210,28 +178,38 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 { return StatusCode(400, "It's not allowed to save zero values in MenuId"); }
                 
 
-                RoleMenuModel RoleMenuModel = new RoleMenuModel()
-                {
-                    RoleId = RoleId,
-                    MenuId = MenuId,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                RoleMenuModel.DateTimeLastModification = DateTime.Now;
-                RoleMenuModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    RoleMenuModel.DateTimeCreation = DateTime.Now;
-                    RoleMenuModel.UserCreationId = UserId;
+                    //Add
+                    RoleMenuModel RoleMenuModel = new RoleMenuModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        RoleId = RoleId,
+                        MenuId = MenuId,
+                        
+                    };
+                    
                     NewEnteredId = _RoleMenuProtocol.Insert(RoleMenuModel);
                 }
                 else
                 {
+                    //Update
                     int RoleMenuId = Convert.ToInt32(HttpContext.Request.Form["cmscore-rolemenu-rolemenuid-input"]);
-                    RoleMenuModel.RoleMenuId = RoleMenuId;
+                    RoleMenuModel RoleMenuModel = new RoleMenuModel(RoleMenuId);
+                    
+                    RoleMenuModel.UserLastModificationId = UserId;
+                    RoleMenuModel.DateTimeLastModification = DateTime.Now;
+                    RoleMenuModel.RoleId = RoleId;
+                    RoleMenuModel.MenuId = MenuId;
+                                       
+
                     RowsAffected = _RoleMenuProtocol.UpdateByRoleMenuId(RoleMenuModel);
                 }
                 
@@ -290,7 +268,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 FailureModel.Insert();
                 return StatusCode(500, ex.Message);
             }
-
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/InsertPermissions/")]

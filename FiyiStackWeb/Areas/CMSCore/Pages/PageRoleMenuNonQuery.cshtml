@@ -10,8 +10,6 @@
     int RoleMenuId;
     int RoleId;
     int MenuId;
-    int UserCreationId;
-    int UserLastModificationId;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?RoleMenuId=0"))
@@ -20,9 +18,7 @@
         NonQueryIcon = "fas fa-plus";
 
         RoleMenuId = 0;
-        RoleId = 0;MenuId = 0;UserCreationId = 0;
-        UserLastModificationId = 0;
-        
+        RoleId = 0;MenuId = 0;
     }
     else
     {
@@ -35,8 +31,6 @@
         RoleMenuId = RoleMenuModel.RoleMenuId;
         RoleId = RoleMenuModel.RoleId;
         MenuId = RoleMenuModel.MenuId;
-        UserCreationId = RoleMenuModel.UserCreationId;
-        UserLastModificationId = RoleMenuModel.UserLastModificationId;
         
     }
 
@@ -52,7 +46,7 @@
  */
     
 //Stack: 11
-//Last modification on: 20/12/2022 20:28:32
+//Last modification on: 21/12/2022 11:04:02
 
 }
 <!-- Header -->
@@ -69,7 +63,7 @@
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                             <li class="breadcrumb-item">
-                                <a href="javascript:void(0)">
+                                <a href="/CMSCore/DashboardIndex">
                                     <i class="fas fa-home"></i>
                                 </a>
                             </li>
@@ -188,48 +182,6 @@
                                 </ul>
                                 <div class="input-group-append">
                                     <button class="btn btn-danger border-0 ml-2" data-toggle="tooltip" data-placement="left" title="This value is required" type="button" id="menuid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserCreationId -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-rolemenu-usercreationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserCreationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserCreationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="cmscore-rolemenu-usercreationid-input" value="@UserCreationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="usercreationid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserLastModificationId -->
-                        <div class="form-group mb-3">
-                            <label for="cmscore-rolemenu-userlastmodificationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserLastModificationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserLastModificationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="cmscore-rolemenu-userlastmodificationid-input" value="@UserLastModificationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="userlastmodificationid-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>
