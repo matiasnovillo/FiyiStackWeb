@@ -92,14 +92,7 @@ Coded by www.creative-tim.com
                         </a>
                     </li>
                     <!-- Navitem -->
-                    <li class="nav-item">
-                        <a href="/CMSCore/Login" class="btn btn-white mt-1 ml-2">
-                            <i class="fas fa-user"></i> 
-                            <span class="nav-link-inner--text">
-                                Login
-                            </span>
-                        </a>
-                    </li>
+                    @Html.Raw(ViewData["EnterButton"])
                     <!-- Navitem -->
                     <li class="nav-item">
                         <a href="/FiyiStack/Pricing" class="btn btn-white mt-1 ml-2">
