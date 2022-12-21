@@ -167,7 +167,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 string BackgroundImage = HttpContext.Request.Form["fiyistack-blog-backgroundimage-input"];;
                 if (HttpContext.Request.Form.Files.Count != 0)
                 {
-                    BackgroundImage = $@"{_WebHostEnvironment.WebRootPath}/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
+                    BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
                 
 

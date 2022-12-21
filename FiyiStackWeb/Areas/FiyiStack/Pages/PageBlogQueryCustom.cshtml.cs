@@ -39,6 +39,31 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
 
             ViewData["FantasyName"] = UserModel.FantasyName;
             ViewData["Menues"] = Menues;
+
+            if (UserId == 0)
+            {
+                //User not found
+                ViewData["EnterButton"] = $@"<li class='nav-item'>
+                                                <a href='/CMSCore/Login' class='btn btn-white mt-1 ml-2'>
+                                                    <i class='fas fa-user'></i> 
+                                                    <span class='nav-link-inner--text'>
+                                                        Login
+                                                    </span>
+                                                </a>
+                                            </li>";
             }
+            else
+            {
+                //User found
+                ViewData["EnterButton"] = $@"<li class='nav-item'>
+                                                <a href='/CMSCore/DashboardIndex' class='btn btn-white mt-1 ml-2'>
+                                                    <i class='fas fa-user'></i> 
+                                                    <span class='nav-link-inner--text'>
+                                                        Enter dashboard
+                                                    </span>
+                                                </a>
+                                            </li>";
+            }
+        }
     }
 }

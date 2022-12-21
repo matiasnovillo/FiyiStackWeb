@@ -176,10 +176,23 @@
                                         </strong>
                                     </span>
                                 </div>
-                                <input type="file" class="form-control" min="1" max="8000" id="fiyistack-blog-backgroundimage-input" value="" >
-                                <input type="text" class="form-control" min="1" max="8000" id="fiyistack-blog-backgroundimage-readonly" value="@BackgroundImage" readonly />
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                    </div>
+                                    <div>
+                                        <span class="btn btn-primary btn-file">
+                                            <span class="fileinput-new">Select file</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" min="1" max="8000" id="fiyistack-blog-backgroundimage-input" value="">
+                                        </span>
+                                        <a href="#" class="btn btn-outline-danger fileinput-exists" data-dismiss="fileinput">
+                                            Remove
+                                        </a>
+                                    </div>
+                                </div>
+                                <input type="hidden" class="form-control" min="1" max="8000" id="fiyistack-blog-backgroundimage-readonly" value="@BackgroundImage" />
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="backgroundimage-info">
+                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="@(@BackgroundImage == "" ? "" : $@"File already saved as {@BackgroundImage}")" type="button" id="backgroundimage-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>
