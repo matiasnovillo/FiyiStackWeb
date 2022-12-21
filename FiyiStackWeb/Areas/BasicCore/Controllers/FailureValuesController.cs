@@ -113,14 +113,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
         }
 
         [HttpPut("~/api/BasicCore/Failure/1/SelectAllPagedToJSON")]
-        public failuremodelQ SelectAllPagedToJSON([FromBody] failuremodelQ failuremodelQ)
+        public failureModelQuery SelectAllPagedToJSON([FromBody] failureModelQuery failureModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _FailureProtocol.SelectAllPagedToModel(failuremodelQ);
+                 return _FailureProtocol.SelectAllPagedToModel(failureModelQuery);
             }
             catch (Exception ex)
             {

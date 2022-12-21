@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Protocols
 
         List<FailureModel> SelectAllToList();
 
-        failuremodelQ SelectAllPagedToModel(failuremodelQ failureQ);
+        failureModelQuery SelectAllPagedToModel(failureModelQuery failureModelQuery);
         #endregion
 
         #region Non-Queries

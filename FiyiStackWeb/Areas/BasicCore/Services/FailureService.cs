@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
             return new FailureModel().SelectAllToList();
         }
 
-        public failuremodelQ SelectAllPagedToModel(failuremodelQ failureQ)
+        public failureModelQuery SelectAllPagedToModel(failureModelQuery failureModelQuery)
         {
-            return new FailureModel().SelectAllPagedToModel(failureQ);
+            return new FailureModel().SelectAllPagedToModel(failureModelQuery);
         } 
         #endregion
 

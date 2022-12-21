@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCulture.Services
             return new CityModel().SelectAllToList();
         }
 
-        public citymodelQ SelectAllPagedToModel(citymodelQ cityQ)
+        public cityModelQuery SelectAllPagedToModel(cityModelQuery cityModelQuery)
         {
-            return new CityModel().SelectAllPagedToModel(cityQ);
+            return new CityModel().SelectAllPagedToModel(cityModelQuery);
         } 
         #endregion
 

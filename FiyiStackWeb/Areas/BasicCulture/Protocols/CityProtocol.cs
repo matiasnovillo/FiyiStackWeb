@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Protocols
 
         List<CityModel> SelectAllToList();
 
-        citymodelQ SelectAllPagedToModel(citymodelQ cityQ);
+        cityModelQuery SelectAllPagedToModel(cityModelQuery cityModelQuery);
         #endregion
 
         #region Non-Queries

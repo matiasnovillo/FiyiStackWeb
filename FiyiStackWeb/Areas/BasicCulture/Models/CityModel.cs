@@ -312,28 +312,28 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public citymodelQ SelectAllPagedToModel(citymodelQ citymodelQ)
+        public cityModelQuery SelectAllPagedToModel(cityModelQuery cityModelQuery)
         {
             try
             {
-                citymodelQ.lstCityModel = new List<CityModel>();
+                cityModelQuery.lstCityModel = new List<CityModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", citymodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", citymodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", citymodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", citymodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", citymodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", citymodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", cityModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", cityModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", cityModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", cityModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", cityModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", cityModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    citymodelQ.lstCityModel = (List<CityModel>)sqlConnection.Query<CityModel>("[dbo].[BasicCulture.City.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    citymodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    cityModelQuery.lstCityModel = (List<CityModel>)sqlConnection.Query<CityModel>("[dbo].[BasicCulture.City.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    cityModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                citymodelQ.TotalPages = Library.Math.Divide(citymodelQ.TotalRows, citymodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                cityModelQuery.TotalPages = Library.Math.Divide(cityModelQuery.TotalRows, cityModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return citymodelQ;
+                return cityModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -752,7 +752,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     /// <summary>
     /// Virtual model used for [dbo].[BasicCulture.City.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class citymodelQ 
+    public partial class cityModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }
