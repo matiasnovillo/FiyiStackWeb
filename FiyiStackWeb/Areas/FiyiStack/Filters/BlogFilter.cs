@@ -27,10 +27,13 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
+            if (context.HttpContext.Request.Path != "/api/FiyiStack/Blog/1/SelectAllPagedToJSON")
             {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+                int? UserId = context.HttpContext.Session.GetInt32("UserId");
+                if (UserId == null || UserId == 0)
+                {
+                    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+                }
             }
         }
 
@@ -40,10 +43,13 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
+            if (context.HttpContext.Request.Path != "/api/FiyiStack/Blog/1/SelectAllPagedToJSON")
             {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+                int? UserId = context.HttpContext.Session.GetInt32("UserId");
+                if (UserId == null || UserId == 0)
+                {
+                    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+                }
             }
         }
 
