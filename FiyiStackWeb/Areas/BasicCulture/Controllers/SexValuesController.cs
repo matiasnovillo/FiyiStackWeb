@@ -113,14 +113,14 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         }
 
         [HttpPut("~/api/BasicCulture/Sex/1/SelectAllPagedToJSON")]
-        public sexmodelQ SelectAllPagedToJSON([FromBody] sexmodelQ sexmodelQ)
+        public sexModelQuery SelectAllPagedToJSON([FromBody] sexModelQuery sexModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _SexProtocol.SelectAllPagedToModel(sexmodelQ);
+                 return _SexProtocol.SelectAllPagedToModel(sexModelQuery);
             }
             catch (Exception ex)
             {

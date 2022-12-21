@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Protocols
 
         List<PlanetModel> SelectAllToList();
 
-        planetmodelQ SelectAllPagedToModel(planetmodelQ planetQ);
+        planetModelQuery SelectAllPagedToModel(planetModelQuery planetQ);
         #endregion
 
         #region Non-Queries

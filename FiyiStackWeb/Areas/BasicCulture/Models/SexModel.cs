@@ -291,28 +291,28 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public sexmodelQ SelectAllPagedToModel(sexmodelQ sexmodelQ)
+        public sexModelQuery SelectAllPagedToModel(sexModelQuery sexModelQuery)
         {
             try
             {
-                sexmodelQ.lstSexModel = new List<SexModel>();
+                sexModelQuery.lstSexModel = new List<SexModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", sexmodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", sexmodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", sexmodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", sexmodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", sexmodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", sexmodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", sexModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", sexModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", sexModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", sexModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", sexModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", sexModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    sexmodelQ.lstSexModel = (List<SexModel>)sqlConnection.Query<SexModel>("[dbo].[BasicCulture.Sex.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    sexmodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    sexModelQuery.lstSexModel = (List<SexModel>)sqlConnection.Query<SexModel>("[dbo].[BasicCulture.Sex.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    sexModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                sexmodelQ.TotalPages = Library.Math.Divide(sexmodelQ.TotalRows, sexmodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                sexModelQuery.TotalPages = Library.Math.Divide(sexModelQuery.TotalRows, sexModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return sexmodelQ;
+                return sexModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -692,7 +692,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     /// <summary>
     /// Virtual model used for [dbo].[BasicCulture.Sex.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class sexmodelQ 
+    public partial class sexModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

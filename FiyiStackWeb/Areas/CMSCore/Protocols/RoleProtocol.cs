@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
 
         List<RoleModel> SelectAllToList();
 
-        rolemodelQ SelectAllPagedToModel(rolemodelQ roleQ);
+        roleModelQuery SelectAllPagedToModel(roleModelQuery roleModelQuery);
         #endregion
 
         #region Non-Queries

@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCulture.Services
             return new SexModel().SelectAllToList();
         }
 
-        public sexmodelQ SelectAllPagedToModel(sexmodelQ sexQ)
+        public sexModelQuery SelectAllPagedToModel(sexModelQuery sexModelQuery)
         {
-            return new SexModel().SelectAllPagedToModel(sexQ);
+            return new SexModel().SelectAllPagedToModel(sexModelQuery);
         } 
         #endregion
 

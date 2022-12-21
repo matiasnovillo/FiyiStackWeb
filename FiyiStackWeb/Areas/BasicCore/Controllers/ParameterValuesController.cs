@@ -113,14 +113,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
         }
 
         [HttpPut("~/api/BasicCore/Parameter/1/SelectAllPagedToJSON")]
-        public parametermodelQ SelectAllPagedToJSON([FromBody] parametermodelQ parametermodelQ)
+        public parameterModelQuery SelectAllPagedToJSON([FromBody] parameterModelQuery parameterModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _ParameterProtocol.SelectAllPagedToModel(parametermodelQ);
+                 return _ParameterProtocol.SelectAllPagedToModel(parameterModelQuery);
             }
             catch (Exception ex)
             {

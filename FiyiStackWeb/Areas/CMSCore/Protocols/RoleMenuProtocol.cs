@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
 
         List<RoleMenuModel> SelectAllToList();
 
-        rolemenumodelQ SelectAllPagedToModel(rolemenumodelQ rolemenuQ);
+        rolemenuModelQuery SelectAllPagedToModel(rolemenuModelQuery rolemenuModelQuery);
 
         List<roleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId);
         #endregion

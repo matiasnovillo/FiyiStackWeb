@@ -319,28 +319,28 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public menumodelQ SelectAllPagedToModel(menumodelQ menumodelQ)
+        public menuModelQuery SelectAllPagedToModel(menuModelQuery menuModelQuery)
         {
             try
             {
-                menumodelQ.lstMenuModel = new List<MenuModel>();
+                menuModelQuery.lstMenuModel = new List<MenuModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", menumodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", menumodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", menumodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", menumodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", menumodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", menumodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", menuModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", menuModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", menuModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", menuModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", menuModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", menuModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    menumodelQ.lstMenuModel = (List<MenuModel>)sqlConnection.Query<MenuModel>("[dbo].[CMSCore.Menu.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    menumodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    menuModelQuery.lstMenuModel = (List<MenuModel>)sqlConnection.Query<MenuModel>("[dbo].[CMSCore.Menu.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    menuModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                menumodelQ.TotalPages = Library.Math.Divide(menumodelQ.TotalRows, menumodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                menuModelQuery.TotalPages = Library.Math.Divide(menuModelQuery.TotalRows, menuModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return menumodelQ;
+                return menuModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -772,7 +772,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     /// <summary>
     /// Virtual model used for [dbo].[CMSCore.Menu.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class menumodelQ 
+    public partial class menuModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

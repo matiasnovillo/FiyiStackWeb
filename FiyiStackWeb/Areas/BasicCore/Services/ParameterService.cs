@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
             return new ParameterModel().SelectAllToList();
         }
 
-        public parametermodelQ SelectAllPagedToModel(parametermodelQ parameterQ)
+        public parameterModelQuery SelectAllPagedToModel(parameterModelQuery parameterModelQuery)
         {
-            return new ParameterModel().SelectAllPagedToModel(parameterQ);
+            return new ParameterModel().SelectAllPagedToModel(parameterModelQuery);
         } 
         #endregion
 

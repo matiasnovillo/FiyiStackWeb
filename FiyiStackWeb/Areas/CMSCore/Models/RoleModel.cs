@@ -292,28 +292,28 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public rolemodelQ SelectAllPagedToModel(rolemodelQ rolemodelQ)
+        public roleModelQuery SelectAllPagedToModel(roleModelQuery roleModelQuery)
         {
             try
             {
-                rolemodelQ.lstRoleModel = new List<RoleModel>();
+                roleModelQuery.lstRoleModel = new List<RoleModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", rolemodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", rolemodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", rolemodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", rolemodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", rolemodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", rolemodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", roleModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", roleModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", roleModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", roleModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", roleModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", roleModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    rolemodelQ.lstRoleModel = (List<RoleModel>)sqlConnection.Query<RoleModel>("[dbo].[CMSCore.Role.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    rolemodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    roleModelQuery.lstRoleModel = (List<RoleModel>)sqlConnection.Query<RoleModel>("[dbo].[CMSCore.Role.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    roleModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                rolemodelQ.TotalPages = Library.Math.Divide(rolemodelQ.TotalRows, rolemodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                roleModelQuery.TotalPages = Library.Math.Divide(roleModelQuery.TotalRows, roleModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return rolemodelQ;
+                return roleModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -693,7 +693,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     /// <summary>
     /// Virtual model used for [dbo].[CMSCore.Role.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class rolemodelQ 
+    public partial class roleModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

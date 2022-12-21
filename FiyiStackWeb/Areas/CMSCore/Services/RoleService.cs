@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
             return new RoleModel().SelectAllToList();
         }
 
-        public rolemodelQ SelectAllPagedToModel(rolemodelQ roleQ)
+        public roleModelQuery SelectAllPagedToModel(roleModelQuery roleModelQuery)
         {
-            return new RoleModel().SelectAllPagedToModel(roleQ);
+            return new RoleModel().SelectAllPagedToModel(roleModelQuery);
         } 
         #endregion
 

@@ -298,28 +298,28 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public planetmodelQ SelectAllPagedToModel(planetmodelQ planetmodelQ)
+        public planetModelQuery SelectAllPagedToModel(planetModelQuery planetModelQuery)
         {
             try
             {
-                planetmodelQ.lstPlanetModel = new List<PlanetModel>();
+                planetModelQuery.lstPlanetModel = new List<PlanetModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", planetmodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", planetmodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", planetmodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", planetmodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", planetmodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", planetmodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", planetModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", planetModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", planetModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", planetModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", planetModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", planetModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    planetmodelQ.lstPlanetModel = (List<PlanetModel>)sqlConnection.Query<PlanetModel>("[dbo].[BasicCulture.Planet.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    planetmodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    planetModelQuery.lstPlanetModel = (List<PlanetModel>)sqlConnection.Query<PlanetModel>("[dbo].[BasicCulture.Planet.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    planetModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                planetmodelQ.TotalPages = Library.Math.Divide(planetmodelQ.TotalRows, planetmodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                planetModelQuery.TotalPages = Library.Math.Divide(planetModelQuery.TotalRows, planetModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return planetmodelQ;
+                return planetModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -712,7 +712,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     /// <summary>
     /// Virtual model used for [dbo].[BasicCulture.Planet.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class planetmodelQ 
+    public partial class planetModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

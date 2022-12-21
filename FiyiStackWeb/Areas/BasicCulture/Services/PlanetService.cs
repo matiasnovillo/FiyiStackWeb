@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCulture.Services
             return new PlanetModel().SelectAllToList();
         }
 
-        public planetmodelQ SelectAllPagedToModel(planetmodelQ planetQ)
+        public planetModelQuery SelectAllPagedToModel(planetModelQuery planetModelQuery)
         {
-            return new PlanetModel().SelectAllPagedToModel(planetQ);
+            return new PlanetModel().SelectAllPagedToModel(planetModelQuery);
         } 
         #endregion
 

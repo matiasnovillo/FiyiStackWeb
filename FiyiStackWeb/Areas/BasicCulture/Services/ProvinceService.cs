@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCulture.Services
             return new ProvinceModel().SelectAllToList();
         }
 
-        public provincemodelQ SelectAllPagedToModel(provincemodelQ provinceQ)
+        public provinceModelQuery SelectAllPagedToModel(provinceModelQuery provinceModelQuery)
         {
-            return new ProvinceModel().SelectAllPagedToModel(provinceQ);
+            return new ProvinceModel().SelectAllPagedToModel(provinceModelQuery);
         } 
         #endregion
 

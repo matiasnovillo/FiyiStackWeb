@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Protocols
 
         List<MenuModel> SelectAllToList();
 
-        menumodelQ SelectAllPagedToModel(menumodelQ menuQ);
+        menuModelQuery SelectAllPagedToModel(menuModelQuery menuModelQuery);
         #endregion
 
         #region Non-Queries

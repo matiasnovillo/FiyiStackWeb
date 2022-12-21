@@ -113,14 +113,14 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         }
 
         [HttpPut("~/api/BasicCulture/Planet/1/SelectAllPagedToJSON")]
-        public planetmodelQ SelectAllPagedToJSON([FromBody] planetmodelQ planetmodelQ)
+        public planetModelQuery SelectAllPagedToJSON([FromBody] planetModelQuery planetModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _PlanetProtocol.SelectAllPagedToModel(planetmodelQ);
+                 return _PlanetProtocol.SelectAllPagedToModel(planetModelQuery);
             }
             catch (Exception ex)
             {

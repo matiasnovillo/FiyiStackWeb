@@ -304,28 +304,28 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public parametermodelQ SelectAllPagedToModel(parametermodelQ parametermodelQ)
+        public parameterModelQuery SelectAllPagedToModel(parameterModelQuery parameterModelQuery)
         {
             try
             {
-                parametermodelQ.lstParameterModel = new List<ParameterModel>();
+                parameterModelQuery.lstParameterModel = new List<ParameterModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", parametermodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", parametermodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", parametermodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", parametermodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", parametermodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", parametermodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", parameterModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", parameterModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", parameterModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", parameterModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", parameterModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", parameterModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    parametermodelQ.lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    parametermodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    parameterModelQuery.lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    parameterModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                parametermodelQ.TotalPages = Library.Math.Divide(parametermodelQ.TotalRows, parametermodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                parameterModelQuery.TotalPages = Library.Math.Divide(parameterModelQuery.TotalRows, parameterModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return parametermodelQ;
+                return parameterModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -750,7 +750,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
     /// <summary>
     /// Virtual model used for [dbo].[BasicCore.Parameter.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class parametermodelQ 
+    public partial class parameterModelQuery
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

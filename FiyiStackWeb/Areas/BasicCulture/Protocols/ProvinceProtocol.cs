@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Protocols
 
         List<ProvinceModel> SelectAllToList();
 
-        provincemodelQ SelectAllPagedToModel(provincemodelQ provinceQ);
+        provinceModelQuery SelectAllPagedToModel(provinceModelQuery provinceModelQuery);
         #endregion
 
         #region Non-Queries

@@ -113,14 +113,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPut("~/api/CMSCore/Menu/1/SelectAllPagedToJSON")]
-        public menumodelQ SelectAllPagedToJSON([FromBody] menumodelQ menumodelQ)
+        public menuModelQuery SelectAllPagedToJSON([FromBody] menuModelQuery menuModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _MenuProtocol.SelectAllPagedToModel(menumodelQ);
+                 return _MenuProtocol.SelectAllPagedToModel(menuModelQuery);
             }
             catch (Exception ex)
             {

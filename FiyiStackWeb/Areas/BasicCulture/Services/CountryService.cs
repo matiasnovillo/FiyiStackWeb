@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.BasicCulture.Services
             return new CountryModel().SelectAllToList();
         }
 
-        public countrymodelQ SelectAllPagedToModel(countrymodelQ countryQ)
+        public countryModelQuery SelectAllPagedToModel(countryModelQuery countryModelQuery)
         {
-            return new CountryModel().SelectAllPagedToModel(countryQ);
+            return new CountryModel().SelectAllPagedToModel(countryModelQuery);
         } 
         #endregion
 

@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
             return new MenuModel().SelectAllToList();
         }
 
-        public menumodelQ SelectAllPagedToModel(menumodelQ menuQ)
+        public menuModelQuery SelectAllPagedToModel(menuModelQuery menuModelQuery)
         {
-            return new MenuModel().SelectAllPagedToModel(menuQ);
+            return new MenuModel().SelectAllPagedToModel(menuModelQuery);
         } 
         #endregion
 

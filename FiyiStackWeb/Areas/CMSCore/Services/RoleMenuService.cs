@@ -53,9 +53,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
             return new RoleMenuModel().SelectAllToList();
         }
 
-        public rolemenumodelQ SelectAllPagedToModel(rolemenumodelQ rolemenuQ)
+        public rolemenuModelQuery SelectAllPagedToModel(rolemenuModelQuery rolemenuModelQuery)
         {
-            return new RoleMenuModel().SelectAllPagedToModel(rolemenuQ);
+            return new RoleMenuModel().SelectAllPagedToModel(rolemenuModelQuery);
         }
 
         public List<roleMenuForChechboxes> SelectAllByRoleIdToRoleMenuForChechboxes(int RoleId)

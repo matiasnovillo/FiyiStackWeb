@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Protocols
 
         List<ParameterModel> SelectAllToList();
 
-        parametermodelQ SelectAllPagedToModel(parametermodelQ parameterQ);
+        parameterModelQuery SelectAllPagedToModel(parameterModelQuery parameterModelQuery);
         #endregion
 
         #region Non-Queries

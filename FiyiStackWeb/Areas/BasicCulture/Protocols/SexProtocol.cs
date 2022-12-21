@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Protocols
 
         List<SexModel> SelectAllToList();
 
-        sexmodelQ SelectAllPagedToModel(sexmodelQ sexQ);
+        sexModelQuery SelectAllPagedToModel(sexModelQuery sexModelQuery);
         #endregion
 
         #region Non-Queries

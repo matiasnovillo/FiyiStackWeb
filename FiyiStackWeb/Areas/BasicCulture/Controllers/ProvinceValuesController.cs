@@ -113,14 +113,14 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         }
 
         [HttpPut("~/api/BasicCulture/Province/1/SelectAllPagedToJSON")]
-        public provincemodelQ SelectAllPagedToJSON([FromBody] provincemodelQ provincemodelQ)
+        public provinceModelQuery SelectAllPagedToJSON([FromBody] provinceModelQuery provinceModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _ProvinceProtocol.SelectAllPagedToModel(provincemodelQ);
+                 return _ProvinceProtocol.SelectAllPagedToModel(provinceModelQuery);
             }
             catch (Exception ex)
             {

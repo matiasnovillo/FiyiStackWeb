@@ -312,28 +312,28 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public countrymodelQ SelectAllPagedToModel(countrymodelQ countrymodelQ)
+        public countryModelQuery SelectAllPagedToModel(countryModelQuery countryModelQuery)
         {
             try
             {
-                countrymodelQ.lstCountryModel = new List<CountryModel>();
+                countryModelQuery.lstCountryModel = new List<CountryModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", countrymodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", countrymodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", countrymodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", countrymodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", countrymodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", countrymodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", countryModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", countryModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", countryModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", countryModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", countryModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", countryModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    countrymodelQ.lstCountryModel = (List<CountryModel>)sqlConnection.Query<CountryModel>("[dbo].[BasicCulture.Country.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    countrymodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    countryModelQuery.lstCountryModel = (List<CountryModel>)sqlConnection.Query<CountryModel>("[dbo].[BasicCulture.Country.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    countryModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                countrymodelQ.TotalPages = Library.Math.Divide(countrymodelQ.TotalRows, countrymodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                countryModelQuery.TotalPages = Library.Math.Divide(countryModelQuery.TotalRows, countryModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return countrymodelQ;
+                return countryModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -752,7 +752,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     /// <summary>
     /// Virtual model used for [dbo].[BasicCulture.Country.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class countrymodelQ 
+    public partial class countryModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

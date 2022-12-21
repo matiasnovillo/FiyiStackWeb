@@ -312,28 +312,28 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public provincemodelQ SelectAllPagedToModel(provincemodelQ provincemodelQ)
+        public provinceModelQuery SelectAllPagedToModel(provinceModelQuery provinceModelQuery)
         {
             try
             {
-                provincemodelQ.lstProvinceModel = new List<ProvinceModel>();
+                provinceModelQuery.lstProvinceModel = new List<ProvinceModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", provincemodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", provincemodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", provincemodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", provincemodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", provincemodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", provincemodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", provinceModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", provinceModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", provinceModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", provinceModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", provinceModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", provinceModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    provincemodelQ.lstProvinceModel = (List<ProvinceModel>)sqlConnection.Query<ProvinceModel>("[dbo].[BasicCulture.Province.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    provincemodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    provinceModelQuery.lstProvinceModel = (List<ProvinceModel>)sqlConnection.Query<ProvinceModel>("[dbo].[BasicCulture.Province.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    provinceModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                provincemodelQ.TotalPages = Library.Math.Divide(provincemodelQ.TotalRows, provincemodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                provinceModelQuery.TotalPages = Library.Math.Divide(provinceModelQuery.TotalRows, provinceModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return provincemodelQ;
+                return provinceModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -752,7 +752,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     /// <summary>
     /// Virtual model used for [dbo].[BasicCulture.Province.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class provincemodelQ 
+    public partial class provinceModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }

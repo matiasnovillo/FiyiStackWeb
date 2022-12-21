@@ -298,28 +298,28 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public rolemenumodelQ SelectAllPagedToModel(rolemenumodelQ rolemenumodelQ)
+        public rolemenuModelQuery SelectAllPagedToModel(rolemenuModelQuery rolemenuModelQuery)
         {
             try
             {
-                rolemenumodelQ.lstRoleMenuModel = new List<RoleMenuModel>();
+                rolemenuModelQuery.lstRoleMenuModel = new List<RoleMenuModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", rolemenumodelQ.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", rolemenumodelQ.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", rolemenumodelQ.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", rolemenumodelQ.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", rolemenumodelQ.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", rolemenumodelQ.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", rolemenuModelQuery.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", rolemenuModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", rolemenuModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", rolemenuModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", rolemenuModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", rolemenuModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    rolemenumodelQ.lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    rolemenumodelQ.TotalRows = dp.Get<int>("TotalRows");
+                    rolemenuModelQuery.lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    rolemenuModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                rolemenumodelQ.TotalPages = Library.Math.Divide(rolemenumodelQ.TotalRows, rolemenumodelQ.RowsPerPage, Library.Math.RoundType.RoundUp);
+                rolemenuModelQuery.TotalPages = Library.Math.Divide(rolemenuModelQuery.TotalRows, rolemenuModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return rolemenumodelQ;
+                return rolemenuModelQuery;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -795,7 +795,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     /// <summary>
     /// Virtual model used for [dbo].[CMSCore.RoleMenu.SelectAllPaged] stored procedure
     /// </summary>
-    public partial class rolemenumodelQ 
+    public partial class rolemenuModelQuery 
     {
         public string QueryString { get; set; }
         public int ActualPageNumber { get; set; }
