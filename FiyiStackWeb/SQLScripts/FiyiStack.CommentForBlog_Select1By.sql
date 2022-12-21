@@ -7,15 +7,13 @@ AS
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. It should not be modified from here.
  */
 
 /*
@@ -26,21 +24,23 @@ EXEC [dbo].[CommentForBlog.Select1ByCommentForBlogId]
  *
  */
 
---Last modification on: 16/12/2022 10:50:16
+--Last modification on: 20/12/2022 22:25:25
 
 SET DATEFORMAT DMY
 
 SELECT
-    [FiyiStack.CommentForBlog].[CommentForBlogId] AS [CommentForBlogId],
-    [FiyiStack.CommentForBlog].[Active] AS [Active],
-    [FiyiStack.CommentForBlog].[DateTimeCreation] AS [DateTimeCreation],
-    [FiyiStack.CommentForBlog].[DateTimeLastModification] AS [DateTimeLastModification],
-    [FiyiStack.CommentForBlog].[UserCreationId] AS [UserCreationId],
-    [FiyiStack.CommentForBlog].[UserLastModificationId] AS [UserLastModificationId],
-    [FiyiStack.CommentForBlog].[Comment] AS [Comment],
-    [FiyiStack.CommentForBlog].[BlogId] AS [BlogId]
+    [FiyiStack.CommentForBlog].[CommentForBlogId],
+    [FiyiStack.CommentForBlog].[Active],
+    [FiyiStack.CommentForBlog].[DateTimeCreation],
+    [FiyiStack.CommentForBlog].[DateTimeLastModification],
+    [FiyiStack.CommentForBlog].[UserCreationId],
+    [FiyiStack.CommentForBlog].[UserLastModificationId],
+    [FiyiStack.CommentForBlog].[Comment],
+    [FiyiStack.CommentForBlog].[BlogId]
 FROM 
     [FiyiStack.CommentForBlog]
+    LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserCreationId] ON [FiyiStack.CommentForBlog].[UserCreationId] = [CMSCore.User.UserCreationId].[UserId]
+	LEFT OUTER JOIN [CMSCore.User] AS [CMSCore.User.UserLastModificationId] ON [FiyiStack.CommentForBlog].[UserLastModificationId] = [CMSCore.User.UserLastModificationId].[UserId]
 WHERE 
     1 = 1
     AND [FiyiStack.CommentForBlog].[CommentForBlogId] = @CommentForBlogId

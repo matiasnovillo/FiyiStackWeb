@@ -2,7 +2,7 @@ USE [fiyistack_FiyiStackWeb]
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 
---Last modification on: 16/12/2022 10:50:10
+--Last modification on: 20/12/2022 22:25:19
 
 ALTER TABLE [dbo].[FiyiStack.Blog] ADD [BlogId] INT IDENTITY(1,1) NOT NULL
 ALTER TABLE [dbo].[FiyiStack.Blog] ADD [Active] TINYINT NOT NULL

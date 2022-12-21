@@ -4,18 +4,16 @@ using System;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 16/12/2022 10:50:10
+//Last modification on: 20/12/2022 22:25:19
 
 namespace FiyiStackWeb.Areas.FiyiStack.Filters
 {
@@ -23,17 +21,17 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 16/12/2022 10:50:10
+    /// Last modification: 20/12/2022 22:25:19
     /// </summary>
     public class BlogFilter : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            //int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            //if (UserId == null || UserId == 0)
-            //{
-            //    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            //}
+            int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            if (UserId == null || UserId == 0)
+            {
+                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+            }
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -42,11 +40,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            //int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            //if (UserId == null || UserId == 0)
-            //{
-            //    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            //}
+            int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            if (UserId == null || UserId == 0)
+            {
+                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+            }
         }
 
         public override void OnResultExecuted(ResultExecutedContext context)

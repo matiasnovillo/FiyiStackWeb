@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 16/12/2022 10:50:17
+//Last modification on: 20/12/2022 22:25:25
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 16/12/2022 10:50:17
+    /// Last modification: 20/12/2022 22:25:25
     /// </summary>
     [ApiController]
     [CommentForBlogFilter]
@@ -115,14 +113,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPut("~/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON")]
-        public commentforblogmodelQ SelectAllPagedToJSON([FromBody] commentforblogmodelQ commentforblogmodelQ)
+        public commentforblogModelQuery SelectAllPagedToJSON([FromBody] commentforblogModelQuery commentforblogModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _CommentForBlogProtocol.SelectAllPagedToModel(commentforblogmodelQ);
+                 return _CommentForBlogProtocol.SelectAllPagedToModel(commentforblogModelQuery);
             }
             catch (Exception ex)
             {
@@ -153,6 +151,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         {
             try
             {
+                //Get UserId from Session
+                int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+                if(UserId == 0)
+                {
+                    return StatusCode(401, "User not found in session");
+                }
+
                 //Add or edit value
                 string AddOrEdit = HttpContext.Request.Form["fiyistack-commentforblog-title-page"];
 
@@ -163,7 +169,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     BlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-commentforblog-blogid-input"]);
                 }
                 else
-                { throw new Exception("It's not allowed to save zero values in BlogId"); }
+                { return StatusCode(400, "It's not allowed to save zero values in BlogId"); }
                 
 
                 CommentForBlogModel CommentForBlogModel = new CommentForBlogModel()
@@ -177,16 +183,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 int RowsAffected = 0;
 
                 CommentForBlogModel.DateTimeLastModification = DateTime.Now;
-                //CommentForBlogModel.UserLastModificationId = TODO Sacarlo de User logueado
+                CommentForBlogModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
                     CommentForBlogModel.DateTimeCreation = DateTime.Now;
-                    //CommentForBlogModel.UserCreationId = TODO Sacarlo de User logueado
+                    CommentForBlogModel.UserCreationId = UserId;
                     NewEnteredId = _CommentForBlogProtocol.Insert(CommentForBlogModel);
                 }
                 else
                 {
-                    int CommentForBlogId = Convert.ToInt32(HttpContext.Request.Form["testing-test-testid-input"]);
+                    int CommentForBlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-commentforblog-commentforblogid-input"]);
                     CommentForBlogModel.CommentForBlogId = CommentForBlogId;
                     RowsAffected = _CommentForBlogProtocol.UpdateByCommentForBlogId(CommentForBlogModel);
                 }
@@ -244,7 +250,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -277,7 +283,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -311,7 +317,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -345,7 +351,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -386,7 +392,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -409,7 +415,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 }
                 else
                 {
-                     Message = _CommentForBlogProtocol.PostComment(UserId, BlogId, Comment);
+                    Message = _CommentForBlogProtocol.PostComment(UserId, BlogId, Comment);
                 }
 
                 return StatusCode(200, Message);
@@ -468,7 +474,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -502,7 +508,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -536,7 +542,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion

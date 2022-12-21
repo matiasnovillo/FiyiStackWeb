@@ -15,18 +15,16 @@ using System.IO;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
- * Licensed to a unique person with this Token:IAmTheOwnerOfThis
  * 
- * Coded by www.fiyistack.com
- * Copyright © 2021
+ * Coded by fiyistack.com
+ * Copyright © 2022
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
- * Auto generated code. Add your custom code after the last line of auto generation
  */
 
-//Last modification on: 16/12/2022 10:50:10
+//Last modification on: 20/12/2022 22:25:19
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -34,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 16/12/2022 10:50:10
+    /// Last modification: 20/12/2022 22:25:19
     /// </summary>
     [ApiController]
     [BlogFilter]
@@ -115,14 +113,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPut("~/api/FiyiStack/Blog/1/SelectAllPagedToJSON")]
-        public blogmodelQ SelectAllPagedToJSON([FromBody] blogmodelQ blogmodelQ)
+        public blogModelQuery SelectAllPagedToJSON([FromBody] blogModelQuery blogModelQuery)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _BlogProtocol.SelectAllPagedToModel(blogmodelQ);
+                 return _BlogProtocol.SelectAllPagedToModel(blogModelQuery);
             }
             catch (Exception ex)
             {
@@ -153,10 +151,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         {
             try
             {
+                //Get UserId from Session
                 int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
                 if (UserId == 0)
                 {
-                    return StatusCode(401);
+                    return StatusCode(401, "User not found in session");
                 }
 
                 //Add or edit value
@@ -169,7 +169,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 {
                     BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
-                
+
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
@@ -258,7 +258,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -291,7 +291,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -325,7 +325,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -359,7 +359,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -400,7 +400,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
@@ -436,7 +436,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -470,7 +470,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -504,7 +504,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     DateTimeLastModification = Now
                 };
                 FailureModel.Insert();
-                return StatusCode(500, ex);
+                return StatusCode(500, ex.Message);
             }
         }
         #endregion
