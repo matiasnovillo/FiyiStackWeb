@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//8 fields | Last modification on: 20/12/2022 22:25:25 | Stack: 9
+//8 fields | Last modification on: 21/12/2022 12:08:11 | Stack: 9
 
 export class CommentForBlogModel {
 

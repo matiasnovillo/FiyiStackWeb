@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 22:25:25
+//Last modification on: 21/12/2022 12:08:11
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 22:25:25
+    /// Last modification: 21/12/2022 12:08:11
     /// </summary>
     [ApiController]
     [CommentForBlogFilter]
@@ -172,28 +172,38 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 { return StatusCode(400, "It's not allowed to save zero values in BlogId"); }
                 
 
-                CommentForBlogModel CommentForBlogModel = new CommentForBlogModel()
-                {
-                    Comment = Comment,
-                    BlogId = BlogId,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                CommentForBlogModel.DateTimeLastModification = DateTime.Now;
-                CommentForBlogModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    CommentForBlogModel.DateTimeCreation = DateTime.Now;
-                    CommentForBlogModel.UserCreationId = UserId;
+                    //Add
+                    CommentForBlogModel CommentForBlogModel = new CommentForBlogModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Comment = Comment,
+                        BlogId = BlogId,
+                        
+                    };
+                    
                     NewEnteredId = _CommentForBlogProtocol.Insert(CommentForBlogModel);
                 }
                 else
                 {
+                    //Update
                     int CommentForBlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-commentforblog-commentforblogid-input"]);
-                    CommentForBlogModel.CommentForBlogId = CommentForBlogId;
+                    CommentForBlogModel CommentForBlogModel = new CommentForBlogModel(CommentForBlogId);
+                    
+                    CommentForBlogModel.UserLastModificationId = UserId;
+                    CommentForBlogModel.DateTimeLastModification = DateTime.Now;
+                    CommentForBlogModel.Comment = Comment;
+                    CommentForBlogModel.BlogId = BlogId;
+                                       
+
                     RowsAffected = _CommentForBlogProtocol.UpdateByCommentForBlogId(CommentForBlogModel);
                 }
                 
