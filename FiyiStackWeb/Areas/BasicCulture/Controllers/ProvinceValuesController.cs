@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:14:59
+//Last modification on: 21/12/2022 10:37:34
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:14:59
+    /// Last modification: 21/12/2022 10:37:34
     /// </summary>
     [ApiController]
     [ProvinceFilter]
@@ -174,30 +174,42 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 { return StatusCode(400, "It's not allowed to save zero values in CountryId"); }
                 
 
-                ProvinceModel ProvinceModel = new ProvinceModel()
-                {
-                    Name = Name,
-                    GeographicalCoordinates = GeographicalCoordinates,
-                    Code = Code,
-                    CountryId = CountryId,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                ProvinceModel.DateTimeLastModification = DateTime.Now;
-                ProvinceModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    ProvinceModel.DateTimeCreation = DateTime.Now;
-                    ProvinceModel.UserCreationId = UserId;
+                    //Add
+                    ProvinceModel ProvinceModel = new ProvinceModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        GeographicalCoordinates = GeographicalCoordinates,
+                        Code = Code,
+                        CountryId = CountryId,
+                        
+                    };
+                    
                     NewEnteredId = _ProvinceProtocol.Insert(ProvinceModel);
                 }
                 else
                 {
+                    //Update
                     int ProvinceId = Convert.ToInt32(HttpContext.Request.Form["basicculture-province-provinceid-input"]);
-                    ProvinceModel.ProvinceId = ProvinceId;
+                    ProvinceModel ProvinceModel = new ProvinceModel(ProvinceId);
+                    
+                    ProvinceModel.UserLastModificationId = UserId;
+                    ProvinceModel.DateTimeLastModification = DateTime.Now;
+                    ProvinceModel.Name = Name;
+                    ProvinceModel.GeographicalCoordinates = GeographicalCoordinates;
+                    ProvinceModel.Code = Code;
+                    ProvinceModel.CountryId = CountryId;
+                                       
+
                     RowsAffected = _ProvinceProtocol.UpdateByProvinceId(ProvinceModel);
                 }
                 

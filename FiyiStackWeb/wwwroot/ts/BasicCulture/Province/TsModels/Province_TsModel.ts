@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//10 fields | Last modification on: 20/12/2022 20:14:59 | Stack: 9
+//10 fields | Last modification on: 21/12/2022 10:37:34 | Stack: 9
 
 export class ProvinceModel {
 
@@ -106,5 +106,5 @@ export class provincemodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstProvinceModel?: ProvinceModel[];
+    lstProvinceModel?: ProvinceModel[] | undefined;
 }

@@ -13,7 +13,7 @@ var ajax_1 = require("rxjs/ajax");
  * in all copies or substantial portions of the Software.
  *
 */
-//10 fields | Last modification on: 20/12/2022 20:14:59 | Stack: 9
+//10 fields | Last modification on: 21/12/2022 10:37:34 | Stack: 9
 var ProvinceModel = /** @class */ (function () {
     function ProvinceModel() {
     }
