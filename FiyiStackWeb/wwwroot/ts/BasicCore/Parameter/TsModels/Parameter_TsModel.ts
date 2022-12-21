@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//9 fields | Last modification on: 20/12/2022 19:56:32 | Stack: 9
+//9 fields | Last modification on: 21/12/2022 9:32:45 | Stack: 9
 
 export class ParameterModel {
 
@@ -105,5 +105,5 @@ export class parametermodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstParameterModel?: ParameterModel[];
+    lstParameterModel?: ParameterModel[] | undefined;
 }

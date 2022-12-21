@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 19:56:32
+//Last modification on: 21/12/2022 9:32:45
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 19:56:32
+    /// Last modification: 21/12/2022 9:32:45
     /// </summary>
     [ApiController]
     [ParameterFilter]
@@ -167,29 +167,40 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 bool IsPrivate = Convert.ToBoolean(HttpContext.Request.Form["basiccore-parameter-isprivate-input"]);
                 
 
-                ParameterModel ParameterModel = new ParameterModel()
-                {
-                    Name = Name,
-                    Value = Value,
-                    IsPrivate = IsPrivate,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                ParameterModel.DateTimeLastModification = DateTime.Now;
-                ParameterModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    ParameterModel.DateTimeCreation = DateTime.Now;
-                    ParameterModel.UserCreationId = UserId;
+                    //Add
+                    ParameterModel ParameterModel = new ParameterModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        Value = Value,
+                        IsPrivate = IsPrivate,
+                        
+                    };
+                    
                     NewEnteredId = _ParameterProtocol.Insert(ParameterModel);
                 }
                 else
                 {
+                    //Update
                     int ParameterId = Convert.ToInt32(HttpContext.Request.Form["basiccore-parameter-parameterid-input"]);
-                    ParameterModel.ParameterId = ParameterId;
+                    ParameterModel ParameterModel = new ParameterModel(ParameterId);
+                    
+                    ParameterModel.UserLastModificationId = UserId;
+                    ParameterModel.DateTimeLastModification = DateTime.Now;
+                    ParameterModel.Name = Name;
+                    ParameterModel.Value = Value;
+                    ParameterModel.IsPrivate = IsPrivate;
+                                       
+
                     RowsAffected = _ParameterProtocol.UpdateByParameterId(ParameterModel);
                 }
                 

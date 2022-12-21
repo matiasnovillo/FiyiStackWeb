@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 19:56:32
+//Last modification on: 21/12/2022 9:32:45
 
 $(document).ready(function () {
 basiccoreparametervaluequill.root.innerHTML = $("#basiccore-parameter-value-hidden-value").val();
@@ -56,9 +56,9 @@ $("#basiccore-parameter-insert-or-update-button").on("click", function (e) {
     formData.append("basiccore-parameter-parameterid-input", $("#basiccore-parameter-parameterid-input").val());
 
     formData.append("basiccore-parameter-name-input", $("#basiccore-parameter-name-input").val());
-    formData.append("basiccore-parameter-value-input", $("#basiccore-parameter-value-input").html());
+    formData.append("basiccore-parameter-value-input", basiccoreparametervaluequill.root.innerHTML);
     formData.append("basiccore-parameter-isprivate-input", $("#basiccore-parameter-isprivate-input").is(":checked"));
-    
+
 
     //Setup request
     var xmlHttpRequest = new XMLHttpRequest();
