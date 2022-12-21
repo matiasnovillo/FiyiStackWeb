@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:09:01
+//Last modification on: 21/12/2022 10:30:11
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:09:01
+    /// Last modification: 21/12/2022 10:30:11
     /// </summary>
     [ApiController]
     [CountryFilter]
@@ -174,30 +174,42 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 { return StatusCode(400, "It's not allowed to save zero values in PlanetId"); }
                 
 
-                CountryModel CountryModel = new CountryModel()
-                {
-                    Name = Name,
-                    GeographicalCoordinates = GeographicalCoordinates,
-                    Code = Code,
-                    PlanetId = PlanetId,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                CountryModel.DateTimeLastModification = DateTime.Now;
-                CountryModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    CountryModel.DateTimeCreation = DateTime.Now;
-                    CountryModel.UserCreationId = UserId;
+                    //Add
+                    CountryModel CountryModel = new CountryModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        GeographicalCoordinates = GeographicalCoordinates,
+                        Code = Code,
+                        PlanetId = PlanetId,
+                        
+                    };
+                    
                     NewEnteredId = _CountryProtocol.Insert(CountryModel);
                 }
                 else
                 {
+                    //Update
                     int CountryId = Convert.ToInt32(HttpContext.Request.Form["basicculture-country-countryid-input"]);
-                    CountryModel.CountryId = CountryId;
+                    CountryModel CountryModel = new CountryModel(CountryId);
+                    
+                    CountryModel.UserLastModificationId = UserId;
+                    CountryModel.DateTimeLastModification = DateTime.Now;
+                    CountryModel.Name = Name;
+                    CountryModel.GeographicalCoordinates = GeographicalCoordinates;
+                    CountryModel.Code = Code;
+                    CountryModel.PlanetId = PlanetId;
+                                       
+
                     RowsAffected = _CountryProtocol.UpdateByCountryId(CountryModel);
                 }
                 

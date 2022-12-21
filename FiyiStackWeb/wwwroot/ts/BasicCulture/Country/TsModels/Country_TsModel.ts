@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//10 fields | Last modification on: 20/12/2022 20:09:01 | Stack: 9
+//10 fields | Last modification on: 21/12/2022 10:30:11 | Stack: 9
 
 export class CountryModel {
 
@@ -106,5 +106,5 @@ export class countrymodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstCountryModel?: CountryModel[];
+    lstCountryModel?: CountryModel[] | undefined;
 }
