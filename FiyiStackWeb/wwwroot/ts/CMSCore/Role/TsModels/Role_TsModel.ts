@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//7 fields | Last modification on: 20/12/2022 20:47:32 | Stack: 9
+//7 fields | Last modification on: 21/12/2022 11:08:27 | Stack: 9
 
 export class RoleModel {
 
@@ -103,5 +103,5 @@ export class rolemodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstRoleModel?: RoleModel[];
+    lstRoleModel?: RoleModel[] | undefined;
 }

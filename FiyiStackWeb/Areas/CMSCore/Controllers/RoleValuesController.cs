@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:47:32
+//Last modification on: 21/12/2022 11:08:27
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:47:32
+    /// Last modification: 21/12/2022 11:08:27
     /// </summary>
     [ApiController]
     [RoleFilter]
@@ -165,27 +165,36 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 string Name = HttpContext.Request.Form["cmscore-role-name-input"];
                 
 
-                RoleModel RoleModel = new RoleModel()
-                {
-                    Name = Name,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                RoleModel.DateTimeLastModification = DateTime.Now;
-                RoleModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    RoleModel.DateTimeCreation = DateTime.Now;
-                    RoleModel.UserCreationId = UserId;
+                    //Add
+                    RoleModel RoleModel = new RoleModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        
+                    };
+                    
                     NewEnteredId = _RoleProtocol.Insert(RoleModel);
                 }
                 else
                 {
+                    //Update
                     int RoleId = Convert.ToInt32(HttpContext.Request.Form["cmscore-role-roleid-input"]);
-                    RoleModel.RoleId = RoleId;
+                    RoleModel RoleModel = new RoleModel(RoleId);
+                    
+                    RoleModel.UserLastModificationId = UserId;
+                    RoleModel.DateTimeLastModification = DateTime.Now;
+                    RoleModel.Name = Name;
+                                       
+
                     RowsAffected = _RoleProtocol.UpdateByRoleId(RoleModel);
                 }
                 
