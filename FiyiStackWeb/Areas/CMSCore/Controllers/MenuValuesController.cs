@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:22:13
+//Last modification on: 21/12/2022 10:58:18
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:22:13
+    /// Last modification: 21/12/2022 10:58:18
     /// </summary>
     [ApiController]
     [MenuFilter]
@@ -169,31 +169,44 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 string IconURLPath = HttpContext.Request.Form["cmscore-menu-iconurlpath-input"];
                 
 
-                MenuModel MenuModel = new MenuModel()
-                {
-                    Name = Name,
-                    MenuFatherId = MenuFatherId,
-                    Order = Order,
-                    URLPath = URLPath,
-                    IconURLPath = IconURLPath,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                MenuModel.DateTimeLastModification = DateTime.Now;
-                MenuModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    MenuModel.DateTimeCreation = DateTime.Now;
-                    MenuModel.UserCreationId = UserId;
+                    //Add
+                    MenuModel MenuModel = new MenuModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        MenuFatherId = MenuFatherId,
+                        Order = Order,
+                        URLPath = URLPath,
+                        IconURLPath = IconURLPath,
+                        
+                    };
+                    
                     NewEnteredId = _MenuProtocol.Insert(MenuModel);
                 }
                 else
                 {
+                    //Update
                     int MenuId = Convert.ToInt32(HttpContext.Request.Form["cmscore-menu-menuid-input"]);
-                    MenuModel.MenuId = MenuId;
+                    MenuModel MenuModel = new MenuModel(MenuId);
+                    
+                    MenuModel.UserLastModificationId = UserId;
+                    MenuModel.DateTimeLastModification = DateTime.Now;
+                    MenuModel.Name = Name;
+                    MenuModel.MenuFatherId = MenuFatherId;
+                    MenuModel.Order = Order;
+                    MenuModel.URLPath = URLPath;
+                    MenuModel.IconURLPath = IconURLPath;
+                                       
+
                     RowsAffected = _MenuProtocol.UpdateByMenuId(MenuModel);
                 }
                 
