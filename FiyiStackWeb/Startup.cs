@@ -12,6 +12,8 @@ using System;
 using FiyiStackWeb.Areas.FiyiStack.Protocols;
 using FiyiStackWeb.Areas.FiyiStack.Services;
 using SixLaborsCaptcha.Mvc.Core;
+using FiyiStackWeb.Areas.BasicCulture.Services;
+using FiyiStackWeb.Areas.BasicCulture.Protocols;
 
 namespace FiyiStackWeb
 {
@@ -45,6 +47,12 @@ namespace FiyiStackWeb
             //Area: BasicCore
             services.AddScoped<FailureProtocol, FailureService>();
             services.AddScoped<ParameterProtocol, ParameterService>();
+            //Area: BasicCulture
+            services.AddScoped<CityProtocol, CityService>();
+            services.AddScoped<ProvinceProtocol, ProvinceService>();
+            services.AddScoped<CountryProtocol, CountryService>();
+            services.AddScoped<PlanetProtocol, PlanetService>();
+            services.AddScoped<SexProtocol, SexService>();
             //Area: CMSCore
             services.AddScoped<UserProtocol, UserService>();
             services.AddScoped<MenuProtocol, MenuService>();

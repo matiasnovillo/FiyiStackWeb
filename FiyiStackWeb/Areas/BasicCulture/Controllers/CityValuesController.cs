@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 20:06:24
+//Last modification on: 21/12/2022 9:41:41
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 20:06:24
+    /// Last modification: 21/12/2022 9:41:41
     /// </summary>
     [ApiController]
     [CityFilter]
@@ -174,30 +174,42 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 { return StatusCode(400, "It's not allowed to save zero values in ProvinceId"); }
                 
 
-                CityModel CityModel = new CityModel()
-                {
-                    Name = Name,
-                    GeographicalCoordinates = GeographicalCoordinates,
-                    Code = Code,
-                    ProvinceId = ProvinceId,
-                    
-                };
-
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                CityModel.DateTimeLastModification = DateTime.Now;
-                CityModel.UserLastModificationId = UserId;
                 if (AddOrEdit.StartsWith("Add"))
                 {
-                    CityModel.DateTimeCreation = DateTime.Now;
-                    CityModel.UserCreationId = UserId;
+                    //Add
+                    CityModel CityModel = new CityModel()
+                    {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
+                        Name = Name,
+                        GeographicalCoordinates = GeographicalCoordinates,
+                        Code = Code,
+                        ProvinceId = ProvinceId,
+                        
+                    };
+                    
                     NewEnteredId = _CityProtocol.Insert(CityModel);
                 }
                 else
                 {
+                    //Update
                     int CityId = Convert.ToInt32(HttpContext.Request.Form["basicculture-city-cityid-input"]);
-                    CityModel.CityId = CityId;
+                    CityModel CityModel = new CityModel(CityId);
+                    
+                    CityModel.UserLastModificationId = UserId;
+                    CityModel.DateTimeLastModification = DateTime.Now;
+                    CityModel.Name = Name;
+                    CityModel.GeographicalCoordinates = GeographicalCoordinates;
+                    CityModel.Code = Code;
+                    CityModel.ProvinceId = ProvinceId;
+                                       
+
                     RowsAffected = _CityProtocol.UpdateByCityId(CityModel);
                 }
                 

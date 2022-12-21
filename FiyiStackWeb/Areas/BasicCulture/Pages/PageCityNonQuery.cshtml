@@ -12,8 +12,6 @@
     string GeographicalCoordinates;
     string Code;
     int ProvinceId;
-    int UserCreationId;
-    int UserLastModificationId;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?CityId=0"))
@@ -25,9 +23,7 @@
         Name = "";
         GeographicalCoordinates = "";
         Code = "";
-        ProvinceId = 0;UserCreationId = 0;
-        UserLastModificationId = 0;
-        
+        ProvinceId = 0;
     }
     else
     {
@@ -42,8 +38,6 @@
         GeographicalCoordinates = CityModel.GeographicalCoordinates;
         Code = CityModel.Code;
         ProvinceId = CityModel.ProvinceId;
-        UserCreationId = CityModel.UserCreationId;
-        UserLastModificationId = CityModel.UserLastModificationId;
         
     }
 
@@ -59,7 +53,7 @@
  */
     
 //Stack: 11
-//Last modification on: 20/12/2022 20:06:24
+//Last modification on: 21/12/2022 9:41:41
 
 }
 <!-- Header -->
@@ -229,48 +223,6 @@
                                 </ul>
                                 <div class="input-group-append">
                                     <button class="btn btn-danger border-0 ml-2" data-toggle="tooltip" data-placement="left" title="This value is required" type="button" id="provinceid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserCreationId -->
-                        <div class="form-group mb-3">
-                            <label for="basicculture-city-usercreationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserCreationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserCreationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="basicculture-city-usercreationid-input" value="@UserCreationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="usercreationid-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- UserLastModificationId -->
-                        <div class="form-group mb-3">
-                            <label for="basicculture-city-userlastmodificationid-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> UserLastModificationId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> UserLastModificationId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="basicculture-city-userlastmodificationid-input" value="@UserLastModificationId" min="1" max="2147483647" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="userlastmodificationid-info">
                                         <i class="fas fa-info"></i>
                                     </button>
                                 </div>

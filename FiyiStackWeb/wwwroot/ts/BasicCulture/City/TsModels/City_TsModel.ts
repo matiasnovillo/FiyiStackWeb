@@ -13,7 +13,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//10 fields | Last modification on: 20/12/2022 20:06:24 | Stack: 9
+//10 fields | Last modification on: 21/12/2022 9:41:41 | Stack: 9
 
 export class CityModel {
 
@@ -106,5 +106,5 @@ export class citymodelQuery {
     SortToggler?: boolean;
     TotalRows?: number;
     TotalPages?: number;
-    lstCityModel?: CityModel[];
+    lstCityModel?: CityModel[] | undefined;
 }
