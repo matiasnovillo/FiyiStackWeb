@@ -16,7 +16,7 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 20/12/2022 22:25:19
+//Last modification on: 21/12/2022 11:52:12
 
 namespace FiyiStackWeb.Areas.FiyiStack.Pages
 {
@@ -24,7 +24,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
     /// Stack:             9 <br/>
     /// Name:              C# Razor Page. <br/>
     /// Function:          Allow you to show HTML files using Razor Page technology. <br/>
-    /// Last modification: 20/12/2022 22:25:19
+    /// Last modification: 21/12/2022 11:52:12
     /// </summary>
     [BlogFilter]
     public partial class PageBlogNonQueryModel : PageModel

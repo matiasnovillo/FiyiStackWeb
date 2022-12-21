@@ -24,7 +24,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 20/12/2022 22:25:19
+//Last modification on: 21/12/2022 11:52:12
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 20/12/2022 22:25:19
+    /// Last modification: 21/12/2022 11:52:12
     /// </summary>
     [ApiController]
     [BlogFilter]
@@ -154,7 +154,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 //Get UserId from Session
                 int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
 
-                if (UserId == 0)
+                if(UserId == 0)
                 {
                     return StatusCode(401, "User not found in session");
                 }
@@ -164,11 +164,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 
                 string Title = HttpContext.Request.Form["fiyistack-blog-title-input"];
                 string Body = HttpContext.Request.Form["fiyistack-blog-body-input"];
-                string BackgroundImage = HttpContext.Request.Form["fiyistack-blog-backgroundimage-input"];
+                string BackgroundImage = HttpContext.Request.Form["fiyistack-blog-backgroundimage-input"];;
                 if (HttpContext.Request.Form.Files.Count != 0)
                 {
-                    BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
+                    BackgroundImage = $@"{_WebHostEnvironment.WebRootPath}/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
+                
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
@@ -178,29 +179,31 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     //Add
                     BlogModel BlogModel = new BlogModel()
                     {
+                        Active = true,
+                        UserCreationId = UserId,
+                        UserLastModificationId = UserId,
+                        DateTimeCreation = DateTime.Now,
+                        DateTimeLastModification = DateTime.Now,
                         Title = Title,
                         Body = Body,
                         BackgroundImage = BackgroundImage,
-                        DateTimeCreation = DateTime.Now,
-                        DateTimeLastModification = DateTime.Now,
-                        UserCreationId = UserId,
-                        UserLastModificationId = UserId,
-                        Active = true
-
+                        
                     };
-
+                    
                     NewEnteredId = _BlogProtocol.Insert(BlogModel);
                 }
                 else
                 {
-                    //Edit
+                    //Update
                     int BlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-blogid-input"]);
-
                     BlogModel BlogModel = new BlogModel(BlogId);
-
+                    
+                    BlogModel.UserLastModificationId = UserId;
+                    BlogModel.DateTimeLastModification = DateTime.Now;
                     BlogModel.Title = Title;
                     BlogModel.Body = Body;
                     BlogModel.BackgroundImage = BackgroundImage;
+                                       
 
                     RowsAffected = _BlogProtocol.UpdateByBlogId(BlogModel);
                 }

@@ -18,7 +18,7 @@ import { Ajax } from "../../../Library/Ajax";
 
 //Stack: 10
 
-//Last modification on: 20/12/2022 22:25:19
+//Last modification on: 21/12/2022 11:52:12
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -162,43 +162,43 @@ class BlogQuery {
         </div>
     </td>
     <!-- Data -->
-    <td class="text-left text-light text-truncate">
+    <td class="text-left text-light">
         <i class="fas fa-key"></i> ${row.BlogId}
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-key"></i> ${row.UserCreationId}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong>
             <i class="fas fa-key"></i> ${row.UserLastModificationId}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <strong><i class="fas fa-font">
             </i> ${row.Title}
         </strong>
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <i class="fas fa-font"></i> ${row.Body}
     </td>
-    <td class="text-left text-truncate">
+    <td class="text-left">
         <a href="${row.BackgroundImage}">
             <strong>
                 <i class="fas fa-file"></i> ${row.BackgroundImage}
@@ -239,40 +239,40 @@ class BlogQuery {
         <div class="card bg-gradient-primary mb-2">
             <div class="card-body">
                 <div class="row">
-                    <div class="col">
-                        <span class="text-white text-light mb-4 text-truncate">
+                    <div class="col text-truncate">
+                        <span class="text-white text-light mb-4">
                            BlogId <i class="fas fa-key"></i> ${row.BlogId}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            Active <i class="fas fa-toggle-on"></i> ${row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            UserCreationId <i class="fas fa-key"></i> ${row.UserCreationId}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            UserLastModificationId <i class="fas fa-key"></i> ${row.UserLastModificationId}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            Title <i class="fas fa-font"></i> ${row.Title}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            Body <i class="fas fa-font"></i> ${row.Body}
                         </span>
                         <br/>
-                        <span class="text-white mb-4 text-truncate">
+                        <span class="text-white mb-4">
                            BackgroundImage <i class="fas fa-file"></i> ${row.BackgroundImage}
                         </span>
                         <br/>
