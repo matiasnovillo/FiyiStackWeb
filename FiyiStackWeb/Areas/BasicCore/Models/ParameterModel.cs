@@ -340,7 +340,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.Select1ByName]", dp, commandType: CommandType.StoredProcedure);
+                    lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.Select1ByNameCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 return lstParameterModel[0].Value;

@@ -338,7 +338,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleIdForDashboardIndex]", dp, commandType: CommandType.StoredProcedure);
+                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleIdForDashboardIndexCustom]", dp, commandType: CommandType.StoredProcedure);
                     Menues = dp.Get<string>("Menues");
                 }
 
@@ -360,7 +360,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleIdForLayoutDashboard]", dp, commandType: CommandType.StoredProcedure);
+                    lstRoleMenuModel = (List<RoleMenuModel>)sqlConnection.Query<RoleMenuModel>("[dbo].[CMSCore.RoleMenu.SelectMenuesByRoleIdForLayoutDashboardCustom]", dp, commandType: CommandType.StoredProcedure);
                     Menues = dp.Get<string>("Menues");
                 }
 
@@ -380,7 +380,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstRoleMenuForCheckboxes = (List<roleMenuForChechboxes>)sqlConnection.Query<roleMenuForChechboxes>("[dbo].[CMSCore.RoleMenu.SelectAllByRoleId]", dp, commandType: CommandType.StoredProcedure);
+                    lstRoleMenuForCheckboxes = (List<roleMenuForChechboxes>)sqlConnection.Query<roleMenuForChechboxes>("[dbo].[CMSCore.RoleMenu.SelectAllByRoleIdCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 return lstRoleMenuForCheckboxes;
@@ -693,7 +693,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.RoleMenu.UpdateByRoleIdByMenuId]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.RoleMenu.UpdateByRoleIdByMenuIdCustom]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                 }
             }

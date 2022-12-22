@@ -358,11 +358,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Login]", dp, commandType: CommandType.StoredProcedure);
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.LoginCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 if (lstUserModel.Count > 1)
-                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Login] returned more than one register/row"); }
+                { throw new Exception("The stored procedure [dbo].[CMSCore.User.LoginCustom] returned more than one register/row"); }
 
                 foreach (UserModel user in lstUserModel)
                 {
@@ -396,11 +396,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Select1ByEmail]", dp, commandType: CommandType.StoredProcedure);
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Select1ByEmailCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 if (lstUserModel.Count > 1)
-                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Select1ByEmail] returned more than one register/row"); }
+                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Select1ByEmailCustom] returned more than one register/row"); }
 
                 foreach (UserModel user in lstUserModel)
                 {
@@ -434,11 +434,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Select1ByRegistrationToken]", dp, commandType: CommandType.StoredProcedure);
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.Select1ByRegistrationTokenCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 if (lstUserModel.Count > 1)
-                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Select1ByRegistrationToken] returned more than one register/row"); }
+                { throw new Exception("The stored procedure [dbo].[CMSCore.User.Select1ByRegistrationTokenCustom] returned more than one register/row"); }
 
                 foreach (UserModel user in lstUserModel)
                 {
@@ -785,7 +785,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.User.ChangePassword]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.User.ChangePasswordCustom]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
                     RowsAffected = dp.Get<int>("RowsAffected");
                 }

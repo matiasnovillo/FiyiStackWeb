@@ -353,7 +353,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                     using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                     {
                         List<CommentForBlogModel> lstCommentForBlogModel = new List<CommentForBlogModel>();
-                        lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogId]", dp2, commandType: CommandType.StoredProcedure);
+                        lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogIdCustom]", dp2, commandType: CommandType.StoredProcedure);
 
                         //Add list item inside another list
                         foreach (var CommentForBlogModel in lstCommentForBlogModel)
