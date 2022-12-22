@@ -47,7 +47,7 @@ class MenuQuery {
         </th>
         <th scope="col">
             <button value="MenuId" class="btn btn-outline-secondary btn-sm" type="button">
-                MenuId
+                Menu ID
             </button>
         </th>
         <th scope="col">
@@ -57,7 +57,7 @@ class MenuQuery {
         </th>
         <th scope="col">
             <button value="MenuFatherId" class="btn btn-outline-secondary btn-sm" type="button">
-                MenuFatherId
+                Menu Father ID
             </button>
         </th>
         <th scope="col">
@@ -67,12 +67,12 @@ class MenuQuery {
         </th>
         <th scope="col">
             <button value="URLPath" class="btn btn-outline-secondary btn-sm" type="button">
-                URLPath
+                URL Path
             </button>
         </th>
         <th scope="col">
             <button value="IconURLPath" class="btn btn-outline-secondary btn-sm" type="button">
-                IconURLPath
+                Icon URL Path
             </button>
         </th>
         <th scope="col">
@@ -82,22 +82,22 @@ class MenuQuery {
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+                User Creation
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+                User Last Modification
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+                Date Time Creation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+                Date Time Last Modification
             </button>
         </th>
         
@@ -126,7 +126,7 @@ class MenuQuery {
                         TotalPages = response_menuQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#cmscore-menu-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        $("#cmscore-menu-query-string").attr("placeholder", `Search... (${TotalRows} menues)`);
                         //Total pages of pagination
                         $("#cmscore-menu-total-pages-lg, #cmscore-menu-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
@@ -211,12 +211,12 @@ class MenuQuery {
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserCreationId}
+            </i> ${row.UserCreationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserLastModificationId}
+            </i> ${row.UserLastModificationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
@@ -265,7 +265,7 @@ class MenuQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           MenuId <i class="fas fa-key"></i> ${row.MenuId}
+                           Menu ID <i class="fas fa-key"></i> ${row.MenuId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -273,7 +273,7 @@ class MenuQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            MenuFatherId <i class="fas fa-divide"></i> ${row.MenuFatherId}
+                            Menu Father ID <i class="fas fa-divide"></i> ${row.MenuFatherId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -288,7 +288,7 @@ class MenuQuery {
                         <br/>
                         <span class="mb-4">
                             <a href="${row.IconURLPath}" style="color:#FFFFFF" target="_blank">
-                               IconURLPath <i class="fas fa-globe"></i> ${row.IconURLPath}
+                               Icon URL Path <i class="fas fa-globe"></i> ${row.IconURLPath}
                             </a>
                         </span>
                         <br/>
@@ -297,19 +297,19 @@ class MenuQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserCreationId <i class="fas fa-divide"></i> ${row.UserCreationId}
+                            User Creation <i class="fas fa-divide"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserLastModificationId <i class="fas fa-divide"></i> ${row.UserLastModificationId}
+                            User Last Modification <i class="fas fa-divide"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         
