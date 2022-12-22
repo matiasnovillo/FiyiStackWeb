@@ -6,7 +6,7 @@ import * as $ from "jquery";
 let LastTopDistance: number = 0;
 let QueryString: string = "";
 let ActualPageNumber: number = 1;
-let RowsPerPage: number = 50;
+let RowsPerPage: number = 2000;
 let SorterColumn: string | undefined = "";
 let SortToggler: boolean = false;
 let TotalPages: number = 0;
