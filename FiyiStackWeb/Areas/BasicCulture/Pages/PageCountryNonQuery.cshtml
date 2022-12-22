@@ -12,7 +12,8 @@
     string GeographicalCoordinates;
     string Code;
     int PlanetId;
-    
+    string PlanetName;
+
 
     if(HttpContext.Request.QueryString.Value.Contains("?CountryId=0"))
     {
@@ -24,6 +25,7 @@
         GeographicalCoordinates = "";
         Code = "";
         PlanetId = 0;
+        PlanetName = "Choose a value";
     }
     else
     {
@@ -38,7 +40,9 @@
         GeographicalCoordinates = CountryModel.GeographicalCoordinates;
         Code = CountryModel.Code;
         PlanetId = CountryModel.PlanetId;
-        
+
+        PlanetModel PlanetModel = new PlanetModel(CountryModel.PlanetId);
+        PlanetName = PlanetModel.Name;
     }
 
     List<PlanetModel> lstPlanetModel = new PlanetModel().SelectAllToList();
@@ -77,7 +81,7 @@
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="javascript:void(0)">
-                                    BasicCulture
+                                    Basic (Culture)
                                 </a>
                             </li>
                             <li class="breadcrumb-item">
@@ -121,13 +125,13 @@
                         <!-- CountryId -->
                         <div class="form-group mb-3">
                             <label for="basicculture-country-countryId-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-key"></i> CountryId
+                                <i class="fas fa-key"></i> Country ID
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text">
                                         <strong>
-                                            <i class="fas fa-key"></i> CountryId
+                                            <i class="fas fa-key"></i> Country ID
                                         </strong>
                                     </span>
                                 </div>
@@ -161,13 +165,13 @@
                         <!-- GeographicalCoordinates -->
                         <div class="form-group mb-3">
                             <label for="basicculture-country-geographicalcoordinates-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> GeographicalCoordinates
+                                <i class="fas fa-font"></i> Geographical Coordinates
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text ">
                                         <strong>
-                                            <i class="fas fa-font"></i> GeographicalCoordinates
+                                            <i class="fas fa-font"></i> Geographical Coordinates
                                         </strong>
                                     </span>
                                 </div>
@@ -203,13 +207,13 @@
                         <!-- PlanetId -->
                         <div class="form-group mb-3">
                             <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-hashtag"></i> PlanetId
+                                <i class="fas fa-hashtag"></i> Planet ID
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend input-group-text">
                                     <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                         <strong>
-                                            <i class="fas fa-hashtag"></i> PlanetId
+                                            <i class="fas fa-hashtag"></i> Planet ID
                                         </strong>
                                     </span>
                                 </div>
@@ -217,7 +221,7 @@
                                 <ul id="basicculture-country-planetid-list" class="nav nav-pills nav-fill flex-column flex-sm-row" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link mb-sm-3 mb-md-0 active" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                                            Choose a value
+                                            @PlanetName
                                         </a>
                                         <input type="hidden" id="basicculture-country-planetid-input" value="@PlanetId"/>
                                     </li>
