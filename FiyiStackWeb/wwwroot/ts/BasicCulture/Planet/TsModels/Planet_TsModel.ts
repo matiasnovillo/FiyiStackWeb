@@ -25,7 +25,9 @@ export class PlanetModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	DateTimeCreation?: string | string[] | number | undefined;
-	DateTimeLastModification?: string | string[] | number | undefined;
+    DateTimeLastModification?: string | string[] | number | undefined;
+    UserCreationIdFantasyName?: string | string[] | number | undefined;
+    UserLastModificationIdFantasyName?: string | string[] | number | undefined;
 
     //Queries
     static Select1ByPlanetId(PlanetId: number) {

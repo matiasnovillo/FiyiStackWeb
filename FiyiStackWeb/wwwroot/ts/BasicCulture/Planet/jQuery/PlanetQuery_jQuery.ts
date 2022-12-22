@@ -47,7 +47,7 @@ class PlanetQuery {
         </th>
         <th scope="col">
             <button value="PlanetId" class="btn btn-outline-secondary btn-sm" type="button">
-                PlanetId
+                Planet ID
             </button>
         </th>
         <th scope="col">
@@ -67,22 +67,22 @@ class PlanetQuery {
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+                User Creation
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+                User Last Modification
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+                Date Time Creation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+                Date Time Last Modification
             </button>
         </th>
         
@@ -111,7 +111,7 @@ class PlanetQuery {
                         TotalPages = response_planetQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#basicculture-planet-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        $("#basicculture-planet-query-string").attr("placeholder", `Search... (${TotalRows} planets)`);
                         //Total pages of pagination
                         $("#basicculture-planet-total-pages-lg, #basicculture-planet-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
@@ -177,12 +177,12 @@ class PlanetQuery {
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserCreationId}
+            </i> ${row.UserCreationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserLastModificationId}
+            </i> ${row.UserLastModificationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
@@ -231,7 +231,7 @@ class PlanetQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           PlanetId <i class="fas fa-key"></i> ${row.PlanetId}
+                           Planet ID <i class="fas fa-key"></i> ${row.PlanetId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -247,19 +247,19 @@ class PlanetQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserCreationId <i class="fas fa-divide"></i> ${row.UserCreationId}
+                            User Creation <i class="fas fa-divide"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserLastModificationId <i class="fas fa-divide"></i> ${row.UserLastModificationId}
+                            User Last Modification <i class="fas fa-divide"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         
