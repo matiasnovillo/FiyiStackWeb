@@ -28,7 +28,10 @@ export class UserModel {
 	UserLastModificationId?: number;
 	DateTimeCreation?: string | string[] | number | undefined;
 	DateTimeLastModification?: string | string[] | number | undefined;
-	RegistrationToken?: string | string[] | number | undefined;
+    RegistrationToken?: string | string[] | number | undefined;
+    UserCreationIdFantasyName?: string | string[] | number | undefined;
+    UserLastModificationIdFantasyName?: string | string[] | number | undefined;
+    RoleIdName?: string | string[] | number | undefined;
 
     //Queries
     static Select1ByUserId(UserId: number) {

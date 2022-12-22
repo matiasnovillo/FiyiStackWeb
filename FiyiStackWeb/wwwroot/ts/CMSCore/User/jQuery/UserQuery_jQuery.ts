@@ -47,12 +47,12 @@ class UserQuery {
         </th>
         <th scope="col">
             <button value="UserId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserId
+                User ID
             </button>
         </th>
         <th scope="col">
             <button value="FantasyName" class="btn btn-outline-secondary btn-sm" type="button">
-                FantasyName
+                Fantasy Name
             </button>
         </th>
         <th scope="col">
@@ -67,7 +67,7 @@ class UserQuery {
         </th>
         <th scope="col">
             <button value="RoleId" class="btn btn-outline-secondary btn-sm" type="button">
-                RoleId
+                Role
             </button>
         </th>
         <th scope="col">
@@ -77,27 +77,27 @@ class UserQuery {
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+                User Creation
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+                User Last Modification
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+                Date Time Creation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+                Date Time Last Modification
             </button>
         </th>
         <th scope="col">
             <button value="RegistrationToken" class="btn btn-outline-secondary btn-sm" type="button">
-                RegistrationToken
+                Registration Token
             </button>
         </th>
         
@@ -126,7 +126,7 @@ class UserQuery {
                         TotalPages = response_userQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#cmscore-user-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        $("#cmscore-user-query-string").attr("placeholder", `Search... (${TotalRows} users)`);
                         //Total pages of pagination
                         $("#cmscore-user-total-pages-lg, #cmscore-user-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
@@ -194,7 +194,7 @@ class UserQuery {
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-key"></i> ${row.RoleId}
+            <i class="fas fa-key"></i> ${row.RoleIdName}
         </strong>
     </td>
     <td class="text-left">
@@ -204,12 +204,12 @@ class UserQuery {
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserCreationId}
+            </i> ${row.UserCreationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserLastModificationId}
+            </i> ${row.UserLastModificationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
@@ -263,11 +263,11 @@ class UserQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           UserId <i class="fas fa-key"></i> ${row.UserId}
+                           User ID <i class="fas fa-key"></i> ${row.UserId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           FantasyName <i class="fas fa-font"></i> ${row.FantasyName}
+                           Fantasy Name <i class="fas fa-font"></i> ${row.FantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -281,7 +281,7 @@ class UserQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           RoleId <i class="fas fa-key"></i> ${row.RoleId}
+                           Role <i class="fas fa-key"></i> ${row.RoleIdName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -289,23 +289,23 @@ class UserQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserCreationId <i class="fas fa-divide"></i> ${row.UserCreationId}
+                            User Creation <i class="fas fa-divide"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserLastModificationId <i class="fas fa-divide"></i> ${row.UserLastModificationId}
+                            User Last Modification <i class="fas fa-divide"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           RegistrationToken <i class="fas fa-font"></i> ${row.RegistrationToken}
+                           Registration Token <i class="fas fa-font"></i> ${row.RegistrationToken}
                         </span>
                         <br/>
                         

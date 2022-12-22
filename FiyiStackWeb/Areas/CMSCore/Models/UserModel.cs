@@ -68,10 +68,16 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
         [Library.ModelAttributeValidator.String("RegistrationToken", false, 1, 8000, "")]
         public string RegistrationToken { get; set; }
+
+        public string UserCreationIdFantasyName { get; set; }
+
+        public string UserLastModificationIdFantasyName { get; set; }
+
+        public string RoleIdName { get; set; }
         #endregion
 
         #region Models that depend on this model
-        
+
         #endregion
 
         #region Constructors
@@ -334,7 +340,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    userModelQuery.lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    userModelQuery.lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     userModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 

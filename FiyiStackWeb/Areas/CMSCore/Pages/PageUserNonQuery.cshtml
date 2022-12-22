@@ -13,7 +13,8 @@
     string Password;
     int RoleId;
     string RegistrationToken;
-    
+    string RoleName;
+
 
     if(HttpContext.Request.QueryString.Value.Contains("?UserId=0"))
     {
@@ -25,7 +26,7 @@
         Email = "";
         Password = "";
         RoleId = 0;RegistrationToken = "";
-        
+        RoleName = "Choose a value";
     }
     else
     {
@@ -41,7 +42,10 @@
         Password = UserModel.Password;
         RoleId = UserModel.RoleId;
         RegistrationToken = UserModel.RegistrationToken;
-        
+
+        RoleModel RoleModel = new RoleModel(RoleId);
+        RoleName = RoleModel.Name;
+
     }
 
 /*
@@ -79,7 +83,7 @@
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="javascript:void(0)">
-                                    CMSCore
+                                    CMS (Core)
                                 </a>
                             </li>
                             <li class="breadcrumb-item">
@@ -123,13 +127,13 @@
                         <!-- UserId -->
                         <div class="form-group mb-3">
                             <label for="cmscore-user-userId-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-key"></i> UserId
+                                <i class="fas fa-key"></i> User ID
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text">
                                         <strong>
-                                            <i class="fas fa-key"></i> UserId
+                                            <i class="fas fa-key"></i> User ID
                                         </strong>
                                     </span>
                                 </div>
@@ -142,13 +146,13 @@
                         <!-- FantasyName -->
                         <div class="form-group mb-3">
                             <label for="cmscore-user-fantasyname-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> FantasyName
+                                <i class="fas fa-font"></i> Fantasy Name
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text ">
                                         <strong>
-                                            <i class="fas fa-font"></i> FantasyName
+                                            <i class="fas fa-font"></i> Fantasy Name
                                         </strong>
                                     </span>
                                 </div>
@@ -204,13 +208,13 @@
                         <!-- RoleId -->
                         <div class="form-group mb-3">
                             <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-hashtag"></i> RoleId
+                                <i class="fas fa-hashtag"></i> Role ID
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend input-group-text">
                                     <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                         <strong>
-                                            <i class="fas fa-hashtag"></i> RoleId
+                                            <i class="fas fa-hashtag"></i> Role ID
                                         </strong>
                                     </span>
                                 </div>
@@ -218,7 +222,7 @@
                                 <ul id="cmscore-user-roleid-list" class="nav nav-pills nav-fill flex-column flex-sm-row" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                                            Choose a value
+                                            @RoleName
                                         </a>
                                         <input type="hidden" id="cmscore-user-roleid-input" value="@RoleId"/>
                                     </li>
@@ -233,13 +237,13 @@
                         <!-- RegistrationToken -->
                         <div class="form-group mb-3">
                             <label for="cmscore-user-registrationtoken-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> RegistrationToken
+                                <i class="fas fa-font"></i> Registration Token
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text ">
                                         <strong>
-                                            <i class="fas fa-font"></i> RegistrationToken
+                                            <i class="fas fa-font"></i> Registration Token
                                         </strong>
                                     </span>
                                 </div>

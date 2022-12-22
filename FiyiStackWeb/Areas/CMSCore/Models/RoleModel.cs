@@ -56,6 +56,10 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
         [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "01/01/1753 0:00:00.001", "30/12/9998 23:59:59.999")]
         public DateTime DateTimeLastModification { get; set; }
+
+        public string UserCreationIdFantasyName { get; set; }
+
+        public string UserLastModificationIdFantasyName { get; set; }
         #endregion
 
         #region Models that depend on this model
@@ -307,7 +311,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    roleModelQuery.lstRoleModel = (List<RoleModel>)sqlConnection.Query<RoleModel>("[dbo].[CMSCore.Role.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    roleModelQuery.lstRoleModel = (List<RoleModel>)sqlConnection.Query<RoleModel>("[dbo].[CMSCore.Role.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     roleModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
