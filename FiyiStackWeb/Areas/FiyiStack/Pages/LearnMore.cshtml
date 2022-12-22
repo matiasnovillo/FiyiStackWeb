@@ -3,3 +3,126 @@
 @{
     Layout = "_Layout";
 }
+<div class="container">
+    <div class="row mt-5">
+        <!-- Title -->
+        <div class="col-lg-8 mx-auto text-center my-5">
+            <h3 class="display-4">Learn more</h3>
+            <h5>About FiyiStack, RAD tools and programming languages</h5>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card bg-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">Table of contents</h5>
+                    <div class="row">
+                        <div class="col-8">
+                            <ol>
+                                <li class="mt-2"><a href="#1">What is FiyiStack?</a></li>
+                                <li class="mt-2"><a href="#2">What is a RAD tool?</a></li>
+                                <li class="mt-2"><a href="#3">What generates FiyiStack?</a></li>
+                                <li class="mt-2"><a href="#4">The languages that FiyiStack works with</a></li>
+                            </ol>
+                        </div>
+                        <div class="col-4 d-none d-lg-inline d-xl-inline">
+                            <img src="/img/FiyiStackImageTransparent.png" width="130" alt="Logo" />
+                        </div>
+                    </div>
+              </div>
+            </div>
+            <div class="card bg-secondary" id="1">
+                <div class="card-body">
+                    <h5 class="card-title">1. What is FiyiStack?</h5>
+                    <p>
+                        FiyiStack is a <strong><u>low-code generator</u></strong> that allows you to create a table,
+                        belonging to a database, and convert it into code to be manipulated by a web application. 
+                        If you enter 10 columns of a table, FiyiStack <strong><u>converts them to ~5,000 lines of code</u></strong>. 
+                        Thanks to this, <strong><u>you can write code faster and more securely</u></strong>. 
+                        But this is not new, FiyiStack belongs to the range of programming tools as are the RAD tools. 
+                        But, <a href="#2"><strong>what is a RAD tool?</strong></a>
+                    </p>
+              </div>
+            </div>
+            <div class="card bg-secondary" id="2">
+                <div class="card-body">
+                    <h5 class="card-title">2. What is a RAD tool?</h5>
+                    <p>A RAD tool is a programming tool capable of <strong></><u>speeding up software development</u></strong>. It's basic qualities are:</p> 
+                    <ul>
+                        <li class="mt-2">Rapid development and delivery with <u>high quality</u> for a low
+                            investment cost system.</li>
+                        <li class="mt-2">Reduce the risks of mistyping by developers, breaking the code into small fragments
+                            to <u>provide easier change</u> during the development process.</li>
+                        <li class="mt-2">Iteration and reuse of prototypes and templates.</li>
+                        <li class="mt-2">Promotes the co-participation of clients with the development team.</li>
+                        <li class="mt-2">It includes GUI builders, database builders, fourth generation languages,
+                            and object-oriented techniques.</li>
+                        <li class="mt-2">It emphasizes the <u>fulfillment of the requirements</u> by the users.</li>
+                        <li class="mt-2">Development of priorities and definitions of delivery deadlines.</li>
+                        <li class="mt-2">Produces the necessary documentation to facilitate future
+                            development and maintenance.</li>
+                    </ul>
+              </div>
+            </div>
+            <div class="card bg-secondary" id="3">
+                <div class="card-body">
+                    <h5 class="card-title">3. What generates FiyiStack?</h5>
+                    <p> 
+                        A web application is composed of 3 main layers. Front-end, back-end and
+                        database. FiyiStack generates the 3 layers:
+                    </p>
+                    <p><strong>Database:</strong></p>
+                    <ul>
+                        <li class="mt-2"><u>Tables with columns</u> to store the data of your web application.</li>
+                        <li class="mt-2"><u>Stored procedures</u> to communicate the tables with the back-end 
+                            through functions stored in the database.</li>
+                    </ul>
+                    <p><strong>Back-end:</strong></p>
+                    <ul>
+                        <li class="mt-2"><u>C# models</u> which are C# classes. They contain the columns of each table
+                            but in the form of C# properties. It also contains the functions that
+                            communicate with the stored procedures of each table.</li>
+                        <li class="mt-2"><u>C# services</u> which are C# classes. These classes are dedicated to the
+                            user's business. Here, accesses to C# models are processed, emails are sent,
+                            third-party APIs are connected and more.</li>
+                        <li class="mt-2"><u>C# protocols/interfaces</u>. These interfaces are the connection between the
+                            web API's of the application with the C# services.</li>
+                        <li class="mt-2"><u>C# web API's</u>. These are the ones in charge of intercepting the HTTP requests
+                            of the users and delegating the tasks to the C# services.</li>
+                        <li class="mt-2"><u>C# filters</u>. Filters in a back-end allow you to block malicious or faulty
+                            requests. If an HTTP request passes the filter, it executes the corresponding
+                            web API.</li>
+                    </ul>
+                    <p><strong>Front-end:</strong></p>
+                    <ul>
+                        <li class="mt-2"><u>TypeScript models</u>. These are models which contain the names of the columns
+                            stored in each table, but in property format.</li>
+                        <li class="mt-2"><u>jQuery code</u>. This layer is in charge of taking the interactions by the user
+                            to send or retrieve information from the API's. It also connects with
+                            TypeScript models.</li>
+                        <li class="mt-2"><u>Razor Pages</u>. Razor pages are responsible for giving rise to HTML, CSS and
+                            JavaScript code. Every Razor page has a back-end that is only accessed if
+                            the C# filters are passed.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card bg-secondary" id="4">
+                <div class="card-body">
+                    <h5 class="card-title">4. The languages that FiyiStack works with</h5>
+                    <p>FiyiStack works with <strong><u>6 programming languages</u></strong> at the moment:</p>
+                    <ol>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>TypeScript</li>
+                        <li>C#</li>
+                        <li>T-SQL</li>
+                    </ol>
+                    <p>New languages will be added later.</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
