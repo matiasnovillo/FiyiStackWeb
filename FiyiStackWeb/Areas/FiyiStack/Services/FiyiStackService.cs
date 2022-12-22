@@ -168,7 +168,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                 SmtpClient SmtpClient = new SmtpClient();
 
                 MailMessage.Subject = $@"New message from {Name} {Surname}";
-                MailMessage.To.Add("novillo.matias1@gmail.com");//Addresses to send mail to
+                MailMessage.To.Add(new MailAddress("novillo.matias1@gmail.com"));//Addresses to send mail to
                 MailMessage.Body = EmailContent;
                 MailMessage.BodyEncoding = Encoding.UTF8;
                 MailMessage.IsBodyHtml = true;

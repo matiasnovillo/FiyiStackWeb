@@ -6,7 +6,6 @@
 var formData = new FormData();
 
 $("#send-message").on("click", function (e) {
-    debugger;
     formData.append("name", $("#name").val());
     formData.append("surname", $("#surname").val());
     formData.append("email", $("#email").val());
