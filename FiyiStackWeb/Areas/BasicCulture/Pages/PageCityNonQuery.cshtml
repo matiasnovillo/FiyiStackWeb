@@ -12,7 +12,7 @@
     string GeographicalCoordinates;
     string Code;
     int ProvinceId;
-    
+    string ProvinceName;
 
     if(HttpContext.Request.QueryString.Value.Contains("?CityId=0"))
     {
@@ -24,6 +24,7 @@
         GeographicalCoordinates = "";
         Code = "";
         ProvinceId = 0;
+        ProvinceName = "Choose a value";
     }
     else
     {
@@ -38,7 +39,9 @@
         GeographicalCoordinates = CityModel.GeographicalCoordinates;
         Code = CityModel.Code;
         ProvinceId = CityModel.ProvinceId;
-        
+
+        ProvinceModel ProvinceModel = new ProvinceModel(CityModel.ProvinceId);
+        ProvinceName = ProvinceModel.Name;
     }
 
     List<ProvinceModel> lstProvinceModel = new ProvinceModel().SelectAllToList();
@@ -122,13 +125,13 @@
                         <!-- CityId -->
                         <div class="form-group mb-3">
                             <label for="basicculture-city-cityId-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-key"></i> CityId
+                                <i class="fas fa-key"></i> City ID
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text">
                                         <strong>
-                                            <i class="fas fa-key"></i> CityId
+                                            <i class="fas fa-key"></i> City ID
                                         </strong>
                                     </span>
                                 </div>
@@ -162,13 +165,13 @@
                         <!-- GeographicalCoordinates -->
                         <div class="form-group mb-3">
                             <label for="basicculture-city-geographicalcoordinates-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> GeographicalCoordinates
+                                <i class="fas fa-font"></i> Geographical Coordinates
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                     <span class="input-group-text ">
                                         <strong>
-                                            <i class="fas fa-font"></i> GeographicalCoordinates
+                                            <i class="fas fa-font"></i> Geographical Coordinates
                                         </strong>
                                     </span>
                                 </div>
@@ -204,13 +207,13 @@
                         <!-- ProvinceId -->
                         <div class="form-group mb-3">
                             <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-hashtag"></i> ProvinceId
+                                <i class="fas fa-hashtag"></i> Province ID
                             </label>
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend input-group-text">
                                     <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
                                         <strong>
-                                            <i class="fas fa-hashtag"></i> ProvinceId
+                                            <i class="fas fa-hashtag"></i> Province ID
                                         </strong>
                                     </span>
                                 </div>
@@ -218,7 +221,7 @@
                                 <ul id="basicculture-city-provinceid-list" class="nav nav-pills nav-fill flex-column flex-sm-row" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                                            Choose a value
+                                            @ProvinceName
                                         </a>
                                         <input type="hidden" id="basicculture-city-provinceid-input" value="@ProvinceId"/>
                                     </li>
@@ -280,7 +283,7 @@
     </div>
 </div>
 
-<!-- ForeignKeyDropDown selector in Modal style -->
+<!-- Province selector in Modal style -->
 <div class="row">
     <div class="col-md-4">
         <!-- Modal -->
@@ -290,7 +293,7 @@
                 <div class="modal-content bg-gradient-secondary">
                     <div class="modal-header">
                         <h6 class="modal-title text-primary">
-                            Choose a ForeignKeyDropDown value <i class="fas fa-hashtag"></i>
+                            Choose a province <i class="fas fa-hashtag"></i>
                          </h6>
                     </div>
                     <div class="modal-body">

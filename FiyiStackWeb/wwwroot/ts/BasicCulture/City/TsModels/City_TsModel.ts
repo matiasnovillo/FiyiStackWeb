@@ -27,7 +27,10 @@ export class CityModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	DateTimeCreation?: string | string[] | number | undefined;
-	DateTimeLastModification?: string | string[] | number | undefined;
+    DateTimeLastModification?: string | string[] | number | undefined;
+    UserCreationIdFantasyName?: string | string[] | number | undefined;
+    UserLastModificationIdFantasyName?: string | string[] | number | undefined;
+    ProvinceIdName?: string | string[] | number | undefined;
 
     //Queries
     static Select1ByCityId(CityId: number) {

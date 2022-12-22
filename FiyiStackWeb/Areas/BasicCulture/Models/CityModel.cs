@@ -65,10 +65,16 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
 
         [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "01/01/1753 0:00:00.001", "30/12/9998 23:59:59.999")]
         public DateTime DateTimeLastModification { get; set; }
+
+        public string UserCreationIdFantasyName { get; set; }
+
+        public string UserLastModificationIdFantasyName { get; set; }
+
+        public string ProvinceIdName { get; set; }
         #endregion
 
         #region Models that depend on this model
-        
+
         #endregion
 
         #region Constructors
@@ -327,7 +333,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    cityModelQuery.lstCityModel = (List<CityModel>)sqlConnection.Query<CityModel>("[dbo].[BasicCulture.City.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    cityModelQuery.lstCityModel = (List<CityModel>)sqlConnection.Query<CityModel>("[dbo].[BasicCulture.City.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     cityModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
