@@ -101,7 +101,7 @@ class BlogQuery {
                                 <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
                                 <input type="hidden" value="${row.BlogId}"></input>
                                 </br>
-                                <p class="text-danger message-post-comment"></p>
+                                <p class="text-danger mt-2 message-post-comment"></p>
                             </div>
                         </div>
                     </form>
@@ -151,7 +151,9 @@ class BlogQuery {
                         let Message = $(this).next().next().next();
 
                         if ($(this).prev().val() == "") {
-                            Message.html("Write a comment");
+                            Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
+                                                    Write a comment
+                                            </strong>`);
                             return;
                         }
 
@@ -195,11 +197,15 @@ class BlogQuery {
                         });
                         xmlHttpRequest.onload = function () {
                             if (xmlHttpRequest.status >= 400) {
-                                Message.html("An error has occurred, try again");
+                                Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
+                                                    An error has occurred, try again
+                                            </strong>`);
                             }
                             else {
                                 if (xmlHttpRequest.response == "You have to login first") {
-                                    Message.html("You have to login first");
+                                    Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
+                                                    You have to login first
+                                            </strong>`);
                                 }
                                 else {
                                     ValidateAndSearch();
