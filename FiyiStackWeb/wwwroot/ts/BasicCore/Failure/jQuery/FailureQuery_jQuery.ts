@@ -87,12 +87,12 @@ class FailureQuery {
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                User Creation ID
+                User Creation
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                User Last Modification ID
+                User Last Modification
             </button>
         </th>
         <th scope="col">
@@ -217,12 +217,12 @@ class FailureQuery {
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserCreationId}
+            </i> ${row.UserCreationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserLastModificationId}
+            </i> ${row.UserLastModificationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
@@ -303,11 +303,11 @@ class FailureQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            User Creation ID <i class="fas fa-divide"></i> ${row.UserCreationId}
+                            User Creation <i class="fas fa-divide"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            User Last Modification ID <i class="fas fa-divide"></i> ${row.UserLastModificationId}
+                            User Last Modification <i class="fas fa-divide"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
