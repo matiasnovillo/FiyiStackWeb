@@ -56,10 +56,14 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
 
         [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "01/01/1753 0:00:00.001", "30/12/9998 23:59:59.999")]
         public DateTime DateTimeLastModification { get; set; }
+
+        public string UserCreationIdFantasyName { get; set; }
+
+        public string UserLastModificationIdFantasyName { get; set; }
         #endregion
 
         #region Models that depend on this model
-        
+
         #endregion
 
         #region Constructors
@@ -306,7 +310,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    sexModelQuery.lstSexModel = (List<SexModel>)sqlConnection.Query<SexModel>("[dbo].[BasicCulture.Sex.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    sexModelQuery.lstSexModel = (List<SexModel>)sqlConnection.Query<SexModel>("[dbo].[BasicCulture.Sex.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     sexModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 
