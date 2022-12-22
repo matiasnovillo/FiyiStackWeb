@@ -61,10 +61,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
 
         [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "01/01/1753 0:00:00.001", "30/12/9998 23:59:59.999")]
         public DateTime DateTimeLastModification { get; set; }
+
+        public string UserCreationIdFantasyName { get; set; }
+
+        public string UserLastModificationIdFantasyName { get; set; }
         #endregion
 
         #region Models that depend on this model
-        
+
         #endregion
 
         #region Constructors
@@ -319,7 +323,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    parameterModelQuery.lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
+                    parameterModelQuery.lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
                     parameterModelQuery.TotalRows = dp.Get<int>("TotalRows");
                 }
 

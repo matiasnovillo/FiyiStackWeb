@@ -47,7 +47,7 @@ class ParameterQuery {
         </th>
         <th scope="col">
             <button value="ParameterId" class="btn btn-outline-secondary btn-sm" type="button">
-                ParameterId
+                Parameter ID
             </button>
         </th>
         <th scope="col">
@@ -62,7 +62,7 @@ class ParameterQuery {
         </th>
         <th scope="col">
             <button value="IsPrivate" class="btn btn-outline-secondary btn-sm" type="button">
-                IsPrivate
+                Is private?
             </button>
         </th>
         <th scope="col">
@@ -72,22 +72,22 @@ class ParameterQuery {
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+                User Creation
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+                User Last Modification
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+                Date Time Creation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+                Date Time Last Modification
             </button>
         </th>
         
@@ -116,7 +116,7 @@ class ParameterQuery {
                         TotalPages = response_parameterQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#basiccore-parameter-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
+                        $("#basiccore-parameter-query-string").attr("placeholder", `Search... (${TotalRows} parameters)`);
                         //Total pages of pagination
                         $("#basiccore-parameter-total-pages-lg, #basiccore-parameter-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
@@ -175,7 +175,7 @@ class ParameterQuery {
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-toggle-on"></i> ${row.IsPrivate == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
+            <i class="fas fa-toggle-on"></i> ${row.IsPrivate == true ? "Yes <i class='text-success fas fa-circle'></i>" : "No <i class='text-danger fas fa-circle'></i>"}
         </strong>
     </td>
     <td class="text-left">
@@ -185,12 +185,12 @@ class ParameterQuery {
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserCreationId}
+            </i> ${row.UserCreationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
         <strong><i class="fas fa-divide">
-            </i> ${row.UserLastModificationId}
+            </i> ${row.UserLastModificationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
@@ -239,7 +239,7 @@ class ParameterQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           ParameterId <i class="fas fa-key"></i> ${row.ParameterId}
+                           Parameter ID <i class="fas fa-key"></i> ${row.ParameterId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -251,7 +251,7 @@ class ParameterQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           IsPrivate <i class="fas fa-toggle-on"></i> ${row.IsPrivate == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
+                           Is private? <i class="fas fa-toggle-on"></i> ${row.IsPrivate == true ? "Yes <i class='text-success fas fa-circle'></i>" : "No <i class='text-danger fas fa-circle'></i>"}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -259,19 +259,19 @@ class ParameterQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserCreationId <i class="fas fa-divide"></i> ${row.UserCreationId}
+                            User Creation <i class="fas fa-divide"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                            UserLastModificationId <i class="fas fa-divide"></i> ${row.UserLastModificationId}
+                            User Last Modification <i class="fas fa-divide"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         
