@@ -43,7 +43,7 @@
                 </svg>
                 <h4 class="display-4 text-white">Login form</h4>
                 <p class="lead text-italic text-white">
-                  Here you enter your credentials to access the application
+                  Here you enter your credentials to access the application.
                 </p>
             </blockquote>
         </div>
@@ -57,18 +57,19 @@
                 </svg>
                 <h4 class="display-4 text-white">Project form</h4>
                 <p class="lead text-italic text-white">
-                  In this form you can create or edit your projects
+                  In this form you can create or edit your projects.
                 </p>
                 <ol class="text-white">
                     <li class="mt-2">Here you can load your saved projects.</li>
                     <li class="mt-2">Here you can edit your new or saved project putting your project name,
                         a general history user, used to save information related to the requirements
-                        of your clients, and the folder path of the project. Remember that the folder path
-                        has to point to the Startup.cs file of the .NET Core project.
+                        of your clients, and the folder path of the project. Remember that <u>the folder path
+                        has to point to the Startup.cs file of the project</u>.
                     </li>
                     <li class="mt-2">This button is used to load a refreshed proyect, with all inputs in 2.
-                        in blank</li>
-                    <li class="mt-2">These buttons are used to delete and filter projects</li>
+                        in blank.
+                    </li>
+                    <li class="mt-2">These buttons are used to delete and filter projects.</li>
                 </ol>
             </blockquote>
         </div>
@@ -82,44 +83,55 @@
                 </svg>
                 <h4 class="display-4 text-white">Generator form</h4>
                 <p class="lead text-italic text-white">
-                  Here is the main part of the generator
+                  Here is the main part of the generator.
                 </p>
                 <ol class="text-white">
-                    <li class="mt-2">Here there are 3 parts, the databases, their tables, and the columns 
-                        of each table. You can navigate between each of them to see each of the contents.
-                        For example, selecting the Databases option displays a list of databases (2) and
-                        their corresponding information (3) on the right.</li>
+                    <li class="mt-2">Here there are 3 parts, the <u>databases</u>, their <u>tables</u>, and the 
+                        <u>columns</u> of each table. You can navigate between each of them to see each of the
+                        contents. For example, selecting the Databases option displays a list of databases 
+                        (2) and their corresponding information (3) on the right.
+                    </li>
                     <li class="mt-2">Here the project databases are displayed. You can add what you want.</li>
-                    <li class="mt-2">Here the information of each database appears. The name, the option if it is 
-                        Microsoft SQL Server (only option at the moment), and the connection string. 
-                        As you can see, the database is local because the data source is a dot (.).</li>
-                    <li class="mt-2">These buttons are for delete the selected databases and add a new database.</li>
+                    <li class="mt-2">Here the information of each database appears. The <u>Name</u>, the option
+                        if it is <u>Microsoft SQL Server</u> (only option at the moment), and the
+                        <u>Connection string</u>. As you can see, the database is local because the data
+                        source is a dot (.).
+                    </li>
+                    <li class="mt-2">These buttons are for delete the selected databases and add 
+                        a new database.</li>
                     <li class="mt-2">This button is to enter the generator configuration.</li>
                     <li class="mt-2">This button is to generate the selected tables (7).</li>
-                    <li class="mt-2">Here is a list of the tables corresponding to the selected database. As you can see,
-                        each table has a schema in the database as dbo, an area as BasicCore and the name 
-                        of the table as Failure: [dbo].[BasicCore.Failure], to give an example.</li>
+                    <li class="mt-2">Here is a list of the tables corresponding to the selected database. 
+                        As you can see, each table has a schema in the database as <u>dbo</u>, an area as
+                        <u>BasicCore</u> and the name of the table as <u>Failure</u>: 
+                        <u>[dbo].[BasicCore.Failure]</u>, to give an example.
+                    </li>
                     <li class="mt-2">Here are the data of a selected table. For example, if I select
-                        [dbo].[BasicCore.Failure], the table name will be Failure, the database schema will
-                        be dbo, and the area will be BasicCore. You can also add the version to be able to
-                        have different versions of the table, I, for example, put 1. There are two things
-                        to keep in mind, the first is that there are several types of schemas in the databases,
-                        the one that is recommended is dbo (database owner). The second consideration is to
-                        place a name and an area without spaces or special characters, 
-                        just text and numbers.</li>
-                    <li class="mt-2">These buttons are for removing selected tables, selecting all tables, and for adding
-                        a new table.</li>
+                        <u>[dbo].[BasicCore.Failure]</u>, the table <u>Name</u> will be Failure, the 
+                        <u>Database Scheme</u> will be dbo, and the <u>Area</u> will be BasicCore. You can also
+                        add the <u>Version</u> to be able to have different versions of the table, I, for example,
+                        put 1. There are two things to keep in mind, the first is that there are several types
+                        of schemas in the databases, <u>the one that is recommended is dbo (database owner)</u>.
+                        The second consideration is to place a name, an area and a version without spaces or
+                        special characters, just text and numbers.
+                    </li>
+                    <li class="mt-2">These buttons are for removing selected tables, selecting all tables, 
+                        and for adding a new table.
+                    </li>
                     <li class="mt-2">Once you select a table you can go to the Columns tab to add the columns
-                        of the selected table, they will be displayed in the list of columns.</li>
+                        of the selected table, they will be displayed in the list of columns.
+                    </li>
                     <li class="mt-2">Here the configuration of each column is shown. If I select the Message
-                        column, it will show Message as a name, the Nullable option indicating whether the
-                        column allows null values or not, a user history indicating what the column is for,
-                        and a data type (13). For example, Message has the data type Text: TextArea,
+                        column, it will show Message as a <u>Name</u>, the <u>Nullable</u> option indicating whether the
+                        column allows null values or not, a <u>History user</u> indicating what the column is for,
+                        and a <u>Data type</u> (13). For example, Message has the data type Text: TextArea,
                         this option displays other options to the right, the minimum and maximum number of
                         characters that the column allows, and also a regular expression, Regex, to filter
-                        which characters are allowed by the column.</li>
+                        which characters are allowed by the column.
+                    </li>
                     <li class="mt-2">These buttons are for removing columns, selecting all columns, 
-                        and for adding a new column.</li>
+                        and for adding a new column.
+                    </li>
                     <li class="mt-2">This dropdown option allows you to add columns with different data types, for example,
                         you can add:
                         <ul>
@@ -160,43 +172,46 @@
                 </p>
                 <ol class="text-white">
                     <li class="mt-2">Here there are 3 options to configure the generator, the first is about
-                        the database, the second is the paths of the files, and the third is the interface
-                        with which we generate.</li>
+                        the <u>database</u>, the second is the <u>paths</u> of the files, and the third is 
+                        the <u>interface</u> with which we generate.
+                    </li>
                     <li class="mt-2">This edit button is to save the selected configuration.</li>
                     <li class="mt-2">With this button you can create the necessary files and folders 
                         for the project:
                         <ul>
-                            <li class="mt-2">File: Startup.cs. This file is in charge of starting your project,
+                            <li class="mt-2">File: <u>Startup.cs</u>. This file is in charge of starting your project,
                                 it loads the configurations and services necessary for your project to work.</li>
-                            <li class="mt-2">File: package.json. This file works in conjunction with the 
+                            <li class="mt-2">File: <u>package.json</u>. This file works in conjunction with the 
                                 Node.js package manager (npm), it is mainly used to install and manage 
                                 external Node.js modules. It also contains the necessary commands to execute
                                 while the web application is being developed.</li>
-                            <li class="mt-2">File: tsconfig.json. This file indicates that the project works
+                            <li class="mt-2">File: <u>tsconfig.json</u>. This file indicates that the project works
                                 with TypeScript. All the necessary information for the TypeScript compiler
                                 is stored here.</li>
-                            <li class="mt-2">File: webpack.config.js. This JavaScript code file contains the
+                            <li class="mt-2">File: <u>webpack.config.js</u>. This JavaScript code file contains the
                                 necessary configuration for you to work with the WebPack module wrapper.</li>
-                            <li class="mt-2">File: Webpack.config.vendor.js. This JavaScript configuration
+                            <li class="mt-2">File: <u>Webpack.config.vendor.js</u>. This JavaScript configuration
                                 file is similar to the previous one, but it differs in that it contains
                                 the necessary vendor modules such as Bootstrap, jQuery, Backbone and
                                 FontAwesome</li>
-                            <li class="mt-2">Folders: Uploads, PDFFiles, ExcelFiles and CSVFiles</li>
+                            <li class="mt-2">Folders: <u>Uploads, PDFFiles, ExcelFiles and CSVFiles</u></li>
                         </ul>
                     </li>
                     <li class="mt-2">These checkboxes belong to the Databases tab. Here you can define if
-                        you want to add the audit columns as Active, DateTimeCreation, DateTimeLastModification,
-                        UserCreationId and UserLastModificationId. You can also define if you want to remove
-                        existing tables, fields and stored procedures during generation in the database.</li>
+                        you want to add the <u>audit columns as Active, DateTimeCreation, DateTimeLastModification,
+                        UserCreationId and UserLastModificationId</u>. You can also define if you want to <u>remove
+                        existing tables, fields and stored procedures</u> during generation in the database.</li>
                     <li class="mt-2">This list contains the checkboxes to define what you want to generate in 
-                        the back-end</li>
+                        the <u>back-end</u>
+                    </li>
                     <li class="mt-2">This list contains the checkboxes to define what you want to generate in 
-                        the front-end</li>
-                    <li class="mt-2">Here you can define if you want to remove existing files during generation
+                        the <u>front-end</u>
+                    </li>
+                    <li class="mt-2">Here you can define if you want to <u>remove existing files</u> during generation
                         of front-end and back-end files.
                     </li>
-                    <li class="mt-2">This dropdown define the templates. For the moment you can choose one, Argon
-                        design (from Creative-Tim).
+                    <li class="mt-2">This dropdown define the templates used in the HTML and CSS files. 
+                        For the moment you can choose one, <u>Argon design (from Creative-Tim)</u>.
                     </li>
                 </ol>
             </blockquote>
