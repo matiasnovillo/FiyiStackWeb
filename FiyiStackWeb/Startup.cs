@@ -62,6 +62,7 @@ namespace FiyiStackWeb
             services.AddScoped<FiyiStackProtocol, FiyiStackService>();
             services.AddScoped<BlogProtocol, BlogService>();
             services.AddScoped<CommentForBlogProtocol, CommentForBlogService>();
+            services.AddScoped<ExampleProtocol, ExampleService>();
 
             services.AddMvc();
             services.AddSession(options => {

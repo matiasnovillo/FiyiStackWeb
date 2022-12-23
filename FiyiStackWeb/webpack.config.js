@@ -84,7 +84,9 @@
          blogjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQuery_jQuery"],
          blogcustomjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQueryCustom_jQuery"],
          commentforblogtsmodel: ["./wwwroot/ts/FiyiStack/CommentForBlog/TsModels/CommentForBlog_TsModel"],
-         commentforblogjquery: ["./wwwroot/ts/FiyiStack/CommentForBlog/jQuery/CommentForBlogQuery_jQuery"]
+         commentforblogjquery: ["./wwwroot/ts/FiyiStack/CommentForBlog/jQuery/CommentForBlogQuery_jQuery"],
+         exampletsmodel: ["./wwwroot/ts/FiyiStack/Example/TsModels/Example_TsModel"],
+         examplejquery: ["./wwwroot/ts/FiyiStack/Example/jQuery/ExampleQuery_jQuery"]
      },
      output: {
          filename: "[name].bundle.js",                       //Path to save bundles: __dirname + "/wwwroot/dist" (__dirname is a Node.js variable)
