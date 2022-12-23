@@ -22,7 +22,9 @@
                     <div class="col-8">
                         <ol class="text-white">
                             <li class="mt-2"><a class="text-white" href="#1">Login form</a></li>
-                            <li class="mt-2"><a class="text-white" href="#2">Projects form</a></li>
+                            <li class="mt-2"><a class="text-white" href="#2">Project form</a></li>
+                            <li class="mt-2"><a class="text-white" href="#3">Generator form</a></li>
+                            <li class="mt-2"><a class="text-white" href="#4">Configuration form</a></li>
                         </ol>
                     </div>
                     <div class="col-4 d-none d-lg-inline d-xl-inline">
@@ -45,7 +47,7 @@
                 </p>
             </blockquote>
         </div>
-        <!-- Projects form -->
+        <!-- Project form -->
         <div id="2" class="card bg-default shadow border-0">
             <img src="/img/FiyiStack/FiyiStackApp-ProjectsForm.png" class="card-img-top">
             <blockquote class="card-blockquote">
@@ -53,9 +55,9 @@
                     <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
                     <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
                 </svg>
-                <h4 class="display-4 text-white">Projects form</h4>
+                <h4 class="display-4 text-white">Project form</h4>
                 <p class="lead text-italic text-white">
-                  In this form you can create or edit your projects:
+                  In this form you can create or edit your projects
                 </p>
                 <ol class="text-white">
                     <li class="mt-2">Here you can load your saved projects.</li>
@@ -68,6 +70,74 @@
                         in blank</li>
                     <li class="mt-2">These buttons are used to delete and filter projects</li>
                 </ol>
+            </blockquote>
+        </div>
+        <!-- Generator form -->
+        <div id="3" class="card bg-default shadow border-0">
+            <img src="/img/FiyiStack/FiyiStackApp-GeneratorForm.gif" class="card-img-top">
+            <blockquote class="card-blockquote">
+                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
+                    <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
+                    <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
+                </svg>
+                <h4 class="display-4 text-white">Generator form</h4>
+                <p class="lead text-italic text-white">
+                  Here is the main part of the generator
+                </p>
+                <ol class="text-white">
+                    <li class="mt-2">Here there are 3 parts, the databases, their tables, and the columns or properties
+                        of each table. You can navigate between each of them to see each of the contents.
+                        For example, selecting the Databases option displays a list of databases (2) and
+                        their corresponding information (3) on the right.</li>
+                    <li class="mt-2">Here the project databases are displayed. You can add what you want.</li>
+                    <li class="mt-2">Here the information of each database appears. The name, the option if it is 
+                        Microsoft SQL Server (only option at the moment), and the connection string. 
+                        As you can see, the database is local because the data source is a dot (.).</li>
+                    <li class="mt-2">This button is to delete the selected databases.</li>
+                    <li class="mt-2">This button is to enter the generator configuration.</li>
+                    <li class="mt-2">This button is to generate the selected tables (7).</li>
+                    <li class="mt-2">Here is a list of the tables corresponding to the selected database. As you can see,
+                        each table has a schema in the database as dbo, an area as BasicCore and the name 
+                        of the table as Failure: [dbo].[BasicCore.Failure], to give an example.</li>
+                    <li class="mt-2">Here are the data of a selected table. For example, if I select
+                        [dbo].[BasicCore.Failure], the table name will be Failure, the database schema will
+                        be dbo, and the area will be BasicCore. You can also add the version to be able to
+                        have different versions of the table, I, for example, put 1. There are two things
+                        to keep in mind, the first is that there are several types of schemas in the databases,
+                        the one that is recommended is dbo (database owner). The second consideration is to
+                        place a name and an area without spaces or special characters, 
+                        just text and numbers.</li>
+                    <li class="mt-2">These buttons are for removing selected tables, selecting all tables, and for adding
+                        a new table.</li>
+                    <li class="mt-2">Once you select a table you can go to the Properties tab to add the columns/properties
+                        of the selected table, they will be displayed in the list of columns/properties.</li>
+                    <li class="mt-2">Here the configuration of each column/property is shown. If I select the Message
+                        column, it will show Message as a name, the Nullable option indicating whether the
+                        column allows null values or not, a user history indicating what the column is for,
+                        and a data type (13). For example, Message has the data type Text: TextArea,
+                        this option displays other options to the right, the minimum and maximum number of
+                        characters that the column allows, and also a regular expression, Regex, to filter
+                        which characters are allowed by the column.</li>
+                    <li class="mt-2">These buttons are for removing columns, selecting all columns, 
+                        and for adding a new column.</li>
+                    <li class="mt-2">This dropdown option allows you to add columns with different data types, for example,
+                        you can add boolean data types, text, time, date, text editors, integers, decimal,
+                        files, passwords and more.</li>
+                </ol>
+            </blockquote>
+        </div>
+        <!-- Configuration form -->
+        <div id="4" class="card bg-default shadow border-0">
+            <img src="/img/FiyiStack/FiyiStackApp-ConfigurationForm.gif" class="card-img-top">
+            <blockquote class="card-blockquote">
+                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95" class="svg-bg">
+                    <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
+                    <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
+                </svg>
+                <h4 class="display-4 text-white">Configuration form</h4>
+                <p class="lead text-italic text-white">
+                  Here you can configure the generator
+                </p>
             </blockquote>
         </div>
     </div>
