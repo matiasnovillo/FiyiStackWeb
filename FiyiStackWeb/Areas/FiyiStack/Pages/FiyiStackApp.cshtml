@@ -85,7 +85,7 @@
                   Here is the main part of the generator
                 </p>
                 <ol class="text-white">
-                    <li class="mt-2">Here there are 3 parts, the databases, their tables, and the columns or properties
+                    <li class="mt-2">Here there are 3 parts, the databases, their tables, and the columns 
                         of each table. You can navigate between each of them to see each of the contents.
                         For example, selecting the Databases option displays a list of databases (2) and
                         their corresponding information (3) on the right.</li>
@@ -93,7 +93,7 @@
                     <li class="mt-2">Here the information of each database appears. The name, the option if it is 
                         Microsoft SQL Server (only option at the moment), and the connection string. 
                         As you can see, the database is local because the data source is a dot (.).</li>
-                    <li class="mt-2">This button is to delete the selected databases.</li>
+                    <li class="mt-2">These buttons are for delete the selected databases and add a new database.</li>
                     <li class="mt-2">This button is to enter the generator configuration.</li>
                     <li class="mt-2">This button is to generate the selected tables (7).</li>
                     <li class="mt-2">Here is a list of the tables corresponding to the selected database. As you can see,
@@ -109,9 +109,9 @@
                         just text and numbers.</li>
                     <li class="mt-2">These buttons are for removing selected tables, selecting all tables, and for adding
                         a new table.</li>
-                    <li class="mt-2">Once you select a table you can go to the Properties tab to add the columns/properties
-                        of the selected table, they will be displayed in the list of columns/properties.</li>
-                    <li class="mt-2">Here the configuration of each column/property is shown. If I select the Message
+                    <li class="mt-2">Once you select a table you can go to the Columns tab to add the columns
+                        of the selected table, they will be displayed in the list of columns.</li>
+                    <li class="mt-2">Here the configuration of each column is shown. If I select the Message
                         column, it will show Message as a name, the Nullable option indicating whether the
                         column allows null values or not, a user history indicating what the column is for,
                         and a data type (13). For example, Message has the data type Text: TextArea,
@@ -121,8 +121,28 @@
                     <li class="mt-2">These buttons are for removing columns, selecting all columns, 
                         and for adding a new column.</li>
                     <li class="mt-2">This dropdown option allows you to add columns with different data types, for example,
-                        you can add boolean data types, text, time, date, text editors, integers, decimal,
-                        files, passwords and more.</li>
+                        you can add:
+                        <ul>
+                            <li class="mt-2">Boolean</li>
+                            <li class="mt-2">Date and time</li>
+                            <li class="mt-2">Decimal</li>
+                            <li class="mt-2">Foreign keys with dropdowns</li>
+                            <li class="mt-2">Foreign keys with options</li>
+                            <li class="mt-2">Integers</li>
+                            <li class="mt-2">Primary Key</li>
+                            <li class="mt-2">Text: Basic</li>
+                            <li class="mt-2">Text: Email</li>
+                            <li class="mt-2">Text: File</li>
+                            <li class="mt-2">Text: Hex colour</li>
+                            <li class="mt-2">Text: Password</li>
+                            <li class="mt-2">Text: Phone number</li>
+                            <li class="mt-2">Text: Tag</li>
+                            <li class="mt-2">Text: Text Area</li>
+                            <li class="mt-2">Text: Text Editor</li>
+                            <li class="mt-2">Text: URL</li>
+                            <li class="mt-2">Time</li>
+                        </ul>
+                    </li>
                 </ol>
             </blockquote>
         </div>
@@ -143,12 +163,41 @@
                         the database, the second is the paths of the files, and the third is the interface
                         with which we generate.</li>
                     <li class="mt-2">This edit button is to save the selected configuration.</li>
-                    <li class="mt-2"></li>
-                    <li class="mt-2"></li>
-                    <li class="mt-2"></li>
-                    <li class="mt-2"></li>
-                    <li class="mt-2"></li>
-                    <li class="mt-2"></li>
+                    <li class="mt-2">With this button you can create the necessary files and folders 
+                        for the project:
+                        <ul>
+                            <li class="mt-2">File: Startup.cs. This file is in charge of starting your project,
+                                it loads the configurations and services necessary for your project to work.</li>
+                            <li class="mt-2">File: package.json. This file works in conjunction with the 
+                                Node.js package manager (npm), it is mainly used to install and manage 
+                                external Node.js modules. It also contains the necessary commands to execute
+                                while the web application is being developed.</li>
+                            <li class="mt-2">File: tsconfig.json. This file indicates that the project works
+                                with TypeScript. All the necessary information for the TypeScript compiler
+                                is stored here.</li>
+                            <li class="mt-2">File: webpack.config.js. This JavaScript code file contains the
+                                necessary configuration for you to work with the WebPack module wrapper.</li>
+                            <li class="mt-2">File: Webpack.config.vendor.js. This JavaScript configuration
+                                file is similar to the previous one, but it differs in that it contains
+                                the necessary vendor modules such as Bootstrap, jQuery, Backbone and
+                                FontAwesome</li>
+                            <li class="mt-2">Folders: Uploads, PDFFiles, ExcelFiles and CSVFiles</li>
+                        </ul>
+                    </li>
+                    <li class="mt-2">These checkboxes belong to the Databases tab. Here you can define if
+                        you want to add the audit columns as Active, DateTimeCreation, DateTimeLastModification,
+                        UserCreationId and UserLastModificationId. You can also define if you want to remove
+                        existing tables, fields and stored procedures during generation in the database.</li>
+                    <li class="mt-2">This list contains the checkboxes to define what you want to generate in 
+                        the back-end</li>
+                    <li class="mt-2">This list contains the checkboxes to define what you want to generate in 
+                        the front-end</li>
+                    <li class="mt-2">Here you can define if you want to remove existing files during generation
+                        of front-end and back-end files.
+                    </li>
+                    <li class="mt-2">This dropdown define the templates. For the moment you can choose one, Argon
+                        design (from Creative-Tim).
+                    </li>
                 </ol>
             </blockquote>
         </div>
