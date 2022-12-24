@@ -62,7 +62,7 @@ class BlogQuery {
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="/img/Me.jpeg" class="avatar">
+                  <img src="/img/FiyiStack/Me.jpeg" class="avatar">
                 </a>
                 <div class="mx-3">
                   <a href="javascript:;" class="text-dark font-weight-600 text-sm">Matias Novillo</a>
@@ -80,7 +80,7 @@ class BlogQuery {
                 ${row.lstCommentForBlogModel?.map(row2 => {
 
                     return `<div class="media media-comment">
-                  <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/User.png">
+                  <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/CMSCore/User.png">
                   <div class="media-body">
                     <div class="media-comment-text">
                       <h6 class="h5 mt-0">${row2.FantasyName}</h6>
@@ -92,7 +92,7 @@ class BlogQuery {
                   </div>
                 </div>` }).join("")}
                 <div class="media align-items-center mt-5">
-                  <img alt="Image placeholder" class="avatar rounded-circle mb-4" src="/img/User.png">
+                  <img alt="Image placeholder" class="avatar rounded-circle mb-4" src="/img/CMSCore/User.png">
                   <div class="media-body">
                     <form>
                         <div class="row">
