@@ -348,12 +348,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 //Loop through lists and sublists
                 for (int i = 0; i < blogModelQuery.lstBlogModel.Count; i++)
                 {
-                    DynamicParameters dp2 = new DynamicParameters();
-                    dp2.Add("BlogId", blogModelQuery.lstBlogModel[i].BlogId, DbType.Int32, ParameterDirection.Input);
+                    DynamicParameters dpForCommentForBlogModel = new DynamicParameters();
+                    dpForCommentForBlogModel.Add("BlogId", blogModelQuery.lstBlogModel[i].BlogId, DbType.Int32, ParameterDirection.Input);
                     using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                     {
                         List<CommentForBlogModel> lstCommentForBlogModel = new List<CommentForBlogModel>();
-                        lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogIdCustom]", dp2, commandType: CommandType.StoredProcedure);
+                        lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogIdCustom]", dpForCommentForBlogModel, commandType: CommandType.StoredProcedure);
 
                         //Add list item inside another list
                         foreach (var CommentForBlogModel in lstCommentForBlogModel)
