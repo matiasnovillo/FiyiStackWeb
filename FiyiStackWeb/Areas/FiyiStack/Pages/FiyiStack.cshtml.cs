@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
-    public class FiyiSchoolModel : PageModel
+    public class FiyiStackModel : PageModel
     {
         public void OnGet()
         {
@@ -22,6 +22,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                                     </span>
                                                 </a>
                                             </li>";
+
+                //User not found
+                ViewData["LoginButton"] = $@"<a href='/CMSCore/Login' class='btn btn-outline-white mt-1 ml-2'>
+                                                    <i class='fas fa-user'></i> 
+                                                    <span class='nav-link-inner--text'>
+                                                        Login
+                                                    </span>
+                                                </a>";
             }
             else
             {
