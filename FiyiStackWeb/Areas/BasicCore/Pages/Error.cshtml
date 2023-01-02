@@ -8,6 +8,11 @@
         ErrorNumber = 401;
         ErrorMessage = "The request is not authorized. You need to login first";
     }
+    if(HttpContext.Request.QueryString.Value.Contains("?ErrorId=403"))
+    {
+        ErrorNumber = 403;
+        ErrorMessage = "The request is forbidden";
+    }
 }
 <!--
 =========================================================
