@@ -183,6 +183,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 UserModel.Active = false;
                 UserModel.DateTimeCreation = DateTime.Now;
                 UserModel.DateTimeLastModification = DateTime.Now;
+                UserModel.UserCreationId = 1;
+                UserModel.UserLastModificationId = 1;
                 UserModel.Insert();
 
                 #region Send registration email
@@ -245,9 +247,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                      <tr>
                         <td class=""mob_left"" align=""center"" valign=""top"">
                            <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-                           <a href=""https://localhost:44341/Index"" target=""_blank"" style=""display: block; max-width: 128px;"">
-                              <img src=""https://localhost:44341/img/FiyiStackImageTransparent.png"" alt=""img"" width=""128"" border=""0"" style=""display: block; width: 128px;"" />
-                           </a>
                            <div class=""top_pad2"" style=""height: 78px; line-height: 78px; font-size: 76px;"">&nbsp;</div>
                         </td>
                      </tr>
@@ -267,7 +266,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                            <table class=""mob_btn"" cellpadding=""0"" cellspacing=""0"" border=""0"" style=""background: #27cbcc; border-radius: 4px;"">
                               <tr>
                                  <td align=""center"" valign=""top""> 
-                                    <a href=""http://localhost:44341/CMSCore/RecordActivation?RegistrationToken={RegistrationToken}"" target=""_blank"" style=""display: block; border: 1px solid #27cbcc; border-radius: 4px; padding: 19px 26px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
+                                    <a href=""http://fiyistack.com/CMSCore/RecordActivation?RegistrationToken={RegistrationToken}"" target=""_blank"" style=""display: block; border: 1px solid #27cbcc; border-radius: 4px; padding: 19px 26px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
                                        <font face=""'Source Sans Pro', sans-serif"" color=""#ffffff"" style=""font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
                                           <span style=""font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">Yes,&nbsp;register</span>
                                        </font>
@@ -300,7 +299,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                                  <td align=""center"" valign=""top"">
                                     <div style=""height: 34px; line-height: 34px; font-size: 32px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
-                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Copyright &copy; {DateTime.Now.Year} FiyiStack. All&nbsp;Rights&nbsp;Reserved. Thanks!</span>
+                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Thanks!</span>
                                     </font>
                                     <div style=""height: 3px; line-height: 3px; font-size: 1px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 17px; line-height: 20px;"">

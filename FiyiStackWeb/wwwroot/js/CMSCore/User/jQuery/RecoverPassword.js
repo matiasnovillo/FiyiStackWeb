@@ -58,7 +58,7 @@ $("#send-email").on("click", function (e) {
             console.log("Error:" + xmlHttpRequest.response);
         }
         else {
-            if (xmlHttpRequest.response == "Recovery email sent") {
+            if (xmlHttpRequest.response == `\"Recovery email sent\"`) {
                 //Show success button
                 $("#message").addClass("btn-success");
                 $("#message").removeClass("btn-white");
@@ -77,7 +77,7 @@ $("#send-email").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("PUT", "/api/CMSCore/User/1/RecoverPassword", false);
+    xmlHttpRequest.open("PUT", "/api/CMSCore/User/1/RecoverPassword", true);
     //Send request
     xmlHttpRequest.send(formData);
 });

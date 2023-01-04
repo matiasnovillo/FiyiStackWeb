@@ -30,11 +30,13 @@ $("#logout-button").on("click", function (e) {
             console.log("Error:" + xmlHttpRequest.response);
         }
         else {
-            window.location.href = xmlHttpRequest.response;
+            let Page = String(xmlHttpRequest.response);
+            Page = Page.replace(`\"`,``);
+            window.location.href = Page;
         }
     };
     //Open connection
-    xmlHttpRequest.open("PUT", "/api/CMSCore/User/1/Logout", false);
+    xmlHttpRequest.open("PUT", "/api/CMSCore/User/1/Logout", true);
     //Send request
     xmlHttpRequest.send(formData);
 });

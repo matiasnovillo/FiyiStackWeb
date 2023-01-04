@@ -27,14 +27,27 @@ namespace FiyiStackWeb.Areas.CMSCore.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (context.HttpContext.Request.Path != "/api/CMSCore/User/1/GetCaptchaImage")
+            bool LocalizeUser = true;
+
+            if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/GetCaptchaImage")
+            {
+                LocalizeUser = false;
+            }
+
+            if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/Register")
+            {
+                LocalizeUser = false;
+            }
+
+            if (LocalizeUser == true)
             {
                 int? UserId = context.HttpContext.Session.GetInt32("UserId");
                 if (UserId == null || UserId == 0)
                 {
                     context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-                }
+                } 
             }
+            
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -43,7 +56,19 @@ namespace FiyiStackWeb.Areas.CMSCore.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            if (context.HttpContext.Request.Path != "/api/CMSCore/User/1/GetCaptchaImage")
+            bool LocalizeUser = true;
+
+            if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/GetCaptchaImage")
+            {
+                LocalizeUser = false;
+            }
+
+            if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/Register")
+            {
+                LocalizeUser = false;
+            }
+
+            if (LocalizeUser == true)
             {
                 int? UserId = context.HttpContext.Session.GetInt32("UserId");
                 if (UserId == null || UserId == 0)

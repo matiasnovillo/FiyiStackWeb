@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Models
     public partial class SexModel
     {
         [NotMapped]
-        private string _ConnectionString = "data source =.; initial catalog = fiyistack_FiyiStackWeb; Integrated Security = SSPI; MultipleActiveResultSets=True;Pooling=false;Persist Security Info=True;App=EntityFramework;TrustServerCertificate=True";
+        private string _ConnectionString = "Password=O$6j5f5b4;Persist Security Info=True;User ID=fiyistac_FiyiStackWebAdmin;Initial Catalog=fiyistac_FiyiStackWeb;Data Source=192.168.28.14;TrustServerCertificate=True";
 
         #region Fields
         [Library.ModelAttributeValidator.Key("SexId")]

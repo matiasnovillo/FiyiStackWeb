@@ -5,7 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\ts\FiyiStack\rehype.ts" />
+    <Compile Remove="JSONScripts\**" />
+    <Compile Remove="SQLScripts\**" />
+    <Compile Remove="wwwroot\assets\**" />
+    <Compile Remove="wwwroot\img\**" />
+    <Compile Remove="wwwroot\ts\**" />
+    <Content Remove="JSONScripts\**" />
+    <Content Remove="SQLScripts\**" />
+    <Content Remove="wwwroot\assets\**" />
+    <Content Remove="wwwroot\img\**" />
+    <Content Remove="wwwroot\ts\**" />
+    <EmbeddedResource Remove="JSONScripts\**" />
+    <EmbeddedResource Remove="SQLScripts\**" />
+    <EmbeddedResource Remove="wwwroot\assets\**" />
+    <EmbeddedResource Remove="wwwroot\img\**" />
+    <EmbeddedResource Remove="wwwroot\ts\**" />
+    <None Remove="JSONScripts\**" />
+    <None Remove="SQLScripts\**" />
+    <None Remove="wwwroot\assets\**" />
+    <None Remove="wwwroot\img\**" />
+    <None Remove="wwwroot\ts\**" />
   </ItemGroup>
 
   <ItemGroup>

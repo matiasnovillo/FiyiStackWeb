@@ -47,7 +47,7 @@ $("#loginbutton").on("click", function (e) {
             console.log("Error:" + xmlHttpRequest.response);
         }
         else {
-            if (xmlHttpRequest.response == "User not found") {
+            if (xmlHttpRequest.response == `\"User not found\"`) {
                 //Show danger button
                 $("#message").addClass("btn-danger");
                 $("#message").removeClass("btn-white");
@@ -61,7 +61,7 @@ $("#loginbutton").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/CMSCore/User/1/Login", false);
+    xmlHttpRequest.open("POST", "/api/CMSCore/User/1/Login", true);
     //Send request
     xmlHttpRequest.send(formData);
 });

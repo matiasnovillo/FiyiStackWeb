@@ -71,7 +71,8 @@ namespace FiyiStackWeb
 
             services.AddSixLabCaptcha(x =>
             {
-                x.DrawLines = 4;
+                x.DrawLines = 0;
+                x.NoiseRate = 0;
             });
         }
 

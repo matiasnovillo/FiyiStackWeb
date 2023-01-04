@@ -72,7 +72,7 @@ $("#send-message").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/FiyiStack/1/ContactMe", false);
+    xmlHttpRequest.open("POST", "/api/FiyiStack/1/ContactMe", true);
     //Send request
     xmlHttpRequest.send(formData);
 });
