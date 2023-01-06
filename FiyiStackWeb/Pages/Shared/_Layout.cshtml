@@ -14,6 +14,11 @@ Coded by www.creative-tim.com
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @Html.Raw(ViewData["og:title"])
+    @Html.Raw(ViewData["og:description"])
+    @Html.Raw(ViewData["description"])
+    @Html.Raw(ViewData["robot"])
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Type" content="text/html" />

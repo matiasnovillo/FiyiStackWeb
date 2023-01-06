@@ -36,6 +36,8 @@ namespace FiyiStackWeb.Areas.FiyiStack
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack. Pricing of my products"">";
         }
     }
 }

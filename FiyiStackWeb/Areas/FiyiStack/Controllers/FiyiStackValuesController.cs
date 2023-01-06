@@ -50,6 +50,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
 
         #region Non-Queries
         [HttpPost("~/api/FiyiStack/1/ContactMe")]
+        [Produces("text/plain")]
         public IActionResult ContactMe()
         {
             try

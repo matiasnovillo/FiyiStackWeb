@@ -47,6 +47,11 @@ namespace FiyiStackWeb.Pages
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The low-code generator"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code"">";
+            ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
         }
     }
 }

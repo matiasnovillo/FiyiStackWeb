@@ -112,7 +112,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [HttpPut("~/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON")]
+        [HttpPost("~/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON")]
         public commentforblogModelQuery SelectAllPagedToJSON([FromBody] commentforblogModelQuery commentforblogModelQuery)
         {
             try
@@ -147,6 +147,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 
         #region Non-Queries
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/InsertOrUpdateAsync")]
+        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -265,6 +266,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpDelete("~/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/{CommentForBlogId:int}")]
+        [Produces("text/plain")]
         public IActionResult DeleteByCommentForBlogId(int CommentForBlogId)
         {
             try
@@ -298,6 +300,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/{DeleteType}")]
+        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -332,6 +335,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/{CommentForBlogId:int}")]
+        [Produces("text/plain")]
         public IActionResult CopyByCommentForBlogId(int CommentForBlogId)
         {
             try
@@ -366,6 +370,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyManyOrAll/{CopyType}")]
+        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -407,6 +412,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/PostComment")]
+        [Produces("text/plain")]
         public IActionResult PostComment()
         {
             try
@@ -455,6 +461,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 
         #region Other actions
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsPDF/{ExportationType}")]
+        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -489,6 +496,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsExcel/{ExportationType}")]
+        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -523,6 +531,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsCSV/{ExportationType}")]
+        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

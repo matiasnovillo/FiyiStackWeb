@@ -36,6 +36,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack. About me"">";
         }
     }
 }

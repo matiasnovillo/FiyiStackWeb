@@ -43,6 +43,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The low-code generator"">";
+            ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
         }
     }
 }

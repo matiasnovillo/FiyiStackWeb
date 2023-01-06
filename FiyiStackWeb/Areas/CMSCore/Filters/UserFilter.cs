@@ -29,6 +29,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Filters
         {
             bool LocalizeUser = true;
 
+            if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/Logout")
+            {
+                LocalizeUser = false;
+            }
+
             if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/GetCaptchaImage")
             {
                 LocalizeUser = false;
@@ -57,6 +62,11 @@ namespace FiyiStackWeb.Areas.CMSCore.Filters
         public override void OnResultExecuting(ResultExecutingContext context)
         {
             bool LocalizeUser = true;
+
+            if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/Logout")
+            {
+                LocalizeUser = false;
+            }
 
             if (context.HttpContext.Request.Path == "/api/CMSCore/User/1/GetCaptchaImage")
             {

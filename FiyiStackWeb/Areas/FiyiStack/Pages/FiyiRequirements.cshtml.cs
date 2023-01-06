@@ -35,6 +35,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with FiyiStack"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with FiyiStack"">";
+            ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
         }
     }
 }

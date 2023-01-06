@@ -435,9 +435,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                      <tr>
                         <td align=""left"" valign=""top"">
                            <div style=""height: 39px; line-height: 39px; font-size: 37px;"">&nbsp;</div>
-                           <a href=""https://localhost:44341/Index"" target=""_blank"" style=""display: block; max-width: 128px;"">
-                              <img src=""https://localhost:44341/img/FiyiStackImageTransparent.png"" alt=""img"" width=""128"" border=""0"" style=""display: block; width: 128px;"" />
-                           </a>
                            <div style=""height: 73px; line-height: 73px; font-size: 71px;"">&nbsp;</div>
                         </td>
                      </tr>
@@ -483,7 +480,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                                     <td align=""center"" valign=""top"">
                                        <div style=""height: 13px; line-height: 13px; font-size: 11px;"">&nbsp;</div>
                                        <div style=""display: block; max-width: 177px;"">
-                                          <img src=""img/txt.png"" alt=""img"" width=""177"" border=""0"" style=""display: block; width: 177px; max-width: 100%;"" />
                                        </div>
                                     </td>
                                  </tr>
@@ -506,11 +502,11 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                                  <td align=""center"" valign=""top"">
                                     <div style=""height: 34px; line-height: 34px; font-size: 32px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
-                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Copyright &copy; 2017 Mailto. All&nbsp;Rights&nbsp;Reserved. Thanks!</span>
+                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Thanks!</span>
                                     </font>
                                     <div style=""height: 3px; line-height: 3px; font-size: 1px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 17px; line-height: 20px;"">
-                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;""><a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">help@mailto.com</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">1(800)232-90-26</a></span>
+                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;""><a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">help@fiyistack.com</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">(+54) 351-2329541</a></span>
                                     </font>
                                     <div style=""height: 35px; line-height: 35px; font-size: 33px;"">&nbsp;</div>
                                     <div style=""height: 35px; line-height: 35px; font-size: 33px;"">&nbsp;</div>

@@ -86,7 +86,7 @@ $("#register-button").on("click", function (e) {
         }
         else {
             console.log(xmlHttpRequest);
-            if (xmlHttpRequest.response == `\"Successfully registered user\"`) {
+            if (xmlHttpRequest.response == "Successfully registered user") {
                 //Show success button
                 $("#message").addClass("btn-success");
                 $("#message").removeClass("btn-white");
@@ -95,7 +95,7 @@ $("#register-button").on("click", function (e) {
                                 Check your mailbox,
                                 I have sent an email to finish the registration`);
             }
-            else if (xmlHttpRequest.response == `\"The email is already registered\"`){
+            else if (xmlHttpRequest.response == "The email is already registered"){
                 //Show danger button
                 $("#message").addClass("btn-danger");
                 $("#message").removeClass("btn-white");
@@ -103,7 +103,7 @@ $("#register-button").on("click", function (e) {
                 $("#message").html(`<i class="fas fa-exclamation-triangle"></i>
                                 The email is already registered`);
             }
-            else if (xmlHttpRequest.response == `\"The captcha is invalid\"`){
+            else if (xmlHttpRequest.response == "The captcha is invalid"){
                 //Show danger button
                 $("#message").addClass("btn-danger");
                 $("#message").removeClass("btn-white");

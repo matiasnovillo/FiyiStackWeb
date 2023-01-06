@@ -71,7 +71,7 @@ $("#update-password").on("click", function (e) {
             console.log("Error:" + xmlHttpRequest.response);
         }
         else {
-            if (xmlHttpRequest.response == `\"Password changed\"`) {
+            if (xmlHttpRequest.response == "Password changed") {
                 //Show success button
                 $("#message").addClass("btn-success");
                 $("#message").removeClass("btn-white");
@@ -91,7 +91,7 @@ $("#update-password").on("click", function (e) {
         }
     };
     //Open connection
-    xmlHttpRequest.open("PUT", "/api/CMSCore/User/1/ChangePassword", true);
+    xmlHttpRequest.open("POST", "/api/CMSCore/User/1/ChangePassword", true);
     //Send request
     xmlHttpRequest.send(formData);
 });

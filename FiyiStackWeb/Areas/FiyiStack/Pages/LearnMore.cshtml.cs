@@ -35,6 +35,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Learn more about FiyiStack and RAD tools"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Learn more about FiyiStack and RAD tools. What is RAD tool? How to use a RAD tool?"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Learn more about FiyiStack and RAD tools. What is RAD tool? How to use a RAD tool?"">";
+            ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
         }
     }
 }

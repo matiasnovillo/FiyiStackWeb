@@ -44,10 +44,10 @@ $("#loginbutton").on("click", function (e) {
             $("#message").removeClass("btn-success");
             $("#message").html(`<i class="fas fa-exclamation-triangle"></i> 
                                     There was an error while trying to login`);
-            console.log("Error:" + xmlHttpRequest.response);
+            console.log(xmlHttpRequest);
         }
         else {
-            if (xmlHttpRequest.response == `\"User not found\"`) {
+            if (xmlHttpRequest.response == "User not found") {
                 //Show danger button
                 $("#message").addClass("btn-danger");
                 $("#message").removeClass("btn-white");
