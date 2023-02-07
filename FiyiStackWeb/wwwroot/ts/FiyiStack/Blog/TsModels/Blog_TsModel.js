@@ -27,6 +27,7 @@ var BlogModel = /** @class */ (function () {
         return Rx.from((0, ajax_1.ajax)(URL));
     };
     BlogModel.SelectAllPaged = function (blogmodelQuery) {
+        debugger;
         var URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";
         var Body = {
             QueryString: blogmodelQuery.QueryString,

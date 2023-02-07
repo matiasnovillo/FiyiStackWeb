@@ -45,6 +45,7 @@ export class UserModel {
     }
     
     static SelectAllPaged(usermodelQuery: usermodelQuery) {
+        debugger;
         let URL = "/api/CMSCore/User/1/SelectAllPagedToJSON";
         let Body = {
             QueryString: usermodelQuery.QueryString,

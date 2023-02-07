@@ -27,6 +27,7 @@ var UserModel = /** @class */ (function () {
         return Rx.from((0, ajax_1.ajax)(URL));
     };
     UserModel.SelectAllPaged = function (usermodelQuery) {
+        debugger;
         var URL = "/api/CMSCore/User/1/SelectAllPagedToJSON";
         var Body = {
             QueryString: usermodelQuery.QueryString,
