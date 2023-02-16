@@ -17,14 +17,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 21/12/2022 10:33:36
+//Last modification on: 15/02/2023 17:38:02
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 21/12/2022 10:33:36
+    /// Last modification: 15/02/2023 17:38:02
     /// </summary>
     [ApiController]
     [PlanetFilter]
@@ -112,7 +112,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
-        [HttpPost("~/api/BasicCulture/Planet/1/SelectAllPagedToJSON")]
+        [HttpPut("~/api/BasicCulture/Planet/1/SelectAllPagedToJSON")]
         public planetModelQuery SelectAllPagedToJSON([FromBody] planetModelQuery planetModelQuery)
         {
             try
@@ -146,8 +146,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         #endregion
 
         #region Non-Queries
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -159,20 +159,22 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 {
                     return StatusCode(401, "User not found in session");
                 }
-
-                //Add or edit value
-                string AddOrEdit = HttpContext.Request.Form["basicculture-planet-title-page"];
-
+                
+                #region Pass data from client to server
+                //PlanetId
+                int PlanetId = Convert.ToInt32(HttpContext.Request.Form["basicculture-planet-planetid-input"]);
+                
                 string Name = HttpContext.Request.Form["basicculture-planet-name-input"];
                 string Code = HttpContext.Request.Form["basicculture-planet-code-input"];
                 
+                #endregion
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (PlanetId == 0)
                 {
-                    //Add
+                    //Insert
                     PlanetModel PlanetModel = new PlanetModel()
                     {
                         Active = true,
@@ -190,7 +192,6 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 else
                 {
                     //Update
-                    int PlanetId = Convert.ToInt32(HttpContext.Request.Form["basicculture-planet-planetid-input"]);
                     PlanetModel PlanetModel = new PlanetModel(PlanetId);
                     
                     PlanetModel.UserLastModificationId = UserId;
@@ -228,7 +229,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     }
                 }
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (PlanetId == 0)
                 {
                     return StatusCode(200, NewEnteredId); 
                 }
@@ -259,8 +260,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/BasicCulture/Planet/1/DeleteByPlanetId/{PlanetId:int}")]
-        [Produces("text/plain")]
         public IActionResult DeleteByPlanetId(int PlanetId)
         {
             try
@@ -293,8 +294,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -328,8 +329,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/CopyByPlanetId/{PlanetId:int}")]
-        [Produces("text/plain")]
         public IActionResult CopyByPlanetId(int PlanetId)
         {
             try
@@ -363,8 +364,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -407,8 +408,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         #endregion
 
         #region Other actions
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -442,8 +443,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -477,8 +478,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Planet/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

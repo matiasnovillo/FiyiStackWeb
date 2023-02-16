@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
-    public class FiyiRequirementsModel : PageModel
+    public class FiyiStackWebModel : PageModel
     {
         public void OnGet()
         {
@@ -36,9 +36,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with FiyiStack"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with FiyiStack"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStackWeb: The example code of FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStackWeb is the example code made with FiyiStack"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStackWeb is the example code made with FiyiStack"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
         }
     }

@@ -17,14 +17,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 21/12/2022 9:32:45
+//Last modification on: 15/02/2023 17:34:54
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 21/12/2022 9:32:45
+    /// Last modification: 15/02/2023 17:34:54
     /// </summary>
     [ApiController]
     [ParameterFilter]
@@ -112,7 +112,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
-        [HttpPost("~/api/BasicCore/Parameter/1/SelectAllPagedToJSON")]
+        [HttpPut("~/api/BasicCore/Parameter/1/SelectAllPagedToJSON")]
         public parameterModelQuery SelectAllPagedToJSON([FromBody] parameterModelQuery parameterModelQuery)
         {
             try
@@ -146,8 +146,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
         #endregion
 
         #region Non-Queries
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -159,21 +159,23 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 {
                     return StatusCode(401, "User not found in session");
                 }
-
-                //Add or edit value
-                string AddOrEdit = HttpContext.Request.Form["basiccore-parameter-title-page"];
-
+                
+                #region Pass data from client to server
+                //ParameterId
+                int ParameterId = Convert.ToInt32(HttpContext.Request.Form["basiccore-parameter-parameterid-input"]);
+                
                 string Name = HttpContext.Request.Form["basiccore-parameter-name-input"];
                 string Value = HttpContext.Request.Form["basiccore-parameter-value-input"];
                 bool IsPrivate = Convert.ToBoolean(HttpContext.Request.Form["basiccore-parameter-isprivate-input"]);
                 
+                #endregion
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (ParameterId == 0)
                 {
-                    //Add
+                    //Insert
                     ParameterModel ParameterModel = new ParameterModel()
                     {
                         Active = true,
@@ -192,7 +194,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 else
                 {
                     //Update
-                    int ParameterId = Convert.ToInt32(HttpContext.Request.Form["basiccore-parameter-parameterid-input"]);
                     ParameterModel ParameterModel = new ParameterModel(ParameterId);
                     
                     ParameterModel.UserLastModificationId = UserId;
@@ -231,7 +232,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     }
                 }
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (ParameterId == 0)
                 {
                     return StatusCode(200, NewEnteredId); 
                 }
@@ -262,8 +263,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/BasicCore/Parameter/1/DeleteByParameterId/{ParameterId:int}")]
-        [Produces("text/plain")]
         public IActionResult DeleteByParameterId(int ParameterId)
         {
             try
@@ -296,8 +297,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -331,8 +332,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/CopyByParameterId/{ParameterId:int}")]
-        [Produces("text/plain")]
         public IActionResult CopyByParameterId(int ParameterId)
         {
             try
@@ -366,8 +367,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -410,8 +411,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
         #endregion
 
         #region Other actions
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -445,8 +446,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -480,8 +481,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCore/Parameter/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

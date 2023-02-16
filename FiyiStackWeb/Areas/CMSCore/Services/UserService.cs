@@ -183,8 +183,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 UserModel.Active = false;
                 UserModel.DateTimeCreation = DateTime.Now;
                 UserModel.DateTimeLastModification = DateTime.Now;
-                UserModel.UserCreationId = 1;
-                UserModel.UserLastModificationId = 1;
                 UserModel.Insert();
 
                 #region Send registration email
@@ -247,6 +245,9 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                      <tr>
                         <td class=""mob_left"" align=""center"" valign=""top"">
                            <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+                           <a href=""https://localhost:44341/Index"" target=""_blank"" style=""display: block; max-width: 128px;"">
+                              <img src=""https://localhost:44341/img/FiyiStackImageTransparent.png"" alt=""img"" width=""128"" border=""0"" style=""display: block; width: 128px;"" />
+                           </a>
                            <div class=""top_pad2"" style=""height: 78px; line-height: 78px; font-size: 76px;"">&nbsp;</div>
                         </td>
                      </tr>
@@ -260,13 +261,13 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                            </font>
                            <div style=""height: 25px; line-height: 25px; font-size: 23px;"">&nbsp;</div>
                            <font class=""mob_title2"" face=""'Source Sans Pro', sans-serif"" color=""#5e5e5e"" style=""font-size: 36px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">
-                              <span class=""mob_title2"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #5e5e5e; font-size: 28px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">One more step away from entering FiyiStack, what are you waiting for?</span>
+                              <span class=""mob_title2"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #5e5e5e; font-size: 28px; line-height: 45px; font-weight: 300; letter-spacing: -1px;"">One more step away from entering FiyiStackWeb, what are you waiting for?</span>
                            </font>
                            <div style=""height: 38px; line-height: 38px; font-size: 36px;"">&nbsp;</div>
                            <table class=""mob_btn"" cellpadding=""0"" cellspacing=""0"" border=""0"" style=""background: #27cbcc; border-radius: 4px;"">
                               <tr>
                                  <td align=""center"" valign=""top""> 
-                                    <a href=""http://fiyistack.com/CMSCore/RecordActivation?RegistrationToken={RegistrationToken}"" target=""_blank"" style=""display: block; border: 1px solid #27cbcc; border-radius: 4px; padding: 19px 26px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
+                                    <a href=""http://localhost:44341/CMSCore/RecordActivation?RegistrationToken={RegistrationToken}"" target=""_blank"" style=""display: block; border: 1px solid #27cbcc; border-radius: 4px; padding: 19px 26px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
                                        <font face=""'Source Sans Pro', sans-serif"" color=""#ffffff"" style=""font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
                                           <span style=""font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">Yes,&nbsp;register</span>
                                        </font>
@@ -299,7 +300,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                                  <td align=""center"" valign=""top"">
                                     <div style=""height: 34px; line-height: 34px; font-size: 32px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
-                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Thanks!</span>
+                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Copyright &copy; {DateTime.Now.Year} FiyiStackWeb. All&nbsp;Rights&nbsp;Reserved. Thanks!</span>
                                     </font>
                                     <div style=""height: 3px; line-height: 3px; font-size: 1px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 17px; line-height: 20px;"">
@@ -348,7 +349,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                 MailMessage.BodyEncoding = Encoding.UTF8;
                 MailMessage.IsBodyHtml = true;
                 MailMessage.SubjectEncoding = Encoding.UTF8;
-                MailMessage.From = new MailAddress(Address, "FiyiStack");
+                MailMessage.From = new MailAddress(Address, "FiyiStackWeb");
 
                 SmtpClient.Credentials = new NetworkCredential(Address, fPassword);
                 SmtpClient.Host = Host;//Server from which the mail is sent
@@ -384,7 +385,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
 <html>
 <head>
 <meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" >
-<title>Recover password - FiyiStack</title>
+<title>Recover password - FiyiStackWeb</title>
 <link href=""https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"" rel=""stylesheet"">
 <style type=""text/css"">
 html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
@@ -435,6 +436,9 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                      <tr>
                         <td align=""left"" valign=""top"">
                            <div style=""height: 39px; line-height: 39px; font-size: 37px;"">&nbsp;</div>
+                           <a href=""https://localhost:44341/Index"" target=""_blank"" style=""display: block; max-width: 128px;"">
+                              <img src=""https://localhost:44341/img/FiyiStackImageTransparent.png"" alt=""img"" width=""128"" border=""0"" style=""display: block; width: 128px;"" />
+                           </a>
                            <div style=""height: 73px; line-height: 73px; font-size: 71px;"">&nbsp;</div>
                         </td>
                      </tr>
@@ -480,6 +484,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                                     <td align=""center"" valign=""top"">
                                        <div style=""height: 13px; line-height: 13px; font-size: 11px;"">&nbsp;</div>
                                        <div style=""display: block; max-width: 177px;"">
+                                          <img src=""img/txt.png"" alt=""img"" width=""177"" border=""0"" style=""display: block; width: 177px; max-width: 100%;"" />
                                        </div>
                                     </td>
                                  </tr>
@@ -502,11 +507,11 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                                  <td align=""center"" valign=""top"">
                                     <div style=""height: 34px; line-height: 34px; font-size: 32px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#868686"" style=""font-size: 17px; line-height: 20px;"">
-                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Thanks!</span>
+                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686; font-size: 17px; line-height: 20px;"">Copyright &copy; 2017 Mailto. All&nbsp;Rights&nbsp;Reserved. Thanks!</span>
                                     </font>
                                     <div style=""height: 3px; line-height: 3px; font-size: 1px;"">&nbsp;</div>
                                     <font face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 17px; line-height: 20px;"">
-                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;""><a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">help@fiyistack.com</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">(+54) 351-2329541</a></span>
+                                       <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px;""><a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">help@mailto.com</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href=""#"" target=""_blank"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 17px; line-height: 20px; text-decoration: none;"">1(800)232-90-26</a></span>
                                     </font>
                                     <div style=""height: 35px; line-height: 35px; font-size: 33px;"">&nbsp;</div>
                                     <div style=""height: 35px; line-height: 35px; font-size: 33px;"">&nbsp;</div>
@@ -545,7 +550,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                 MailMessage.BodyEncoding = Encoding.UTF8;
                 MailMessage.IsBodyHtml = true;
                 MailMessage.SubjectEncoding = Encoding.UTF8;
-                MailMessage.From = new MailAddress(Address, "FiyiStack");
+                MailMessage.From = new MailAddress(Address, "FiyiStackWeb");
 
                 SmtpClient.Credentials = new NetworkCredential(Address, Password);
                 SmtpClient.Host = Host;//Server from which the mail is sent

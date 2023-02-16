@@ -27,7 +27,6 @@ var UserModel = /** @class */ (function () {
         return Rx.from((0, ajax_1.ajax)(URL));
     };
     UserModel.SelectAllPaged = function (usermodelQuery) {
-        debugger;
         var URL = "/api/CMSCore/User/1/SelectAllPagedToJSON";
         var Body = {
             QueryString: usermodelQuery.QueryString,
@@ -43,7 +42,7 @@ var UserModel = /** @class */ (function () {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
         };
-        return Rx.from(ajax_1.ajax.post(URL, Body, Header));
+        return Rx.from(ajax_1.ajax.put(URL, Body, Header));
     };
     //Non-Queries
     UserModel.DeleteByUserId = function (UserId) {

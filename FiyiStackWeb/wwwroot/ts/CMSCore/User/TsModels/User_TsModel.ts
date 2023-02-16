@@ -45,7 +45,6 @@ export class UserModel {
     }
     
     static SelectAllPaged(usermodelQuery: usermodelQuery) {
-        debugger;
         let URL = "/api/CMSCore/User/1/SelectAllPagedToJSON";
         let Body = {
             QueryString: usermodelQuery.QueryString,
@@ -61,7 +60,7 @@ export class UserModel {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
         };
-        return Rx.from(ajax.post(URL, Body, Header));
+        return Rx.from(ajax.put(URL, Body, Header));
     }
 
     //Non-Queries

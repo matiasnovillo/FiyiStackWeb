@@ -70,8 +70,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -102,8 +102,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -112,7 +112,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             }
         }
 
-        [HttpPost("~/api/CMSCore/RoleMenu/1/SelectAllPagedToJSON")]
+        [HttpPut("~/api/CMSCore/RoleMenu/1/SelectAllPagedToJSON")]
         public rolemenuModelQuery SelectAllPagedToJSON([FromBody] rolemenuModelQuery rolemenuModelQuery)
         {
             try
@@ -134,8 +134,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -166,8 +166,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -179,7 +179,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
 
         #region Non-Queries
         [HttpPost("~/api/CMSCore/RoleMenu/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
+        
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -293,8 +293,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -304,7 +304,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/InsertPermissions/")]
-        [Produces("text/plain")]
+        
         public IActionResult InsertPermissions()
         {
             try
@@ -349,8 +349,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -360,7 +360,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpDelete("~/api/CMSCore/RoleMenu/1/DeleteByRoleMenuId/{RoleMenuId:int}")]
-        [Produces("text/plain")]
+        
         public IActionResult DeleteByRoleMenuId(int RoleMenuId)
         {
             try
@@ -383,8 +383,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -394,7 +394,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
+        
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -418,8 +418,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -429,7 +429,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/CopyByRoleMenuId/{RoleMenuId:int}")]
-        [Produces("text/plain")]
+        
         public IActionResult CopyByRoleMenuId(int RoleMenuId)
         {
             try
@@ -453,8 +453,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -464,7 +464,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
+        
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -495,8 +495,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -508,7 +508,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
 
         #region Other actions
         [HttpPost("~/api/CMSCore/RoleMenu/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
+        
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -532,8 +532,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -543,7 +543,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
+        
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -567,8 +567,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };
@@ -578,7 +578,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
         }
 
         [HttpPost("~/api/CMSCore/RoleMenu/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
+        
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -602,8 +602,8 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                     Source = ex.Source ?? "",
                     Comment = "",
                     Active = true,
-                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserCreationId = 1,
+                    UserLastModificationId = 1,
                     DateTimeCreation = Now,
                     DateTimeLastModification = Now
                 };

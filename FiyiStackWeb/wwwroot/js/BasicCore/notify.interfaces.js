@@ -15,7 +15,7 @@
   \****************************************************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://FiyiStackWeb/./wwwroot/ts/BasicCore/bootstrap-notify.d.ts?");
+eval("\n\n//# sourceURL=webpack://fiyirequirements/./wwwroot/ts/BasicCore/bootstrap-notify.d.ts?");
 
 /***/ })
 

@@ -27,14 +27,14 @@ $("#logout-button").on("click", function (e) {
     });
     xmlHttpRequest.onload = function () {
         if (xmlHttpRequest.status >= 400) {
-            console.log(xmlHttpRequest);
+            console.log("Error:" + xmlHttpRequest.response);
         }
         else {
             window.location.href = xmlHttpRequest.response;
         }
     };
     //Open connection
-    xmlHttpRequest.open("POST", "/api/CMSCore/User/1/Logout", true);
+    xmlHttpRequest.open("PUT", "/api/CMSCore/User/1/Logout", false);
     //Send request
     xmlHttpRequest.send(formData);
 });

@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
     public partial class UserModel
     {
         [NotMapped]
-        private string _ConnectionString = "Password=O$6j5f5b4;Persist Security Info=True;User ID=fiyistac_FiyiStackWebAdmin;Initial Catalog=fiyistac_FiyiStackWeb;Data Source=192.168.28.14;TrustServerCertificate=True";
+        private string _ConnectionString = "data source =.; initial catalog = fiyistack_FiyiStackWeb; Integrated Security = SSPI; MultipleActiveResultSets=True;Pooling=false;Persist Security Info=True;App=EntityFramework;TrustServerCertificate=True";
 
         #region Fields
         [Library.ModelAttributeValidator.Key("UserId")]
@@ -318,6 +318,24 @@ namespace FiyiStackWeb.Areas.CMSCore.Models
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
                     lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.SelectAll]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                return lstUserModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public List<UserModel> SelectAllByEmployeeRoleToList(int EmployeeRoleId)
+        {
+            try
+            {
+                List<UserModel> lstUserModel = new List<UserModel>();
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("EmployeeRoleId", EmployeeRoleId, DbType.Int32, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstUserModel = (List<UserModel>)sqlConnection.Query<UserModel>("[dbo].[CMSCore.User.SelectAllByEmployeeRoleIdCustom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 return lstUserModel;

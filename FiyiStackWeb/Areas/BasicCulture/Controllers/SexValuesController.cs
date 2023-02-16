@@ -17,14 +17,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 21/12/2022 10:42:03
+//Last modification on: 15/02/2023 18:02:20
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 21/12/2022 10:42:03
+    /// Last modification: 15/02/2023 18:02:20
     /// </summary>
     [ApiController]
     [SexFilter]
@@ -112,7 +112,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
-        [HttpPost("~/api/BasicCulture/Sex/1/SelectAllPagedToJSON")]
+        [HttpPut("~/api/BasicCulture/Sex/1/SelectAllPagedToJSON")]
         public sexModelQuery SelectAllPagedToJSON([FromBody] sexModelQuery sexModelQuery)
         {
             try
@@ -146,8 +146,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         #endregion
 
         #region Non-Queries
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -159,19 +159,21 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 {
                     return StatusCode(401, "User not found in session");
                 }
-
-                //Add or edit value
-                string AddOrEdit = HttpContext.Request.Form["basicculture-sex-title-page"];
-
+                
+                #region Pass data from client to server
+                //SexId
+                int SexId = Convert.ToInt32(HttpContext.Request.Form["basicculture-sex-sexid-input"]);
+                
                 string Name = HttpContext.Request.Form["basicculture-sex-name-input"];
                 
+                #endregion
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (SexId == 0)
                 {
-                    //Add
+                    //Insert
                     SexModel SexModel = new SexModel()
                     {
                         Active = true,
@@ -188,7 +190,6 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                 else
                 {
                     //Update
-                    int SexId = Convert.ToInt32(HttpContext.Request.Form["basicculture-sex-sexid-input"]);
                     SexModel SexModel = new SexModel(SexId);
                     
                     SexModel.UserLastModificationId = UserId;
@@ -225,7 +226,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
                     }
                 }
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (SexId == 0)
                 {
                     return StatusCode(200, NewEnteredId); 
                 }
@@ -256,8 +257,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/BasicCulture/Sex/1/DeleteBySexId/{SexId:int}")]
-        [Produces("text/plain")]
         public IActionResult DeleteBySexId(int SexId)
         {
             try
@@ -290,8 +291,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -325,8 +326,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/CopyBySexId/{SexId:int}")]
-        [Produces("text/plain")]
         public IActionResult CopyBySexId(int SexId)
         {
             try
@@ -360,8 +361,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -404,8 +405,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
         #endregion
 
         #region Other actions
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -439,8 +440,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -474,8 +475,8 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/BasicCulture/Sex/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try
