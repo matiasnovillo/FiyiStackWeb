@@ -17,14 +17,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 21/12/2022 11:52:12
+//Last modification on: 19/02/2023 10:48:50
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 21/12/2022 11:52:12
+    /// Last modification: 19/02/2023 10:48:50
     /// </summary>
     [ApiController]
     [BlogFilter]
@@ -146,8 +146,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -159,10 +159,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 {
                     return StatusCode(401, "User not found in session");
                 }
-
-                //Add or edit value
-                string AddOrEdit = HttpContext.Request.Form["fiyistack-blog-title-page"];
-
+                
+                #region Pass data from client to server
+                //BlogId
+                int BlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-blogid-input"]);
+                
                 string Title = HttpContext.Request.Form["fiyistack-blog-title-input"];
                 string Body = HttpContext.Request.Form["fiyistack-blog-body-input"];
                 string BackgroundImage = HttpContext.Request.Form["fiyistack-blog-backgroundimage-input"];;
@@ -171,13 +172,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
                 
+                #endregion
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (BlogId == 0)
                 {
-                    //Add
+                    //Insert
                     BlogModel BlogModel = new BlogModel()
                     {
                         Active = true,
@@ -196,7 +198,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     //Update
-                    int BlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-blogid-input"]);
                     BlogModel BlogModel = new BlogModel(BlogId);
                     
                     BlogModel.UserLastModificationId = UserId;
@@ -235,7 +236,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     }
                 }
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (BlogId == 0)
                 {
                     return StatusCode(200, NewEnteredId); 
                 }
@@ -266,8 +267,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/Blog/1/DeleteByBlogId/{BlogId:int}")]
-        [Produces("text/plain")]
         public IActionResult DeleteByBlogId(int BlogId)
         {
             try
@@ -300,8 +301,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -335,8 +336,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/CopyByBlogId/{BlogId:int}")]
-        [Produces("text/plain")]
         public IActionResult CopyByBlogId(int BlogId)
         {
             try
@@ -370,8 +371,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -414,8 +415,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -449,8 +450,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -484,8 +485,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

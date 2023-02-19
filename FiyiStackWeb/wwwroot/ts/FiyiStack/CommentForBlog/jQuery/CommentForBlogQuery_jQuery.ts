@@ -4,12 +4,13 @@ import * as $ from "jquery";
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
+import "bootstrap-notify";
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
@@ -18,7 +19,7 @@ import { Ajax } from "../../../Library/Ajax";
 
 //Stack: 10
 
-//Last modification on: 21/12/2022 12:08:11
+//Last modification on: 19/02/2023 10:32:42
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -186,8 +187,8 @@ class CommentForBlogQuery {
         </strong>
     </td>
     <td class="text-left">
-        <strong><i class="fas fa-font">
-            </i> ${row.Comment}
+        <strong>
+            <i class="fas fa-font"></i> ${row.Comment}
         </strong>
     </td>
     <td class="text-left">
@@ -198,7 +199,7 @@ class CommentForBlogQuery {
     
     <!-- Actions -->
     <td class="text-right">
-        <a class="btn btn-icon-only text-primary" href="/FiyiStack/PageCommentForBlogNonQuery?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="Edit">
+        <a class="btn btn-icon-only text-primary" href="/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="Edit">
             <i class="fas fa-edit"></i>
         </a>
         <div class="dropdown">
@@ -271,13 +272,13 @@ class CommentForBlogQuery {
                 <div class="row">
                     <div class="col">
                         <div class="justify-content-end text-right mt-2">
-                            <div class="fiyistack-commentforblog-checkbox-list list-row-unchecked mb-2">
-                                <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="check">
+                            <div class="mb-2">
+                                <a class="fiyistack-commentforblog-checkbox-list list-row-unchecked icon icon-shape bg-white icon-sm rounded-circle shadow" href="javascript:void(0)" role="button" data-toggle="tooltip" data-original-title="Check">
                                     <i class="fas fa-circle text-white"></i>
                                 </a>
+                                <input type="hidden" value="${row.CommentForBlogId}"/>
                             </div>
-                            <input type="hidden" value="${row.CommentForBlogId}"/>
-                            <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="/FiyiStack/PageCommentForBlogNonQuery?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="edit">
+                            <a class="icon icon-shape bg-white icon-sm rounded-circle shadow" href="/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=${row.CommentForBlogId}" role="button" data-toggle="tooltip" data-original-title="edit">
                                 <i class="fas fa-edit text-primary"></i>
                             </a>
                             <div class="dropup">
@@ -321,10 +322,9 @@ class CommentForBlogQuery {
                             }
                     }
                     else {
-                        //Show error message
-                        $("#fiyistack-commentforblog-error-message-title").html("No registers found");
-                        $("#fiyistack-commentforblog-error-message-text").html("The server did not found any register. HTTP code 204");
-                        $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                        //ERROR
+                        // @ts-ignore
+                        $.notify({ icon: "fas fa-exclamation-triangle", message: "No registers found" }, { type: "warning", placement: { from: "bottom", align: "center" } });
                     }
                 },
                 complete: () => {
@@ -378,11 +378,6 @@ class CommentForBlogQuery {
                         ValidateAndSearch();
                     });
 
-                    //Hide error message
-                    $("#fiyistack-commentforblog-error-message-title").html("");
-                    $("#fiyistack-commentforblog-error-message-text").html("");
-                    $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-
                     //Delete button in table and list
                     $("div.dropdown-menu button.fiyistack-commentforblog-table-delete-button, div.dropdown-menu button.fiyistack-commentforblog-list-delete-button").on("click", function (e) {
                         let CommentForBlogId = $(this).val();
@@ -390,20 +385,17 @@ class CommentForBlogQuery {
                             next: newrow => {
                             },
                             complete: () => {
-                                ValidateAndSearch();
+                                //SUCCESS
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-check", message: "Row deleted successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
-                                //Show OK message
-                                $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-                                $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Row deleted successfully`);
-                                $("#fiyistack-commentforblog-button-ok-message-in-card").show();
+                                ValidateAndSearch();
                             },
                             error: err => {
-                                //Related to error message
-                                $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.DeleteByCommentForBlogId(CommentForBlogId).subscribe(...)");
-                                $("#fiyistack-commentforblog-error-message-text").html(err);
-                                $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                                //ERROR
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to delete data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                                console.log(err);
                             }
                         });
                     });
@@ -415,39 +407,32 @@ class CommentForBlogQuery {
                             next: newrow => {
                             },
                             complete: () => {
-                                ValidateAndSearch();
+                                //SUCCESS
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-check", message: "Row copied successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
-                                //Show OK message
-                                $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-                                $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Row copied successfully`);
-                                $("#fiyistack-commentforblog-button-ok-message-in-card").show();
+                                ValidateAndSearch();
                             },
                             error: err => {
-                                //Show error message
-                                $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.CopyByCommentForBlogId(CommentForBlogId).subscribe(...)");
-                                $("#fiyistack-commentforblog-error-message-text").html(err);
-                                $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                                //ERROR
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to copy data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                                console.log(err);
                             }
                         });
                     });
                 },
                 error: err => {
-                    //Show error message
-                    $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.SelectAllPaged(request_commentforblogmodelQ).subscribe(...)");
-                    $("#fiyistack-commentforblog-error-message-text").html(err);
-                    $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                    //ERROR
+                    // @ts-ignore
+                    $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to get data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                    console.log(err);
                 }
             });
     }
 }
 
 function ValidateAndSearch() {
-
-    //Hide error and OK message button
-    $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-    $("#fiyistack-commentforblog-button-ok-message-in-card").hide();
 
     var _commentforblogmodelQuery: commentforblogmodelQuery = {
         QueryString,
@@ -478,8 +463,6 @@ if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforb
     $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
     //Hide messages
     $("#fiyistack-commentforblog-export-message").html("");
-    $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-    $("#fiyistack-commentforblog-button-ok-message-in-card").hide();
 
     ValidateAndSearch();
 }
@@ -614,23 +597,22 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
             DateTimeNow = newrow.response as Ajax;
         },
         complete: () => {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
+
             //Show download button for PDF file
             $("#fiyistack-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/PDFFiles/FiyiStack/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.pdf" type="button" download>
                                             <span class="btn-inner--icon"><i class="fas fa-file-pdf"></i></span>
                                             <span class="btn-inner--text">Download</span>
                                         </a>`);
 
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Conversion completed`);
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: err => {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/CommentForBlog/1/ExportAsPDF/' + ExportationType, Body, Header)).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to convert" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -681,23 +663,21 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
             DateTimeNow = newrow.response as Ajax;
         },
         complete: () => {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
+
             //Show download button for Excel file
             $("#fiyistack-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/ExcelFiles/FiyiStack/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.xlsx" type="button" download>
                                             <span class="btn-inner--icon"><i class="fas fa-file-excel"></i></span>
                                             <span class="btn-inner--text">Download</span>
                                         </a>`);
-
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Conversion completed`);
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: err => {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/CommentForBlog/1/ExportAsExcel/' + ExportationType, Body, Header)).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to convert" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -748,23 +728,21 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
             DateTimeNow = newrow.response as Ajax;
         },
         complete: () => {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
+
             //Show download button for CSV file
             $("#fiyistack-commentforblog-export-message").html(`<a class="btn btn-icon btn-success" href="/CSVFiles/FiyiStack/CommentForBlog/CommentForBlog_${DateTimeNow.AjaxForString}.csv" type="button" download>
                                             <span class="btn-inner--icon"><i class="fas fa-file-csv"></i></span>
                                             <span class="btn-inner--text">Download</span>
                                         </a>`);
-
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Conversion completed`);
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: err => {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/CommentForBlog/1/ExportAsCSV/' + ExportationType, Body, Header)).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to convert" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -807,19 +785,17 @@ $("#fiyistack-commentforblog-massive-action-copy").on("click", function (e) {
         next: newrow => {
         },
         complete: () => {
-            ValidateAndSearch();
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Completed copy" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Rows copied successfully`);
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
+            ValidateAndSearch();
         },
         error: err => {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.Copy(CopyType).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to copy" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -857,19 +833,17 @@ $("#fiyistack-commentforblog-massive-action-delete").on("click", function (e) {
         next: newrow => {
         },
         complete: () => {
-            ValidateAndSearch();
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Completed deletion" }, { type: "success", placement: { from: "bottom", align: "center" } });
 
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html(`<strong>
-                                                                    <i class="fas fa-check"></i>
-                                                                </strong> Rows deleted successfully`);
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
+            ValidateAndSearch();
         },
         error: err => {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.Copy(CopyType).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to delete" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });

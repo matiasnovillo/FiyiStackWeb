@@ -7,13 +7,13 @@ var ajax_1 = require("rxjs/ajax");
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  *
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  *
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  *
 */
-//22 fields | Last modification on: 23/12/2022 15:53:55 | Stack: 9
+//23 fields | Sub-models: 0 models  | Last modification on: 19/02/2023 11:08:32 | Stack: 9
 var ExampleModel = /** @class */ (function () {
     function ExampleModel() {
     }
@@ -42,7 +42,7 @@ var ExampleModel = /** @class */ (function () {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
         };
-        return Rx.from(ajax_1.ajax.post(URL, Body, Header));
+        return Rx.from(ajax_1.ajax.put(URL, Body, Header));
     };
     //Non-Queries
     ExampleModel.DeleteByExampleId = function (ExampleId) {

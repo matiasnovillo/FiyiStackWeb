@@ -1,6 +1,6 @@
 @page
 @using FiyiStackWeb.Areas.FiyiStack.Models
-@model FiyiStackWeb.Areas.FiyiStack.Pages.PageExampleNonQueryModel
+@model FiyiStackWeb.Areas.FiyiStack.Pages.ExampleNonQueryPageModel
 @{
     Layout = "_LayoutDashboard";
 
@@ -11,19 +11,20 @@
     bool Boolean;
     DateTime DateTime;
     decimal Decimal;
-    int ForeignKey1;
-    int ForeignKey2;
+    int DropDown;
+    int Options;
     int Integer;
     string TextBasic;
-    string TextEmail;
-    string TextFile;
-    string TextHexColour;
-    string TextPassword;
-    string TextPhoneNumber;
-    string TextTag;
+    string Email;
+    string FileUpload;
+    string HexColour;
+    string Password;
+    string PhoneNumber;
+    string Tag;
     string TextArea;
     string TextEditor;
-    string TextURL;
+    string URL;
+    TimeSpan Time;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?ExampleId=0"))
@@ -34,19 +35,21 @@
         ExampleId = 0;
         Boolean = false;
         DateTime = DateTime.Now;
-        Decimal = 0;
-        ForeignKey1 = 0;ForeignKey2 = 0;
-        Integer = 0;
+        Decimal = 5M;
+        DropDown = 0;
+        Options = 0;
+        Integer = 5;
         TextBasic = "";
-        TextEmail = "";
-        TextFile = "";
-        TextHexColour = "#FFFFFF";
-        TextPassword = "";
-        TextPhoneNumber = "";
-        TextTag = "";
+        Email = "";
+        FileUpload = "";
+        HexColour = "#FFFFFF";
+        Password = "";
+        PhoneNumber = "";
+        Tag = "";
         TextArea = "";
         TextEditor = "";
-        TextURL = "";
+        URL = "http://";
+        Time = TimeSpan.Parse("00:00");
         
     }
     else
@@ -61,19 +64,20 @@
         Boolean = ExampleModel.Boolean;
         DateTime = ExampleModel.DateTime;
         Decimal = ExampleModel.Decimal;
-        ForeignKey1 = ExampleModel.ForeignKey1;
-        ForeignKey2 = ExampleModel.ForeignKey2;
+        DropDown = ExampleModel.DropDown;
+        Options = ExampleModel.Options;
         Integer = ExampleModel.Integer;
         TextBasic = ExampleModel.TextBasic;
-        TextEmail = ExampleModel.TextEmail;
-        TextFile = ExampleModel.TextFile;
-        TextHexColour = ExampleModel.TextHexColour;
-        TextPassword = ExampleModel.TextPassword;
-        TextPhoneNumber = ExampleModel.TextPhoneNumber;
-        TextTag = ExampleModel.TextTag;
+        Email = ExampleModel.Email;
+        FileUpload = ExampleModel.FileUpload;
+        HexColour = ExampleModel.HexColour;
+        Password = ExampleModel.Password;
+        PhoneNumber = ExampleModel.PhoneNumber;
+        Tag = ExampleModel.Tag;
         TextArea = ExampleModel.TextArea;
         TextEditor = ExampleModel.TextEditor;
-        TextURL = ExampleModel.TextURL;
+        URL = ExampleModel.URL;
+        Time = ExampleModel.Time;
         
     }
 
@@ -81,7 +85,7 @@
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
@@ -89,7 +93,7 @@
  */
     
 //Stack: 11
-//Last modification on: 23/12/2022 15:53:55
+//Last modification on: 19/02/2023 11:08:32
 
 }
 <!-- Header -->
@@ -100,7 +104,13 @@
             <div class="row align-items-center py-4">
                 <div class="col-lg-6 col-7">
                     <!-- Title -->
-                    <h2 id="fiyistack-example-title-page" class="h2 text-white d-inline-block mb-0">@NonQueryText example</h2>
+                    <h2 class="h2 text-white d-inline-block mb-0">
+                        @NonQueryText 
+                        example
+                    </h2>
+                    <input type="hidden" 
+                        id="fiyistack-example-exampleid-input" 
+                        value="@ExampleId"/>
                     <!-- Breadcrumb -->
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
@@ -128,13 +138,13 @@
                 <div class="col-lg-6 col-5 text-right">
                     <!-- XL Screens -->
                     <div class="d-none d-xl-inline">
-                        <a href="/FiyiStack/PageExampleQuery" class="btn btn-secondary">
+                        <a href="/FiyiStack/ExampleQueryPage" class="btn btn-secondary">
                             <i class="fas fa-angle-left"></i> Go back
                         </a>
                     </div>
                     <!-- Other Screens -->
                     <div class="d-inline d-sm-inline d-md-inline d-lg-inline d-xl-none">
-                        <a href="/FiyiStack/PageExampleQuery" class="btn btn-secondary">
+                        <a href="/FiyiStack/ExampleQueryPage" class="btn btn-secondary">
                             <i class="fas fa-angle-left"></i>
                         </a>
                     </div>
@@ -151,393 +161,335 @@
             <div class="card">
                 <!-- Card body -->
                 <div class="card-body">
-                    <form role="form" class="needs-validation" novalidate>
-                        <!-- ExampleId -->
-                        <div class="form-group mb-3">
-                            <label for="fiyistack-example-exampleId-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-key"></i> ExampleId
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text">
-                                        <strong>
-                                            <i class="fas fa-key"></i> ExampleId
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input type="hidden" id="fiyistack-example-exampleid-input" value="@ExampleId"/>
-                                <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="bottom" title="@ExampleId"  type="button" value="ExampleId">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
+                    <form class="needs-validation" novalidate>
                         <!-- Boolean -->
-                        <div class="form-group mb-3">
-                            <label for="fiyistack-example-boolean-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-toggle-on"></i> Boolean
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text">
-                                        <strong>
-                                            <i class="fas fa-toggle-on"></i> Boolean
-                                        </strong>
-                                    </span>
-                                </div>
-                                <label class="custom-toggle ml-2 mt-2 mr-4">
-                                    <input type="checkbox" id="fiyistack-example-boolean-input" @(Boolean == true ? "checked" : "" )>
-                                    <span class="custom-toggle-slider rounded-circle" data-label-off="OFF" data-label-on="ON"></span>
+                            <div class="form-group mb-3">
+                                <label for="fiyistack-example-boolean-input" class="form-control-label">
+                                    <i class="fas fa-toggle-on"></i> Boolean
                                 </label>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="boolean-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                                <br/>
+                                <input type="checkbox" 
+                                    id="examples-example-boolean-input"
+                                    @(Boolean == true ? "checked" : "" )
+                                    required/>
+                                <br />
+                                <p class="text-danger text-sm">
+                                    <b>This value is required.</b>
+                                </p>
                             </div>
-                        </div>
                         <!-- DateTime -->
-                        <div class="form-group mb-3">
-                            <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-calendar"></i> DateTime
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-calendar"></i> DateTime
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input id="fiyistack-example-datetime-input" value="@DateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm")" type="datetime-local" min="1753-01-01T00:00" max="9998-12-30T23:59" class="form-control">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="datetime-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-calendar"></i> DateTime
+                                </label>
+                                <input id="examples-example-datetime-input" 
+                                    value="@DateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm")" 
+                                    type="datetime-local" 
+                                    min="1753-01-01T00:00" 
+                                    max="9998-12-30T23:59" 
+                                    class="form-control"
+                                    />
+                                
                             </div>
-                        </div>
                         <!-- Decimal -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-decimal-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
+                            <label for="fiyistack-example-decimal-input" class="form-control-label">
                                 <i class="fas fa-divide"></i> Decimal
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> Decimal
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="fiyistack-example-decimal-input" value="@Decimal" min="0" max="1000" step=".01" pattern="^\d*(\.\d{0,2})?$" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="decimal-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                            <input class="form-control" 
+                                type="number" 
+                                id="fiyistack-example-decimal-input"
+                                value="@(Convert.ToDouble(Decimal))" 
+                                min="5" 
+                                max="20" 
+                                step=".01" 
+                                pattern="^\d*(\.\d{0,2})?$" 
+                                required>
+                            <div class="invalid-feedback">
+                                This value is required.
                             </div>
                         </div>
-                        <!-- ForeignKey1 -->
-                        <div class="form-group mb-3">
-                            <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-hashtag"></i> ForeignKey1
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend input-group-text">
-                                    <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                        <strong>
-                                            <i class="fas fa-hashtag"></i> ForeignKey1
-                                        </strong>
-                                    </span>
-                                </div>
-                                <button type="button" class="btn btn-outline-primary border-0" data-toggle="modal" data-target="#modal-foreign-key-code-selector"><i class="fas fa-hashtag"></i></button>
-                                <ul id="fiyistack-example-foreignkey1-list" class="nav nav-pills nav-fill flex-column flex-sm-row" role="tablist">
+                        <!-- DropDown -->
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-hashtag"></i> DropDown
+                                </label>
+                                <br/>
+                                <button type="button" 
+                                    class="btn btn-outline-primary border-0" 
+                                    data-toggle="modal" 
+                                    data-target="#modal-foreign-key-code-selector">
+                                        <i class="fas fa-hashtag"></i>
+                                </button>
+                                <ul id="fiyistack-example-dropdown-list"
+                                    class="nav nav-pills nav-fill flex-column flex-sm-row" 
+                                    role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 active" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                                            Choose a value
+                                        <a class="nav-link mb-sm-3 mb-md-0 active" 
+                                            data-toggle="tab" 
+                                            href="javascript:void(0)" 
+                                            role="tab" 
+                                            aria-controls="" 
+                                            aria-selected="true">
+                                                Choose a value
                                         </a>
-                                        <input type="hidden" id="fiyistack-example-foreignkey1-input" value="@ForeignKey1"/>
+                                        <input type="hidden" 
+                                            id="fiyistack-example-dropdown-input"
+                                            value="@DropDown"/>
                                     </li>
                                 </ul>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0 ml-2" data-toggle="tooltip" data-placement="left" title="" type="button" id="foreignkey1-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                                <p class="text-danger text-sm">
+                                    <b>This value is required.</b>
+                                </p>
                             </div>
-                        </div>
-                        <!-- ForeignKey2 -->
-                        <div class="form-group mb-3">
-                            <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none"><i class="fas fa-hashtag">
-                                </i> ForeignKey2
-                            </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend input-group-text">
-                                    <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                        <strong>
-                                            <i class="fas fa-hashtag"></i> ForeignKey2
-                                        </strong>
-                                    </span>
-                                </div>
-                                <ul class="nav nav-pills nav-fill flex-column flex-sm-row" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 fiyistack-example-foreignkey2-a active" data-toggle="tab" href="javascript:void(0)" role="tab" aria-controls="" aria-selected="true">
-                                            Choose a value
-                                        </a>
-                                        <input type="hidden" value="0"/>
-                                    </li>
+                        <!-- Options -->
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-hashtag"></i> 
+                                    Options
+                                </label>
+                                <ul class="nav nav-pills nav-fill flex-column flex-sm-row" 
+                                    role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link mb-sm-3 mb-md-0 fiyistack-example-options-a active" 
+                                                data-toggle="tab" 
+                                                href="javascript:void(0)" 
+                                                role="tab" 
+                                                aria-controls="" 
+                                                aria-selected="true">
+                                                    Choose a value
+                                            </a>
+                                            <input type="hidden" value="0"/>
+                                        </li>
                                 </ul>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0 ml-2" data-toggle="tooltip" data-placement="left" title="" type="button" id="foreignkey2-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
                             </div>
-                        </div>
                         <!-- Integer -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-integer-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-divide"></i> Integer
+                            <label for="fiyistack-example-integer-input" class="form-control-label">
+                                <i class="fas fa-divide"></i> 
+                                Integer
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-divide"></i> Integer
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="number" id="fiyistack-example-integer-input" value="@Integer" min="0" max="1000" step="1" pattern="[^0-9]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="integer-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                            <input class="form-control" 
+                                type="number" 
+                                id="fiyistack-example-integer-input" 
+                                value="@Integer" 
+                                min="5" 
+                                max="20" 
+                                step="1" 
+                                pattern="[^0-9]"
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
                             </div>
                         </div>
                         <!-- TextBasic -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-textbasic-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
+                            <label for="fiyistack-example-textbasic-input" class="form-control-label">
                                 <i class="fas fa-font"></i> TextBasic
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-font"></i> TextBasic
-                                        </strong>
-                                    </span>
+                            <input class="form-control" 
+                                min="1" 
+                                max="100" 
+                                type="text" 
+                                id="fiyistack-example-textbasic-input" 
+                                value="@TextBasic"
+                                required/>
+                            <div class="invalid-feedback">
+                                    This value is required.
                                 </div>
-                                <input class="form-control" min="1" max="8000" type="text" id="fiyistack-example-textbasic-input" value="@TextBasic" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="textbasic-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
-                        <!-- TextEmail -->
+                        <!-- Email -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-textemail-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-at"></i> TextEmail
+                            <label for="fiyistack-example-email-input" class="form-control-label">
+                                <i class="fas fa-at"></i> Email
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-at"></i> TextEmail
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="email" min="1" max="8000" id="fiyistack-example-textemail-input" value="@TextEmail" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                            <input class="form-control" 
+                                type="email" 
+                                min="1" 
+                                max="320" 
+                                id="fiyistack-example-email-input" 
+                                value="@Email" 
+                                required/>
+                            <div class="invalid-feedback">
+                                This value is required.
                             </div>
                         </div>
-                        <!-- TextFile -->
+                        <!-- FileUpload -->
                         <div class="form-group">
-                            <label class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-file"></i> TextFile
+                            <label class="form-control-label">
+                                <i class="fas fa-file"></i> FileUpload
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-file"></i> TextFile
-                                        </strong>
+                            <br/>
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-preview img-thumbnail" 
+                                    data-trigger="fileinput" 
+                                    style="width: 200px; height: 150px;">
+                                </div>
+                                <div>
+                                    <span class="btn btn-primary btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" 
+                                            min="1" 
+                                            max="8000" 
+                                            id="fiyistack-example-fileupload-input" 
+                                            value=""/>
                                     </span>
-                                </div>
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-preview img-thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                    </div>
-                                    <div>
-                                        <span class="btn btn-primary btn-file">
-                                            <span class="fileinput-new">Select file</span>
-                                            <span class="fileinput-exists">Change</span>
-                                            <input type="file" min="1" max="8000" id="fiyistack-example-textfile-input" value="">
-                                        </span>
-                                        <a href="#" class="btn btn-outline-danger fileinput-exists" data-dismiss="fileinput">
-                                            Remove
-                                        </a>
-                                    </div>
-                                </div>
-                                <input type="hidden" min="1" max="8000" id="fiyistack-example-textfile-readonly" value="@TextFile" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="@(@TextFile == "" ? "" : $@"File already saved as {@TextFile}")" type="button" id="TextFile-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
+                                    <a href="#" class="btn btn-outline-danger fileinput-exists" data-dismiss="fileinput">
+                                        Remove
+                                    </a>
                                 </div>
                             </div>
+                            <input type="hidden" 
+                                min="1" 
+                                max="8000" 
+                                id="fiyistack-example-fileupload-readonly" 
+                                value="@FileUpload"/>
+                            <br />
+                            @if (@FileUpload == ""){
+                                
+                            }
+                            else
+                            {
+                                <a class="btn btn-info btn-sm"
+                                    href="@FileUpload"
+                                    download>
+                                        <i class="fas fa-download"></i>
+                                        Download file
+                                </a>
+                            }
                         </div>
-                        <!-- TextHexColour -->
+                        <!-- HexColour -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-texthexcolour-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-palette"></i> TextHexColour
+                            <label for="fiyistack-example-hexcolour-input" 
+                                class="form-control-label">
+                                    <i class="fas fa-palette"></i> 
+                                    HexColour
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text">
-                                        <strong>
-                                            <i class="fas fa-palette"></i> TextHexColour
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="color" value="@TextHexColour" id="fiyistack-example-texthexcolour-input">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="texthexcolour-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            <input class="form-control" 
+                                type="color"
+                                min="000000"
+                                max="FFFFFF"
+                                value="@HexColour" 
+                                id="fiyistack-example-hexcolour-input"
+                                />
+                            
                         </div>
-                        <!-- TextPassword -->
+                        <!-- Password -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-textpassword-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-asterisk"></i> TextPassword
+                            <label for="fiyistack-example-password-input" class="form-control-label">
+                                <i class="fas fa-asterisk"></i> 
+                                Password
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-asterisk"></i> TextPassword
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" tabindex=7 min="1" max="8000" type="password" id="fiyistack-example-textpassword-input" value="@TextPassword" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary  border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="textpassword-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            <input class="form-control" 
+                                min="1" 
+                                max="8000" 
+                                type="password" 
+                                id="fiyistack-example-password-input" 
+                                value="@Password" 
+                                />
+                            
                         </div>
-                        <!-- TextPhoneNumber -->
+                        <!-- PhoneNumber -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-textphonenumber-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-phone"></i> TextPhoneNumber
+                            <label for="fiyistack-example-phonenumber-input" class="form-control-label">
+                                <i class="fas fa-phone"></i> 
+                                PhoneNumber
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend input-group-text">
-                                    <span class="mr-2 d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                        <strong>
-                                            <i class="fas fa-phone"></i> TextPhoneNumber
-                                        </strong>
-                                    </span>
-                                    <button type="button" class="btn btn-outline-primary border-0" data-toggle="modal" data-target="#modal-phone-code-selector">
-                                        <i class="fas fa-globe-americas"></i>
-                                    </button>
-                                </div>
-                                <input class="form-control mt-2" min="1" max="8000" type="tel" id="fiyistack-example-textphonenumber-input" value="@TextPhoneNumber" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="textphonenumber-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            <input class="form-control mt-2" 
+                                min="1" 
+                                max="500" 
+                                type="tel" 
+                                id="fiyistack-example-phonenumber-input" 
+                                value="@PhoneNumber" 
+                                />
+                            
                         </div>
-                        <!-- TextTag -->
+                        <!-- Tag -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-texttag-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-tag"></i> TextTag
+                            <label for="fiyistack-example-tag-input" class="form-control-label">
+                                <i class="fas fa-tag"></i> Tag
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text">
-                                        <strong>
-                                            <i class="fas fa-tag"></i> TextTag
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input type="text" class="form-control" min="1" max="8000" id="fiyistack-example-texttag-input" value="@TextTag" data-toggle="tags" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="texttag-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            <br/>
+                            <input type="text" 
+                                class="form-control" 
+                                min="1" 
+                                max="200" 
+                                id="fiyistack-example-tag-input" 
+                                value="@Tag" 
+                                data-toggle="tags" 
+                                />
+                            
                         </div>
                         <!-- TextArea -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-textarea-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-font"></i> TextArea
+                            <label for="fiyistack-example-textarea-input" class="form-control-label">
+                                <i class="fas fa-font"></i> 
+                                TextArea
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-font"></i> TextArea
-                                        </strong>
-                                    </span>
-                                </div>
-                                <textarea class="form-control mt-1" id="fiyistack-example-textarea-input" rows="3" resize="none" maxlength="8000">
+                            <textarea class="form-control mt-1" 
+                                id="fiyistack-example-textarea-input" 
+                                rows="3" 
+                                resize="none" 
+                                maxlength="8000"
+                                required>
                                     @TextArea
-                                </textarea>
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="textarea-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
+                            </textarea>
+                            <div class="invalid-feedback">
+                                This value is required.
                             </div>
                         </div>
                         <!-- TextEditor -->
-                        <label for="fiyistack-example-texteditor-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                            <i class="fas fa-font"></i> TextEditor
+                        <label for="fiyistack-example-texteditor-input" class="form-control-label">
+                            <i class="fas fa-font"></i> 
+                            TextEditor
                         </label>
                         <div id="fiyistack-example-texteditor-input">
                         </div>
-                        <input type="hidden" value="@TextEditor" id="fiyistack-example-texteditor-hidden-value">
+                        <input type="hidden" 
+                            value="@TextEditor" 
+                            id="fiyistack-example-texteditor-hidden-value">
                         <div class="mb-3"></div>
-                        <!-- TextURL -->
+                        <!-- URL -->
                         <div class="form-group mb-3">
-                            <label for="fiyistack-example-texturl-input" class="form-control-label d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-                                <i class="fas fa-globe"></i> TextURL
+                            <label for="fiyistack-example-url-input" class="form-control-label">
+                                <i class="fas fa-globe"></i> 
+                                URL
                             </label>
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend d-none d-sm-none d-md-none d-lg-inline d-xl-inline">
-                                    <span class="input-group-text ">
-                                        <strong>
-                                            <i class="fas fa-globe"></i> TextURL
-                                        </strong>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="url" id="fiyistack-example-texturl-input" value="@TextURL" >
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary border-0" data-toggle="tooltip" data-placement="left" title="" type="button" id="texturl-info">
-                                        <i class="fas fa-info"></i>
-                                    </button>
-                                </div>
-                            </div>
+                            <input class="form-control" 
+                                type="url" 
+                                id="fiyistack-example-url-input" 
+                                value="@URL" 
+                                required>
+                            
+                        </div>
+                        <!-- Time -->
+                        <div class="form-group mb-3">
+                            <label class="form-control-label">
+                                <i class="fas fa-clock"></i> 
+                                Time
+                            </label>
+                            <input class="form-control" 
+                                type="time" 
+                                min="00:00" 
+                                max="23:59" 
+                                value="@Time" 
+                                id="fiyistack-example-time-input"
+                                />
+                            
                         </div>
                         
                         <!-- Buttons -->
                         <div class="row justify-content-between">
-                            <button id="fiyistack-example-insert-or-update-button" class="btn btn-primary text-nowrap ml-3 mt-4" type="button"><i class="@NonQueryIcon"></i> @NonQueryText</button>
-                            <button id="fiyistack-example-insert-or-update-message" data-toggle="modal" data-target="#fiyistack-example-error-message-modal" class="btn mt-4" type="button"></button>
-                            <a href="/FiyiStack/PageExampleQuery" class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
-                                <i class="fas fa-angle-left"></i> Go back
+                            <button class="btn btn-primary text-nowrap ml-3 mt-4" 
+                                type="submit">
+                                    <i class="@NonQueryIcon"></i> 
+                                    @NonQueryText
+                            </button>
+                            <a href="/FiyiStack/ExampleQueryPage" 
+                                class="btn btn-outline-primary col-auto mr-3 mt-4 text-nowrap">
+                                    <i class="fas fa-angle-left"></i> 
+                                    Go back
                             </a>
                         </div>
                     </form>
@@ -545,37 +497,6 @@
             </div>
             <!-- Card footer -->
             <div class="card-footer py-2">
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Error message in modal style -->
-<div class="row">
-    <div class="col-md-4 px-0">
-        <div class="modal fade" id="fiyistack-example-error-message-modal" tabindex="-1" role="dialog" aria-labelledby="fiyistack-example-error-message-modal" aria-hidden="true">
-            <div class="modal-dialog modal-secondary modal-dialog-centered modal-" role="document">
-                <div class="modal-content bg-gradient-danger">
-                    <!-- Modal title -->
-                    <div class="modal-header">
-                        <h6 class="modal-title text-white">
-                            Error <i class="fas fa-exclamation-triangle"></i>
-                        </h6>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="py-3 text-center">
-                            <h4 id="/fiyistack-example-error-message-title" class="heading mt-4 text-white"></h4>
-                            <p class="text-white text-truncate" id="fiyistack-example-error-message-text"></p>
-                        </div>
-                    </div>
-                    <!-- Close button -->
-                    <div class="modal-footer pt-4">
-                        <button type="button" class="btn btn-white ml-auto" data-dismiss="modal">
-                            Close
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

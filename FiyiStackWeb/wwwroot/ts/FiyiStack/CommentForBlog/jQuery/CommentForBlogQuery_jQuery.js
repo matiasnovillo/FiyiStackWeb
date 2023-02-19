@@ -5,18 +5,19 @@ var CommentForBlog_TsModel_1 = require("../../CommentForBlog/TsModels/CommentFor
 var $ = require("jquery");
 var Rx = require("rxjs");
 var ajax_1 = require("rxjs/ajax");
+require("bootstrap-notify");
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  *
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  *
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  *
 */
 //Stack: 10
-//Last modification on: 21/12/2022 12:08:11
+//Last modification on: 19/02/2023 10:32:42
 //Set default values
 var LastTopDistance = 0;
 var QueryString = "";
@@ -89,8 +90,8 @@ var CommentForBlogQuery = /** @class */ (function () {
                     }
                     //Read data book
                     (_j = response_commentforblogQuery === null || response_commentforblogQuery === void 0 ? void 0 : response_commentforblogQuery.lstCommentForBlogModel) === null || _j === void 0 ? void 0 : _j.forEach(function (row) {
-                        TableContent += "<tr>\n    <!-- Checkbox -->\n    <td>\n        <div>\n            <input class=\"commentforblog-table-checkbox-for-row\" value=\"" + row.CommentForBlogId + "\" type=\"checkbox\">\n        </div>\n    </td>\n    <!-- Data -->\n    <td class=\"text-left text-light\">\n        <i class=\"fas fa-key\"></i> " + row.CommentForBlogId + "\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-toggle-on\"></i> " + (row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>") + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> " + row.DateTimeCreation + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> " + row.DateTimeLastModification + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> " + row.UserCreationId + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> " + row.UserLastModificationId + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong><i class=\"fas fa-font\">\n            </i> " + row.Comment + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> " + row.BlogId + "\n        </strong>\n    </td>\n    \n    <!-- Actions -->\n    <td class=\"text-right\">\n        <a class=\"btn btn-icon-only text-primary\" href=\"/FiyiStack/PageCommentForBlogNonQuery?CommentForBlogId=" + row.CommentForBlogId + "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n            <i class=\"fas fa-edit\"></i>\n        </a>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-icon-only text-danger\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-trash\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button class=\"dropdown-item text-danger fiyistack-commentforblog-table-delete-button\" value=\"" + row.CommentForBlogId + "\" type=\"button\">\n                    <i class=\"fas fa-exclamation-triangle\"></i> Yes, delete\n                </button>\n            </div>\n        </div>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-sm btn-icon-only text-primary\" href=\"#\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-ellipsis-v\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button type=\"button\" class=\"dropdown-item fiyistack-commentforblog-table-copy-button\" value=\"" + row.CommentForBlogId + "\">\n                    <i class=\"fas fa-copy text-primary\"></i>&nbsp;Copy\n                </button>\n            </div>\n        </div>\n    </td>\n</tr>";
-                        ListContent += "<div class=\"row mx-2\">\n    <div class=\"col-sm\">\n        <div class=\"card bg-gradient-primary mb-2\">\n            <div class=\"card-body\">\n                <div class=\"row\">\n                    <div class=\"col text-truncate\">\n                        <span class=\"text-white text-light mb-4\">\n                           CommentForBlogId <i class=\"fas fa-key\"></i> " + row.CommentForBlogId + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Active <i class=\"fas fa-toggle-on\"></i> " + (row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>") + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           DateTimeCreation <i class=\"fas fa-calendar\"></i> " + row.DateTimeCreation + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           DateTimeLastModification <i class=\"fas fa-calendar\"></i> " + row.DateTimeLastModification + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           UserCreationId <i class=\"fas fa-key\"></i> " + row.UserCreationId + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           UserLastModificationId <i class=\"fas fa-key\"></i> " + row.UserLastModificationId + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Comment <i class=\"fas fa-font\"></i> " + row.Comment + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           BlogId <i class=\"fas fa-key\"></i> " + row.BlogId + "\n                        </span>\n                        <br/>\n                        \n                    </div>\n                    <div class=\"col-auto\">\n                    </div>\n                </div>\n                <!-- Actions -->\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"justify-content-end text-right mt-2\">\n                            <div class=\"fiyistack-commentforblog-checkbox-list list-row-unchecked mb-2\">\n                                <a class=\"icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"check\">\n                                    <i class=\"fas fa-circle text-white\"></i>\n                                </a>\n                            </div>\n                            <input type=\"hidden\" value=\"" + row.CommentForBlogId + "\"/>\n                            <a class=\"icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"/FiyiStack/PageCommentForBlogNonQuery?CommentForBlogId=" + row.CommentForBlogId + "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"edit\">\n                                <i class=\"fas fa-edit text-primary\"></i>\n                            </a>\n                            <div class=\"dropup\">\n                                <a class=\"icon icon-shape bg-white icon-sm text-primary rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                    <i class=\"fas fa-ellipsis-v\"></i>\n                                </a>\n                                <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                                    <button value=\"" + row.CommentForBlogId + "\" class=\"dropdown-item text-primary fiyistack-commentforblog-list-copy-button\" type=\"button\">\n                                        <i class=\"fas fa-copy\"></i>&nbsp;Copy\n                                    </button>\n                                    <button value=\"" + row.CommentForBlogId + "\" class=\"dropdown-item text-danger fiyistack-commentforblog-list-delete-button\" type=\"button\">\n                                        <i class=\"fas fa-trash\"></i>&nbsp;Delete\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
+                        TableContent += "<tr>\n    <!-- Checkbox -->\n    <td>\n        <div>\n            <input class=\"commentforblog-table-checkbox-for-row\" value=\"" + row.CommentForBlogId + "\" type=\"checkbox\">\n        </div>\n    </td>\n    <!-- Data -->\n    <td class=\"text-left text-light\">\n        <i class=\"fas fa-key\"></i> " + row.CommentForBlogId + "\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-toggle-on\"></i> " + (row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>") + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> " + row.DateTimeCreation + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-calendar\"></i> " + row.DateTimeLastModification + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> " + row.UserCreationId + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> " + row.UserLastModificationId + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-font\"></i> " + row.Comment + "\n        </strong>\n    </td>\n    <td class=\"text-left\">\n        <strong>\n            <i class=\"fas fa-key\"></i> " + row.BlogId + "\n        </strong>\n    </td>\n    \n    <!-- Actions -->\n    <td class=\"text-right\">\n        <a class=\"btn btn-icon-only text-primary\" href=\"/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=" + row.CommentForBlogId + "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Edit\">\n            <i class=\"fas fa-edit\"></i>\n        </a>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-icon-only text-danger\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-trash\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button class=\"dropdown-item text-danger fiyistack-commentforblog-table-delete-button\" value=\"" + row.CommentForBlogId + "\" type=\"button\">\n                    <i class=\"fas fa-exclamation-triangle\"></i> Yes, delete\n                </button>\n            </div>\n        </div>\n        <div class=\"dropdown\">\n            <button class=\"btn btn-sm btn-icon-only text-primary\" href=\"#\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-ellipsis-v\"></i>\n            </button>\n            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                <button type=\"button\" class=\"dropdown-item fiyistack-commentforblog-table-copy-button\" value=\"" + row.CommentForBlogId + "\">\n                    <i class=\"fas fa-copy text-primary\"></i>&nbsp;Copy\n                </button>\n            </div>\n        </div>\n    </td>\n</tr>";
+                        ListContent += "<div class=\"row mx-2\">\n    <div class=\"col-sm\">\n        <div class=\"card bg-gradient-primary mb-2\">\n            <div class=\"card-body\">\n                <div class=\"row\">\n                    <div class=\"col text-truncate\">\n                        <span class=\"text-white text-light mb-4\">\n                           CommentForBlogId <i class=\"fas fa-key\"></i> " + row.CommentForBlogId + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Active <i class=\"fas fa-toggle-on\"></i> " + (row.Active == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>") + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           DateTimeCreation <i class=\"fas fa-calendar\"></i> " + row.DateTimeCreation + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           DateTimeLastModification <i class=\"fas fa-calendar\"></i> " + row.DateTimeLastModification + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           UserCreationId <i class=\"fas fa-key\"></i> " + row.UserCreationId + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           UserLastModificationId <i class=\"fas fa-key\"></i> " + row.UserLastModificationId + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           Comment <i class=\"fas fa-font\"></i> " + row.Comment + "\n                        </span>\n                        <br/>\n                        <span class=\"text-white mb-4\">\n                           BlogId <i class=\"fas fa-key\"></i> " + row.BlogId + "\n                        </span>\n                        <br/>\n                        \n                    </div>\n                    <div class=\"col-auto\">\n                    </div>\n                </div>\n                <!-- Actions -->\n                <div class=\"row\">\n                    <div class=\"col\">\n                        <div class=\"justify-content-end text-right mt-2\">\n                            <div class=\"mb-2\">\n                                <a class=\"fiyistack-commentforblog-checkbox-list list-row-unchecked icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"Check\">\n                                    <i class=\"fas fa-circle text-white\"></i>\n                                </a>\n                                <input type=\"hidden\" value=\"" + row.CommentForBlogId + "\"/>\n                            </div>\n                            <a class=\"icon icon-shape bg-white icon-sm rounded-circle shadow\" href=\"/FiyiStack/CommentForBlogNonQueryPage?CommentForBlogId=" + row.CommentForBlogId + "\" role=\"button\" data-toggle=\"tooltip\" data-original-title=\"edit\">\n                                <i class=\"fas fa-edit text-primary\"></i>\n                            </a>\n                            <div class=\"dropup\">\n                                <a class=\"icon icon-shape bg-white icon-sm text-primary rounded-circle shadow\" href=\"javascript:void(0)\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                                    <i class=\"fas fa-ellipsis-v\"></i>\n                                </a>\n                                <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">\n                                    <button value=\"" + row.CommentForBlogId + "\" class=\"dropdown-item text-primary fiyistack-commentforblog-list-copy-button\" type=\"button\">\n                                        <i class=\"fas fa-copy\"></i>&nbsp;Copy\n                                    </button>\n                                    <button value=\"" + row.CommentForBlogId + "\" class=\"dropdown-item text-danger fiyistack-commentforblog-list-delete-button\" type=\"button\">\n                                        <i class=\"fas fa-trash\"></i>&nbsp;Delete\n                                    </button>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
                     });
                     //If view table is activated, clear table view, if not, clear list view
                     if (ViewToggler === "Table") {
@@ -111,10 +112,9 @@ var CommentForBlogQuery = /** @class */ (function () {
                     }
                 }
                 else {
-                    //Show error message
-                    $("#fiyistack-commentforblog-error-message-title").html("No registers found");
-                    $("#fiyistack-commentforblog-error-message-text").html("The server did not found any register. HTTP code 204");
-                    $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                    //ERROR
+                    // @ts-ignore
+                    $.notify({ icon: "fas fa-exclamation-triangle", message: "No registers found" }, { type: "warning", placement: { from: "bottom", align: "center" } });
                 }
             },
             complete: function () {
@@ -157,10 +157,6 @@ var CommentForBlogQuery = /** @class */ (function () {
                     }
                     ValidateAndSearch();
                 });
-                //Hide error message
-                $("#fiyistack-commentforblog-error-message-title").html("");
-                $("#fiyistack-commentforblog-error-message-text").html("");
-                $("#fiyistack-commentforblog-button-error-message-in-card").hide();
                 //Delete button in table and list
                 $("div.dropdown-menu button.fiyistack-commentforblog-table-delete-button, div.dropdown-menu button.fiyistack-commentforblog-list-delete-button").on("click", function (e) {
                     var CommentForBlogId = $(this).val();
@@ -168,17 +164,16 @@ var CommentForBlogQuery = /** @class */ (function () {
                         next: function (newrow) {
                         },
                         complete: function () {
+                            //SUCCESS
+                            // @ts-ignore
+                            $.notify({ icon: "fas fa-check", message: "Row deleted successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
                             ValidateAndSearch();
-                            //Show OK message
-                            $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-                            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Row deleted successfully");
-                            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
                         },
                         error: function (err) {
-                            //Related to error message
-                            $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.DeleteByCommentForBlogId(CommentForBlogId).subscribe(...)");
-                            $("#fiyistack-commentforblog-error-message-text").html(err);
-                            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                            //ERROR
+                            // @ts-ignore
+                            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to delete data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                            console.log(err);
                         }
                     });
                 });
@@ -189,35 +184,31 @@ var CommentForBlogQuery = /** @class */ (function () {
                         next: function (newrow) {
                         },
                         complete: function () {
+                            //SUCCESS
+                            // @ts-ignore
+                            $.notify({ icon: "fas fa-check", message: "Row copied successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
                             ValidateAndSearch();
-                            //Show OK message
-                            $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-                            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Row copied successfully");
-                            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
                         },
                         error: function (err) {
-                            //Show error message
-                            $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.CopyByCommentForBlogId(CommentForBlogId).subscribe(...)");
-                            $("#fiyistack-commentforblog-error-message-text").html(err);
-                            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                            //ERROR
+                            // @ts-ignore
+                            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to copy data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                            console.log(err);
                         }
                     });
                 });
             },
             error: function (err) {
-                //Show error message
-                $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.SelectAllPaged(request_commentforblogmodelQ).subscribe(...)");
-                $("#fiyistack-commentforblog-error-message-text").html(err);
-                $("#fiyistack-commentforblog-button-error-message-in-card").show();
+                //ERROR
+                // @ts-ignore
+                $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to get data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                console.log(err);
             }
         });
     };
     return CommentForBlogQuery;
 }());
 function ValidateAndSearch() {
-    //Hide error and OK message button
-    $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-    $("#fiyistack-commentforblog-button-ok-message-in-card").hide();
     var _commentforblogmodelQuery = {
         QueryString: QueryString,
         ActualPageNumber: ActualPageNumber,
@@ -245,8 +236,6 @@ if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforb
     $("#fiyistack-commentforblog-lnk-previous-page-lg, #fiyistack-commentforblog-lnk-previous-page").attr("disabled", "disabled");
     //Hide messages
     $("#fiyistack-commentforblog-export-message").html("");
-    $("#fiyistack-commentforblog-button-error-message-in-card").hide();
-    $("#fiyistack-commentforblog-button-ok-message-in-card").hide();
     ValidateAndSearch();
 }
 //CLICK, SCROLL AND KEYBOARD EVENTS
@@ -366,17 +355,17 @@ $("#fiyistack-commentforblog-export-as-pdf").on("click", function (e) {
             DateTimeNow = newrow.response;
         },
         complete: function () {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
             //Show download button for PDF file
             $("#fiyistack-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/PDFFiles/FiyiStack/CommentForBlog/CommentForBlog_" + DateTimeNow.AjaxForString + ".pdf\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-pdf\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>");
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Conversion completed");
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: function (err) {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/CommentForBlog/1/ExportAsPDF/' + ExportationType, Body, Header)).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to convert" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -421,17 +410,17 @@ $("#fiyistack-commentforblog-export-as-excel").on("click", function (e) {
             DateTimeNow = newrow.response;
         },
         complete: function () {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
             //Show download button for Excel file
             $("#fiyistack-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/ExcelFiles/FiyiStack/CommentForBlog/CommentForBlog_" + DateTimeNow.AjaxForString + ".xlsx\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-excel\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>");
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Conversion completed");
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: function (err) {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/CommentForBlog/1/ExportAsExcel/' + ExportationType, Body, Header)).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to convert" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -476,17 +465,17 @@ $("#fiyistack-commentforblog-export-as-csv").on("click", function (e) {
             DateTimeNow = newrow.response;
         },
         complete: function () {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Conversion completed" }, { type: "success", placement: { from: "bottom", align: "center" } });
             //Show download button for CSV file
             $("#fiyistack-commentforblog-export-message").html("<a class=\"btn btn-icon btn-success\" href=\"/CSVFiles/FiyiStack/CommentForBlog/CommentForBlog_" + DateTimeNow.AjaxForString + ".csv\" type=\"button\" download>\n                                            <span class=\"btn-inner--icon\"><i class=\"fas fa-file-csv\"></i></span>\n                                            <span class=\"btn-inner--text\">Download</span>\n                                        </a>");
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Conversion completed");
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: function (err) {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("Rx.from(ajax.post('/api/FiyiStack/CommentForBlog/1/ExportAsCSV/' + ExportationType, Body, Header)).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to convert" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -524,16 +513,16 @@ $("#fiyistack-commentforblog-massive-action-copy").on("click", function (e) {
         next: function (newrow) {
         },
         complete: function () {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Completed copy" }, { type: "success", placement: { from: "bottom", align: "center" } });
             ValidateAndSearch();
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Rows copied successfully");
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: function (err) {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.Copy(CopyType).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to copy" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });
@@ -567,16 +556,16 @@ $("#fiyistack-commentforblog-massive-action-delete").on("click", function (e) {
         next: function (newrow) {
         },
         complete: function () {
+            //SUCCESS
+            // @ts-ignore
+            $.notify({ icon: "fas fa-check", message: "Completed deletion" }, { type: "success", placement: { from: "bottom", align: "center" } });
             ValidateAndSearch();
-            //Show OK message
-            $("#fiyistack-commentforblog-button-ok-message-in-card").html("<strong>\n                                                                    <i class=\"fas fa-check\"></i>\n                                                                </strong> Rows deleted successfully");
-            $("#fiyistack-commentforblog-button-ok-message-in-card").show();
         },
         error: function (err) {
-            //Show error message
-            $("#fiyistack-commentforblog-error-message-title").html("CommentForBlogModel.Copy(CopyType).subscribe(...)");
-            $("#fiyistack-commentforblog-error-message-text").html(err);
-            $("#fiyistack-commentforblog-button-error-message-in-card").show();
+            //ERROR
+            // @ts-ignore
+            $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while trying to delete" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+            console.log(err);
         }
     });
 });

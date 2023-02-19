@@ -4,7 +4,7 @@
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
@@ -13,12 +13,10 @@
 
 //Stack: 10
 
-//Last modification on: 21/12/2022 11:52:12
+//Last modification on: 19/02/2023 10:48:50
 
-$(document).ready(function () {
-fiyistackblogbodyquill.root.innerHTML = $("#fiyistack-blog-body-hidden-value").val();
-    
-});
+//Create a formdata object
+var formData = new FormData();
 
 //Used for Quill Editor
 let fiyistackblogbodytoolbaroptions = [
@@ -52,82 +50,61 @@ $("#fiyistack-blog-backgroundimage-input").on("change", function (e) {
 
 
 
-//Create a formdata object
-var formData = new FormData();
-$("#fiyistack-blog-insert-or-update-button").on("click", function (e) {
-    //Stop stuff happening
-    e.stopPropagation();
-    e.preventDefault();
+//LOAD EVENT
+$(document).ready(function () {
+    fiyistackblogbodyquill.root.innerHTML = $("#fiyistack-blog-body-hidden-value").val();
+    
+    
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName("needs-validation");
+    // Loop over them and prevent submission
+    Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener("submit", function (event) {
 
-    //Add or edit value
-    formData.append("fiyistack-blog-title-page", $("#fiyistack-blog-title-page").html());
-    formData.append("fiyistack-blog-blogid-input", $("#fiyistack-blog-blogid-input").val());
+            event.preventDefault();
+            event.stopPropagation();
 
-    formData.append("fiyistack-blog-title-input", $("#fiyistack-blog-title-input").val());
-    formData.append("fiyistack-blog-body-input", fiyistackblogbodyquill.root.innerHTML);
-    if (!fiyistackblogbackgroundimageboolfileadded) {
-    formData.append("fiyistack-blog-backgroundimage-input", $("#fiyistack-blog-backgroundimage-readonly").val());
-}
+            if (form.checkValidity() === true) {
+                
+                //BlogId
+                formData.append("fiyistack-blog-blogid-input", $("#fiyistack-blog-blogid-input").val());
+
+                formData.append("fiyistack-blog-title-input", $("#fiyistack-blog-title-input").val());
+                formData.append("fiyistack-blog-body-input", fiyistackblogbodyquill.root.innerHTML);
+                if (!fiyistackblogbackgroundimageboolfileadded) {
+                    formData.append("fiyistack-blog-backgroundimage-input", $("#fiyistack-blog-backgroundimage-readonly").val());
+                }
+                
+
+                //Setup request
+                var xmlHttpRequest = new XMLHttpRequest();
+                //Set event listeners
+                xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
+                    //SAVING
+                    $.notify({ message: "Saving data. Please, wait" }, { type: "info", placement: { from: "bottom", align: "center" } });
+                });
+                xmlHttpRequest.onload = function () {
+                    if (xmlHttpRequest.status >= 400) {
+                        //ERROR
+                        console.log(xmlHttpRequest);
+                        $.notify({ icon: "fas fa-exclamation-triangle", message: "There was an error while saving the data" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                    }
+                    else {
+                        //SUCCESS
+                        $.notify({ icon: "fas fa-check", message: "Data sent successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
+                    }
+                };
+                //Open connection
+                xmlHttpRequest.open("POST", "/api/FiyiStack/Blog/1/InsertOrUpdateAsync", true);
+                //Send request
+                xmlHttpRequest.send(formData);
+            }
+            else {
+                $.notify({ message: "Please, complete all fields." }, { type: "warning", placement: { from: "bottom", align: "center" } });
+            }
 
 
-    //Setup request
-    var xmlHttpRequest = new XMLHttpRequest();
-    //Set event listeners
-    xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
-        //Show success button and success message modal
-        $("#fiyistack-blog-insert-or-update-message").addClass("btn-secondary");
-        $("#fiyistack-blog-insert-or-update-message").removeClass("btn-success");
-        $("#fiyistack-blog-insert-or-update-message").removeClass("btn-error");
-        $("#fiyistack-blog-insert-or-update-message").removeAttr("data-toggle");
-        $("#fiyistack-blog-insert-or-update-message").removeAttr("data-target");
-        $("#fiyistack-blog-insert-or-update-message").html(`Sending data. Please, wait`);
+            form.classList.add("was-validated");
+        }, false);
     });
-    xmlHttpRequest.upload.addEventListener("progress", function (e) {
-        // While sending and loading data.
-    });
-    xmlHttpRequest.upload.addEventListener("load", function (e) {
-        // When the request has successfully completed.
-    });
-    xmlHttpRequest.upload.addEventListener("loadend", function (e) {
-        // When the request has completed (either in success or failure).
-    });
-    xmlHttpRequest.upload.addEventListener("error", function (e) {
-        // When the request has failed.
-    });
-    xmlHttpRequest.upload.addEventListener("abort", function (e) {
-        // When the request has been aborted. 
-    });
-    xmlHttpRequest.upload.addEventListener("timeout", function (e) {
-        // When the author specified timeout has passed before the request could complete
-    });
-    xmlHttpRequest.onload = function () {
-        console.log(xmlHttpRequest);
-        if (xmlHttpRequest.status >= 400) {
-            //Show error button and error message modal
-            $("#fiyistack-blog-insert-or-update-message").addClass("btn-danger");
-            $("#fiyistack-blog-insert-or-update-message").removeClass("btn-success");
-            $("#fiyistack-blog-insert-or-update-message").removeClass("btn-secondary");
-            $("#fiyistack-blog-insert-or-update-message").attr("data-toggle", "modal");
-            $("#fiyistack-blog-insert-or-update-message").attr("data-target", "#fiyistack-blog-error-message-modal");
-            $("#fiyistack-blog-insert-or-update-message").html(`<i class="fas fa-exclamation-triangle"></i> 
-                                                                There was an error while sending the data`);
-            $("#fiyistack-blog-error-message-title").html("There was an error while sending the data");
-            $("#fiyistack-blog-error-message-text").html(xmlHttpRequest.response);
-            console.log("Error:" + xmlHttpRequest.response);
-        }
-        else {
-            //Show success button
-            $("#fiyistack-blog-insert-or-update-message").addClass("btn-success");
-            $("#fiyistack-blog-insert-or-update-message").removeClass("btn-error");
-            $("#fiyistack-blog-insert-or-update-message").removeClass("btn-secondary");
-            $("#fiyistack-blog-insert-or-update-message").removeAttr("data-toggle");
-            $("#fiyistack-blog-insert-or-update-message").removeAttr("data-target");
-            $("#fiyistack-blog-insert-or-update-message").html(`<i class="fas fa-check"></i>
-                                                                Data sent successfully`);
-        }
-    };
-    //Open connection
-    xmlHttpRequest.open("POST", "/api/FiyiStack/Blog/1/InsertOrUpdateAsync", true);
-    //Send request
-    xmlHttpRequest.send(formData);
 });

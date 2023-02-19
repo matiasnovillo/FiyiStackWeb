@@ -17,14 +17,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 21/12/2022 12:08:11
+//Last modification on: 19/02/2023 10:32:42
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 21/12/2022 12:08:11
+    /// Last modification: 19/02/2023 10:32:42
     /// </summary>
     [ApiController]
     [CommentForBlogFilter]
@@ -146,8 +146,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -159,10 +159,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 {
                     return StatusCode(401, "User not found in session");
                 }
-
-                //Add or edit value
-                string AddOrEdit = HttpContext.Request.Form["fiyistack-commentforblog-title-page"];
-
+                
+                #region Pass data from client to server
+                //CommentForBlogId
+                int CommentForBlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-commentforblog-commentforblogid-input"]);
+                
                 string Comment = HttpContext.Request.Form["fiyistack-commentforblog-comment-input"];
                 int BlogId = 0; 
                 if (Convert.ToInt32(HttpContext.Request.Form["fiyistack-commentforblog-blogid-input"]) != 0)
@@ -172,13 +173,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 { return StatusCode(400, "It's not allowed to save zero values in BlogId"); }
                 
+                #endregion
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (CommentForBlogId == 0)
                 {
-                    //Add
+                    //Insert
                     CommentForBlogModel CommentForBlogModel = new CommentForBlogModel()
                     {
                         Active = true,
@@ -196,7 +198,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     //Update
-                    int CommentForBlogId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-commentforblog-commentforblogid-input"]);
                     CommentForBlogModel CommentForBlogModel = new CommentForBlogModel(CommentForBlogId);
                     
                     CommentForBlogModel.UserLastModificationId = UserId;
@@ -234,7 +235,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     }
                 }
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (CommentForBlogId == 0)
                 {
                     return StatusCode(200, NewEnteredId); 
                 }
@@ -265,8 +266,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/{CommentForBlogId:int}")]
-        [Produces("text/plain")]
         public IActionResult DeleteByCommentForBlogId(int CommentForBlogId)
         {
             try
@@ -299,8 +300,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -334,8 +335,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/{CommentForBlogId:int}")]
-        [Produces("text/plain")]
         public IActionResult CopyByCommentForBlogId(int CommentForBlogId)
         {
             try
@@ -369,8 +370,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -460,8 +461,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -495,8 +496,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -530,8 +531,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

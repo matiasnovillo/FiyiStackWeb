@@ -15,14 +15,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 23/12/2022 15:53:55
+//Last modification on: 19/02/2023 11:08:32
 
 namespace FiyiStackWeb.Areas.FiyiStack.Services
 {
@@ -31,7 +31,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 23/12/2022 15:53:55
+    /// Last modification: 19/02/2023 11:08:32
     /// </summary>
     public partial class ExampleService : ExampleProtocol
     {
@@ -227,12 +227,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">ForeignKey1&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DropDown&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">ForeignKey2&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Options&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
@@ -247,32 +247,32 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextEmail&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Email&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextFile&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">FileUpload&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextHexColour&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">HexColour&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextPassword&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Password&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextPhoneNumber&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">PhoneNumber&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextTag&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Tag&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
@@ -287,7 +287,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">TextURL&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">URL&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Time&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
@@ -364,15 +369,15 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnDecimalFordtExampleCopy.ColumnName = "Decimal";
                     dtExampleCopy.Columns.Add(dtColumnDecimalFordtExampleCopy);
 
-                    DataColumn dtColumnForeignKey1FordtExampleCopy = new DataColumn();
-                    dtColumnForeignKey1FordtExampleCopy.DataType = typeof(string);
-                    dtColumnForeignKey1FordtExampleCopy.ColumnName = "ForeignKey1";
-                    dtExampleCopy.Columns.Add(dtColumnForeignKey1FordtExampleCopy);
+                    DataColumn dtColumnDropDownFordtExampleCopy = new DataColumn();
+                    dtColumnDropDownFordtExampleCopy.DataType = typeof(string);
+                    dtColumnDropDownFordtExampleCopy.ColumnName = "DropDown";
+                    dtExampleCopy.Columns.Add(dtColumnDropDownFordtExampleCopy);
 
-                    DataColumn dtColumnForeignKey2FordtExampleCopy = new DataColumn();
-                    dtColumnForeignKey2FordtExampleCopy.DataType = typeof(string);
-                    dtColumnForeignKey2FordtExampleCopy.ColumnName = "ForeignKey2";
-                    dtExampleCopy.Columns.Add(dtColumnForeignKey2FordtExampleCopy);
+                    DataColumn dtColumnOptionsFordtExampleCopy = new DataColumn();
+                    dtColumnOptionsFordtExampleCopy.DataType = typeof(string);
+                    dtColumnOptionsFordtExampleCopy.ColumnName = "Options";
+                    dtExampleCopy.Columns.Add(dtColumnOptionsFordtExampleCopy);
 
                     DataColumn dtColumnIntegerFordtExampleCopy = new DataColumn();
                     dtColumnIntegerFordtExampleCopy.DataType = typeof(string);
@@ -384,35 +389,35 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnTextBasicFordtExampleCopy.ColumnName = "TextBasic";
                     dtExampleCopy.Columns.Add(dtColumnTextBasicFordtExampleCopy);
 
-                    DataColumn dtColumnTextEmailFordtExampleCopy = new DataColumn();
-                    dtColumnTextEmailFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextEmailFordtExampleCopy.ColumnName = "TextEmail";
-                    dtExampleCopy.Columns.Add(dtColumnTextEmailFordtExampleCopy);
+                    DataColumn dtColumnEmailFordtExampleCopy = new DataColumn();
+                    dtColumnEmailFordtExampleCopy.DataType = typeof(string);
+                    dtColumnEmailFordtExampleCopy.ColumnName = "Email";
+                    dtExampleCopy.Columns.Add(dtColumnEmailFordtExampleCopy);
 
-                    DataColumn dtColumnTextFileFordtExampleCopy = new DataColumn();
-                    dtColumnTextFileFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextFileFordtExampleCopy.ColumnName = "TextFile";
-                    dtExampleCopy.Columns.Add(dtColumnTextFileFordtExampleCopy);
+                    DataColumn dtColumnFileUploadFordtExampleCopy = new DataColumn();
+                    dtColumnFileUploadFordtExampleCopy.DataType = typeof(string);
+                    dtColumnFileUploadFordtExampleCopy.ColumnName = "FileUpload";
+                    dtExampleCopy.Columns.Add(dtColumnFileUploadFordtExampleCopy);
 
-                    DataColumn dtColumnTextHexColourFordtExampleCopy = new DataColumn();
-                    dtColumnTextHexColourFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextHexColourFordtExampleCopy.ColumnName = "TextHexColour";
-                    dtExampleCopy.Columns.Add(dtColumnTextHexColourFordtExampleCopy);
+                    DataColumn dtColumnHexColourFordtExampleCopy = new DataColumn();
+                    dtColumnHexColourFordtExampleCopy.DataType = typeof(string);
+                    dtColumnHexColourFordtExampleCopy.ColumnName = "HexColour";
+                    dtExampleCopy.Columns.Add(dtColumnHexColourFordtExampleCopy);
 
-                    DataColumn dtColumnTextPasswordFordtExampleCopy = new DataColumn();
-                    dtColumnTextPasswordFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextPasswordFordtExampleCopy.ColumnName = "TextPassword";
-                    dtExampleCopy.Columns.Add(dtColumnTextPasswordFordtExampleCopy);
+                    DataColumn dtColumnPasswordFordtExampleCopy = new DataColumn();
+                    dtColumnPasswordFordtExampleCopy.DataType = typeof(string);
+                    dtColumnPasswordFordtExampleCopy.ColumnName = "Password";
+                    dtExampleCopy.Columns.Add(dtColumnPasswordFordtExampleCopy);
 
-                    DataColumn dtColumnTextPhoneNumberFordtExampleCopy = new DataColumn();
-                    dtColumnTextPhoneNumberFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextPhoneNumberFordtExampleCopy.ColumnName = "TextPhoneNumber";
-                    dtExampleCopy.Columns.Add(dtColumnTextPhoneNumberFordtExampleCopy);
+                    DataColumn dtColumnPhoneNumberFordtExampleCopy = new DataColumn();
+                    dtColumnPhoneNumberFordtExampleCopy.DataType = typeof(string);
+                    dtColumnPhoneNumberFordtExampleCopy.ColumnName = "PhoneNumber";
+                    dtExampleCopy.Columns.Add(dtColumnPhoneNumberFordtExampleCopy);
 
-                    DataColumn dtColumnTextTagFordtExampleCopy = new DataColumn();
-                    dtColumnTextTagFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextTagFordtExampleCopy.ColumnName = "TextTag";
-                    dtExampleCopy.Columns.Add(dtColumnTextTagFordtExampleCopy);
+                    DataColumn dtColumnTagFordtExampleCopy = new DataColumn();
+                    dtColumnTagFordtExampleCopy.DataType = typeof(string);
+                    dtColumnTagFordtExampleCopy.ColumnName = "Tag";
+                    dtExampleCopy.Columns.Add(dtColumnTagFordtExampleCopy);
 
                     DataColumn dtColumnTextAreaFordtExampleCopy = new DataColumn();
                     dtColumnTextAreaFordtExampleCopy.DataType = typeof(string);
@@ -424,10 +429,15 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnTextEditorFordtExampleCopy.ColumnName = "TextEditor";
                     dtExampleCopy.Columns.Add(dtColumnTextEditorFordtExampleCopy);
 
-                    DataColumn dtColumnTextURLFordtExampleCopy = new DataColumn();
-                    dtColumnTextURLFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextURLFordtExampleCopy.ColumnName = "TextURL";
-                    dtExampleCopy.Columns.Add(dtColumnTextURLFordtExampleCopy);
+                    DataColumn dtColumnURLFordtExampleCopy = new DataColumn();
+                    dtColumnURLFordtExampleCopy.DataType = typeof(string);
+                    dtColumnURLFordtExampleCopy.ColumnName = "URL";
+                    dtExampleCopy.Columns.Add(dtColumnURLFordtExampleCopy);
+
+                    DataColumn dtColumnTimeFordtExampleCopy = new DataColumn();
+                    dtColumnTimeFordtExampleCopy.DataType = typeof(string);
+                    dtColumnTimeFordtExampleCopy.ColumnName = "Time";
+                    dtExampleCopy.Columns.Add(dtColumnTimeFordtExampleCopy);
 
                     
                 #endregion
@@ -503,15 +513,15 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnDecimalFordtExampleCopy.ColumnName = "Decimal";
                     dtExampleCopy.Columns.Add(dtColumnDecimalFordtExampleCopy);
 
-                    DataColumn dtColumnForeignKey1FordtExampleCopy = new DataColumn();
-                    dtColumnForeignKey1FordtExampleCopy.DataType = typeof(string);
-                    dtColumnForeignKey1FordtExampleCopy.ColumnName = "ForeignKey1";
-                    dtExampleCopy.Columns.Add(dtColumnForeignKey1FordtExampleCopy);
+                    DataColumn dtColumnDropDownFordtExampleCopy = new DataColumn();
+                    dtColumnDropDownFordtExampleCopy.DataType = typeof(string);
+                    dtColumnDropDownFordtExampleCopy.ColumnName = "DropDown";
+                    dtExampleCopy.Columns.Add(dtColumnDropDownFordtExampleCopy);
 
-                    DataColumn dtColumnForeignKey2FordtExampleCopy = new DataColumn();
-                    dtColumnForeignKey2FordtExampleCopy.DataType = typeof(string);
-                    dtColumnForeignKey2FordtExampleCopy.ColumnName = "ForeignKey2";
-                    dtExampleCopy.Columns.Add(dtColumnForeignKey2FordtExampleCopy);
+                    DataColumn dtColumnOptionsFordtExampleCopy = new DataColumn();
+                    dtColumnOptionsFordtExampleCopy.DataType = typeof(string);
+                    dtColumnOptionsFordtExampleCopy.ColumnName = "Options";
+                    dtExampleCopy.Columns.Add(dtColumnOptionsFordtExampleCopy);
 
                     DataColumn dtColumnIntegerFordtExampleCopy = new DataColumn();
                     dtColumnIntegerFordtExampleCopy.DataType = typeof(string);
@@ -523,35 +533,35 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnTextBasicFordtExampleCopy.ColumnName = "TextBasic";
                     dtExampleCopy.Columns.Add(dtColumnTextBasicFordtExampleCopy);
 
-                    DataColumn dtColumnTextEmailFordtExampleCopy = new DataColumn();
-                    dtColumnTextEmailFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextEmailFordtExampleCopy.ColumnName = "TextEmail";
-                    dtExampleCopy.Columns.Add(dtColumnTextEmailFordtExampleCopy);
+                    DataColumn dtColumnEmailFordtExampleCopy = new DataColumn();
+                    dtColumnEmailFordtExampleCopy.DataType = typeof(string);
+                    dtColumnEmailFordtExampleCopy.ColumnName = "Email";
+                    dtExampleCopy.Columns.Add(dtColumnEmailFordtExampleCopy);
 
-                    DataColumn dtColumnTextFileFordtExampleCopy = new DataColumn();
-                    dtColumnTextFileFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextFileFordtExampleCopy.ColumnName = "TextFile";
-                    dtExampleCopy.Columns.Add(dtColumnTextFileFordtExampleCopy);
+                    DataColumn dtColumnFileUploadFordtExampleCopy = new DataColumn();
+                    dtColumnFileUploadFordtExampleCopy.DataType = typeof(string);
+                    dtColumnFileUploadFordtExampleCopy.ColumnName = "FileUpload";
+                    dtExampleCopy.Columns.Add(dtColumnFileUploadFordtExampleCopy);
 
-                    DataColumn dtColumnTextHexColourFordtExampleCopy = new DataColumn();
-                    dtColumnTextHexColourFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextHexColourFordtExampleCopy.ColumnName = "TextHexColour";
-                    dtExampleCopy.Columns.Add(dtColumnTextHexColourFordtExampleCopy);
+                    DataColumn dtColumnHexColourFordtExampleCopy = new DataColumn();
+                    dtColumnHexColourFordtExampleCopy.DataType = typeof(string);
+                    dtColumnHexColourFordtExampleCopy.ColumnName = "HexColour";
+                    dtExampleCopy.Columns.Add(dtColumnHexColourFordtExampleCopy);
 
-                    DataColumn dtColumnTextPasswordFordtExampleCopy = new DataColumn();
-                    dtColumnTextPasswordFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextPasswordFordtExampleCopy.ColumnName = "TextPassword";
-                    dtExampleCopy.Columns.Add(dtColumnTextPasswordFordtExampleCopy);
+                    DataColumn dtColumnPasswordFordtExampleCopy = new DataColumn();
+                    dtColumnPasswordFordtExampleCopy.DataType = typeof(string);
+                    dtColumnPasswordFordtExampleCopy.ColumnName = "Password";
+                    dtExampleCopy.Columns.Add(dtColumnPasswordFordtExampleCopy);
 
-                    DataColumn dtColumnTextPhoneNumberFordtExampleCopy = new DataColumn();
-                    dtColumnTextPhoneNumberFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextPhoneNumberFordtExampleCopy.ColumnName = "TextPhoneNumber";
-                    dtExampleCopy.Columns.Add(dtColumnTextPhoneNumberFordtExampleCopy);
+                    DataColumn dtColumnPhoneNumberFordtExampleCopy = new DataColumn();
+                    dtColumnPhoneNumberFordtExampleCopy.DataType = typeof(string);
+                    dtColumnPhoneNumberFordtExampleCopy.ColumnName = "PhoneNumber";
+                    dtExampleCopy.Columns.Add(dtColumnPhoneNumberFordtExampleCopy);
 
-                    DataColumn dtColumnTextTagFordtExampleCopy = new DataColumn();
-                    dtColumnTextTagFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextTagFordtExampleCopy.ColumnName = "TextTag";
-                    dtExampleCopy.Columns.Add(dtColumnTextTagFordtExampleCopy);
+                    DataColumn dtColumnTagFordtExampleCopy = new DataColumn();
+                    dtColumnTagFordtExampleCopy.DataType = typeof(string);
+                    dtColumnTagFordtExampleCopy.ColumnName = "Tag";
+                    dtExampleCopy.Columns.Add(dtColumnTagFordtExampleCopy);
 
                     DataColumn dtColumnTextAreaFordtExampleCopy = new DataColumn();
                     dtColumnTextAreaFordtExampleCopy.DataType = typeof(string);
@@ -563,10 +573,15 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnTextEditorFordtExampleCopy.ColumnName = "TextEditor";
                     dtExampleCopy.Columns.Add(dtColumnTextEditorFordtExampleCopy);
 
-                    DataColumn dtColumnTextURLFordtExampleCopy = new DataColumn();
-                    dtColumnTextURLFordtExampleCopy.DataType = typeof(string);
-                    dtColumnTextURLFordtExampleCopy.ColumnName = "TextURL";
-                    dtExampleCopy.Columns.Add(dtColumnTextURLFordtExampleCopy);
+                    DataColumn dtColumnURLFordtExampleCopy = new DataColumn();
+                    dtColumnURLFordtExampleCopy.DataType = typeof(string);
+                    dtColumnURLFordtExampleCopy.ColumnName = "URL";
+                    dtExampleCopy.Columns.Add(dtColumnURLFordtExampleCopy);
+
+                    DataColumn dtColumnTimeFordtExampleCopy = new DataColumn();
+                    dtColumnTimeFordtExampleCopy.DataType = typeof(string);
+                    dtColumnTimeFordtExampleCopy.ColumnName = "Time";
+                    dtExampleCopy.Columns.Add(dtColumnTimeFordtExampleCopy);
 
                     
                     #endregion

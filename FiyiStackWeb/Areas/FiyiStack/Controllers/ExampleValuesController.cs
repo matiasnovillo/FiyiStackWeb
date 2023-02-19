@@ -17,14 +17,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 23/12/2022 15:53:55
+//Last modification on: 19/02/2023 11:08:32
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 23/12/2022 15:53:55
+    /// Last modification: 19/02/2023 11:08:32
     /// </summary>
     [ApiController]
     [ExampleFilter]
@@ -112,7 +112,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [HttpPost("~/api/FiyiStack/Example/1/SelectAllPagedToJSON")]
+        [HttpPut("~/api/FiyiStack/Example/1/SelectAllPagedToJSON")]
         public exampleModelQuery SelectAllPagedToJSON([FromBody] exampleModelQuery exampleModelQuery)
         {
             try
@@ -146,8 +146,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/InsertOrUpdateAsync")]
-        [Produces("text/plain")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
             try
@@ -159,44 +159,57 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 {
                     return StatusCode(401, "User not found in session");
                 }
-
-                //Add or edit value
-                string AddOrEdit = HttpContext.Request.Form["fiyistack-example-title-page"];
-
+                
+                #region Pass data from client to server
+                //ExampleId
+                int ExampleId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-exampleid-input"]);
+                
                 bool Boolean = Convert.ToBoolean(HttpContext.Request.Form["fiyistack-example-boolean-input"]);
                 DateTime DateTime = Convert.ToDateTime(HttpContext.Request.Form["fiyistack-example-datetime-input"]);
                 decimal Decimal = Convert.ToDecimal(HttpContext.Request.Form["fiyistack-example-decimal-input"].ToString().Replace(".",","));
-                int ForeignKey1 = 0;
-                ForeignKey1 = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-foreignkey1-input"]);
-                int ForeignKey2 = 0;
-                ForeignKey2 = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-foreignkey2-input"]);
+                int DropDown = 0; 
+                if (Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-dropdown-input"]) != 0)
+                {
+                    DropDown = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-dropdown-input"]);
+                }
+                //else
+                //{ return StatusCode(400, "It's not allowed to save zero values in DropDown"); }
+                int Options = 0; 
+                if (Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-options-input"]) != 0)
+                {
+                    Options = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-options-input"]);
+                }
+                //else
+                //{ return StatusCode(400, "It's not allowed to save zero values in Options"); }
                 int Integer = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-integer-input"]);
                 string TextBasic = HttpContext.Request.Form["fiyistack-example-textbasic-input"];
-                string TextEmail = HttpContext.Request.Form["fiyistack-example-textemail-input"];
-                string TextFile = HttpContext.Request.Form["fiyistack-example-textfile-input"];;
+                string Email = HttpContext.Request.Form["fiyistack-example-email-input"];
+                string FileUpload = HttpContext.Request.Form["fiyistack-example-fileupload-input"];;
                 if (HttpContext.Request.Form.Files.Count != 0)
                 {
-                    TextFile = $@"/Uploads/FiyiStack/Example/{HttpContext.Request.Form.Files[0].FileName}";
+                    FileUpload = $@"/Uploads/FiyiStack/Example/{HttpContext.Request.Form.Files[0].FileName}";
                 }
-                string TextHexColour = HttpContext.Request.Form["fiyistack-example-texthexcolour-input"];
-                string TextPassword = "";
-                if (HttpContext.Request.Form["fiyistack-example-textpassword-input"] != "")
+                string HexColour = HttpContext.Request.Form["fiyistack-example-hexcolour-input"];
+                string Password = "";
+                if (HttpContext.Request.Form["fiyistack-example-password-input"] != "")
                 {
-                    TextPassword = Security.EncodeString(HttpContext.Request.Form["fiyistack-example-textpassword-input"]); 
+                    Password = Security.EncodeString(HttpContext.Request.Form["fiyistack-example-password-input"]); 
                 }
-                string TextPhoneNumber = HttpContext.Request.Form["fiyistack-example-textphonenumber-input"];
-                string TextTag = HttpContext.Request.Form["fiyistack-example-texttag-input"];
+                string PhoneNumber = HttpContext.Request.Form["fiyistack-example-phonenumber-input"];
+                string Tag = HttpContext.Request.Form["fiyistack-example-tag-input"];
                 string TextArea = HttpContext.Request.Form["fiyistack-example-textarea-input"];
                 string TextEditor = HttpContext.Request.Form["fiyistack-example-texteditor-input"];
-                string TextURL = HttpContext.Request.Form["fiyistack-example-texturl-input"];
+                string URL = HttpContext.Request.Form["fiyistack-example-url-input"];
+                TimeSpan Time = TimeSpan.Parse(HttpContext.Request.Form["fiyistack-example-time-input"]);
                 
+                #endregion
 
                 int NewEnteredId = 0;
                 int RowsAffected = 0;
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (ExampleId == 0)
                 {
-                    //Add
+                    //Insert
                     ExampleModel ExampleModel = new ExampleModel()
                     {
                         Active = true,
@@ -207,19 +220,20 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                         Boolean = Boolean,
                         DateTime = DateTime,
                         Decimal = Decimal,
-                        ForeignKey1 = ForeignKey1,
-                        ForeignKey2 = ForeignKey2,
+                        DropDown = DropDown,
+                        Options = Options,
                         Integer = Integer,
                         TextBasic = TextBasic,
-                        TextEmail = TextEmail,
-                        TextFile = TextFile,
-                        TextHexColour = TextHexColour,
-                        TextPassword = TextPassword,
-                        TextPhoneNumber = TextPhoneNumber,
-                        TextTag = TextTag,
+                        Email = Email,
+                        FileUpload = FileUpload,
+                        HexColour = HexColour,
+                        Password = Password,
+                        PhoneNumber = PhoneNumber,
+                        Tag = Tag,
                         TextArea = TextArea,
                         TextEditor = TextEditor,
-                        TextURL = TextURL,
+                        URL = URL,
+                        Time = Time,
                         
                     };
                     
@@ -228,7 +242,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     //Update
-                    int ExampleId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-exampleid-input"]);
                     ExampleModel ExampleModel = new ExampleModel(ExampleId);
                     
                     ExampleModel.UserLastModificationId = UserId;
@@ -236,19 +249,20 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     ExampleModel.Boolean = Boolean;
                     ExampleModel.DateTime = DateTime;
                     ExampleModel.Decimal = Decimal;
-                    ExampleModel.ForeignKey1 = ForeignKey1;
-                    ExampleModel.ForeignKey2 = ForeignKey2;
+                    ExampleModel.DropDown = DropDown;
+                    ExampleModel.Options = Options;
                     ExampleModel.Integer = Integer;
                     ExampleModel.TextBasic = TextBasic;
-                    ExampleModel.TextEmail = TextEmail;
-                    ExampleModel.TextFile = TextFile;
-                    ExampleModel.TextHexColour = TextHexColour;
-                    ExampleModel.TextPassword = TextPassword;
-                    ExampleModel.TextPhoneNumber = TextPhoneNumber;
-                    ExampleModel.TextTag = TextTag;
+                    ExampleModel.Email = Email;
+                    ExampleModel.FileUpload = FileUpload;
+                    ExampleModel.HexColour = HexColour;
+                    ExampleModel.Password = Password;
+                    ExampleModel.PhoneNumber = PhoneNumber;
+                    ExampleModel.Tag = Tag;
                     ExampleModel.TextArea = TextArea;
                     ExampleModel.TextEditor = TextEditor;
-                    ExampleModel.TextURL = TextURL;
+                    ExampleModel.URL = URL;
+                    ExampleModel.Time = Time;
                                        
 
                     RowsAffected = _ExampleProtocol.UpdateByExampleId(ExampleModel);
@@ -280,7 +294,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     }
                 }
 
-                if (AddOrEdit.StartsWith("Add"))
+                if (ExampleId == 0)
                 {
                     return StatusCode(200, NewEnteredId); 
                 }
@@ -311,8 +325,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/Example/1/DeleteByExampleId/{ExampleId:int}")]
-        [Produces("text/plain")]
         public IActionResult DeleteByExampleId(int ExampleId)
         {
             try
@@ -345,8 +359,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/DeleteManyOrAll/{DeleteType}")]
-        [Produces("text/plain")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
             try
@@ -380,8 +394,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/CopyByExampleId/{ExampleId:int}")]
-        [Produces("text/plain")]
         public IActionResult CopyByExampleId(int ExampleId)
         {
             try
@@ -415,8 +429,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/CopyManyOrAll/{CopyType}")]
-        [Produces("text/plain")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
             try
@@ -459,8 +473,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/ExportAsPDF/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -494,8 +508,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/ExportAsExcel/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
             try
@@ -529,8 +543,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/ExportAsCSV/{ExportationType}")]
-        [Produces("text/plain")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
             try

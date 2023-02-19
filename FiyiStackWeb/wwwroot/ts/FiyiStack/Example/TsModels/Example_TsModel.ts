@@ -2,18 +2,19 @@ import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
 
+
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
 */
 
-//22 fields | Last modification on: 23/12/2022 15:53:55 | Stack: 9
+//23 fields | Sub-models: 0 models  | Last modification on: 19/02/2023 11:08:32 | Stack: 9
 
 export class ExampleModel {
 
@@ -27,19 +28,21 @@ export class ExampleModel {
 	Boolean?: boolean;
 	DateTime?: string | string[] | number | undefined;
 	Decimal?: number;
-	ForeignKey1?: number;
-	ForeignKey2?: number;
+	DropDown?: number;
+	Options?: number;
 	Integer?: number;
 	TextBasic?: string | string[] | number | undefined;
-	TextEmail?: string | string[] | number | undefined;
-	TextFile?: string | string[] | number | undefined;
-	TextHexColour?: string | string[] | number | undefined;
-	TextPassword?: string | string[] | number | undefined;
-	TextPhoneNumber?: string | string[] | number | undefined;
-	TextTag?: string | string[] | number | undefined;
+	Email?: string | string[] | number | undefined;
+	FileUpload?: string | string[] | number | undefined;
+	HexColour?: string | string[] | number | undefined;
+	Password?: string | string[] | number | undefined;
+	PhoneNumber?: string | string[] | number | undefined;
+	Tag?: string | string[] | number | undefined;
 	TextArea?: string | string[] | number | undefined;
 	TextEditor?: string | string[] | number | undefined;
-	TextURL?: string | string[] | number | undefined;
+	URL?: string | string[] | number | undefined;
+	Time?: string;
+    
 
     //Queries
     static Select1ByExampleId(ExampleId: number) {
@@ -68,7 +71,7 @@ export class ExampleModel {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
         };
-        return Rx.from(ajax.post(URL, Body, Header));
+        return Rx.from(ajax.put(URL, Body, Header));
     }
 
     //Non-Queries
