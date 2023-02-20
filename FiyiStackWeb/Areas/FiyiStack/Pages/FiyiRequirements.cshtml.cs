@@ -15,7 +15,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
             {
                 //User not found
                 ViewData["EnterButton"] = $@"<li class='nav-item'>
-                                                <a href='/CMSCore/Login' class='btn btn-white mt-1 ml-2'>
+                                                <a href='/Login' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
                                                         Login
@@ -36,10 +36,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStackWeb: The example code of FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStackWeb is the example code made with FiyiStack"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStackWeb is the example code made with FiyiStack"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
+            ViewData["title"] = $@"FiyiRequirements: The example code of FiyiStack";
         }
     }
 }

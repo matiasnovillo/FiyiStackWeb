@@ -15,7 +15,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             {
                 //User not found
                 ViewData["EnterButton"] = $@"<li class='nav-item'>
-                                                <a href='/CMSCore/Login' class='btn btn-white mt-1 ml-2'>
+                                                <a href='/Login' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
                                                         Login
@@ -36,10 +36,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Learn more about FiyiStack and RAD tools"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Learn more about FiyiStack and RAD tools. What is RAD tool? How to use a RAD tool?"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""Learn more about FiyiStack and RAD tools. What is RAD tool? How to use a RAD tool?"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Learn more - FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more)"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
+            ViewData["title"] = $@"Learn more - FiyiStack";
         }
     }
 }

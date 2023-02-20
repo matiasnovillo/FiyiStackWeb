@@ -39,7 +39,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             {
                 //User not found
                 ViewData["EnterButton"] = $@"<li class='nav-item'>
-                                                <a href='/CMSCore/Login' class='btn btn-white mt-1 ml-2'>
+                                                <a href='/Login' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
                                                         Login
@@ -59,6 +59,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                                 </a>
                                             </li>";
             }
+
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Blog - FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""This is the blog of FiyiStack, here I will update all data related to new generations of software in many languages"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""This is the blog of FiyiStack, here I will update all data related to new generations of software in many languages"">";
+            ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
+            ViewData["title"] = $@"Blog - FiyiStack";
         }
     }
 }

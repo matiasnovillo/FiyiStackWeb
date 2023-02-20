@@ -27,7 +27,7 @@ namespace FiyiStackWeb.Pages
             {
                 //User not found
                 ViewData["EnterButton"] = $@"<li class='nav-item'>
-                                                <a href='/CMSCore/Login' class='btn btn-white mt-1 ml-2'>
+                                                <a href='/Login' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
                                                         Login
@@ -49,9 +49,10 @@ namespace FiyiStackWeb.Pages
             }
 
             ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The low-code generator"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code (for the moment)"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code (for the moment)"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
+            ViewData["title"] = $@"FiyiStack: The low-code generator";
         }
     }
 }
