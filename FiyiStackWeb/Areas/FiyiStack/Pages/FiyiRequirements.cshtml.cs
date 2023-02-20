@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
-    public class FiyiStackWebModel : PageModel
+    public class FiyiRequirementsModel : PageModel
     {
         public void OnGet()
         {

@@ -1,6 +1,7 @@
 //Import libraries to use
 import { BlogModel, blogmodelQuery } from "../../Blog/TsModels/Blog_TsModel";
 import * as $ from "jquery";
+import { format } from 'timeago.js';
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -135,9 +136,6 @@ class BlogQuery {
                     }
                     else {
                         //Show error message
-                        $("#fiyistack-blog-error-message-title").html("No registers found");
-                        $("#fiyistack-blog-error-message-text").html("The server did not found any register. HTTP code 204");
-                        $("#fiyistack-blog-button-error-message-in-card").show();
                     }
                 },
                 complete: () => {
@@ -174,27 +172,6 @@ class BlogQuery {
 
                         //Setup request
                         var xmlHttpRequest = new XMLHttpRequest();
-                        //Set event listeners
-                        xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
-                        });
-                        xmlHttpRequest.upload.addEventListener("progress", function (e) {
-                            // While sending and loading data.
-                        });
-                        xmlHttpRequest.upload.addEventListener("load", function (e) {
-                            // When the request has successfully completed.
-                        });
-                        xmlHttpRequest.upload.addEventListener("loadend", function (e) {
-                            // When the request has completed (either in success or failure).
-                        });
-                        xmlHttpRequest.upload.addEventListener("error", function (e) {
-                            // When the request has failed.
-                        });
-                        xmlHttpRequest.upload.addEventListener("abort", function (e) {
-                            // When the request has been aborted. 
-                        });
-                        xmlHttpRequest.upload.addEventListener("timeout", function (e) {
-                            // When the author specified timeout has passed before the request could complete
-                        });
                         xmlHttpRequest.onload = function () {
                             if (xmlHttpRequest.status >= 400) {
                                 Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
@@ -219,16 +196,8 @@ class BlogQuery {
                         xmlHttpRequest.send(formData);
                     });
 
-                    //Hide error message
-                    $("#fiyistack-blog-error-message-title").html("");
-                    $("#fiyistack-blog-error-message-text").html("");
-                    $("#fiyistack-blog-button-error-message-in-card").hide();
                 },
                 error: err => {
-                    //Show error message
-                    $("#fiyistack-blog-error-message-title").html("BlogModel.SelectAllPaged(request_blogmodelQ).subscribe(...)");
-                    $("#fiyistack-blog-error-message-text").html(err);
-                    $("#fiyistack-blog-button-error-message-in-card").show();
                 }
             });
     }

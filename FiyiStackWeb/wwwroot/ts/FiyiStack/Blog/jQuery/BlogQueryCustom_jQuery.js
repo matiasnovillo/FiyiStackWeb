@@ -71,9 +71,6 @@ var BlogQuery = /** @class */ (function () {
                 }
                 else {
                     //Show error message
-                    $("#fiyistack-blog-error-message-title").html("No registers found");
-                    $("#fiyistack-blog-error-message-text").html("The server did not found any register. HTTP code 204");
-                    $("#fiyistack-blog-button-error-message-in-card").show();
                 }
             },
             complete: function () {
@@ -101,27 +98,6 @@ var BlogQuery = /** @class */ (function () {
                     formData.append("Comment", Comment);
                     //Setup request
                     var xmlHttpRequest = new XMLHttpRequest();
-                    //Set event listeners
-                    xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
-                    });
-                    xmlHttpRequest.upload.addEventListener("progress", function (e) {
-                        // While sending and loading data.
-                    });
-                    xmlHttpRequest.upload.addEventListener("load", function (e) {
-                        // When the request has successfully completed.
-                    });
-                    xmlHttpRequest.upload.addEventListener("loadend", function (e) {
-                        // When the request has completed (either in success or failure).
-                    });
-                    xmlHttpRequest.upload.addEventListener("error", function (e) {
-                        // When the request has failed.
-                    });
-                    xmlHttpRequest.upload.addEventListener("abort", function (e) {
-                        // When the request has been aborted. 
-                    });
-                    xmlHttpRequest.upload.addEventListener("timeout", function (e) {
-                        // When the author specified timeout has passed before the request could complete
-                    });
                     xmlHttpRequest.onload = function () {
                         if (xmlHttpRequest.status >= 400) {
                             Message.html("<strong><i class='fas fa-exclamation-triangle'></i> \n                                                    An error has occurred, try again\n                                            </strong>");
@@ -140,16 +116,8 @@ var BlogQuery = /** @class */ (function () {
                     //Send request
                     xmlHttpRequest.send(formData);
                 });
-                //Hide error message
-                $("#fiyistack-blog-error-message-title").html("");
-                $("#fiyistack-blog-error-message-text").html("");
-                $("#fiyistack-blog-button-error-message-in-card").hide();
             },
             error: function (err) {
-                //Show error message
-                $("#fiyistack-blog-error-message-title").html("BlogModel.SelectAllPaged(request_blogmodelQ).subscribe(...)");
-                $("#fiyistack-blog-error-message-text").html(err);
-                $("#fiyistack-blog-button-error-message-in-card").show();
             }
         });
     };
