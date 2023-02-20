@@ -121,26 +121,4 @@ $(document).ready(function () {
             form.classList.add("was-validated");
         }, false);
     });
-});tack-example-insert-or-update-message").attr("data-target", "#fiyistack-example-error-message-modal");
-            $("#fiyistack-example-insert-or-update-message").html(`<i class="fas fa-exclamation-triangle"></i> 
-                                                                There was an error while sending the data`);
-            $("#fiyistack-example-error-message-title").html("There was an error while sending the data");
-            $("#fiyistack-example-error-message-text").html(xmlHttpRequest.response);
-            console.log("Error:" + xmlHttpRequest.response);
-        }
-        else {
-            //Show success button
-            $("#fiyistack-example-insert-or-update-message").addClass("btn-success");
-            $("#fiyistack-example-insert-or-update-message").removeClass("btn-error");
-            $("#fiyistack-example-insert-or-update-message").removeClass("btn-secondary");
-            $("#fiyistack-example-insert-or-update-message").removeAttr("data-toggle");
-            $("#fiyistack-example-insert-or-update-message").removeAttr("data-target");
-            $("#fiyistack-example-insert-or-update-message").html(`<i class="fas fa-check"></i>
-                                                                Data sent successfully`);
-        }
-    };
-    //Open connection
-    xmlHttpRequest.open("POST", "/api/FiyiStack/Example/1/InsertOrUpdateAsync", true);
-    //Send request
-    xmlHttpRequest.send(formData);
 });

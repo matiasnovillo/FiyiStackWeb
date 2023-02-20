@@ -1,7 +1,6 @@
 //Import libraries to use
 import { BlogModel, blogmodelQuery } from "../../Blog/TsModels/Blog_TsModel";
 import * as $ from "jquery";
-import { format } from 'timeago.js';
 
 //Set default values
 let LastTopDistance: number = 0;
