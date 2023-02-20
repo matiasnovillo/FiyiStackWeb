@@ -236,9 +236,6 @@ class BlogQuery {
 
 function ValidateAndSearch() {
 
-    //Hide error and OK message button
-    $("#fiyistack-blog-button-error-message-in-card").hide();
-    $("#fiyistack-blog-button-ok-message-in-card").hide();
 
     var _blogmodelQuery: blogmodelQuery = {
         QueryString,
@@ -259,14 +256,11 @@ if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
     QueryString = "";
     ActualPageNumber = 1;
     RowsPerPage = 50;
-    SorterColumn = "BlogId";
-    SortToggler = false;
+    SorterColumn = "DateTimeCreation";
+    SortToggler = true;
     TotalRows = 0;
     TotalPages = 0;
     ViewToggler = "List";
-    //Hide messages
-    $("#fiyistack-blog-button-error-message-in-card").hide();
-    $("#fiyistack-blog-button-ok-message-in-card").hide();
 
     ValidateAndSearch();
 }

@@ -28,7 +28,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
     /// Function:          Allow you to show HTML files using Razor Page technology. <br/>
     /// Last modification: 16/12/2022 10:50:10
     /// </summary>
-    public partial class PageBlogQueryCustomModel : PageModel
+    public partial class BlogPageModel : PageModel
     {
         public void OnGet()
         {
