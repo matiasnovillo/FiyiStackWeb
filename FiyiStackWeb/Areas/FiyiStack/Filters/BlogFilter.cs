@@ -6,14 +6,14 @@ using System;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 20/12/2022 22:25:19
+//Last modification on: 22/02/2023 6:53:01
 
 namespace FiyiStackWeb.Areas.FiyiStack.Filters
 {
@@ -21,19 +21,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 20/12/2022 22:25:19
+    /// Last modification: 22/02/2023 6:53:01
     /// </summary>
     public class BlogFilter : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (context.HttpContext.Request.Path != "/api/FiyiStack/Blog/1/SelectAllPagedToJSON")
+            int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            if (UserId == null || UserId == 0)
             {
-                int? UserId = context.HttpContext.Session.GetInt32("UserId");
-                if (UserId == null || UserId == 0)
-                {
-                    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-                }
+                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
             }
         }
 
@@ -43,13 +40,10 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            if (context.HttpContext.Request.Path != "/api/FiyiStack/Blog/1/SelectAllPagedToJSON")
+            int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            if (UserId == null || UserId == 0)
             {
-                int? UserId = context.HttpContext.Session.GetInt32("UserId");
-                if (UserId == null || UserId == 0)
-                {
-                    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-                }
+                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
             }
         }
 

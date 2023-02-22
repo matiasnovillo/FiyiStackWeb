@@ -1,4 +1,5 @@
 using Dapper;
+using FiyiStackWeb.Areas.FiyiStack.DTOs;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Runtime.Serialization.Formatters.Binary;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
@@ -27,14 +28,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     ///                    Also, let you make other related actions with the model in question or
     ///                    make temporal copies with random data. <br/>
     /// Fields:            9 <br/> 
-    /// Dependencies:      1 models <br/>
-    /// Last modification: 20/12/2022 22:25:19
+    /// Sub-models:      1 models <br/>
+    /// Last modification: 22/02/2023 6:53:01
     /// </summary>
     [Serializable]
     public partial class BlogModel
     {
         [NotMapped]
-        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Production();
+        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Development();
 
         #region Fields
         [Library.ModelAttributeValidator.Key("BlogId")]
@@ -72,14 +73,17 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         [Library.ModelAttributeValidator.String("Title", false, 1, 100, "")]
         public string Title { get; set; }
 
-        [Library.ModelAttributeValidator.String("Body", false, 1, 8000, "")]
         public string Body { get; set; }
 
         [Library.ModelAttributeValidator.String("BackgroundImage", false, 1, 8000, "")]
         public string BackgroundImage { get; set; }
+
+        public string UserCreationIdFantasyName { get; set; }
+
+        public string UserLastModificationIdFantasyName { get; set; }
         #endregion
 
-        #region Models that depend on this model
+        #region Sub-lists
         public virtual List<CommentForBlogModel> lstCommentForBlogModel { get; set; } //Foreign Key name: BlogId 
         #endregion
 
@@ -94,10 +98,13 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// </summary>
         public BlogModel()
         {
-            try
+            try 
             {
                 BlogId = 0;
+
+                //Initialize sub-lists
                 lstCommentForBlogModel = new List<CommentForBlogModel>();
+                
             }
             catch (Exception ex) { throw ex; }
         }
@@ -114,6 +121,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
             try
             {
                 List<BlogModel> lstBlogModel = new List<BlogModel>();
+
+                //Initialize sub-lists
+                lstCommentForBlogModel = new List<CommentForBlogModel>();
+                
+                
                 DynamicParameters dp = new DynamicParameters();
 
                 dp.Add("BlogId", BlogId, DbType.Int32, ParameterDirection.Input);
@@ -157,6 +169,10 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         {
             try
             {
+                //Initialize sub-lists
+                lstCommentForBlogModel = new List<CommentForBlogModel>();
+                
+
                 this.BlogId = BlogId;
 				this.Active = Active;
 				this.DateTimeCreation = DateTimeCreation;
@@ -181,6 +197,10 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         {
             try
             {
+                //Initialize sub-lists
+                lstCommentForBlogModel = new List<CommentForBlogModel>();
+                
+
                 BlogId = blog.BlogId;
 				Active = blog.Active;
 				DateTimeCreation = blog.DateTimeCreation;
@@ -324,45 +344,48 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public blogModelQuery SelectAllPagedToModel(blogModelQuery blogModelQuery)
+        public blogSelectAllPaged SelectAllPagedToModel(blogSelectAllPaged blogSelectAllPaged)
         {
             try
             {
-                blogModelQuery.lstBlogModel = new List<BlogModel>();
+                blogSelectAllPaged.lstBlogModel = new List<BlogModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", blogModelQuery.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", blogModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", blogModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", blogModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", blogModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", blogModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", blogSelectAllPaged.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", blogSelectAllPaged.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", blogSelectAllPaged.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", blogSelectAllPaged.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", blogSelectAllPaged.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", blogSelectAllPaged.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    blogModelQuery.lstBlogModel = (List<BlogModel>)sqlConnection.Query<BlogModel>("[dbo].[FiyiStack.Blog.SelectAllPaged]", dp, commandType: CommandType.StoredProcedure);
-                    blogModelQuery.TotalRows = dp.Get<int>("TotalRows");
+                    blogSelectAllPaged.lstBlogModel = (List<BlogModel>)sqlConnection.Query<BlogModel>("[dbo].[FiyiStack.Blog.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
+                    blogSelectAllPaged.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                blogModelQuery.TotalPages = Library.Math.Divide(blogModelQuery.TotalRows, blogModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
+                blogSelectAllPaged.TotalPages = Library.Math.Divide(blogSelectAllPaged.TotalRows, blogSelectAllPaged.RowsPerPage, Library.Math.RoundType.RoundUp);
 
                 //Loop through lists and sublists
-                for (int i = 0; i < blogModelQuery.lstBlogModel.Count; i++)
+                for (int i = 0; i < blogSelectAllPaged.lstBlogModel.Count; i++)
                 {
                     DynamicParameters dpForCommentForBlogModel = new DynamicParameters();
-                    dpForCommentForBlogModel.Add("BlogId", blogModelQuery.lstBlogModel[i].BlogId, DbType.Int32, ParameterDirection.Input);
+                    dpForCommentForBlogModel.Add("BlogId", blogSelectAllPaged.lstBlogModel[i].BlogId, DbType.Int32, ParameterDirection.Input);
                     using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                     {
                         List<CommentForBlogModel> lstCommentForBlogModel = new List<CommentForBlogModel>();
                         lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogIdCustom]", dpForCommentForBlogModel, commandType: CommandType.StoredProcedure);
-
+                        
                         //Add list item inside another list
                         foreach (var CommentForBlogModel in lstCommentForBlogModel)
                         {
-                            blogModelQuery.lstBlogModel[i].lstCommentForBlogModel.Add(CommentForBlogModel);
+                            blogSelectAllPaged.lstBlogModel[i].lstCommentForBlogModel.Add(CommentForBlogModel);
                         }
                     }
                 }
-                return blogModelQuery;
+                
+                
+
+                return blogSelectAllPaged;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -763,20 +786,5 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     </td>
                 </tr>";
         }
-    }
-
-    /// <summary>
-    /// Virtual model used for [dbo].[FiyiStack.Blog.SelectAllPaged] stored procedure
-    /// </summary>
-    public partial class blogModelQuery 
-    {
-        public string QueryString { get; set; }
-        public int ActualPageNumber { get; set; }
-        public int RowsPerPage { get; set; }
-        public string SorterColumn { get; set; }
-        public bool SortToggler { get; set; }
-        public int TotalRows { get; set; }
-        public int TotalPages { get; set; }
-        public List<BlogModel> lstBlogModel { get; set; }
     }
 }

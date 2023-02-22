@@ -29,6 +29,8 @@ export class BlogModel {
 	Body?: string | string[] | number | undefined;
     BackgroundImage?: string | string[] | number | undefined;
     lstCommentForBlogModel?: CommentForBlogModel[] | undefined;
+    UserCreationIdFantasyName?: string | string[] | number | undefined;
+    UserLastModificationIdFantasyName?: string | string[] | number | undefined;
 
     //Queries
     static Select1ByBlogId(BlogId: number) {

@@ -48,7 +48,7 @@ class BlogQuery {
         </th>
         <th scope="col">
             <button value="BlogId" class="btn btn-outline-secondary btn-sm" type="button">
-                BlogId
+                Blog ID
             </button>
         </th>
         <th scope="col">
@@ -58,22 +58,22 @@ class BlogQuery {
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeCreation
+                Date Time Creation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTimeLastModification
+                Date Time Last Modification
             </button>
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserCreationId
+                User Creation
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                UserLastModificationId
+                User Last Modification
             </button>
         </th>
         <th scope="col">
@@ -88,7 +88,7 @@ class BlogQuery {
         </th>
         <th scope="col">
             <button value="BackgroundImage" class="btn btn-outline-secondary btn-sm" type="button">
-                BackgroundImage
+                Background Image
             </button>
         </th>
         
@@ -183,12 +183,12 @@ class BlogQuery {
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-key"></i> ${row.UserCreationId}
+            <i class="fas fa-key"></i> ${row.UserCreationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-key"></i> ${row.UserLastModificationId}
+            <i class="fas fa-key"></i> ${row.UserLastModificationIdFantasyName}
         </strong>
     </td>
     <td class="text-left">
@@ -242,7 +242,7 @@ class BlogQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           BlogId <i class="fas fa-key"></i> ${row.BlogId}
+                           Blog ID <i class="fas fa-key"></i> ${row.BlogId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -250,19 +250,19 @@ class BlogQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           UserCreationId <i class="fas fa-key"></i> ${row.UserCreationId}
+                           User Creation <i class="fas fa-key"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           UserLastModificationId <i class="fas fa-key"></i> ${row.UserLastModificationId}
+                           User Last Modification <i class="fas fa-key"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -274,7 +274,7 @@ class BlogQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           BackgroundImage <i class="fas fa-file"></i> ${row.BackgroundImage}
+                           Background Image <i class="fas fa-file"></i> ${row.BackgroundImage}
                         </span>
                         <br/>
                         

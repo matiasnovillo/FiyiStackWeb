@@ -3,6 +3,7 @@ using CsvHelper;
 using IronPdf;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.FiyiStack.Models;
+using FiyiStackWeb.Areas.FiyiStack.DTOs;
 using FiyiStackWeb.Areas.FiyiStack.Protocols;
 using FiyiStackWeb.Library;
 using System;
@@ -15,14 +16,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 20/12/2022 22:25:19
+//Last modification on: 22/02/2023 6:53:01
 
 namespace FiyiStackWeb.Areas.FiyiStack.Services
 {
@@ -31,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 20/12/2022 22:25:19
+    /// Last modification: 22/02/2023 6:53:01
     /// </summary>
     public partial class BlogService : BlogProtocol
     {
@@ -53,9 +54,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
             return new BlogModel().SelectAllToList();
         }
 
-        public blogModelQuery SelectAllPagedToModel(blogModelQuery blogModelQuery)
+        public blogSelectAllPaged SelectAllPagedToModel(blogSelectAllPaged blogSelectAllPaged)
         {
-            return new BlogModel().SelectAllPagedToModel(blogModelQuery);
+            return new BlogModel().SelectAllPagedToModel(blogSelectAllPaged);
         } 
         #endregion
 
