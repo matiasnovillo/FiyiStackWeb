@@ -63,22 +63,25 @@ Coded by www.creative-tim.com
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                     <!-- Nav items -->
                     <ul class="navbar-nav">
+                        @Html.Raw(ViewData["Menues"])
                         <li class="nav-item">
                             <a class="nav-link" href="/Index" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
+                                <i class="fas fa-home text-primary"></i>
                                 <span class="nav-link-text">Home</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/CMSCore/DashboardIndex" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
+                                <i class="fas fa-list text-primary"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Blog" role="button" aria-expanded="false" aria-controls="navbar-dashboards">
+                                <i class="fas fa-pen text-primary"></i>
                                 <span class="nav-link-text">Blog</span>
                             </a>
                         </li>
-                        @Html.Raw(ViewData["Menues"])
                     </ul>
                 </div>
             </div>
