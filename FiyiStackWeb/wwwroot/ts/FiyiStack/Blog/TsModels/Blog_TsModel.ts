@@ -21,8 +21,8 @@ export class BlogModel {
     //Fields
     BlogId?: number;
 	Active?: boolean;
-	DateTimeCreation?: string | string[] | number | undefined;
-	DateTimeLastModification?: string | string[] | number | undefined;
+	DateTimeCreation: string;
+	DateTimeLastModification: string;
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	Title?: string | string[] | number | undefined;

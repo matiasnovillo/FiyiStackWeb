@@ -1,6 +1,7 @@
 //Import libraries to use
 import { BlogModel, blogmodelQuery } from "../../Blog/TsModels/Blog_TsModel";
 import * as $ from "jquery";
+import { format } from "timeago.js";
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -66,7 +67,7 @@ class BlogQuery {
                 </a>
                 <div class="mx-3">
                   <a href="javascript:;" class="text-dark font-weight-600 text-sm">Matias Novillo</a>
-                  <small class="d-block text-muted">${row.DateTimeLastModification}</small>
+                  <small class="d-block text-muted">${format(Date.parse(row.DateTimeLastModification))}</small>
                 </div>
               </div>
             </div>
@@ -86,7 +87,7 @@ class BlogQuery {
                       <h6 class="h5 mt-0">${row2.FantasyName}</h6>
                       <p class="text-sm lh-160">${row2.Comment}</p>
                       <div class="icon-actions">
-                          <p class="text-muted">Posted on: ${row2.DateTimeCreation}</p>
+                          <p class="text-muted">${format(Date.parse(row2.DateTimeCreation))}</p>
                       </div>
                     </div>
                   </div>

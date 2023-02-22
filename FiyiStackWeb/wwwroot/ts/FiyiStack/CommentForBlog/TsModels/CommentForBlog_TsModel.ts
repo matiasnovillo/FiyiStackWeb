@@ -20,7 +20,7 @@ export class CommentForBlogModel {
     //Fields
     CommentForBlogId?: number;
 	Active?: boolean;
-	DateTimeCreation?: string | string[] | number | undefined;
+	DateTimeCreation: string;
 	DateTimeLastModification?: string | string[] | number | undefined;
 	UserCreationId?: number;
 	UserLastModificationId?: number;
