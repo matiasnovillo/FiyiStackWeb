@@ -14,6 +14,7 @@ using FiyiStackWeb.Areas.FiyiStack.Services;
 using SixLaborsCaptcha.Mvc.Core;
 using FiyiStackWeb.Areas.BasicCulture.Services;
 using FiyiStackWeb.Areas.BasicCulture.Protocols;
+using FiyiStackWeb.Areas.BasicCore.Models;
 
 namespace FiyiStackWeb
 {
@@ -47,6 +48,7 @@ namespace FiyiStackWeb
             //Area: BasicCore
             services.AddScoped<FailureProtocol, FailureService>();
             services.AddScoped<ParameterProtocol, ParameterService>();
+            services.AddScoped<VisitorCounterProtocol, VisitorCounterService>();
             //Area: BasicCulture
             services.AddScoped<CityProtocol, CityService>();
             services.AddScoped<ProvinceProtocol, ProvinceService>();
@@ -79,6 +81,18 @@ namespace FiyiStackWeb
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel() 
+            {
+                Active = true,
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
