@@ -27,11 +27,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
-            {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            }
+            //I comment this lines to allow ~/Blog Razor Page
+            //int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            //if (UserId == null || UserId == 0)
+            //{
+            //    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+            //}
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -40,11 +41,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
 
         public override void OnResultExecuting(ResultExecutingContext context)
         {
-            int? UserId = context.HttpContext.Session.GetInt32("UserId");
-            if (UserId == null || UserId == 0)
-            {
-                context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            }
+            //I comment this lines to allow ~/Blog Razor Page
+            //int? UserId = context.HttpContext.Session.GetInt32("UserId");
+            //if (UserId == null || UserId == 0)
+            //{
+            //    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
+            //}
         }
 
         public override void OnResultExecuted(ResultExecutedContext context)

@@ -92,12 +92,16 @@ class BlogQuery {
                   </div>
                 </div>` }).join("")}
                 <div class="media align-items-center mt-5">
-                  <img alt="Image placeholder" class="avatar rounded-circle mb-4" src="/img/CMSCore/User.png">
                   <div class="media-body">
                     <form>
                         <div class="row">
                             <div class="col text-right">
-                                <input class="form-control mt-4" placeholder="Write your comment" type="text"></input>
+                                <textarea class="form-control mt-4"
+                                placeholder="Write your comment"
+                                rows="3"
+                                resize="none"
+                                maxlength="8000">
+                                </textarea>
                                 <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
                                 <input type="hidden" value="${row.BlogId}"></input>
                                 </br>
