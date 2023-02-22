@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.CMSCore.DTOs;
 using FiyiStackWeb.Areas.CMSCore.Filters;
 using FiyiStackWeb.Areas.CMSCore.Protocols;
 using FiyiStackWeb.Areas.CMSCore.Models;
@@ -25,7 +26,7 @@ using SixLaborsCaptcha.Core;
  * 
  */
 
-//Last modification on: 15/02/2023 18:50:53
+//Last modification on: 21/02/2023 18:02:07
 
 namespace FiyiStackWeb.Areas.CMSCore.Controllers
 {
@@ -33,7 +34,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 15/02/2023 18:50:53
+    /// Last modification: 21/02/2023 18:02:07
     /// </summary>
     [ApiController]
     [UserFilter]
@@ -113,15 +114,15 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             }
         }
 
-        [HttpPut("~/api/CMSCore/User/1/SelectAllPagedToJSON")]
-        public userModelQuery SelectAllPagedToJSON([FromBody] userModelQuery userModelQuery)
+        [HttpPost("~/api/CMSCore/User/1/SelectAllPagedToJSON")]
+        public userSelectAllPaged SelectAllPagedToJSON([FromBody] userSelectAllPaged userSelectAllPaged)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _UserProtocol.SelectAllPagedToModel(userModelQuery);
+                 return _UserProtocol.SelectAllPagedToModel(userSelectAllPaged);
             }
             catch (Exception ex)
             {
@@ -470,7 +471,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
 
         }
 
-        [HttpPut("~/api/CMSCore/User/1/ChangePassword")]
+        [HttpPost("~/api/CMSCore/User/1/ChangePassword")]
 
         public IActionResult ChangePassword()
         {
@@ -551,7 +552,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             }
         }
 
-        [HttpPut("~/api/CMSCore/User/1/RecoverPassword")]
+        [HttpPost("~/api/CMSCore/User/1/RecoverPassword")]
 
         public IActionResult RecoverPassword()
         {
@@ -585,7 +586,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             }
         }
 
-        [HttpPut("~/api/CMSCore/User/1/Logout")]
+        [HttpPost("~/api/CMSCore/User/1/Logout")]
 
         public IActionResult Logout()
         {

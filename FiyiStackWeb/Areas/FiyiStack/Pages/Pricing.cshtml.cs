@@ -38,8 +38,8 @@ namespace FiyiStackWeb.Areas.FiyiStack
             }
 
             ViewData["og:title"] = $@"<meta property=""og:title"" content=""Pricing - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Get FiyiStack (the generator), FiyiRequirements (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""Get FiyiStack (the generator), FiyiRequirements (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Pricing - FiyiStack";
         }

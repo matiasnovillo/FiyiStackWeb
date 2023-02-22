@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.BasicCore.DTOs;
 using FiyiStackWeb.Areas.BasicCore.Filters;
 using FiyiStackWeb.Areas.BasicCore.Protocols;
 using FiyiStackWeb.Areas.BasicCore.Models;
@@ -24,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 15/02/2023 17:34:54
+//Last modification on: 21/02/2023 17:37:17
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +33,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 15/02/2023 17:34:54
+    /// Last modification: 21/02/2023 17:37:17
     /// </summary>
     [ApiController]
     [ParameterFilter]
@@ -112,15 +113,15 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
-        [HttpPut("~/api/BasicCore/Parameter/1/SelectAllPagedToJSON")]
-        public parameterModelQuery SelectAllPagedToJSON([FromBody] parameterModelQuery parameterModelQuery)
+        [HttpPost("~/api/BasicCore/Parameter/1/SelectAllPagedToJSON")]
+        public parameterSelectAllPaged SelectAllPagedToJSON([FromBody] parameterSelectAllPaged parameterSelectAllPaged)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _ParameterProtocol.SelectAllPagedToModel(parameterModelQuery);
+                 return _ParameterProtocol.SelectAllPagedToModel(parameterSelectAllPaged);
             }
             catch (Exception ex)
             {

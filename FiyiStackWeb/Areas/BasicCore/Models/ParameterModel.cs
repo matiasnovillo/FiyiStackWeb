@@ -1,4 +1,5 @@
 using Dapper;
+using FiyiStackWeb.Areas.BasicCore.DTOs;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Runtime.Serialization.Formatters.Binary;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
@@ -27,8 +28,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
     ///                    Also, let you make other related actions with the model in question or
     ///                    make temporal copies with random data. <br/>
     /// Fields:            9 <br/> 
-    /// Dependencies:      0 models <br/>
-    /// Last modification: 20/12/2022 19:56:32
+    /// Sub-models:      0 models <br/>
+    /// Last modification: 21/02/2023 17:37:17
     /// </summary>
     [Serializable]
     public partial class ParameterModel
@@ -40,6 +41,35 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         [Library.ModelAttributeValidator.Key("ParameterId")]
         public int ParameterId { get; set; }
 
+        ///<summary>
+        /// For auditing purposes
+        ///</summary>
+        public bool Active { get; set; }
+
+        ///<summary>
+        /// For auditing purposes
+        ///</summary>
+        [Library.ModelAttributeValidator.DateTime("DateTimeCreation", false, "1753-01-01T00:00", "9998-12-30T23:59")]
+        public DateTime DateTimeCreation { get; set; }
+
+        ///<summary>
+        /// For auditing purposes
+        ///</summary>
+        [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "1753-01-01T00:00", "9998-12-30T23:59")]
+        public DateTime DateTimeLastModification { get; set; }
+
+        ///<summary>
+        /// For auditing purposes
+        ///</summary>
+        [Library.ModelAttributeValidator.Key("UserCreationId")]
+        public int UserCreationId { get; set; }
+
+        ///<summary>
+        /// For auditing purposes
+        ///</summary>
+        [Library.ModelAttributeValidator.Key("UserLastModificationId")]
+        public int UserLastModificationId { get; set; }
+
         [Library.ModelAttributeValidator.String("Name", false, 1, 200, "")]
         public string Name { get; set; }
 
@@ -48,26 +78,12 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
 
         public bool IsPrivate { get; set; }
 
-        public bool Active { get; set; }
-
-        [Library.ModelAttributeValidator.Int("UserCreationId", false, 1, 2147483647)]
-        public int UserCreationId { get; set; }
-
-        [Library.ModelAttributeValidator.Int("UserLastModificationId", false, 1, 2147483647)]
-        public int UserLastModificationId { get; set; }
-
-        [Library.ModelAttributeValidator.DateTime("DateTimeCreation", false, "01/01/1753 0:00:00.001", "30/12/9998 23:59:59.999")]
-        public DateTime DateTimeCreation { get; set; }
-
-        [Library.ModelAttributeValidator.DateTime("DateTimeLastModification", false, "01/01/1753 0:00:00.001", "30/12/9998 23:59:59.999")]
-        public DateTime DateTimeLastModification { get; set; }
-
         public string UserCreationIdFantasyName { get; set; }
 
         public string UserLastModificationIdFantasyName { get; set; }
         #endregion
 
-        #region Models that depend on this model
+        #region Sub-lists
 
         #endregion
 
@@ -82,7 +98,13 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         /// </summary>
         public ParameterModel()
         {
-            try { ParameterId = 0; }
+            try 
+            {
+                ParameterId = 0;
+
+                //Initialize sub-lists
+                
+            }
             catch (Exception ex) { throw ex; }
         }
 
@@ -98,6 +120,10 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             try
             {
                 List<ParameterModel> lstParameterModel = new List<ParameterModel>();
+
+                //Initialize sub-lists
+                
+                
                 DynamicParameters dp = new DynamicParameters();
 
                 dp.Add("ParameterId", ParameterId, DbType.Int32, ParameterDirection.Input);
@@ -116,14 +142,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 foreach (ParameterModel parameter in lstParameterModel)
                 {
                     this.ParameterId = parameter.ParameterId;
+					this.Active = parameter.Active;
+					this.DateTimeCreation = parameter.DateTimeCreation;
+					this.DateTimeLastModification = parameter.DateTimeLastModification;
+					this.UserCreationId = parameter.UserCreationId;
+					this.UserLastModificationId = parameter.UserLastModificationId;
 					this.Name = parameter.Name;
 					this.Value = parameter.Value;
 					this.IsPrivate = parameter.IsPrivate;
-					this.Active = parameter.Active;
-					this.UserCreationId = parameter.UserCreationId;
-					this.UserLastModificationId = parameter.UserLastModificationId;
-					this.DateTimeCreation = parameter.DateTimeCreation;
-					this.DateTimeLastModification = parameter.DateTimeLastModification;
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -137,19 +163,22 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         /// Fields:       9 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
-        public ParameterModel(int ParameterId, string Name, string Value, bool IsPrivate, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification)
+        public ParameterModel(int ParameterId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Name, string Value, bool IsPrivate)
         {
             try
             {
+                //Initialize sub-lists
+                
+
                 this.ParameterId = ParameterId;
+				this.Active = Active;
+				this.DateTimeCreation = DateTimeCreation;
+				this.DateTimeLastModification = DateTimeLastModification;
+				this.UserCreationId = UserCreationId;
+				this.UserLastModificationId = UserLastModificationId;
 				this.Name = Name;
 				this.Value = Value;
 				this.IsPrivate = IsPrivate;
-				this.Active = Active;
-				this.UserCreationId = UserCreationId;
-				this.UserLastModificationId = UserLastModificationId;
-				this.DateTimeCreation = DateTimeCreation;
-				this.DateTimeLastModification = DateTimeLastModification;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -165,15 +194,18 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         {
             try
             {
+                //Initialize sub-lists
+                
+
                 ParameterId = parameter.ParameterId;
+				Active = parameter.Active;
+				DateTimeCreation = parameter.DateTimeCreation;
+				DateTimeLastModification = parameter.DateTimeLastModification;
+				UserCreationId = parameter.UserCreationId;
+				UserLastModificationId = parameter.UserLastModificationId;
 				Name = parameter.Name;
 				Value = parameter.Value;
 				IsPrivate = parameter.IsPrivate;
-				Active = parameter.Active;
-				UserCreationId = parameter.UserCreationId;
-				UserLastModificationId = parameter.UserLastModificationId;
-				DateTimeCreation = parameter.DateTimeCreation;
-				DateTimeLastModification = parameter.DateTimeLastModification;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -276,14 +308,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 foreach (ParameterModel parameter in lstParameterModel)
                 {
                     ParameterModel.ParameterId = parameter.ParameterId;
+					ParameterModel.Active = parameter.Active;
+					ParameterModel.DateTimeCreation = parameter.DateTimeCreation;
+					ParameterModel.DateTimeLastModification = parameter.DateTimeLastModification;
+					ParameterModel.UserCreationId = parameter.UserCreationId;
+					ParameterModel.UserLastModificationId = parameter.UserLastModificationId;
 					ParameterModel.Name = parameter.Name;
 					ParameterModel.Value = parameter.Value;
 					ParameterModel.IsPrivate = parameter.IsPrivate;
-					ParameterModel.Active = parameter.Active;
-					ParameterModel.UserCreationId = parameter.UserCreationId;
-					ParameterModel.UserLastModificationId = parameter.UserLastModificationId;
-					ParameterModel.DateTimeCreation = parameter.DateTimeCreation;
-					ParameterModel.DateTimeLastModification = parameter.DateTimeLastModification;
                 }
 
                 return ParameterModel;
@@ -308,28 +340,28 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             catch (Exception ex) { throw ex; }
         }
 
-        public parameterModelQuery SelectAllPagedToModel(parameterModelQuery parameterModelQuery)
+        public parameterSelectAllPaged SelectAllPagedToModel(parameterSelectAllPaged parameterSelectAllPaged)
         {
             try
             {
-                parameterModelQuery.lstParameterModel = new List<ParameterModel>();
+                parameterSelectAllPaged.lstParameterModel = new List<ParameterModel>();
                 DynamicParameters dp = new DynamicParameters();
-                dp.Add("QueryString", parameterModelQuery.QueryString, DbType.String, ParameterDirection.Input);
-                dp.Add("ActualPageNumber", parameterModelQuery.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
-                dp.Add("RowsPerPage", parameterModelQuery.RowsPerPage, DbType.Int32, ParameterDirection.Input);
-                dp.Add("SorterColumn", parameterModelQuery.SorterColumn, DbType.String, ParameterDirection.Input);
-                dp.Add("SortToggler", parameterModelQuery.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("TotalRows", parameterModelQuery.TotalRows, DbType.Int32, ParameterDirection.Output);
+                dp.Add("QueryString", parameterSelectAllPaged.QueryString, DbType.String, ParameterDirection.Input);
+                dp.Add("ActualPageNumber", parameterSelectAllPaged.ActualPageNumber, DbType.Int32, ParameterDirection.Input);
+                dp.Add("RowsPerPage", parameterSelectAllPaged.RowsPerPage, DbType.Int32, ParameterDirection.Input);
+                dp.Add("SorterColumn", parameterSelectAllPaged.SorterColumn, DbType.String, ParameterDirection.Input);
+                dp.Add("SortToggler", parameterSelectAllPaged.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("TotalRows", parameterSelectAllPaged.TotalRows, DbType.Int32, ParameterDirection.Output);
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    parameterModelQuery.lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
-                    parameterModelQuery.TotalRows = dp.Get<int>("TotalRows");
+                    parameterSelectAllPaged.lstParameterModel = (List<ParameterModel>)sqlConnection.Query<ParameterModel>("[dbo].[BasicCore.Parameter.SelectAllPagedCustom]", dp, commandType: CommandType.StoredProcedure);
+                    parameterSelectAllPaged.TotalRows = dp.Get<int>("TotalRows");
                 }
 
-                parameterModelQuery.TotalPages = Library.Math.Divide(parameterModelQuery.TotalRows, parameterModelQuery.RowsPerPage, Library.Math.RoundType.RoundUp);
+                parameterSelectAllPaged.TotalPages = Library.Math.Divide(parameterSelectAllPaged.TotalRows, parameterSelectAllPaged.RowsPerPage, Library.Math.RoundType.RoundUp);
 
-                return parameterModelQuery;
+                return parameterSelectAllPaged;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -351,7 +383,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             }
             catch (Exception ex) { throw ex; }
         }
-
         #endregion
 
         #region Non-Queries
@@ -367,14 +398,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 DynamicParameters dp = new DynamicParameters();
                 DataTable DataTable = new DataTable();
                 
-                dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
-				dp.Add("Value", Value, DbType.String, ParameterDirection.Input);
-				dp.Add("IsPrivate", IsPrivate, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
+				dp.Add("Value", Value, DbType.String, ParameterDirection.Input);
+				dp.Add("IsPrivate", IsPrivate, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -403,14 +434,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 DynamicParameters dp = new DynamicParameters();
                 DataTable DataTable = new DataTable();
 
-                dp.Add("Name", parameter.Name, DbType.String, ParameterDirection.Input);
-				dp.Add("Value", parameter.Value, DbType.String, ParameterDirection.Input);
-				dp.Add("IsPrivate", parameter.IsPrivate, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("Active", parameter.Active, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("UserCreationId", parameter.UserCreationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("UserLastModificationId", parameter.UserLastModificationId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Active", parameter.Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("DateTimeCreation", parameter.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", parameter.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("UserCreationId", parameter.UserCreationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("UserLastModificationId", parameter.UserLastModificationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Name", parameter.Name, DbType.String, ParameterDirection.Input);
+				dp.Add("Value", parameter.Value, DbType.String, ParameterDirection.Input);
+				dp.Add("IsPrivate", parameter.IsPrivate, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -431,7 +462,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
         /// <returns>The ID of the last registry inserted in Parameter table</returns>
-        public int Insert(string Name, string Value, bool IsPrivate, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification)
+        public int Insert(bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Name, string Value, bool IsPrivate)
         {
             try
             {
@@ -439,14 +470,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 DynamicParameters dp = new DynamicParameters();
                 DataTable DataTable = new DataTable();
 
-                dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
-				dp.Add("Value", Value, DbType.String, ParameterDirection.Input);
-				dp.Add("IsPrivate", IsPrivate, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
 				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
+				dp.Add("Value", Value, DbType.String, ParameterDirection.Input);
+				dp.Add("IsPrivate", IsPrivate, DbType.Boolean, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -476,14 +507,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 DataTable DataTable = new DataTable();
 
                 dp.Add("ParameterId", ParameterId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
+				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
 				dp.Add("Value", Value, DbType.String, ParameterDirection.Input);
 				dp.Add("IsPrivate", IsPrivate, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -513,14 +544,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 DataTable DataTable = new DataTable();
 
                 dp.Add("ParameterId", parameter.ParameterId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Active", parameter.Active, DbType.Boolean, ParameterDirection.Input);
+				dp.Add("DateTimeCreation", parameter.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("DateTimeLastModification", parameter.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("UserCreationId", parameter.UserCreationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("UserLastModificationId", parameter.UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Name", parameter.Name, DbType.String, ParameterDirection.Input);
 				dp.Add("Value", parameter.Value, DbType.String, ParameterDirection.Input);
 				dp.Add("IsPrivate", parameter.IsPrivate, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("Active", parameter.Active, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("UserCreationId", parameter.UserCreationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("UserLastModificationId", parameter.UserLastModificationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("DateTimeCreation", parameter.DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("DateTimeLastModification", parameter.DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -541,7 +572,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
         /// <returns>The number of rows updated in Parameter table</returns>
-        public int UpdateByParameterId(int ParameterId, string Name, string Value, bool IsPrivate, bool Active, int UserCreationId, int UserLastModificationId, DateTime DateTimeCreation, DateTime DateTimeLastModification)
+        public int UpdateByParameterId(int ParameterId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Name, string Value, bool IsPrivate)
         {
             try
             {
@@ -550,14 +581,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
                 DataTable DataTable = new DataTable();
 
                 dp.Add("ParameterId", ParameterId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
+				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
+				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
+				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Name", Name, DbType.String, ParameterDirection.Input);
 				dp.Add("Value", Value, DbType.String, ParameterDirection.Input);
 				dp.Add("IsPrivate", IsPrivate, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("Active", Active, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
-				dp.Add("DateTimeCreation", DateTimeCreation, DbType.DateTime, ParameterDirection.Input);
-				dp.Add("DateTimeLastModification", DateTimeLastModification, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -679,14 +710,14 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         public override string ToString()
         {
             return $"ParameterId: {ParameterId}, " +
-				$"Name: {Name}, " +
-				$"Value: {Value}, " +
-				$"IsPrivate: {IsPrivate}, " +
 				$"Active: {Active}, " +
+				$"DateTimeCreation: {DateTimeCreation}, " +
+				$"DateTimeLastModification: {DateTimeLastModification}, " +
 				$"UserCreationId: {UserCreationId}, " +
 				$"UserLastModificationId: {UserLastModificationId}, " +
-				$"DateTimeCreation: {DateTimeCreation}, " +
-				$"DateTimeLastModification: {DateTimeLastModification}";
+				$"Name: {Name}, " +
+				$"Value: {Value}, " +
+				$"IsPrivate: {IsPrivate}";
         }
 
         public string ToStringOnlyValuesForHTML()
@@ -696,6 +727,36 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{ParameterId}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Active}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTimeCreation}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTimeLastModification}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{UserCreationId}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{UserLastModificationId}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td><td align=""left"" valign=""top"">
@@ -716,53 +777,8 @@ namespace FiyiStackWeb.Areas.BasicCore.Models
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{IsPrivate}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Active}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{UserCreationId}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{UserLastModificationId}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTimeCreation}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTimeLastModification}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>
                 </tr>";
         }
-    }
-
-    /// <summary>
-    /// Virtual model used for [dbo].[BasicCore.Parameter.SelectAllPaged] stored procedure
-    /// </summary>
-    public partial class parameterModelQuery
-    {
-        public string QueryString { get; set; }
-        public int ActualPageNumber { get; set; }
-        public int RowsPerPage { get; set; }
-        public string SorterColumn { get; set; }
-        public bool SortToggler { get; set; }
-        public int TotalRows { get; set; }
-        public int TotalPages { get; set; }
-        public List<ParameterModel> lstParameterModel { get; set; }
     }
 }

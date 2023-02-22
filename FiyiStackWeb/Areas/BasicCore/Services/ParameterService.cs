@@ -3,6 +3,7 @@ using CsvHelper;
 using IronPdf;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.BasicCore.DTOs;
 using FiyiStackWeb.Areas.BasicCore.Protocols;
 using FiyiStackWeb.Library;
 using System;
@@ -15,14 +16,14 @@ using System.IO;
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
  */
 
-//Last modification on: 20/12/2022 19:56:32
+//Last modification on: 21/02/2023 17:37:17
 
 namespace FiyiStackWeb.Areas.BasicCore.Services
 {
@@ -31,7 +32,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 20/12/2022 19:56:32
+    /// Last modification: 21/02/2023 17:37:17
     /// </summary>
     public partial class ParameterService : ParameterProtocol
     {
@@ -53,9 +54,9 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
             return new ParameterModel().SelectAllToList();
         }
 
-        public parameterModelQuery SelectAllPagedToModel(parameterModelQuery parameterModelQuery)
+        public parameterSelectAllPaged SelectAllPagedToModel(parameterSelectAllPaged parameterSelectAllPaged)
         {
-            return new ParameterModel().SelectAllPagedToModel(parameterModelQuery);
+            return new ParameterModel().SelectAllPagedToModel(parameterSelectAllPaged);
         } 
         #endregion
 
@@ -187,22 +188,17 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Name&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Value&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">IsPrivate&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Active&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeCreation&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeLastModification&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
@@ -217,12 +213,17 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeCreation&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Name&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTimeLastModification&nbsp;&nbsp;&nbsp;</span>
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Value&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">IsPrivate&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
@@ -259,6 +260,31 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
                     dtColumnParameterIdFordtParameterCopy.ColumnName = "ParameterId";
                     dtParameterCopy.Columns.Add(dtColumnParameterIdFordtParameterCopy);
 
+                    DataColumn dtColumnActiveFordtParameterCopy = new DataColumn();
+                    dtColumnActiveFordtParameterCopy.DataType = typeof(string);
+                    dtColumnActiveFordtParameterCopy.ColumnName = "Active";
+                    dtParameterCopy.Columns.Add(dtColumnActiveFordtParameterCopy);
+
+                    DataColumn dtColumnDateTimeCreationFordtParameterCopy = new DataColumn();
+                    dtColumnDateTimeCreationFordtParameterCopy.DataType = typeof(string);
+                    dtColumnDateTimeCreationFordtParameterCopy.ColumnName = "DateTimeCreation";
+                    dtParameterCopy.Columns.Add(dtColumnDateTimeCreationFordtParameterCopy);
+
+                    DataColumn dtColumnDateTimeLastModificationFordtParameterCopy = new DataColumn();
+                    dtColumnDateTimeLastModificationFordtParameterCopy.DataType = typeof(string);
+                    dtColumnDateTimeLastModificationFordtParameterCopy.ColumnName = "DateTimeLastModification";
+                    dtParameterCopy.Columns.Add(dtColumnDateTimeLastModificationFordtParameterCopy);
+
+                    DataColumn dtColumnUserCreationIdFordtParameterCopy = new DataColumn();
+                    dtColumnUserCreationIdFordtParameterCopy.DataType = typeof(string);
+                    dtColumnUserCreationIdFordtParameterCopy.ColumnName = "UserCreationId";
+                    dtParameterCopy.Columns.Add(dtColumnUserCreationIdFordtParameterCopy);
+
+                    DataColumn dtColumnUserLastModificationIdFordtParameterCopy = new DataColumn();
+                    dtColumnUserLastModificationIdFordtParameterCopy.DataType = typeof(string);
+                    dtColumnUserLastModificationIdFordtParameterCopy.ColumnName = "UserLastModificationId";
+                    dtParameterCopy.Columns.Add(dtColumnUserLastModificationIdFordtParameterCopy);
+
                     DataColumn dtColumnNameFordtParameterCopy = new DataColumn();
                     dtColumnNameFordtParameterCopy.DataType = typeof(string);
                     dtColumnNameFordtParameterCopy.ColumnName = "Name";
@@ -273,31 +299,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
                     dtColumnIsPrivateFordtParameterCopy.DataType = typeof(string);
                     dtColumnIsPrivateFordtParameterCopy.ColumnName = "IsPrivate";
                     dtParameterCopy.Columns.Add(dtColumnIsPrivateFordtParameterCopy);
-
-                    DataColumn dtColumnActiveFordtParameterCopy = new DataColumn();
-                    dtColumnActiveFordtParameterCopy.DataType = typeof(string);
-                    dtColumnActiveFordtParameterCopy.ColumnName = "Active";
-                    dtParameterCopy.Columns.Add(dtColumnActiveFordtParameterCopy);
-
-                    DataColumn dtColumnUserCreationIdFordtParameterCopy = new DataColumn();
-                    dtColumnUserCreationIdFordtParameterCopy.DataType = typeof(string);
-                    dtColumnUserCreationIdFordtParameterCopy.ColumnName = "UserCreationId";
-                    dtParameterCopy.Columns.Add(dtColumnUserCreationIdFordtParameterCopy);
-
-                    DataColumn dtColumnUserLastModificationIdFordtParameterCopy = new DataColumn();
-                    dtColumnUserLastModificationIdFordtParameterCopy.DataType = typeof(string);
-                    dtColumnUserLastModificationIdFordtParameterCopy.ColumnName = "UserLastModificationId";
-                    dtParameterCopy.Columns.Add(dtColumnUserLastModificationIdFordtParameterCopy);
-
-                    DataColumn dtColumnDateTimeCreationFordtParameterCopy = new DataColumn();
-                    dtColumnDateTimeCreationFordtParameterCopy.DataType = typeof(string);
-                    dtColumnDateTimeCreationFordtParameterCopy.ColumnName = "DateTimeCreation";
-                    dtParameterCopy.Columns.Add(dtColumnDateTimeCreationFordtParameterCopy);
-
-                    DataColumn dtColumnDateTimeLastModificationFordtParameterCopy = new DataColumn();
-                    dtColumnDateTimeLastModificationFordtParameterCopy.DataType = typeof(string);
-                    dtColumnDateTimeLastModificationFordtParameterCopy.ColumnName = "DateTimeLastModification";
-                    dtParameterCopy.Columns.Add(dtColumnDateTimeLastModificationFordtParameterCopy);
 
                     
                 #endregion
@@ -333,6 +334,31 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
                     dtColumnParameterIdFordtParameterCopy.ColumnName = "ParameterId";
                     dtParameterCopy.Columns.Add(dtColumnParameterIdFordtParameterCopy);
 
+                    DataColumn dtColumnActiveFordtParameterCopy = new DataColumn();
+                    dtColumnActiveFordtParameterCopy.DataType = typeof(string);
+                    dtColumnActiveFordtParameterCopy.ColumnName = "Active";
+                    dtParameterCopy.Columns.Add(dtColumnActiveFordtParameterCopy);
+
+                    DataColumn dtColumnDateTimeCreationFordtParameterCopy = new DataColumn();
+                    dtColumnDateTimeCreationFordtParameterCopy.DataType = typeof(string);
+                    dtColumnDateTimeCreationFordtParameterCopy.ColumnName = "DateTimeCreation";
+                    dtParameterCopy.Columns.Add(dtColumnDateTimeCreationFordtParameterCopy);
+
+                    DataColumn dtColumnDateTimeLastModificationFordtParameterCopy = new DataColumn();
+                    dtColumnDateTimeLastModificationFordtParameterCopy.DataType = typeof(string);
+                    dtColumnDateTimeLastModificationFordtParameterCopy.ColumnName = "DateTimeLastModification";
+                    dtParameterCopy.Columns.Add(dtColumnDateTimeLastModificationFordtParameterCopy);
+
+                    DataColumn dtColumnUserCreationIdFordtParameterCopy = new DataColumn();
+                    dtColumnUserCreationIdFordtParameterCopy.DataType = typeof(string);
+                    dtColumnUserCreationIdFordtParameterCopy.ColumnName = "UserCreationId";
+                    dtParameterCopy.Columns.Add(dtColumnUserCreationIdFordtParameterCopy);
+
+                    DataColumn dtColumnUserLastModificationIdFordtParameterCopy = new DataColumn();
+                    dtColumnUserLastModificationIdFordtParameterCopy.DataType = typeof(string);
+                    dtColumnUserLastModificationIdFordtParameterCopy.ColumnName = "UserLastModificationId";
+                    dtParameterCopy.Columns.Add(dtColumnUserLastModificationIdFordtParameterCopy);
+
                     DataColumn dtColumnNameFordtParameterCopy = new DataColumn();
                     dtColumnNameFordtParameterCopy.DataType = typeof(string);
                     dtColumnNameFordtParameterCopy.ColumnName = "Name";
@@ -347,31 +373,6 @@ namespace FiyiStackWeb.Areas.BasicCore.Services
                     dtColumnIsPrivateFordtParameterCopy.DataType = typeof(string);
                     dtColumnIsPrivateFordtParameterCopy.ColumnName = "IsPrivate";
                     dtParameterCopy.Columns.Add(dtColumnIsPrivateFordtParameterCopy);
-
-                    DataColumn dtColumnActiveFordtParameterCopy = new DataColumn();
-                    dtColumnActiveFordtParameterCopy.DataType = typeof(string);
-                    dtColumnActiveFordtParameterCopy.ColumnName = "Active";
-                    dtParameterCopy.Columns.Add(dtColumnActiveFordtParameterCopy);
-
-                    DataColumn dtColumnUserCreationIdFordtParameterCopy = new DataColumn();
-                    dtColumnUserCreationIdFordtParameterCopy.DataType = typeof(string);
-                    dtColumnUserCreationIdFordtParameterCopy.ColumnName = "UserCreationId";
-                    dtParameterCopy.Columns.Add(dtColumnUserCreationIdFordtParameterCopy);
-
-                    DataColumn dtColumnUserLastModificationIdFordtParameterCopy = new DataColumn();
-                    dtColumnUserLastModificationIdFordtParameterCopy.DataType = typeof(string);
-                    dtColumnUserLastModificationIdFordtParameterCopy.ColumnName = "UserLastModificationId";
-                    dtParameterCopy.Columns.Add(dtColumnUserLastModificationIdFordtParameterCopy);
-
-                    DataColumn dtColumnDateTimeCreationFordtParameterCopy = new DataColumn();
-                    dtColumnDateTimeCreationFordtParameterCopy.DataType = typeof(string);
-                    dtColumnDateTimeCreationFordtParameterCopy.ColumnName = "DateTimeCreation";
-                    dtParameterCopy.Columns.Add(dtColumnDateTimeCreationFordtParameterCopy);
-
-                    DataColumn dtColumnDateTimeLastModificationFordtParameterCopy = new DataColumn();
-                    dtColumnDateTimeLastModificationFordtParameterCopy.DataType = typeof(string);
-                    dtColumnDateTimeLastModificationFordtParameterCopy.ColumnName = "DateTimeLastModification";
-                    dtParameterCopy.Columns.Add(dtColumnDateTimeLastModificationFordtParameterCopy);
 
                     
                     #endregion

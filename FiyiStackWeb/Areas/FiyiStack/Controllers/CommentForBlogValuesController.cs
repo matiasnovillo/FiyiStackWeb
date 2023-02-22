@@ -146,7 +146,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/InsertOrUpdateAsync")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
@@ -266,7 +266,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/{CommentForBlogId:int}")]
         public IActionResult DeleteByCommentForBlogId(int CommentForBlogId)
         {
@@ -300,7 +300,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/{DeleteType}")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
@@ -335,7 +335,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/{CommentForBlogId:int}")]
         public IActionResult CopyByCommentForBlogId(int CommentForBlogId)
         {
@@ -370,7 +370,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyManyOrAll/{CopyType}")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
@@ -461,7 +461,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsPDF/{ExportationType}")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -496,7 +496,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsExcel/{ExportationType}")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -531,7 +531,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        [Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsCSV/{ExportationType}")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {

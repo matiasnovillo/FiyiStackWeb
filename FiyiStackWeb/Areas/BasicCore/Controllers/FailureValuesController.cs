@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.BasicCore.DTOs;
 using FiyiStackWeb.Areas.BasicCore.Filters;
 using FiyiStackWeb.Areas.BasicCore.Protocols;
 using FiyiStackWeb.Areas.BasicCore.Models;
@@ -24,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 15/02/2023 17:31:00
+//Last modification on: 21/02/2023 17:35:10
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -32,7 +33,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 15/02/2023 17:31:00
+    /// Last modification: 21/02/2023 17:35:10
     /// </summary>
     [ApiController]
     [FailureFilter]
@@ -112,15 +113,15 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
             }
         }
 
-        [HttpPut("~/api/BasicCore/Failure/1/SelectAllPagedToJSON")]
-        public failureModelQuery SelectAllPagedToJSON([FromBody] failureModelQuery failureModelQuery)
+        [HttpPost("~/api/BasicCore/Failure/1/SelectAllPagedToJSON")]
+        public failureSelectAllPaged SelectAllPagedToJSON([FromBody] failureSelectAllPaged failureSelectAllPaged)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _FailureProtocol.SelectAllPagedToModel(failureModelQuery);
+                 return _FailureProtocol.SelectAllPagedToModel(failureSelectAllPaged);
             }
             catch (Exception ex)
             {

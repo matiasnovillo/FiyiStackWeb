@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.BasicCulture.DTOs;
 using FiyiStackWeb.Areas.BasicCulture.Filters;
 using FiyiStackWeb.Areas.BasicCulture.Protocols;
 using FiyiStackWeb.Areas.BasicCulture.Models;
@@ -24,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 15/02/2023 18:02:20
+//Last modification on: 21/02/2023 17:54:25
 
 namespace FiyiStackWeb.Areas.BasicCulture.Controllers
 {
@@ -32,7 +33,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 15/02/2023 18:02:20
+    /// Last modification: 21/02/2023 17:54:25
     /// </summary>
     [ApiController]
     [SexFilter]
@@ -112,15 +113,15 @@ namespace FiyiStackWeb.Areas.BasicCulture.Controllers
             }
         }
 
-        [HttpPut("~/api/BasicCulture/Sex/1/SelectAllPagedToJSON")]
-        public sexModelQuery SelectAllPagedToJSON([FromBody] sexModelQuery sexModelQuery)
+        [HttpPost("~/api/BasicCulture/Sex/1/SelectAllPagedToJSON")]
+        public sexSelectAllPaged SelectAllPagedToJSON([FromBody] sexSelectAllPaged sexSelectAllPaged)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _SexProtocol.SelectAllPagedToModel(sexModelQuery);
+                 return _SexProtocol.SelectAllPagedToModel(sexSelectAllPaged);
             }
             catch (Exception ex)
             {

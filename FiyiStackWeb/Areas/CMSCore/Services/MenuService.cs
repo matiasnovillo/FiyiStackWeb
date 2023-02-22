@@ -3,6 +3,7 @@ using CsvHelper;
 using IronPdf;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.CMSCore.Models;
+using FiyiStackWeb.Areas.CMSCore.DTOs;
 using FiyiStackWeb.Areas.CMSCore.Protocols;
 using FiyiStackWeb.Library;
 using System;
@@ -22,7 +23,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 15/02/2023 18:14:40
+//Last modification on: 21/02/2023 17:56:41
 
 namespace FiyiStackWeb.Areas.CMSCore.Services
 {
@@ -31,7 +32,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 15/02/2023 18:14:40
+    /// Last modification: 21/02/2023 17:56:41
     /// </summary>
     public partial class MenuService : MenuProtocol
     {
@@ -53,9 +54,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
             return new MenuModel().SelectAllToList();
         }
 
-        public menuModelQuery SelectAllPagedToModel(menuModelQuery menuModelQuery)
+        public menuSelectAllPaged SelectAllPagedToModel(menuSelectAllPaged menuSelectAllPaged)
         {
-            return new MenuModel().SelectAllPagedToModel(menuModelQuery);
+            return new MenuModel().SelectAllPagedToModel(menuSelectAllPaged);
         } 
         #endregion
 

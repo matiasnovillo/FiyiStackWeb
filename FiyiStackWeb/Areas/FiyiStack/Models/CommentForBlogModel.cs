@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     public partial class CommentForBlogModel
     {
         [NotMapped]
-        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Development();
+        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Production();
 
         #region Fields
         [Library.ModelAttributeValidator.Key("CommentForBlogId")]
