@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.FiyiStack.DTOs;
 using FiyiStackWeb.Areas.FiyiStack.Filters;
 using FiyiStackWeb.Areas.FiyiStack.Protocols;
 using FiyiStackWeb.Areas.FiyiStack.Models;
@@ -24,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 19/02/2023 10:32:42
+//Last modification on: 22/02/2023 7:10:30
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -32,7 +33,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 19/02/2023 10:32:42
+    /// Last modification: 22/02/2023 7:10:30
     /// </summary>
     [ApiController]
     [CommentForBlogFilter]
@@ -113,14 +114,14 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON")]
-        public commentforblogModelQuery SelectAllPagedToJSON([FromBody] commentforblogModelQuery commentforblogModelQuery)
+        public commentforblogSelectAllPaged SelectAllPagedToJSON([FromBody] commentforblogSelectAllPaged commentforblogSelectAllPaged)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _CommentForBlogProtocol.SelectAllPagedToModel(commentforblogModelQuery);
+                 return _CommentForBlogProtocol.SelectAllPagedToModel(commentforblogSelectAllPaged);
             }
             catch (Exception ex)
             {
@@ -146,7 +147,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/InsertOrUpdateAsync")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
@@ -266,7 +267,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/CommentForBlog/1/DeleteByCommentForBlogId/{CommentForBlogId:int}")]
         public IActionResult DeleteByCommentForBlogId(int CommentForBlogId)
         {
@@ -300,7 +301,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/DeleteManyOrAll/{DeleteType}")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
@@ -335,7 +336,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyByCommentForBlogId/{CommentForBlogId:int}")]
         public IActionResult CopyByCommentForBlogId(int CommentForBlogId)
         {
@@ -370,7 +371,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/CopyManyOrAll/{CopyType}")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
@@ -411,9 +412,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/PostComment")]
-        [Produces("text/plain")]
+        
         public IActionResult PostComment()
         {
             try
@@ -461,7 +462,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsPDF/{ExportationType}")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -496,7 +497,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsExcel/{ExportationType}")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -531,7 +532,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        [Produces("text/plain")] //For production mode, uncomment this line
+        //[Produces("text/plain")] For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/CommentForBlog/1/ExportAsCSV/{ExportationType}")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
