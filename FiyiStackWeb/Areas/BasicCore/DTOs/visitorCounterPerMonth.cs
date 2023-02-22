@@ -1,6 +1,6 @@
 ﻿namespace FiyiStackWeb.Areas.BasicCore.DTOs
 {
-    public class visitorsCounterPerMonth
+    public class visitorCounterPerMonth
     {
         public string Month { get; set; }
 

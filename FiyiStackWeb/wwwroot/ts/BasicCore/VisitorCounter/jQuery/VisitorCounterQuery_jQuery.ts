@@ -19,7 +19,7 @@ import "bootstrap-notify";
 
 //Stack: 10
 
-//Last modification on: 22/02/2023 7:45:50
+//Last modification on: 22/02/2023 13:29:13
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -79,6 +79,11 @@ class VisitorCounterQuery {
         <th scope="col">
             <button value="DateTime" class="btn btn-outline-secondary btn-sm" type="button">
                 DateTime
+            </button>
+        </th>
+        <th scope="col">
+            <button value="Page" class="btn btn-outline-secondary btn-sm" type="button">
+                Page
             </button>
         </th>
         
@@ -186,6 +191,11 @@ class VisitorCounterQuery {
             <i class="fas fa-calendar"></i> ${row.DateTime}
         </strong>
     </td>
+    <td class="text-left">
+        <strong><i class="fas fa-font">
+            </i> ${row.Page}
+        </strong>
+    </td>
     
     <!-- Actions -->
     <td class="text-right">
@@ -247,6 +257,10 @@ class VisitorCounterQuery {
                         <br/>
                         <span class="text-white mb-4">
                            DateTime <i class="fas fa-calendar"></i> ${row.DateTime}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           Page <i class="fas fa-font"></i> ${row.Page}
                         </span>
                         <br/>
                         

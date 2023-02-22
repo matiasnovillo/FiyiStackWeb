@@ -15,7 +15,7 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 22/02/2023 7:45:50
+//Last modification on: 22/02/2023 13:29:13
 
 namespace FiyiStackWeb.Areas.BasicCore.Protocols
 {
@@ -25,7 +25,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Protocols
     /// Function:          This protocol/interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 22/02/2023 7:45:50
+    /// Last modification: 22/02/2023 13:29:13
     /// </summary>
     public partial interface VisitorCounterProtocol
     {
@@ -40,8 +40,10 @@ namespace FiyiStackWeb.Areas.BasicCore.Protocols
         List<VisitorCounterModel> SelectAllToList();
 
         visitorcounterSelectAllPaged SelectAllPagedToModel(visitorcounterSelectAllPaged visitorcounterSelectAllPaged);
+        
+        List<visitorCounterPerMonth> SelectAllToVisitorsPerMonthChart();
 
-        List<visitorsCounterPerMonth> SelectAllToVisitorsPerMonthChart();
+        List<visitorCountPageVisits> SelectAllToVisitorsCounterPageChart();
         #endregion
 
         #region Non-Queries

@@ -14,7 +14,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//7 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 7:45:50 | Stack: 9
+//8 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 13:29:13 | Stack: 9
 
 export class VisitorCounterModel {
 
@@ -26,6 +26,7 @@ export class VisitorCounterModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	DateTime?: string | string[] | number | undefined;
+	Page?: string | string[] | number | undefined;
     
 
     //Queries

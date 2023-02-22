@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FiyiStackWeb.Areas.BasicCore.Models;
 
 namespace FiyiStackWeb.Pages
 {
@@ -53,6 +54,19 @@ namespace FiyiStackWeb.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code (for the moment)"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"FiyiStack: The low-code generator";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

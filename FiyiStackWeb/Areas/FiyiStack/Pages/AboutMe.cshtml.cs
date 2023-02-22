@@ -1,6 +1,8 @@
 using FiyiStackWeb.Areas.FiyiStack.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
+using FiyiStackWeb.Areas.BasicCore.Models;
+using System;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Pages
 {
@@ -42,6 +44,19 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""About me. The creator of FiyiStak"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"About me - FiyiStack";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/AboutMe",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

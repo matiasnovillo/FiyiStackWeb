@@ -25,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 22/02/2023 7:45:50
+//Last modification on: 22/02/2023 13:29:13
 
 namespace FiyiStackWeb.Areas.BasicCore.Controllers
 {
@@ -33,7 +33,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 22/02/2023 7:45:50
+    /// Last modification: 22/02/2023 13:29:13
     /// </summary>
     [ApiController]
     [VisitorCounterFilter]
@@ -146,7 +146,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
         }
 
         [HttpGet("~/api/BasicCore/VisitorCounter/1/SelectAllToVisitorsPerMonthChart")]
-        public List<visitorsCounterPerMonth> SelectAllToVisitorsPerMonthChart()
+        public List<visitorCounterPerMonth> SelectAllToVisitorsPerMonthChart()
         {
             try
             {
@@ -154,6 +154,38 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
                 return _VisitorCounterProtocol.SelectAllToVisitorsPerMonthChart();
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return null;
+            }
+        }
+
+        [HttpGet("~/api/BasicCore/VisitorCounter/1/SelectAllToVisitorsCounterPageChart")]
+        public List<visitorCountPageVisits> SelectAllToVisitorsCounterPageChart()
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                return _VisitorCounterProtocol.SelectAllToVisitorsCounterPageChart();
             }
             catch (Exception ex)
             {
@@ -198,6 +230,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                 int VisitorCounterId = Convert.ToInt32(HttpContext.Request.Form["basiccore-visitorcounter-visitorcounterid-input"]);
                 
                 DateTime DateTime = Convert.ToDateTime(HttpContext.Request.Form["basiccore-visitorcounter-datetime-input"]);
+                string Page = HttpContext.Request.Form["basiccore-visitorcounter-page-input"];
                 
                 #endregion
 
@@ -215,6 +248,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                         DateTimeCreation = DateTime.Now,
                         DateTimeLastModification = DateTime.Now,
                         DateTime = DateTime,
+                        Page = Page,
                         
                     };
                     
@@ -228,6 +262,7 @@ namespace FiyiStackWeb.Areas.BasicCore.Controllers
                     VisitorCounterModel.UserLastModificationId = UserId;
                     VisitorCounterModel.DateTimeLastModification = DateTime.Now;
                     VisitorCounterModel.DateTime = DateTime;
+                    VisitorCounterModel.Page = Page;
                                        
 
                     RowsAffected = _VisitorCounterProtocol.UpdateByVisitorCounterId(VisitorCounterModel);

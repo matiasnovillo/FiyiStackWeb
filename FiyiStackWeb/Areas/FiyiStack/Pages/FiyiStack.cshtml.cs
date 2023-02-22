@@ -1,6 +1,8 @@
+using FiyiStackWeb.Areas.BasicCore.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
@@ -49,6 +51,19 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""Learn how to use FiyiStack, this generator can create ~5.000 with just 10 words (for the moment)"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"FiyiStack: The low-code generator";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/FiyiStack",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

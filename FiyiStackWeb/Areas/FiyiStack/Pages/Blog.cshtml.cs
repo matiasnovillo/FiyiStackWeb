@@ -4,6 +4,8 @@ using FiyiStackWeb.Areas.FiyiStack.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using FiyiStackWeb.Areas.BasicCore.Models;
+using System;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -65,6 +67,19 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""This is the blog of FiyiStack, here I will update all data related to new generations of software in many languages"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Blog - FiyiStack";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/Blog",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

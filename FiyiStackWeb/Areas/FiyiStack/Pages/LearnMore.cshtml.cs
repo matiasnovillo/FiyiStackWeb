@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
+using System;
+using FiyiStackWeb.Areas.BasicCore.Models;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Pages
 {
@@ -41,6 +43,19 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Learn more - FiyiStack";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/LearnMore",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

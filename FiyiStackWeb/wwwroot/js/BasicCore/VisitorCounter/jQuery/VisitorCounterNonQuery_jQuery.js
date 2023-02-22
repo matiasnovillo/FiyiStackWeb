@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 22/02/2023 7:45:50
+//Last modification on: 22/02/2023 13:29:13
 
 //Create a formdata object
 var formData = new FormData();
@@ -43,6 +43,7 @@ $(document).ready(function () {
                 formData.append("basiccore-visitorcounter-visitorcounterid-input", $("#basiccore-visitorcounter-visitorcounterid-input").val());
 
                 formData.append("basiccore-visitorcounter-datetime-input", $("#basiccore-visitorcounter-datetime-input").val());
+                formData.append("basiccore-visitorcounter-page-input", $("#basiccore-visitorcounter-page-input").val());
                 
 
                 //Setup request

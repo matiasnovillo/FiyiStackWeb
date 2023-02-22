@@ -1,6 +1,8 @@
 using FiyiStackWeb.Areas.FiyiStack.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
+using System;
+using FiyiStackWeb.Areas.BasicCore.Models;
 
 namespace FiyiStackWeb.Areas.FiyiStack
 {
@@ -42,6 +44,19 @@ namespace FiyiStackWeb.Areas.FiyiStack
             ViewData["description"] = $@"<meta name=""description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Pricing - FiyiStack";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/LearnMore",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }
