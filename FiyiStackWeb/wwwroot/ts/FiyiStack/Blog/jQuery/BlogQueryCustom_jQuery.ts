@@ -63,7 +63,7 @@ class BlogQuery {
             <div class="card-header d-flex align-items-center">
               <div class="d-flex align-items-center">
                 <a href="javascript:;">
-                  <img src="/img/FiyiStack/Me.jpeg" class="avatar">
+                  <img src="/img/FiyiStack/Me.jpg" class="avatar">
                 </a>
                 <div class="mx-3">
                   <a href="javascript:;" class="text-dark font-weight-600 text-sm">Matias Novillo</a>

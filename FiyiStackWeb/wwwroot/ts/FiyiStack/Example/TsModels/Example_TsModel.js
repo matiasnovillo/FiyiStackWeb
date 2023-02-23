@@ -13,7 +13,7 @@ var ajax_1 = require("rxjs/ajax");
  * in all copies or substantial portions of the Software.
  *
 */
-//23 fields | Sub-models: 0 models  | Last modification on: 19/02/2023 11:08:32 | Stack: 9
+//23 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 21:12:24 | Stack: 9
 var ExampleModel = /** @class */ (function () {
     function ExampleModel() {
     }
@@ -42,7 +42,7 @@ var ExampleModel = /** @class */ (function () {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
         };
-        return Rx.from(ajax_1.ajax.put(URL, Body, Header));
+        return Rx.from(ajax_1.ajax.post(URL, Body, Header));
     };
     //Non-Queries
     ExampleModel.DeleteByExampleId = function (ExampleId) {

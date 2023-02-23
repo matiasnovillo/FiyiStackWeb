@@ -14,7 +14,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//23 fields | Sub-models: 0 models  | Last modification on: 19/02/2023 11:08:32 | Stack: 9
+//23 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 21:12:24 | Stack: 9
 
 export class ExampleModel {
 
@@ -71,7 +71,7 @@ export class ExampleModel {
             "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8"
         };
-        return Rx.from(ajax.put(URL, Body, Header));
+        return Rx.from(ajax.post(URL, Body, Header));
     }
 
     //Non-Queries

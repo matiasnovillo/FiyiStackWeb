@@ -20,11 +20,11 @@ var BlogModel = /** @class */ (function () {
     //Queries
     BlogModel.Select1ByBlogId = function (BlogId) {
         var URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdToJSON/" + BlogId;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     BlogModel.SelectAll = function () {
         var URL = "/api/FiyiStack/Blog/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     BlogModel.SelectAllPaged = function (blogmodelQuery) {
         debugger;
