@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using FiyiStackWeb.Areas.BasicCore.Models;
 using FiyiStackWeb.Areas.FiyiStack.DTOs;
 using FiyiStackWeb.Areas.FiyiStack.Filters;
-using FiyiStackWeb.Areas.FiyiStack.Protocols;
+using FiyiStackWeb.Areas.FiyiStack.Interfaces;
 using FiyiStackWeb.Areas.FiyiStack.Models;
 using FiyiStackWeb.Library;
 using System.Threading.Tasks;
@@ -40,12 +40,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     public partial class BlogValuesController : ControllerBase
     {
         private readonly IWebHostEnvironment _WebHostEnvironment;
-        private readonly BlogProtocol _BlogProtocol;
+        private readonly IBlog _IBlog;
 
-        public BlogValuesController(IWebHostEnvironment WebHostEnvironment, BlogProtocol BlogProtocol) 
+        public BlogValuesController(IWebHostEnvironment WebHostEnvironment, IBlog IBlog) 
         {
             _WebHostEnvironment = WebHostEnvironment;
-            _BlogProtocol = BlogProtocol;
+            _IBlog = IBlog;
         }
 
         #region Queries
@@ -57,7 +57,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                return _BlogProtocol.Select1ByBlogIdToModel(BlogId);
+                return _IBlog.Select1ByBlogIdToModel(BlogId);
             }
             catch (Exception ex) 
             { 
@@ -89,7 +89,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                return _BlogProtocol.SelectAllToList();
+                return _IBlog.SelectAllToList();
             }
             catch (Exception ex) 
             { 
@@ -121,7 +121,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                 return _BlogProtocol.SelectAllPagedToModel(blogSelectAllPaged);
+                 return _IBlog.SelectAllPagedToModel(blogSelectAllPaged);
             }
             catch (Exception ex)
             {
@@ -194,7 +194,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                         
                     };
                     
-                    NewEnteredId = _BlogProtocol.Insert(BlogModel);
+                    NewEnteredId = _IBlog.Insert(BlogModel);
                 }
                 else
                 {
@@ -208,7 +208,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     BlogModel.BackgroundImage = BackgroundImage;
                                        
 
-                    RowsAffected = _BlogProtocol.UpdateByBlogId(BlogModel);
+                    RowsAffected = _IBlog.UpdateByBlogId(BlogModel);
                 }
                 
 
@@ -277,7 +277,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                int RowsAffected = _BlogProtocol.DeleteByBlogId(BlogId);
+                int RowsAffected = _IBlog.DeleteByBlogId(BlogId);
                 return StatusCode(200, RowsAffected);
             }
             catch (Exception ex) 
@@ -311,7 +311,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                _BlogProtocol.DeleteManyOrAll(Ajax, DeleteType);
+                _IBlog.DeleteManyOrAll(Ajax, DeleteType);
 
                 return StatusCode(200, Ajax.AjaxForString);
             }
@@ -346,7 +346,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                int NewEnteredId = _BlogProtocol.CopyByBlogId(BlogId);
+                int NewEnteredId = _IBlog.CopyByBlogId(BlogId);
 
                 return StatusCode(200, NewEnteredId);
             }
@@ -381,7 +381,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                int[] NewEnteredIds = _BlogProtocol.CopyManyOrAll(Ajax, CopyType);
+                int[] NewEnteredIds = _IBlog.CopyManyOrAll(Ajax, CopyType);
                 string NewEnteredIdsAsString = "";
 
                 for (int i = 0; i < NewEnteredIds.Length; i++)
@@ -425,7 +425,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                DateTime Now = _BlogProtocol.ExportAsPDF(Ajax, ExportationType);
+                DateTime Now = _IBlog.ExportAsPDF(Ajax, ExportationType);
 
                 return StatusCode(200, new Ajax() { AjaxForString = Now.ToString("yyyy_MM_dd_HH_mm_ss_fff") });
             }
@@ -460,7 +460,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                DateTime Now = _BlogProtocol.ExportAsExcel(Ajax, ExportationType);
+                DateTime Now = _IBlog.ExportAsExcel(Ajax, ExportationType);
 
                 return StatusCode(200, new Ajax() { AjaxForString = Now.ToString("yyyy_MM_dd_HH_mm_ss_fff") });
             }
@@ -495,7 +495,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                DateTime Now = _BlogProtocol.ExportAsCSV(Ajax, ExportationType);
+                DateTime Now = _IBlog.ExportAsCSV(Ajax, ExportationType);
 
                 return StatusCode(200, new Ajax() { AjaxForString = Now.ToString("yyyy_MM_dd_HH_mm_ss_fff") });
             }

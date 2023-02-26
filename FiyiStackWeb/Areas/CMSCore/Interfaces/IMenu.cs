@@ -1,5 +1,5 @@
-using FiyiStackWeb.Areas.BasicCulture.DTOs;
-using FiyiStackWeb.Areas.BasicCulture.Models;
+using FiyiStackWeb.Areas.CMSCore.DTOs;
+using FiyiStackWeb.Areas.CMSCore.Models;
 using FiyiStackWeb.Library;
 using System;
 using System.Collections.Generic;
@@ -15,58 +15,58 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 21/02/2023 17:51:29
+//Last modification on: 21/02/2023 17:56:41
 
-namespace FiyiStackWeb.Areas.BasicCulture.Protocols
+namespace FiyiStackWeb.Areas.CMSCore.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 21/02/2023 17:51:29
+    /// Last modification: 21/02/2023 17:56:41
     /// </summary>
-    public partial interface ProvinceProtocol
+    public partial interface IMenu
     {
         #region Queries
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
         /// </summary>
-        /// <param name="ProvinceId"></param>
+        /// <param name="MenuId"></param>
         /// <returns></returns>
-        ProvinceModel Select1ByProvinceIdToModel(int ProvinceId);
+        MenuModel Select1ByMenuIdToModel(int MenuId);
 
-        List<ProvinceModel> SelectAllToList();
+        List<MenuModel> SelectAllToList();
 
-        provinceSelectAllPaged SelectAllPagedToModel(provinceSelectAllPaged provinceSelectAllPaged);
+        menuSelectAllPaged SelectAllPagedToModel(menuSelectAllPaged menuSelectAllPaged);
         #endregion
 
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
-        /// <param name="Province"></param>
-        /// <returns>NewEnteredId: The ID of the last registry inserted in Province table</returns>
-        int Insert(ProvinceModel Province);
+        /// <param name="Menu"></param>
+        /// <returns>NewEnteredId: The ID of the last registry inserted in Menu table</returns>
+        int Insert(MenuModel Menu);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
-        /// <param name="Province"></param>
-        /// <returns>The number of rows updated in Province table</returns>
-        int UpdateByProvinceId(ProvinceModel Province);
+        /// <param name="Menu"></param>
+        /// <returns>The number of rows updated in Menu table</returns>
+        int UpdateByMenuId(MenuModel Menu);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull deletion in database
         /// </summary>
-        /// <param name="ProvinceId"></param>
-        /// <returns>The number of rows deleted in Province table</returns>
-        int DeleteByProvinceId(int ProvinceId);
+        /// <param name="MenuId"></param>
+        /// <returns>The number of rows deleted in Menu table</returns>
+        int DeleteByMenuId(int MenuId);
 
         void DeleteManyOrAll(Ajax Ajax, string DeleteType);
 
-        int CopyByProvinceId(int ProvinceId);
+        int CopyByMenuId(int MenuId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
         #endregion

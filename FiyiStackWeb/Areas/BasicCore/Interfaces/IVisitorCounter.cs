@@ -17,17 +17,17 @@ using System.Collections.Generic;
 
 //Last modification on: 22/02/2023 13:29:13
 
-namespace FiyiStackWeb.Areas.BasicCore.Protocols
+namespace FiyiStackWeb.Areas.BasicCore.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
     /// Last modification: 22/02/2023 13:29:13
     /// </summary>
-    public partial interface VisitorCounterProtocol
+    public partial interface IVisitorCounter
     {
         #region Queries
         /// <summary>

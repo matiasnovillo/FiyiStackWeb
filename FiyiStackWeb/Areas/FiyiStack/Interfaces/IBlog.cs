@@ -1,5 +1,5 @@
-using FiyiStackWeb.Areas.CMSCore.DTOs;
-using FiyiStackWeb.Areas.CMSCore.Models;
+using FiyiStackWeb.Areas.FiyiStack.DTOs;
+using FiyiStackWeb.Areas.FiyiStack.Models;
 using FiyiStackWeb.Library;
 using System;
 using System.Collections.Generic;
@@ -15,58 +15,58 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 21/02/2023 17:59:08
+//Last modification on: 22/02/2023 6:53:01
 
-namespace FiyiStackWeb.Areas.CMSCore.Protocols
+namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 21/02/2023 17:59:08
+    /// Last modification: 22/02/2023 6:53:01
     /// </summary>
-    public partial interface RoleProtocol
+    public partial interface IBlog
     {
         #region Queries
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
         /// </summary>
-        /// <param name="RoleId"></param>
+        /// <param name="BlogId"></param>
         /// <returns></returns>
-        RoleModel Select1ByRoleIdToModel(int RoleId);
+        BlogModel Select1ByBlogIdToModel(int BlogId);
 
-        List<RoleModel> SelectAllToList();
+        List<BlogModel> SelectAllToList();
 
-        roleSelectAllPaged SelectAllPagedToModel(roleSelectAllPaged roleSelectAllPaged);
+        blogSelectAllPaged SelectAllPagedToModel(blogSelectAllPaged blogSelectAllPaged);
         #endregion
 
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
-        /// <param name="Role"></param>
-        /// <returns>NewEnteredId: The ID of the last registry inserted in Role table</returns>
-        int Insert(RoleModel Role);
+        /// <param name="Blog"></param>
+        /// <returns>NewEnteredId: The ID of the last registry inserted in Blog table</returns>
+        int Insert(BlogModel Blog);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
-        /// <param name="Role"></param>
-        /// <returns>The number of rows updated in Role table</returns>
-        int UpdateByRoleId(RoleModel Role);
+        /// <param name="Blog"></param>
+        /// <returns>The number of rows updated in Blog table</returns>
+        int UpdateByBlogId(BlogModel Blog);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull deletion in database
         /// </summary>
-        /// <param name="RoleId"></param>
-        /// <returns>The number of rows deleted in Role table</returns>
-        int DeleteByRoleId(int RoleId);
+        /// <param name="BlogId"></param>
+        /// <returns>The number of rows deleted in Blog table</returns>
+        int DeleteByBlogId(int BlogId);
 
         void DeleteManyOrAll(Ajax Ajax, string DeleteType);
 
-        int CopyByRoleId(int RoleId);
+        int CopyByBlogId(int BlogId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
         #endregion

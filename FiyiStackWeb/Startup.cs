@@ -3,18 +3,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using FiyiStackWeb.Areas.BasicCore.Protocols;
-using FiyiStackWeb.Areas.CMSCore.Protocols;
+using FiyiStackWeb.Areas.BasicCore.Interfaces;
+using FiyiStackWeb.Areas.CMSCore.Interfaces;
 using FiyiStackWeb.Areas.BasicCore.Services;
 using FiyiStackWeb.Areas.CMSCore.Services;
 using FiyiStackWeb.Library;
 using System;
-using FiyiStackWeb.Areas.FiyiStack.Protocols;
+using FiyiStackWeb.Areas.FiyiStack.Interfaces;
 using FiyiStackWeb.Areas.FiyiStack.Services;
 using SixLaborsCaptcha.Mvc.Core;
 using FiyiStackWeb.Areas.BasicCulture.Services;
-using FiyiStackWeb.Areas.BasicCulture.Protocols;
-using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.BasicCulture.Interfaces;
 
 namespace FiyiStackWeb
 {
@@ -46,25 +45,25 @@ namespace FiyiStackWeb
             services.AddHttpContextAccessor();
 
             //Area: BasicCore
-            services.AddScoped<FailureProtocol, FailureService>();
-            services.AddScoped<ParameterProtocol, ParameterService>();
-            services.AddScoped<VisitorCounterProtocol, VisitorCounterService>();
+            services.AddScoped<IFailure, FailureService>();
+            services.AddScoped<IParameter, ParameterService>();
+            services.AddScoped<IVisitorCounter, VisitorCounterService>();
             //Area: BasicCulture
-            services.AddScoped<CityProtocol, CityService>();
-            services.AddScoped<ProvinceProtocol, ProvinceService>();
-            services.AddScoped<CountryProtocol, CountryService>();
-            services.AddScoped<PlanetProtocol, PlanetService>();
-            services.AddScoped<SexProtocol, SexService>();
+            services.AddScoped<ICity, CityService>();
+            services.AddScoped<IProvince, ProvinceService>();
+            services.AddScoped<ICountry, CountryService>();
+            services.AddScoped<IPlanet, PlanetService>();
+            services.AddScoped<ISex, SexService>();
             //Area: CMSCore
-            services.AddScoped<UserProtocol, UserService>();
-            services.AddScoped<MenuProtocol, MenuService>();
-            services.AddScoped<RoleMenuProtocol, RoleMenuService>();
-            services.AddScoped<RoleProtocol, RoleService>();
+            services.AddScoped<IUser, UserService>();
+            services.AddScoped<IMenu, MenuService>();
+            services.AddScoped<IRoleMenu, RoleMenuService>();
+            services.AddScoped<IRole, RoleService>();
             //Area: FiyiStack
-            services.AddScoped<FiyiStackProtocol, FiyiStackService>();
-            services.AddScoped<BlogProtocol, BlogService>();
-            services.AddScoped<CommentForBlogProtocol, CommentForBlogService>();
-            services.AddScoped<ExampleProtocol, ExampleService>();
+            services.AddScoped<IFiyiStack, FiyiStackService>();
+            services.AddScoped<IBlog, BlogService>();
+            services.AddScoped<ICommentForBlog, CommentForBlogService>();
+            services.AddScoped<IExample, ExampleService>();
 
             services.AddMvc();
             services.AddSession(options => {

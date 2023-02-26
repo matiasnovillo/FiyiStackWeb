@@ -15,58 +15,58 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 21/02/2023 17:35:10
+//Last modification on: 21/02/2023 17:37:17
 
-namespace FiyiStackWeb.Areas.BasicCore.Protocols
+namespace FiyiStackWeb.Areas.BasicCore.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 21/02/2023 17:35:10
+    /// Last modification: 21/02/2023 17:37:17
     /// </summary>
-    public partial interface FailureProtocol
+    public partial interface IParameter
     {
         #region Queries
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
         /// </summary>
-        /// <param name="FailureId"></param>
+        /// <param name="ParameterId"></param>
         /// <returns></returns>
-        FailureModel Select1ByFailureIdToModel(int FailureId);
+        ParameterModel Select1ByParameterIdToModel(int ParameterId);
 
-        List<FailureModel> SelectAllToList();
+        List<ParameterModel> SelectAllToList();
 
-        failureSelectAllPaged SelectAllPagedToModel(failureSelectAllPaged failureSelectAllPaged);
+        parameterSelectAllPaged SelectAllPagedToModel(parameterSelectAllPaged parameterSelectAllPaged);
         #endregion
 
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
-        /// <param name="Failure"></param>
-        /// <returns>NewEnteredId: The ID of the last registry inserted in Failure table</returns>
-        int Insert(FailureModel Failure);
+        /// <param name="Parameter"></param>
+        /// <returns>NewEnteredId: The ID of the last registry inserted in Parameter table</returns>
+        int Insert(ParameterModel Parameter);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
-        /// <param name="Failure"></param>
-        /// <returns>The number of rows updated in Failure table</returns>
-        int UpdateByFailureId(FailureModel Failure);
+        /// <param name="Parameter"></param>
+        /// <returns>The number of rows updated in Parameter table</returns>
+        int UpdateByParameterId(ParameterModel Parameter);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull deletion in database
         /// </summary>
-        /// <param name="FailureId"></param>
-        /// <returns>The number of rows deleted in Failure table</returns>
-        int DeleteByFailureId(int FailureId);
+        /// <param name="ParameterId"></param>
+        /// <returns>The number of rows deleted in Parameter table</returns>
+        int DeleteByParameterId(int ParameterId);
 
         void DeleteManyOrAll(Ajax Ajax, string DeleteType);
 
-        int CopyByFailureId(int FailureId);
+        int CopyByParameterId(int ParameterId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
         #endregion

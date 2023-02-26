@@ -4,7 +4,7 @@ using IronPdf;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.CMSCore.Models;
 using FiyiStackWeb.Areas.CMSCore.DTOs;
-using FiyiStackWeb.Areas.CMSCore.Protocols;
+using FiyiStackWeb.Areas.CMSCore.Interfaces;
 using FiyiStackWeb.Library;
 using System;
 using System.Collections.Generic;
@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
     /// Also, allow dependency injection inside controllers/web apis<br/>
     /// Last modification: 21/02/2023 17:59:08
     /// </summary>
-    public partial class RoleService : RoleProtocol
+    public partial class RoleService : IRole
     {
         private readonly IHttpContextAccessor _IHttpContextAccessor;
 

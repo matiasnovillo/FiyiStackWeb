@@ -15,60 +15,62 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 22/02/2023 6:53:01
+//Last modification on: 22/02/2023 7:10:30
 
-namespace FiyiStackWeb.Areas.FiyiStack.Protocols
+namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 22/02/2023 6:53:01
+    /// Last modification: 22/02/2023 7:10:30
     /// </summary>
-    public partial interface BlogProtocol
+    public partial interface ICommentForBlog
     {
         #region Queries
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
         /// </summary>
-        /// <param name="BlogId"></param>
+        /// <param name="CommentForBlogId"></param>
         /// <returns></returns>
-        BlogModel Select1ByBlogIdToModel(int BlogId);
+        CommentForBlogModel Select1ByCommentForBlogIdToModel(int CommentForBlogId);
 
-        List<BlogModel> SelectAllToList();
+        List<CommentForBlogModel> SelectAllToList();
 
-        blogSelectAllPaged SelectAllPagedToModel(blogSelectAllPaged blogSelectAllPaged);
+        commentforblogSelectAllPaged SelectAllPagedToModel(commentforblogSelectAllPaged commentforblogSelectAllPaged);
         #endregion
 
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
-        /// <param name="Blog"></param>
-        /// <returns>NewEnteredId: The ID of the last registry inserted in Blog table</returns>
-        int Insert(BlogModel Blog);
+        /// <param name="CommentForBlog"></param>
+        /// <returns>NewEnteredId: The ID of the last registry inserted in CommentForBlog table</returns>
+        int Insert(CommentForBlogModel CommentForBlog);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
-        /// <param name="Blog"></param>
-        /// <returns>The number of rows updated in Blog table</returns>
-        int UpdateByBlogId(BlogModel Blog);
+        /// <param name="CommentForBlog"></param>
+        /// <returns>The number of rows updated in CommentForBlog table</returns>
+        int UpdateByCommentForBlogId(CommentForBlogModel CommentForBlog);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull deletion in database
         /// </summary>
-        /// <param name="BlogId"></param>
-        /// <returns>The number of rows deleted in Blog table</returns>
-        int DeleteByBlogId(int BlogId);
+        /// <param name="CommentForBlogId"></param>
+        /// <returns>The number of rows deleted in CommentForBlog table</returns>
+        int DeleteByCommentForBlogId(int CommentForBlogId);
 
         void DeleteManyOrAll(Ajax Ajax, string DeleteType);
 
-        int CopyByBlogId(int BlogId);
+        int CopyByCommentForBlogId(int CommentForBlogId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
+
+        string PostComment(int UserId, int BlogId, string Comment);
         #endregion
 
         #region Other actions

@@ -1,5 +1,5 @@
-using FiyiStackWeb.Areas.CMSCore.DTOs;
-using FiyiStackWeb.Areas.CMSCore.Models;
+using FiyiStackWeb.Areas.FiyiStack.DTOs;
+using FiyiStackWeb.Areas.FiyiStack.Models;
 using FiyiStackWeb.Library;
 using System;
 using System.Collections.Generic;
@@ -15,58 +15,58 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 21/02/2023 17:56:41
+//Last modification on: 22/02/2023 6:50:49
 
-namespace FiyiStackWeb.Areas.CMSCore.Protocols
+namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 21/02/2023 17:56:41
+    /// Last modification: 22/02/2023 6:50:49
     /// </summary>
-    public partial interface MenuProtocol
+    public partial interface IExample
     {
         #region Queries
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
         /// </summary>
-        /// <param name="MenuId"></param>
+        /// <param name="ExampleId"></param>
         /// <returns></returns>
-        MenuModel Select1ByMenuIdToModel(int MenuId);
+        ExampleModel Select1ByExampleIdToModel(int ExampleId);
 
-        List<MenuModel> SelectAllToList();
+        List<ExampleModel> SelectAllToList();
 
-        menuSelectAllPaged SelectAllPagedToModel(menuSelectAllPaged menuSelectAllPaged);
+        exampleSelectAllPaged SelectAllPagedToModel(exampleSelectAllPaged exampleSelectAllPaged);
         #endregion
 
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
-        /// <param name="Menu"></param>
-        /// <returns>NewEnteredId: The ID of the last registry inserted in Menu table</returns>
-        int Insert(MenuModel Menu);
+        /// <param name="Example"></param>
+        /// <returns>NewEnteredId: The ID of the last registry inserted in Example table</returns>
+        int Insert(ExampleModel Example);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
-        /// <param name="Menu"></param>
-        /// <returns>The number of rows updated in Menu table</returns>
-        int UpdateByMenuId(MenuModel Menu);
+        /// <param name="Example"></param>
+        /// <returns>The number of rows updated in Example table</returns>
+        int UpdateByExampleId(ExampleModel Example);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull deletion in database
         /// </summary>
-        /// <param name="MenuId"></param>
-        /// <returns>The number of rows deleted in Menu table</returns>
-        int DeleteByMenuId(int MenuId);
+        /// <param name="ExampleId"></param>
+        /// <returns>The number of rows deleted in Example table</returns>
+        int DeleteByExampleId(int ExampleId);
 
         void DeleteManyOrAll(Ajax Ajax, string DeleteType);
 
-        int CopyByMenuId(int MenuId);
+        int CopyByExampleId(int ExampleId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
         #endregion

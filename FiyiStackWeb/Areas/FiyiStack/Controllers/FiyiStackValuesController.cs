@@ -9,7 +9,7 @@ using FiyiStackWeb.Library;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
-using FiyiStackWeb.Areas.FiyiStack.Protocols;
+using FiyiStackWeb.Areas.FiyiStack.Interfaces;
 using FiyiStackWeb.Areas.FiyiStack.Filters;
 
 /*
@@ -40,12 +40,12 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     public partial class FiyiStackValuesController : ControllerBase
     {
         private readonly IWebHostEnvironment _WebHostEnvironment;
-        private readonly FiyiStackProtocol _FiyiStackProtocol;
+        private readonly IFiyiStack _IFiyiStack;
 
-        public FiyiStackValuesController(IWebHostEnvironment WebHostEnvironment, FiyiStackProtocol MenuProtocol) 
+        public FiyiStackValuesController(IWebHostEnvironment WebHostEnvironment, IFiyiStack IFiyiStack) 
         {
             _WebHostEnvironment = WebHostEnvironment;
-            _FiyiStackProtocol = MenuProtocol;
+            _IFiyiStack = IFiyiStack;
         }
 
         #region Non-Queries
@@ -63,7 +63,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 string Email = HttpContext.Request.Form["email"];
                 string Message = HttpContext.Request.Form["textarea-message"];
 
-                string ReplyMessage = _FiyiStackProtocol.ContactMe(Name, Surname, Email, Message);
+                string ReplyMessage = _IFiyiStack.ContactMe(Name, Surname, Email, Message);
 
                 return StatusCode(200, ReplyMessage);
             }

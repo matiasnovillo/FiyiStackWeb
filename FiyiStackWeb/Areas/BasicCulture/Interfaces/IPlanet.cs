@@ -1,5 +1,5 @@
-using FiyiStackWeb.Areas.FiyiStack.DTOs;
-using FiyiStackWeb.Areas.FiyiStack.Models;
+using FiyiStackWeb.Areas.BasicCulture.DTOs;
+using FiyiStackWeb.Areas.BasicCulture.Models;
 using FiyiStackWeb.Library;
 using System;
 using System.Collections.Generic;
@@ -15,62 +15,60 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 22/02/2023 7:10:30
+//Last modification on: 21/02/2023 17:48:26
 
-namespace FiyiStackWeb.Areas.FiyiStack.Protocols
+namespace FiyiStackWeb.Areas.BasicCulture.Interfaces
 {
     /// <summary>
     /// Stack:             5<br/>
-    /// Name:              C# Protocol/Interface. <br/>
-    /// Function:          This protocol/interface allow you to standardize the C# service associated. 
+    /// Name:              C# Interface. <br/>
+    /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 22/02/2023 7:10:30
+    /// Last modification: 21/02/2023 17:48:26
     /// </summary>
-    public partial interface CommentForBlogProtocol
+    public partial interface IPlanet
     {
         #region Queries
         /// <summary>
         /// Note: Raise exception when the query find duplicated IDs
         /// </summary>
-        /// <param name="CommentForBlogId"></param>
+        /// <param name="PlanetId"></param>
         /// <returns></returns>
-        CommentForBlogModel Select1ByCommentForBlogIdToModel(int CommentForBlogId);
+        PlanetModel Select1ByPlanetIdToModel(int PlanetId);
 
-        List<CommentForBlogModel> SelectAllToList();
+        List<PlanetModel> SelectAllToList();
 
-        commentforblogSelectAllPaged SelectAllPagedToModel(commentforblogSelectAllPaged commentforblogSelectAllPaged);
+        planetSelectAllPaged SelectAllPagedToModel(planetSelectAllPaged planetSelectAllPaged);
         #endregion
 
         #region Non-Queries
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
-        /// <param name="CommentForBlog"></param>
-        /// <returns>NewEnteredId: The ID of the last registry inserted in CommentForBlog table</returns>
-        int Insert(CommentForBlogModel CommentForBlog);
+        /// <param name="Planet"></param>
+        /// <returns>NewEnteredId: The ID of the last registry inserted in Planet table</returns>
+        int Insert(PlanetModel Planet);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
-        /// <param name="CommentForBlog"></param>
-        /// <returns>The number of rows updated in CommentForBlog table</returns>
-        int UpdateByCommentForBlogId(CommentForBlogModel CommentForBlog);
+        /// <param name="Planet"></param>
+        /// <returns>The number of rows updated in Planet table</returns>
+        int UpdateByPlanetId(PlanetModel Planet);
 
         /// <summary>
         /// Note: Raise exception when the function did not made a succesfull deletion in database
         /// </summary>
-        /// <param name="CommentForBlogId"></param>
-        /// <returns>The number of rows deleted in CommentForBlog table</returns>
-        int DeleteByCommentForBlogId(int CommentForBlogId);
+        /// <param name="PlanetId"></param>
+        /// <returns>The number of rows deleted in Planet table</returns>
+        int DeleteByPlanetId(int PlanetId);
 
         void DeleteManyOrAll(Ajax Ajax, string DeleteType);
 
-        int CopyByCommentForBlogId(int CommentForBlogId);
+        int CopyByPlanetId(int PlanetId);
 
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
-
-        string PostComment(int UserId, int BlogId, string Comment);
         #endregion
 
         #region Other actions

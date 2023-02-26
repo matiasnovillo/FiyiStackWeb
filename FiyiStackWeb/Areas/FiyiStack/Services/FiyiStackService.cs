@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Http;
-using FiyiStackWeb.Areas.FiyiStack.Protocols;
+using FiyiStackWeb.Areas.FiyiStack.Interfaces;
 using System.Net.Mail;
 using System.Net;
 using System.Text;
@@ -13,7 +13,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
     /// </summary>
-    public partial class FiyiStackService : FiyiStackProtocol
+    public partial class FiyiStackService : IFiyiStack
     {
         private readonly IHttpContextAccessor _IHttpContextAccessor;
 

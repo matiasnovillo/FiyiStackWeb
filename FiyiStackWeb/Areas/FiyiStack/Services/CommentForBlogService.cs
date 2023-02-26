@@ -4,7 +4,7 @@ using IronPdf;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.FiyiStack.Models;
 using FiyiStackWeb.Areas.FiyiStack.DTOs;
-using FiyiStackWeb.Areas.FiyiStack.Protocols;
+using FiyiStackWeb.Areas.FiyiStack.Interfaces;
 using FiyiStackWeb.Areas.CMSCore.Models;
 using FiyiStackWeb.Library;
 using System;
@@ -38,7 +38,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
     /// Also, allow dependency injection inside controllers/web apis<br/>
     /// Last modification: 22/02/2023 7:10:30
     /// </summary>
-    public partial class CommentForBlogService : CommentForBlogProtocol
+    public partial class CommentForBlogService : ICommentForBlog
     {
         private readonly IHttpContextAccessor _IHttpContextAccessor;
 

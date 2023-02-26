@@ -4,7 +4,7 @@ using IronPdf;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.BasicCulture.Models;
 using FiyiStackWeb.Areas.BasicCulture.DTOs;
-using FiyiStackWeb.Areas.BasicCulture.Protocols;
+using FiyiStackWeb.Areas.BasicCulture.Interfaces;
 using FiyiStackWeb.Library;
 using System;
 using System.Collections.Generic;
@@ -34,7 +34,7 @@ namespace FiyiStackWeb.Areas.BasicCulture.Services
     /// Also, allow dependency injection inside controllers/web apis<br/>
     /// Last modification: 21/02/2023 17:42:15
     /// </summary>
-    public partial class CityService : CityProtocol
+    public partial class CityService : ICity
     {
         private readonly IHttpContextAccessor _IHttpContextAccessor;
 
