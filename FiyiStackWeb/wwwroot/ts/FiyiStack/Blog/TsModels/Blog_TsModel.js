@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.blogmodelQuery = exports.BlogModel = void 0;
+exports.BlogModel = void 0;
 var Rx = require("rxjs");
 var ajax_1 = require("rxjs/ajax");
 /*
@@ -26,18 +26,18 @@ var BlogModel = /** @class */ (function () {
         var URL = "/api/FiyiStack/Blog/1/SelectAllToJSON";
         return Rx.from((0, ajax_1.ajax)(URL));
     };
-    BlogModel.SelectAllPaged = function (blogmodelQuery) {
+    BlogModel.SelectAllPaged = function (blogSelectAllPaged) {
         debugger;
         var URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";
         var Body = {
-            QueryString: blogmodelQuery.QueryString,
-            ActualPageNumber: blogmodelQuery.ActualPageNumber,
-            RowsPerPage: blogmodelQuery.RowsPerPage,
-            SorterColumn: blogmodelQuery.SorterColumn,
-            SortToggler: blogmodelQuery.SortToggler,
-            RowCount: blogmodelQuery.TotalRows,
-            TotalPages: blogmodelQuery.TotalPages,
-            lstBlogModel: blogmodelQuery.lstBlogModel
+            QueryString: blogSelectAllPaged.QueryString,
+            ActualPageNumber: blogSelectAllPaged.ActualPageNumber,
+            RowsPerPage: blogSelectAllPaged.RowsPerPage,
+            SorterColumn: blogSelectAllPaged.SorterColumn,
+            SortToggler: blogSelectAllPaged.SortToggler,
+            RowCount: blogSelectAllPaged.TotalRows,
+            TotalPages: blogSelectAllPaged.TotalPages,
+            lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         var Header = {
             "Accept": "application/json",
@@ -82,10 +82,4 @@ var BlogModel = /** @class */ (function () {
     return BlogModel;
 }());
 exports.BlogModel = BlogModel;
-var blogmodelQuery = /** @class */ (function () {
-    function blogmodelQuery() {
-    }
-    return blogmodelQuery;
-}());
-exports.blogmodelQuery = blogmodelQuery;
 //# sourceMappingURL=Blog_TsModel.js.map

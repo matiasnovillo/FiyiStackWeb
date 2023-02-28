@@ -32,13 +32,13 @@ var ScrollDownNSearchFlag = false;
 var ExampleQuery = /** @class */ (function () {
     function ExampleQuery() {
     }
-    ExampleQuery.SelectAllPagedToHTML = function (request_examplemodelQuery) {
+    ExampleQuery.SelectAllPagedToHTML = function (request_exampleSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
         //Load some part of table
         var TableContent = "<thead class=\"thead-light\">\n    <tr>\n        <th scope=\"col\">\n            <div>\n                <input id=\"example-table-check-all\" type=\"checkbox\">\n            </div>\n        </th>\n        <th scope=\"col\">\n            <button value=\"ExampleId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                ExampleId\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Active\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Active\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTimeCreation\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                DateTimeCreation\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTimeLastModification\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                DateTimeLastModification\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"UserCreationId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                UserCreationId\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"UserLastModificationId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                UserLastModificationId\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Boolean\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Boolean\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTime\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                DateTime\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Decimal\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Decimal\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DropDown\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                DropDown\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Options\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Options\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Integer\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Integer\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"TextBasic\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                TextBasic\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Email\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Email\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"FileUpload\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                FileUpload\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"HexColour\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                HexColour\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Password\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Password\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"PhoneNumber\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                PhoneNumber\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Tag\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Tag\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"TextArea\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                TextArea\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"TextEditor\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                TextEditor\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"URL\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                URL\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Time\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Time\n            </button>\n        </th>\n        \n        <th scope=\"col\"></th>\n    </tr>\n</thead>\n<tbody>";
         var ListContent = "";
-        Example_TsModel_1.ExampleModel.SelectAllPaged(request_examplemodelQuery).subscribe({
+        Example_TsModel_1.ExampleModel.SelectAllPaged(request_exampleSelectAllPaged).subscribe({
             next: function (newrow) {
                 var _a, _b, _c, _d, _e, _f, _g, _h, _j;
                 //Only works when there is data available
@@ -210,7 +210,7 @@ var ExampleQuery = /** @class */ (function () {
     return ExampleQuery;
 }());
 function ValidateAndSearch() {
-    var _examplemodelQuery = {
+    var _exampleSelectAllPaged = {
         QueryString: QueryString,
         ActualPageNumber: ActualPageNumber,
         RowsPerPage: RowsPerPage,
@@ -219,7 +219,7 @@ function ValidateAndSearch() {
         TotalRows: TotalRows,
         TotalPages: TotalPages
     };
-    ExampleQuery.SelectAllPagedToHTML(_examplemodelQuery);
+    ExampleQuery.SelectAllPagedToHTML(_exampleSelectAllPaged);
 }
 //LOAD EVENT
 if ($("#fiyistack-example-title-page").html().includes("Query example")) {

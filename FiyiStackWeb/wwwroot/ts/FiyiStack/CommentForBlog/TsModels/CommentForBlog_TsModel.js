@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.commentforblogmodelQuery = exports.CommentForBlogModel = void 0;
+exports.CommentForBlogModel = void 0;
 var Rx = require("rxjs");
 var ajax_1 = require("rxjs/ajax");
 /*
@@ -26,17 +26,17 @@ var CommentForBlogModel = /** @class */ (function () {
         var URL = "/api/FiyiStack/CommentForBlog/1/SelectAllToJSON";
         return Rx.from((0, ajax_1.ajax)(URL));
     };
-    CommentForBlogModel.SelectAllPaged = function (commentforblogmodelQuery) {
+    CommentForBlogModel.SelectAllPaged = function (commentforblogSelectAllPaged) {
         var URL = "/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON";
         var Body = {
-            QueryString: commentforblogmodelQuery.QueryString,
-            ActualPageNumber: commentforblogmodelQuery.ActualPageNumber,
-            RowsPerPage: commentforblogmodelQuery.RowsPerPage,
-            SorterColumn: commentforblogmodelQuery.SorterColumn,
-            SortToggler: commentforblogmodelQuery.SortToggler,
-            RowCount: commentforblogmodelQuery.TotalRows,
-            TotalPages: commentforblogmodelQuery.TotalPages,
-            lstCommentForBlogModel: commentforblogmodelQuery.lstCommentForBlogModel
+            QueryString: commentforblogSelectAllPaged.QueryString,
+            ActualPageNumber: commentforblogSelectAllPaged.ActualPageNumber,
+            RowsPerPage: commentforblogSelectAllPaged.RowsPerPage,
+            SorterColumn: commentforblogSelectAllPaged.SorterColumn,
+            SortToggler: commentforblogSelectAllPaged.SortToggler,
+            RowCount: commentforblogSelectAllPaged.TotalRows,
+            TotalPages: commentforblogSelectAllPaged.TotalPages,
+            lstCommentForBlogModel: commentforblogSelectAllPaged.lstCommentForBlogModel
         };
         var Header = {
             "Accept": "application/json",
@@ -81,10 +81,4 @@ var CommentForBlogModel = /** @class */ (function () {
     return CommentForBlogModel;
 }());
 exports.CommentForBlogModel = CommentForBlogModel;
-var commentforblogmodelQuery = /** @class */ (function () {
-    function commentforblogmodelQuery() {
-    }
-    return commentforblogmodelQuery;
-}());
-exports.commentforblogmodelQuery = commentforblogmodelQuery;
 //# sourceMappingURL=CommentForBlog_TsModel.js.map

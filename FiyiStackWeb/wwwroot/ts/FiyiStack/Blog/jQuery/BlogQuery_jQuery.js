@@ -32,13 +32,13 @@ var ScrollDownNSearchFlag = false;
 var BlogQuery = /** @class */ (function () {
     function BlogQuery() {
     }
-    BlogQuery.SelectAllPagedToHTML = function (request_blogmodelQuery) {
+    BlogQuery.SelectAllPagedToHTML = function (request_blogSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
         //Load some part of table
         var TableContent = "<thead class=\"thead-light\">\n    <tr>\n        <th scope=\"col\">\n            <div>\n                <input id=\"blog-table-check-all\" type=\"checkbox\">\n            </div>\n        </th>\n        <th scope=\"col\">\n            <button value=\"BlogId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Blog ID\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Active\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Active\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTimeCreation\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Date Time Creation\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTimeLastModification\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Date Time Last Modification\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"UserCreationId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                User Creation\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"UserLastModificationId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                User Last Modification\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Title\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Title\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Body\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Body\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"BackgroundImage\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Background Image\n            </button>\n        </th>\n        \n        <th scope=\"col\"></th>\n    </tr>\n</thead>\n<tbody>";
         var ListContent = "";
-        Blog_TsModel_1.BlogModel.SelectAllPaged(request_blogmodelQuery).subscribe({
+        Blog_TsModel_1.BlogModel.SelectAllPaged(request_blogSelectAllPaged).subscribe({
             next: function (newrow) {
                 var _a, _b, _c, _d, _e, _f, _g, _h, _j;
                 //Only works when there is data available
@@ -209,7 +209,7 @@ var BlogQuery = /** @class */ (function () {
     return BlogQuery;
 }());
 function ValidateAndSearch() {
-    var _blogmodelQuery = {
+    var _blogSelectAllPaged = {
         QueryString: QueryString,
         ActualPageNumber: ActualPageNumber,
         RowsPerPage: RowsPerPage,
@@ -218,7 +218,7 @@ function ValidateAndSearch() {
         TotalRows: TotalRows,
         TotalPages: TotalPages
     };
-    BlogQuery.SelectAllPagedToHTML(_blogmodelQuery);
+    BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
 }
 //LOAD EVENT
 if ($("#fiyistack-blog-title-page").html().includes("Query blog")) {

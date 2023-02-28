@@ -18,11 +18,11 @@ var ScrollDownNSearchFlag = false;
 var BlogQuery = /** @class */ (function () {
     function BlogQuery() {
     }
-    BlogQuery.SelectAllPagedToHTML = function (request_blogmodelQuery) {
+    BlogQuery.SelectAllPagedToHTML = function (request_blogSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
         var ListContent = "";
-        Blog_TsModel_1.BlogModel.SelectAllPaged(request_blogmodelQuery).subscribe({
+        Blog_TsModel_1.BlogModel.SelectAllPaged(request_blogSelectAllPaged).subscribe({
             next: function (newrow) {
                 var _a, _b, _c, _d, _e, _f, _g, _h;
                 //Only works when there is data available
@@ -125,7 +125,7 @@ var BlogQuery = /** @class */ (function () {
     return BlogQuery;
 }());
 function ValidateAndSearch() {
-    var _blogmodelQuery = {
+    var _blogSelectAllPaged = {
         QueryString: QueryString,
         ActualPageNumber: ActualPageNumber,
         RowsPerPage: RowsPerPage,
@@ -134,7 +134,7 @@ function ValidateAndSearch() {
         TotalRows: TotalRows,
         TotalPages: TotalPages
     };
-    BlogQuery.SelectAllPagedToHTML(_blogmodelQuery);
+    BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
 }
 //LOAD EVENT
 if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {

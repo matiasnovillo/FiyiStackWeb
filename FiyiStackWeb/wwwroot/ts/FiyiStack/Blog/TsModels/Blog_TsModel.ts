@@ -1,6 +1,7 @@
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
+import { blogSelectAllPaged } from "../DTOs/blogSelectAllPaged";
 import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlog_TsModel";
 
 /*
@@ -43,18 +44,18 @@ export class BlogModel {
         return Rx.from(ajax(URL));
     }
     
-    static SelectAllPaged(blogmodelQuery: blogmodelQuery) {
+    static SelectAllPaged(blogSelectAllPaged: blogSelectAllPaged) {
         debugger;
         let URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";
         let Body = {
-            QueryString: blogmodelQuery.QueryString,
-            ActualPageNumber: blogmodelQuery.ActualPageNumber,
-            RowsPerPage: blogmodelQuery.RowsPerPage,
-            SorterColumn: blogmodelQuery.SorterColumn,
-            SortToggler: blogmodelQuery.SortToggler,
-            RowCount: blogmodelQuery.TotalRows,
-            TotalPages: blogmodelQuery.TotalPages,
-            lstBlogModel: blogmodelQuery.lstBlogModel
+            QueryString: blogSelectAllPaged.QueryString,
+            ActualPageNumber: blogSelectAllPaged.ActualPageNumber,
+            RowsPerPage: blogSelectAllPaged.RowsPerPage,
+            SorterColumn: blogSelectAllPaged.SorterColumn,
+            SortToggler: blogSelectAllPaged.SortToggler,
+            RowCount: blogSelectAllPaged.TotalRows,
+            TotalPages: blogSelectAllPaged.TotalPages,
+            lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         let Header: any = {
             "Accept": "application/json",
@@ -100,15 +101,4 @@ export class BlogModel {
         };
         return Rx.from(ajax.post(URL, Body, Header));
     }
-}
-
-export class blogmodelQuery {
-    QueryString ?: string;
-    ActualPageNumber?: number;
-    RowsPerPage?: number;
-    SorterColumn?: string;
-    SortToggler?: boolean;
-    TotalRows?: number;
-    TotalPages?: number;
-    lstBlogModel?: BlogModel[] | undefined;
 }

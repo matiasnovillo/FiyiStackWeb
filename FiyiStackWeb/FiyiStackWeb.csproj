@@ -49,4 +49,10 @@
     <Folder Include="wwwroot\Uploads\FiyiStack\Example\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\ts\FiyiStack\Blog\DTOs\blogSelectAllPaged.ts" />
+    <TypeScriptCompile Include="wwwroot\ts\FiyiStack\CommentForBlog\DTOs\commentforblogSelectAllPaged.ts" />
+    <TypeScriptCompile Include="wwwroot\ts\FiyiStack\Example\DTOs\exampleSelectAllPaged.ts" />
+  </ItemGroup>
+
 </Project>

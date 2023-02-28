@@ -1,5 +1,6 @@
 //Import libraries to use
-import { VisitorCounterModel, visitorcountermodelQuery } from "../../VisitorCounter/TsModels/VisitorCounter_TsModel";
+import { VisitorCounterModel } from "../../VisitorCounter/TsModels/VisitorCounter_TsModel";
+import { visitorcounterSelectAllPaged } from "../DTOs/visitorcounterSelectAllPaged";
 import * as $ from "jquery";
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
@@ -19,7 +20,7 @@ import "bootstrap-notify";
 
 //Stack: 10
 
-//Last modification on: 22/02/2023 13:29:13
+//Last modification on: 22/02/2023 7:45:50
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -34,7 +35,7 @@ let ViewToggler: string = "List";
 let ScrollDownNSearchFlag: boolean = false;
 
 class VisitorCounterQuery {
-    static SelectAllPagedToHTML(request_visitorcountermodelQuery: visitorcountermodelQuery) {
+    static SelectAllPagedToHTML(request_visitorcounterSelectAllPaged: visitorcounterSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
 
@@ -81,11 +82,6 @@ class VisitorCounterQuery {
                 DateTime
             </button>
         </th>
-        <th scope="col">
-            <button value="Page" class="btn btn-outline-secondary btn-sm" type="button">
-                Page
-            </button>
-        </th>
         
         <th scope="col"></th>
     </tr>
@@ -94,13 +90,13 @@ class VisitorCounterQuery {
 
         var ListContent: string = ``;
 
-        VisitorCounterModel.SelectAllPaged(request_visitorcountermodelQuery).subscribe(
+        VisitorCounterModel.SelectAllPaged(request_visitorcounterSelectAllPaged).subscribe(
             {
                 next: newrow => {
                     //Only works when there is data available
                     if (newrow.status != 204) {
 
-                        const response_visitorcounterQuery = newrow.response as visitorcountermodelQuery;
+                        const response_visitorcounterQuery = newrow.response as visitorcounterSelectAllPaged;
 
                         //Set to default values if they are null
                         QueryString = response_visitorcounterQuery.QueryString ?? "";
@@ -191,11 +187,6 @@ class VisitorCounterQuery {
             <i class="fas fa-calendar"></i> ${row.DateTime}
         </strong>
     </td>
-    <td class="text-left">
-        <strong><i class="fas fa-font">
-            </i> ${row.Page}
-        </strong>
-    </td>
     
     <!-- Actions -->
     <td class="text-right">
@@ -257,10 +248,6 @@ class VisitorCounterQuery {
                         <br/>
                         <span class="text-white mb-4">
                            DateTime <i class="fas fa-calendar"></i> ${row.DateTime}
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4">
-                           Page <i class="fas fa-font"></i> ${row.Page}
                         </span>
                         <br/>
                         
@@ -434,7 +421,7 @@ class VisitorCounterQuery {
 
 function ValidateAndSearch() {
 
-    var _visitorcountermodelQuery: visitorcountermodelQuery = {
+    var _visitorcounterSelectAllPaged: visitorcounterSelectAllPaged = {
         QueryString,
         ActualPageNumber,
         RowsPerPage,
@@ -444,7 +431,7 @@ function ValidateAndSearch() {
         TotalPages
     };
 
-    VisitorCounterQuery.SelectAllPagedToHTML(_visitorcountermodelQuery);
+    VisitorCounterQuery.SelectAllPagedToHTML(_visitorcounterSelectAllPaged);
 }
 
 //LOAD EVENT

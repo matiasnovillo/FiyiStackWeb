@@ -1,7 +1,7 @@
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
-
+import { visitorcounterSelectAllPaged } from "../DTOs/visitorcounterSelectAllPaged";
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -14,7 +14,7 @@ import { Ajax } from "../../../Library/Ajax";
  * 
 */
 
-//8 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 13:29:13 | Stack: 9
+//7 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 7:45:50 | Stack: 9
 
 export class VisitorCounterModel {
 
@@ -26,7 +26,6 @@ export class VisitorCounterModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	DateTime?: string | string[] | number | undefined;
-	Page?: string | string[] | number | undefined;
     
 
     //Queries
@@ -40,17 +39,17 @@ export class VisitorCounterModel {
         return Rx.from(ajax(URL));
     }
     
-    static SelectAllPaged(visitorcountermodelQuery: visitorcountermodelQuery) {
+    static SelectAllPaged(visitorcounterSelectAllPaged: visitorcounterSelectAllPaged) {
         let URL = "/api/BasicCore/VisitorCounter/1/SelectAllPagedToJSON";
         let Body = {
-            QueryString: visitorcountermodelQuery.QueryString,
-            ActualPageNumber: visitorcountermodelQuery.ActualPageNumber,
-            RowsPerPage: visitorcountermodelQuery.RowsPerPage,
-            SorterColumn: visitorcountermodelQuery.SorterColumn,
-            SortToggler: visitorcountermodelQuery.SortToggler,
-            RowCount: visitorcountermodelQuery.TotalRows,
-            TotalPages: visitorcountermodelQuery.TotalPages,
-            lstVisitorCounterModel: visitorcountermodelQuery.lstVisitorCounterModel
+            QueryString: visitorcounterSelectAllPaged.QueryString,
+            ActualPageNumber: visitorcounterSelectAllPaged.ActualPageNumber,
+            RowsPerPage: visitorcounterSelectAllPaged.RowsPerPage,
+            SorterColumn: visitorcounterSelectAllPaged.SorterColumn,
+            SortToggler: visitorcounterSelectAllPaged.SortToggler,
+            RowCount: visitorcounterSelectAllPaged.TotalRows,
+            TotalPages: visitorcounterSelectAllPaged.TotalPages,
+            lstVisitorCounterModel: visitorcounterSelectAllPaged.lstVisitorCounterModel
         };
         let Header: any = {
             "Accept": "application/json",
@@ -96,15 +95,4 @@ export class VisitorCounterModel {
         };
         return Rx.from(ajax.post(URL, Body, Header));
     }
-}
-
-export class visitorcountermodelQuery {
-    QueryString ?: string;
-    ActualPageNumber?: number;
-    RowsPerPage?: number;
-    SorterColumn?: string;
-    SortToggler?: boolean;
-    TotalRows?: number;
-    TotalPages?: number;
-    lstVisitorCounterModel?: VisitorCounterModel[] | undefined;
 }

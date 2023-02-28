@@ -1,5 +1,6 @@
 //Import libraries to use
-import { CommentForBlogModel, commentforblogmodelQuery } from "../../CommentForBlog/TsModels/CommentForBlog_TsModel";
+import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlog_TsModel";
+import { commentforblogSelectAllPaged } from "../DTOs/commentforblogSelectAllPaged";
 import * as $ from "jquery";
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
@@ -34,7 +35,7 @@ let ViewToggler: string = "List";
 let ScrollDownNSearchFlag: boolean = false;
 
 class CommentForBlogQuery {
-    static SelectAllPagedToHTML(request_commentforblogmodelQuery: commentforblogmodelQuery) {
+    static SelectAllPagedToHTML(request_commentforblogSelectAllPaged: commentforblogSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
 
@@ -94,13 +95,13 @@ class CommentForBlogQuery {
 
         var ListContent: string = ``;
 
-        CommentForBlogModel.SelectAllPaged(request_commentforblogmodelQuery).subscribe(
+        CommentForBlogModel.SelectAllPaged(request_commentforblogSelectAllPaged).subscribe(
             {
                 next: newrow => {
                     //Only works when there is data available
                     if (newrow.status != 204) {
 
-                        const response_commentforblogQuery = newrow.response as commentforblogmodelQuery;
+                        const response_commentforblogQuery = newrow.response as commentforblogSelectAllPaged;
 
                         //Set to default values if they are null
                         QueryString = response_commentforblogQuery.QueryString ?? "";
@@ -434,7 +435,7 @@ class CommentForBlogQuery {
 
 function ValidateAndSearch() {
 
-    var _commentforblogmodelQuery: commentforblogmodelQuery = {
+    var _commentforblogSelectAllPaged: commentforblogSelectAllPaged = {
         QueryString,
         ActualPageNumber,
         RowsPerPage,
@@ -444,7 +445,7 @@ function ValidateAndSearch() {
         TotalPages
     };
 
-    CommentForBlogQuery.SelectAllPagedToHTML(_commentforblogmodelQuery);
+    CommentForBlogQuery.SelectAllPagedToHTML(_commentforblogSelectAllPaged);
 }
 
 //LOAD EVENT

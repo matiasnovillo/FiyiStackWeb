@@ -32,13 +32,13 @@ var ScrollDownNSearchFlag = false;
 var CommentForBlogQuery = /** @class */ (function () {
     function CommentForBlogQuery() {
     }
-    CommentForBlogQuery.SelectAllPagedToHTML = function (request_commentforblogmodelQuery) {
+    CommentForBlogQuery.SelectAllPagedToHTML = function (request_commentforblogSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
         //Load some part of table
         var TableContent = "<thead class=\"thead-light\">\n    <tr>\n        <th scope=\"col\">\n            <div>\n                <input id=\"commentforblog-table-check-all\" type=\"checkbox\">\n            </div>\n        </th>\n        <th scope=\"col\">\n            <button value=\"CommentForBlogId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Comment For Blog ID\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Active\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Active\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTimeCreation\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Date Time Creation\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"DateTimeLastModification\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Date Time Last Modification\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"UserCreationId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                User Creation\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"UserLastModificationId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                User Last Modification\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"Comment\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Comment\n            </button>\n        </th>\n        <th scope=\"col\">\n            <button value=\"BlogId\" class=\"btn btn-outline-secondary btn-sm\" type=\"button\">\n                Blog\n            </button>\n        </th>\n        \n        <th scope=\"col\"></th>\n    </tr>\n</thead>\n<tbody>";
         var ListContent = "";
-        CommentForBlog_TsModel_1.CommentForBlogModel.SelectAllPaged(request_commentforblogmodelQuery).subscribe({
+        CommentForBlog_TsModel_1.CommentForBlogModel.SelectAllPaged(request_commentforblogSelectAllPaged).subscribe({
             next: function (newrow) {
                 var _a, _b, _c, _d, _e, _f, _g, _h, _j;
                 //Only works when there is data available
@@ -209,7 +209,7 @@ var CommentForBlogQuery = /** @class */ (function () {
     return CommentForBlogQuery;
 }());
 function ValidateAndSearch() {
-    var _commentforblogmodelQuery = {
+    var _commentforblogSelectAllPaged = {
         QueryString: QueryString,
         ActualPageNumber: ActualPageNumber,
         RowsPerPage: RowsPerPage,
@@ -218,7 +218,7 @@ function ValidateAndSearch() {
         TotalRows: TotalRows,
         TotalPages: TotalPages
     };
-    CommentForBlogQuery.SelectAllPagedToHTML(_commentforblogmodelQuery);
+    CommentForBlogQuery.SelectAllPagedToHTML(_commentforblogSelectAllPaged);
 }
 //LOAD EVENT
 if ($("#fiyistack-commentforblog-title-page").html().includes("Query commentforblog")) {

@@ -54,41 +54,56 @@
      entry: {
          main: ["./wwwroot/js/site", "./wwwroot/css/site.css"],  //Here we've got common modules used in the entire application
 
-         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"], //Area: BasicCore
-         failuretsmodel: ["./wwwroot/ts/BasicCore/Failure/TsModels/Failure_TsModel"],
+         failuretsmodel: ["./wwwroot/ts/BasicCore/Failure/TsModels/Failure_TsModel"], //Area: BasicCore
          failurejquery: ["./wwwroot/ts/BasicCore/Failure/jQuery/FailureQuery_jQuery"],
+         failureselectallpaged: ["./wwwroot/ts/BasicCore/Failure/DTOs/failureSelectAllPaged"],
          parametertsmodel: ["./wwwroot/ts/BasicCore/Parameter/TsModels/Parameter_TsModel"],
          parameterjquery: ["./wwwroot/ts/BasicCore/Parameter/jQuery/ParameterQuery_jQuery"],
+         parameterselectallpaged: ["./wwwroot/ts/BasicCore/Parameter/DTOs/parameterSelectAllPaged"],
          visitorcountertsmodel: ["./wwwroot/ts/BasicCore/VisitorCounter/TsModels/VisitorCounter_TsModel"],
          visitorcounterjquery: ["./wwwroot/ts/BasicCore/VisitorCounter/jQuery/VisitorCounterQuery_jQuery"],
+         visitorcounterselectallpaged: ["./wwwroot/ts/BasicCore/VisitorCounter/DTOs/visitorcounterSelectAllPaged"],
 
          citytsmodel: ["./wwwroot/ts/BasicCulture/City/TsModels/City_TsModel"], //Area: BasicCulture
          cityjquery: ["./wwwroot/ts/BasicCulture/City/jQuery/CityQuery_jQuery"],
+         cityselectallpaged: ["./wwwroot/ts/BasicCulture/City/DTOs/citySelectAllPaged"],
          countrytsmodel: ["./wwwroot/ts/BasicCulture/Country/TsModels/Country_TsModel"],
          countryjquery: ["./wwwroot/ts/BasicCulture/Country/jQuery/CountryQuery_jQuery"],
+         countryselectallpaged: ["./wwwroot/ts/BasicCulture/Country/DTOs/countrySelectAllPaged"],
          provincetsmodel: ["./wwwroot/ts/BasicCulture/Province/TsModels/Province_TsModel"],
          provincejquery: ["./wwwroot/ts/BasicCulture/Province/jQuery/ProvinceQuery_jQuery"],
+         provinceselectallpaged: ["./wwwroot/ts/BasicCulture/Province/DTOs/provinceSelectAllPaged"],
          planettsmodel: ["./wwwroot/ts/BasicCulture/Planet/TsModels/Planet_TsModel"],
          planetjquery: ["./wwwroot/ts/BasicCulture/Planet/jQuery/PlanetQuery_jQuery"],
+         planetselectallpaged: ["./wwwroot/ts/BasicCulture/Planet/DTOs/planetSelectAllPaged"],
          sextsmodel: ["./wwwroot/ts/BasicCulture/Sex/TsModels/Sex_TsModel"],
          sexjquery: ["./wwwroot/ts/BasicCulture/Sex/jQuery/SexQuery_jQuery"],
+         sexselectallpaged: ["./wwwroot/ts/BasicCulture/Sex/DTOs/sexSelectAllPaged"],
 
          usertsmodel: ["./wwwroot/ts/CMSCore/User/TsModels/User_TsModel"],  //Area: CMSCore
          userjquery: ["./wwwroot/ts/CMSCore/User/jQuery/UserQuery_jQuery"],
+         userselectallpaged: ["./wwwroot/ts/CMSCore/User/DTOs/userSelectAllPaged"],
          menutsmodel: ["./wwwroot/ts/CMSCore/Menu/TsModels/Menu_TsModel"],
          menujquery: ["./wwwroot/ts/CMSCore/Menu/jQuery/MenuQuery_jQuery"],
+         menuselectallpaged: ["./wwwroot/ts/CMSCore/Menu/DTOs/menuSelectAllPaged"],
          roletsmodel: ["./wwwroot/ts/CMSCore/Role/TsModels/Role_TsModel"],
          rolejquery: ["./wwwroot/ts/CMSCore/Role/jQuery/RoleQuery_jQuery"],
+         roleselectallpaged: ["./wwwroot/ts/CMSCore/Role/DTOs/roleSelectAllPaged"],
          rolemenutsmodel: ["./wwwroot/ts/CMSCore/RoleMenu/TsModels/RoleMenu_TsModel"],
          rolemenujquery: ["./wwwroot/ts/CMSCore/RoleMenu/jQuery/RoleMenuQuery_jQuery"],
+         rolemenuselectallpaged: ["./wwwroot/ts/CMSCore/RoleMenu/DTOs/rolemenuSelectAllPaged"],
+         pagepermissions: ["./wwwroot/ts/CMSCore/PagePermissions"],
 
          blogtsmodel: ["./wwwroot/ts/FiyiStack/Blog/TsModels/Blog_TsModel"],  //Area: FiyiStack
          blogjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQuery_jQuery"],
          blogcustomjquery: ["./wwwroot/ts/FiyiStack/Blog/jQuery/BlogQueryCustom_jQuery"],
+         blogselectallpaged: ["./wwwroot/ts/FiyiStack/Blog/DTOs/blogSelectAllPaged"],
          commentforblogtsmodel: ["./wwwroot/ts/FiyiStack/CommentForBlog/TsModels/CommentForBlog_TsModel"],
          commentforblogjquery: ["./wwwroot/ts/FiyiStack/CommentForBlog/jQuery/CommentForBlogQuery_jQuery"],
+         commentforblogselectallpaged: ["./wwwroot/ts/FiyiStack/CommentForBlog/DTOs/commentforblogSelectAllPaged"],
          exampletsmodel: ["./wwwroot/ts/FiyiStack/Example/TsModels/Example_TsModel"],
-         examplejquery: ["./wwwroot/ts/FiyiStack/Example/jQuery/ExampleQuery_jQuery"]
+         examplejquery: ["./wwwroot/ts/FiyiStack/Example/jQuery/ExampleQuery_jQuery"],
+         exampleselectallpaged: ["./wwwroot/ts/FiyiStack/Example/DTOs/exampleSelectAllPaged"],
      },
      output: {
          filename: "[name].bundle.js",                       //Path to save bundles: __dirname + "/wwwroot/dist" (__dirname is a Node.js variable)

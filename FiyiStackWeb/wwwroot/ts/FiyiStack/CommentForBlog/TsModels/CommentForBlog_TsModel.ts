@@ -1,6 +1,7 @@
 import * as Rx from "rxjs";
 import { ajax } from "rxjs/ajax";
 import { Ajax } from "../../../Library/Ajax";
+import { commentforblogSelectAllPaged } from "../DTOs/commentforblogSelectAllPaged";
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -42,17 +43,17 @@ export class CommentForBlogModel {
         return Rx.from(ajax(URL));
     }
     
-    static SelectAllPaged(commentforblogmodelQuery: commentforblogmodelQuery) {
+    static SelectAllPaged(commentforblogSelectAllPaged: commentforblogSelectAllPaged) {
         let URL = "/api/FiyiStack/CommentForBlog/1/SelectAllPagedToJSON";
         let Body = {
-            QueryString: commentforblogmodelQuery.QueryString,
-            ActualPageNumber: commentforblogmodelQuery.ActualPageNumber,
-            RowsPerPage: commentforblogmodelQuery.RowsPerPage,
-            SorterColumn: commentforblogmodelQuery.SorterColumn,
-            SortToggler: commentforblogmodelQuery.SortToggler,
-            RowCount: commentforblogmodelQuery.TotalRows,
-            TotalPages: commentforblogmodelQuery.TotalPages,
-            lstCommentForBlogModel: commentforblogmodelQuery.lstCommentForBlogModel
+            QueryString: commentforblogSelectAllPaged.QueryString,
+            ActualPageNumber: commentforblogSelectAllPaged.ActualPageNumber,
+            RowsPerPage: commentforblogSelectAllPaged.RowsPerPage,
+            SorterColumn: commentforblogSelectAllPaged.SorterColumn,
+            SortToggler: commentforblogSelectAllPaged.SortToggler,
+            RowCount: commentforblogSelectAllPaged.TotalRows,
+            TotalPages: commentforblogSelectAllPaged.TotalPages,
+            lstCommentForBlogModel: commentforblogSelectAllPaged.lstCommentForBlogModel
         };
         let Header: any = {
             "Accept": "application/json",
@@ -98,15 +99,4 @@ export class CommentForBlogModel {
         };
         return Rx.from(ajax.post(URL, Body, Header));
     }
-}
-
-export class commentforblogmodelQuery {
-    QueryString ?: string;
-    ActualPageNumber?: number;
-    RowsPerPage?: number;
-    SorterColumn?: string;
-    SortToggler?: boolean;
-    TotalRows?: number;
-    TotalPages?: number;
-    lstCommentForBlogModel?: CommentForBlogModel[] | undefined;
 }

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.visitorcountermodelQuery = exports.VisitorCounterModel = void 0;
+exports.VisitorCounterModel = void 0;
 var Rx = require("rxjs");
 var ajax_1 = require("rxjs/ajax");
 /*
@@ -13,7 +13,7 @@ var ajax_1 = require("rxjs/ajax");
  * in all copies or substantial portions of the Software.
  *
 */
-//8 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 13:29:13 | Stack: 9
+//7 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 7:45:50 | Stack: 9
 var VisitorCounterModel = /** @class */ (function () {
     function VisitorCounterModel() {
     }
@@ -26,17 +26,17 @@ var VisitorCounterModel = /** @class */ (function () {
         var URL = "/api/BasicCore/VisitorCounter/1/SelectAllToJSON";
         return Rx.from((0, ajax_1.ajax)(URL));
     };
-    VisitorCounterModel.SelectAllPaged = function (visitorcountermodelQuery) {
+    VisitorCounterModel.SelectAllPaged = function (visitorcounterSelectAllPaged) {
         var URL = "/api/BasicCore/VisitorCounter/1/SelectAllPagedToJSON";
         var Body = {
-            QueryString: visitorcountermodelQuery.QueryString,
-            ActualPageNumber: visitorcountermodelQuery.ActualPageNumber,
-            RowsPerPage: visitorcountermodelQuery.RowsPerPage,
-            SorterColumn: visitorcountermodelQuery.SorterColumn,
-            SortToggler: visitorcountermodelQuery.SortToggler,
-            RowCount: visitorcountermodelQuery.TotalRows,
-            TotalPages: visitorcountermodelQuery.TotalPages,
-            lstVisitorCounterModel: visitorcountermodelQuery.lstVisitorCounterModel
+            QueryString: visitorcounterSelectAllPaged.QueryString,
+            ActualPageNumber: visitorcounterSelectAllPaged.ActualPageNumber,
+            RowsPerPage: visitorcounterSelectAllPaged.RowsPerPage,
+            SorterColumn: visitorcounterSelectAllPaged.SorterColumn,
+            SortToggler: visitorcounterSelectAllPaged.SortToggler,
+            RowCount: visitorcounterSelectAllPaged.TotalRows,
+            TotalPages: visitorcounterSelectAllPaged.TotalPages,
+            lstVisitorCounterModel: visitorcounterSelectAllPaged.lstVisitorCounterModel
         };
         var Header = {
             "Accept": "application/json",
@@ -81,10 +81,4 @@ var VisitorCounterModel = /** @class */ (function () {
     return VisitorCounterModel;
 }());
 exports.VisitorCounterModel = VisitorCounterModel;
-var visitorcountermodelQuery = /** @class */ (function () {
-    function visitorcountermodelQuery() {
-    }
-    return visitorcountermodelQuery;
-}());
-exports.visitorcountermodelQuery = visitorcountermodelQuery;
 //# sourceMappingURL=VisitorCounter_TsModel.js.map

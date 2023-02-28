@@ -1,5 +1,6 @@
 //Import libraries to use
-import { BlogModel, blogmodelQuery } from "../../Blog/TsModels/Blog_TsModel";
+import { BlogModel } from "../../Blog/TsModels/Blog_TsModel";
+import { blogSelectAllPaged } from "../DTOs/blogSelectAllPaged";
 import * as $ from "jquery";
 import { format } from "timeago.js";
 
@@ -16,19 +17,19 @@ let ViewToggler: string = "List";
 let ScrollDownNSearchFlag: boolean = false;
 
 class BlogQuery {
-    static SelectAllPagedToHTML(request_blogmodelQuery: blogmodelQuery) {
+    static SelectAllPagedToHTML(request_blogSelectAllPaged: blogSelectAllPaged) {
         //Used for list view
         $(window).off("scroll");
 
         var ListContent: string = ``;
 
-        BlogModel.SelectAllPaged(request_blogmodelQuery).subscribe(
+        BlogModel.SelectAllPaged(request_blogSelectAllPaged).subscribe(
             {
                 next: newrow => {
                     //Only works when there is data available
                     if (newrow.status != 204) {
 
-                        const response_blogQuery = newrow.response as blogmodelQuery;
+                        const response_blogQuery = newrow.response as blogSelectAllPaged;
 
                         //Set to default values if they are null
                         QueryString = response_blogQuery.QueryString ?? "";
@@ -210,7 +211,7 @@ class BlogQuery {
 function ValidateAndSearch() {
 
 
-    var _blogmodelQuery: blogmodelQuery = {
+    var _blogSelectAllPaged: blogSelectAllPaged = {
         QueryString,
         ActualPageNumber,
         RowsPerPage,
@@ -220,7 +221,7 @@ function ValidateAndSearch() {
         TotalPages
     };
 
-    BlogQuery.SelectAllPagedToHTML(_blogmodelQuery);
+    BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
 }
 
 //LOAD EVENT
