@@ -23,7 +23,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 22/02/2023 6:50:49
+//Last modification on: 02/03/2023 8:51:23
 
 namespace FiyiStackWeb.Areas.FiyiStack.Services
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 22/02/2023 6:50:49
+    /// Last modification: 02/03/2023 8:51:23
     /// </summary>
     public partial class ExampleService : IExample
     {
@@ -218,11 +218,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
             <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
-                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTime&nbsp;&nbsp;&nbsp;</span>
-            </font>
-            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
-        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
-            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Decimal&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
@@ -296,6 +291,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">Time&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">DateTime&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
     </tr>
     {RowsAsHTML}
@@ -359,11 +359,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnBooleanFordtExampleCopy.DataType = typeof(string);
                     dtColumnBooleanFordtExampleCopy.ColumnName = "Boolean";
                     dtExampleCopy.Columns.Add(dtColumnBooleanFordtExampleCopy);
-
-                    DataColumn dtColumnDateTimeFordtExampleCopy = new DataColumn();
-                    dtColumnDateTimeFordtExampleCopy.DataType = typeof(string);
-                    dtColumnDateTimeFordtExampleCopy.ColumnName = "DateTime";
-                    dtExampleCopy.Columns.Add(dtColumnDateTimeFordtExampleCopy);
 
                     DataColumn dtColumnDecimalFordtExampleCopy = new DataColumn();
                     dtColumnDecimalFordtExampleCopy.DataType = typeof(string);
@@ -439,6 +434,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnTimeFordtExampleCopy.DataType = typeof(string);
                     dtColumnTimeFordtExampleCopy.ColumnName = "Time";
                     dtExampleCopy.Columns.Add(dtColumnTimeFordtExampleCopy);
+
+                    DataColumn dtColumnDateTimeFordtExampleCopy = new DataColumn();
+                    dtColumnDateTimeFordtExampleCopy.DataType = typeof(string);
+                    dtColumnDateTimeFordtExampleCopy.ColumnName = "DateTime";
+                    dtExampleCopy.Columns.Add(dtColumnDateTimeFordtExampleCopy);
 
                     
                 #endregion
@@ -504,11 +504,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnBooleanFordtExampleCopy.ColumnName = "Boolean";
                     dtExampleCopy.Columns.Add(dtColumnBooleanFordtExampleCopy);
 
-                    DataColumn dtColumnDateTimeFordtExampleCopy = new DataColumn();
-                    dtColumnDateTimeFordtExampleCopy.DataType = typeof(string);
-                    dtColumnDateTimeFordtExampleCopy.ColumnName = "DateTime";
-                    dtExampleCopy.Columns.Add(dtColumnDateTimeFordtExampleCopy);
-
                     DataColumn dtColumnDecimalFordtExampleCopy = new DataColumn();
                     dtColumnDecimalFordtExampleCopy.DataType = typeof(string);
                     dtColumnDecimalFordtExampleCopy.ColumnName = "Decimal";
@@ -583,6 +578,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnTimeFordtExampleCopy.DataType = typeof(string);
                     dtColumnTimeFordtExampleCopy.ColumnName = "Time";
                     dtExampleCopy.Columns.Add(dtColumnTimeFordtExampleCopy);
+
+                    DataColumn dtColumnDateTimeFordtExampleCopy = new DataColumn();
+                    dtColumnDateTimeFordtExampleCopy.DataType = typeof(string);
+                    dtColumnDateTimeFordtExampleCopy.ColumnName = "DateTime";
+                    dtExampleCopy.Columns.Add(dtColumnDateTimeFordtExampleCopy);
 
                     
                     #endregion

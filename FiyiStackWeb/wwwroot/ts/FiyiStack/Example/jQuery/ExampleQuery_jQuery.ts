@@ -20,7 +20,7 @@ import "bootstrap-notify";
 
 //Stack: 10
 
-//Last modification on: 19/02/2023 11:08:32
+//Last modification on: 02/03/2023 8:51:23
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -80,11 +80,6 @@ class ExampleQuery {
         <th scope="col">
             <button value="Boolean" class="btn btn-outline-secondary btn-sm" type="button">
                 Boolean
-            </button>
-        </th>
-        <th scope="col">
-            <button value="DateTime" class="btn btn-outline-secondary btn-sm" type="button">
-                DateTime
             </button>
         </th>
         <th scope="col">
@@ -160,6 +155,11 @@ class ExampleQuery {
         <th scope="col">
             <button value="Time" class="btn btn-outline-secondary btn-sm" type="button">
                 Time
+            </button>
+        </th>
+        <th scope="col">
+            <button value="DateTime" class="btn btn-outline-secondary btn-sm" type="button">
+                DateTime
             </button>
         </th>
         
@@ -269,11 +269,6 @@ class ExampleQuery {
     </td>
     <td class="text-left">
         <strong>
-            <i class="fas fa-calendar"></i> ${row.DateTime}
-        </strong>
-    </td>
-    <td class="text-left">
-        <strong>
             <i class="fas fa-divide"></i> ${row.Decimal}
         </strong>
     </td>
@@ -353,6 +348,11 @@ class ExampleQuery {
             <i class="fas fa-clock"></i> ${row.Time?.substring(0, 12)}
         </strong>
     </td>
+    <td class="text-left">
+        <strong>
+            <i class="fas fa-calendar"></i> ${row.DateTime}
+        </strong>
+    </td>
     
     <!-- Actions -->
     <td class="text-right">
@@ -414,10 +414,6 @@ class ExampleQuery {
                         <br/>
                         <span class="text-white mb-4">
                            Boolean <i class="fas fa-toggle-on"></i> ${row.Boolean == true ? "Active <i class='text-success fas fa-circle'></i>" : "Not active <i class='text-danger fas fa-circle'></i>"}
-                        </span>
-                        <br/>
-                        <span class="text-white mb-4">
-                           DateTime <i class="fas fa-calendar"></i> ${row.DateTime}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -485,6 +481,10 @@ class ExampleQuery {
                         <br/>
                         <span class="text-white mb-4">
                            Time <i class="fas fa-clock"></i> ${row.Time?.substring(0, 12)}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                           DateTime <i class="fas fa-calendar"></i> ${row.DateTime}
                         </span>
                         <br/>
                         

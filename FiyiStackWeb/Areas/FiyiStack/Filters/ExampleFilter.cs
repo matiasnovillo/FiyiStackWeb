@@ -13,7 +13,7 @@ using System;
  * 
  */
 
-//Last modification on: 22/02/2023 6:50:49
+//Last modification on: 02/03/2023 8:51:23
 
 namespace FiyiStackWeb.Areas.FiyiStack.Filters
 {
@@ -21,7 +21,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 22/02/2023 6:50:49
+    /// Last modification: 02/03/2023 8:51:23
     /// </summary>
     public class ExampleFilter : ActionFilterAttribute
     {

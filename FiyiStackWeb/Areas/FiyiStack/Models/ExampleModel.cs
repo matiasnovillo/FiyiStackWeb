@@ -29,7 +29,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     ///                    make temporal copies with random data. <br/>
     /// Fields:            23 <br/> 
     /// Sub-models:      0 models <br/>
-    /// Last modification: 22/02/2023 6:50:49
+    /// Last modification: 02/03/2023 8:51:23
     /// </summary>
     [Serializable]
     public partial class ExampleModel
@@ -71,9 +71,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         public int UserLastModificationId { get; set; }
 
         public bool Boolean { get; set; }
-
-        [Library.ModelAttributeValidator.DateTime("DateTime", false, "1753-01-01T00:00", "9998-12-30T23:59")]
-        public DateTime DateTime { get; set; }
 
         [Library.ModelAttributeValidator.Decimal("Decimal", true, 5D, 20D)]
         public decimal Decimal { get; set; }
@@ -117,6 +114,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 
         [Library.ModelAttributeValidator.TimeSpan("Time", false, "00:00", "23:59")]
         public TimeSpan Time { get; set; }
+
+        [Library.ModelAttributeValidator.DateTime("DateTime", false, "1753-01-01T00:00", "9998-12-30T23:59")]
+        public DateTime DateTime { get; set; }
         #endregion
 
         #region Sub-lists
@@ -184,7 +184,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					this.UserCreationId = example.UserCreationId;
 					this.UserLastModificationId = example.UserLastModificationId;
 					this.Boolean = example.Boolean;
-					this.DateTime = example.DateTime;
 					this.Decimal = example.Decimal;
 					this.DropDown = example.DropDown;
 					this.Options = example.Options;
@@ -200,6 +199,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					this.TextEditor = example.TextEditor;
 					this.URL = example.URL;
 					this.Time = example.Time;
+					this.DateTime = example.DateTime;
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -213,7 +213,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Fields:       23 <br/> 
         /// Dependencies: 0 models depend on this model <br/>
         /// </summary>
-        public ExampleModel(int ExampleId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, bool Boolean, DateTime DateTime, decimal Decimal, int DropDown, int Options, int Integer, string TextBasic, string Email, string FileUpload, string HexColour, string Password, string PhoneNumber, string Tag, string TextArea, string TextEditor, string URL, TimeSpan Time)
+        public ExampleModel(int ExampleId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, bool Boolean, decimal Decimal, int DropDown, int Options, int Integer, string TextBasic, string Email, string FileUpload, string HexColour, string Password, string PhoneNumber, string Tag, string TextArea, string TextEditor, string URL, TimeSpan Time, DateTime DateTime)
         {
             try
             {
@@ -227,7 +227,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				this.UserCreationId = UserCreationId;
 				this.UserLastModificationId = UserLastModificationId;
 				this.Boolean = Boolean;
-				this.DateTime = DateTime;
 				this.Decimal = Decimal;
 				this.DropDown = DropDown;
 				this.Options = Options;
@@ -243,6 +242,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				this.TextEditor = TextEditor;
 				this.URL = URL;
 				this.Time = Time;
+				this.DateTime = DateTime;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -268,7 +268,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				UserCreationId = example.UserCreationId;
 				UserLastModificationId = example.UserLastModificationId;
 				Boolean = example.Boolean;
-				DateTime = example.DateTime;
 				Decimal = example.Decimal;
 				DropDown = example.DropDown;
 				Options = example.Options;
@@ -284,6 +283,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				TextEditor = example.TextEditor;
 				URL = example.URL;
 				Time = example.Time;
+				DateTime = example.DateTime;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -392,7 +392,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					ExampleModel.UserCreationId = example.UserCreationId;
 					ExampleModel.UserLastModificationId = example.UserLastModificationId;
 					ExampleModel.Boolean = example.Boolean;
-					ExampleModel.DateTime = example.DateTime;
 					ExampleModel.Decimal = example.Decimal;
 					ExampleModel.DropDown = example.DropDown;
 					ExampleModel.Options = example.Options;
@@ -408,6 +407,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					ExampleModel.TextEditor = example.TextEditor;
 					ExampleModel.URL = example.URL;
 					ExampleModel.Time = example.Time;
+					ExampleModel.DateTime = example.DateTime;
                 }
 
                 return ExampleModel;
@@ -480,7 +480,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Boolean", Boolean, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("Decimal", Decimal, DbType.Decimal, ParameterDirection.Input, precision: 24, scale: 6);
 				dp.Add("DropDown", DropDown, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Options", Options, DbType.Int32, ParameterDirection.Input);
@@ -496,6 +495,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("TextEditor", TextEditor, DbType.String, ParameterDirection.Input);
 				dp.Add("URL", URL, DbType.String, ParameterDirection.Input);
 				dp.Add("Time", Time, DbType.Time, ParameterDirection.Input);
+				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -530,7 +530,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("UserCreationId", example.UserCreationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("UserLastModificationId", example.UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Boolean", example.Boolean, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("DateTime", example.DateTime, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("Decimal", example.Decimal, DbType.Decimal, ParameterDirection.Input, precision: 24, scale: 6);
 				dp.Add("DropDown", example.DropDown, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Options", example.Options, DbType.Int32, ParameterDirection.Input);
@@ -546,6 +545,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("TextEditor", example.TextEditor, DbType.String, ParameterDirection.Input);
 				dp.Add("URL", example.URL, DbType.String, ParameterDirection.Input);
 				dp.Add("Time", example.Time, DbType.Time, ParameterDirection.Input);
+				dp.Add("DateTime", example.DateTime, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -566,7 +566,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
         /// <returns>The ID of the last registry inserted in Example table</returns>
-        public int Insert(bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, bool Boolean, DateTime DateTime, decimal Decimal, int DropDown, int Options, int Integer, string TextBasic, string Email, string FileUpload, string HexColour, string Password, string PhoneNumber, string Tag, string TextArea, string TextEditor, string URL, TimeSpan Time)
+        public int Insert(bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, bool Boolean, decimal Decimal, int DropDown, int Options, int Integer, string TextBasic, string Email, string FileUpload, string HexColour, string Password, string PhoneNumber, string Tag, string TextArea, string TextEditor, string URL, TimeSpan Time, DateTime DateTime)
         {
             try
             {
@@ -580,7 +580,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Boolean", Boolean, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("Decimal", Decimal, DbType.Decimal, ParameterDirection.Input, precision: 24, scale: 6);
 				dp.Add("DropDown", DropDown, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Options", Options, DbType.Int32, ParameterDirection.Input);
@@ -596,6 +595,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("TextEditor", TextEditor, DbType.String, ParameterDirection.Input);
 				dp.Add("URL", URL, DbType.String, ParameterDirection.Input);
 				dp.Add("Time", Time, DbType.Time, ParameterDirection.Input);
+				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -631,7 +631,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Boolean", Boolean, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("Decimal", Decimal, DbType.Decimal, ParameterDirection.Input, precision: 24, scale: 6);
 				dp.Add("DropDown", DropDown, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Options", Options, DbType.Int32, ParameterDirection.Input);
@@ -647,6 +646,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("TextEditor", TextEditor, DbType.String, ParameterDirection.Input);
 				dp.Add("URL", URL, DbType.String, ParameterDirection.Input);
 				dp.Add("Time", Time, DbType.Time, ParameterDirection.Input);
+				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -682,7 +682,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("UserCreationId", example.UserCreationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("UserLastModificationId", example.UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Boolean", example.Boolean, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("DateTime", example.DateTime, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("Decimal", example.Decimal, DbType.Decimal, ParameterDirection.Input, precision: 24, scale: 6);
 				dp.Add("DropDown", example.DropDown, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Options", example.Options, DbType.Int32, ParameterDirection.Input);
@@ -698,6 +697,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("TextEditor", example.TextEditor, DbType.String, ParameterDirection.Input);
 				dp.Add("URL", example.URL, DbType.String, ParameterDirection.Input);
 				dp.Add("Time", example.Time, DbType.Time, ParameterDirection.Input);
+				dp.Add("DateTime", example.DateTime, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -718,7 +718,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
         /// <returns>The number of rows updated in Example table</returns>
-        public int UpdateByExampleId(int ExampleId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, bool Boolean, DateTime DateTime, decimal Decimal, int DropDown, int Options, int Integer, string TextBasic, string Email, string FileUpload, string HexColour, string Password, string PhoneNumber, string Tag, string TextArea, string TextEditor, string URL, TimeSpan Time)
+        public int UpdateByExampleId(int ExampleId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, bool Boolean, decimal Decimal, int DropDown, int Options, int Integer, string TextBasic, string Email, string FileUpload, string HexColour, string Password, string PhoneNumber, string Tag, string TextArea, string TextEditor, string URL, TimeSpan Time, DateTime DateTime)
         {
             try
             {
@@ -733,7 +733,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("UserCreationId", UserCreationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("UserLastModificationId", UserLastModificationId, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Boolean", Boolean, DbType.Boolean, ParameterDirection.Input);
-				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
 				dp.Add("Decimal", Decimal, DbType.Decimal, ParameterDirection.Input, precision: 24, scale: 6);
 				dp.Add("DropDown", DropDown, DbType.Int32, ParameterDirection.Input);
 				dp.Add("Options", Options, DbType.Int32, ParameterDirection.Input);
@@ -749,6 +748,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("TextEditor", TextEditor, DbType.String, ParameterDirection.Input);
 				dp.Add("URL", URL, DbType.String, ParameterDirection.Input);
 				dp.Add("Time", Time, DbType.Time, ParameterDirection.Input);
+				dp.Add("DateTime", DateTime, DbType.DateTime, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -876,7 +876,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				$"UserCreationId: {UserCreationId}, " +
 				$"UserLastModificationId: {UserLastModificationId}, " +
 				$"Boolean: {Boolean}, " +
-				$"DateTime: {DateTime}, " +
 				$"Decimal: {Decimal}, " +
 				$"DropDown: {DropDown}, " +
 				$"Options: {Options}, " +
@@ -891,7 +890,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				$"TextArea: {TextArea}, " +
 				$"TextEditor: {TextEditor}, " +
 				$"URL: {URL}, " +
-				$"Time: {Time}";
+				$"Time: {Time}, " +
+				$"DateTime: {DateTime}";
         }
 
         public string ToStringOnlyValuesForHTML()
@@ -937,12 +937,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Boolean}</span>
-        </font>
-        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-    </td><td align=""left"" valign=""top"">
-        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
-        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
-            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTime}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td><td align=""left"" valign=""top"">
@@ -1033,6 +1027,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Time}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{DateTime}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>

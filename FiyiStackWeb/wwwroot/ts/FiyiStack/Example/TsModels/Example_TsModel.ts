@@ -15,7 +15,7 @@ import { exampleSelectAllPaged } from "../DTOs/exampleSelectAllPaged";
  * 
 */
 
-//23 fields | Sub-models: 0 models  | Last modification on: 22/02/2023 21:12:24 | Stack: 9
+//23 fields | Sub-models: 0 models  | Last modification on: 02/03/2023 8:51:23 | Stack: 9
 
 export class ExampleModel {
 
@@ -27,7 +27,6 @@ export class ExampleModel {
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	Boolean?: boolean;
-	DateTime?: string | string[] | number | undefined;
 	Decimal?: number;
 	DropDown?: number;
 	Options?: number;
@@ -43,6 +42,7 @@ export class ExampleModel {
 	TextEditor?: string | string[] | number | undefined;
 	URL?: string | string[] | number | undefined;
 	Time?: string;
+	DateTime?: string | string[] | number | undefined;
     
 
     //Queries

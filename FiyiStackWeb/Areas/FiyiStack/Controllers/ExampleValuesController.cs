@@ -25,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 22/02/2023 6:50:49
+//Last modification on: 02/03/2023 8:51:23
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -33,7 +33,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 22/02/2023 6:50:49
+    /// Last modification: 02/03/2023 8:51:23
     /// </summary>
     [ApiController]
     [ExampleFilter]
@@ -147,7 +147,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/InsertOrUpdateAsync")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
@@ -166,7 +166,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 int ExampleId = Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-exampleid-input"]);
                 
                 bool Boolean = Convert.ToBoolean(HttpContext.Request.Form["fiyistack-example-boolean-input"]);
-                DateTime DateTime = Convert.ToDateTime(HttpContext.Request.Form["fiyistack-example-datetime-input"]);
                 decimal Decimal = Convert.ToDecimal(HttpContext.Request.Form["fiyistack-example-decimal-input"].ToString().Replace(".",","));
                 int DropDown = 0; 
                 if (Convert.ToInt32(HttpContext.Request.Form["fiyistack-example-dropdown-input"]) != 0)
@@ -202,6 +201,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 string TextEditor = HttpContext.Request.Form["fiyistack-example-texteditor-input"];
                 string URL = HttpContext.Request.Form["fiyistack-example-url-input"];
                 TimeSpan Time = TimeSpan.Parse(HttpContext.Request.Form["fiyistack-example-time-input"]);
+                DateTime DateTime = Convert.ToDateTime(HttpContext.Request.Form["fiyistack-example-datetime-input"]);
                 
                 #endregion
 
@@ -219,7 +219,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                         DateTimeCreation = DateTime.Now,
                         DateTimeLastModification = DateTime.Now,
                         Boolean = Boolean,
-                        DateTime = DateTime,
                         Decimal = Decimal,
                         DropDown = DropDown,
                         Options = Options,
@@ -235,6 +234,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                         TextEditor = TextEditor,
                         URL = URL,
                         Time = Time,
+                        DateTime = DateTime,
                         
                     };
                     
@@ -248,7 +248,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     ExampleModel.UserLastModificationId = UserId;
                     ExampleModel.DateTimeLastModification = DateTime.Now;
                     ExampleModel.Boolean = Boolean;
-                    ExampleModel.DateTime = DateTime;
                     ExampleModel.Decimal = Decimal;
                     ExampleModel.DropDown = DropDown;
                     ExampleModel.Options = Options;
@@ -264,6 +263,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     ExampleModel.TextEditor = TextEditor;
                     ExampleModel.URL = URL;
                     ExampleModel.Time = Time;
+                    ExampleModel.DateTime = DateTime;
                                        
 
                     RowsAffected = _IExample.UpdateByExampleId(ExampleModel);
@@ -326,7 +326,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/Example/1/DeleteByExampleId/{ExampleId:int}")]
         public IActionResult DeleteByExampleId(int ExampleId)
         {
@@ -360,7 +360,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/DeleteManyOrAll/{DeleteType}")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
@@ -395,7 +395,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/CopyByExampleId/{ExampleId:int}")]
         public IActionResult CopyByExampleId(int ExampleId)
         {
@@ -430,7 +430,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/CopyManyOrAll/{CopyType}")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
@@ -474,7 +474,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/ExportAsPDF/{ExportationType}")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -509,7 +509,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/ExportAsExcel/{ExportationType}")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -544,7 +544,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Example/1/ExportAsCSV/{ExportationType}")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {

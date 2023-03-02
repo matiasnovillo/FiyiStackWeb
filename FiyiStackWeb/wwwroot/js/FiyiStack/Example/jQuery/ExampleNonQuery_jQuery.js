@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 19/02/2023 11:08:32
+//Last modification on: 02/03/2023 8:51:23
 
 //Create a formdata object
 var formData = new FormData();
@@ -70,7 +70,6 @@ $(document).ready(function () {
                 formData.append("fiyistack-example-exampleid-input", $("#fiyistack-example-exampleid-input").val());
 
                 formData.append("fiyistack-example-boolean-input", $("#fiyistack-example-boolean-input").is(":checked"));
-                formData.append("fiyistack-example-datetime-input", $("#fiyistack-example-datetime-input").val());
                 formData.append("fiyistack-example-decimal-input", $("#fiyistack-example-decimal-input").val());
                 formData.append("fiyistack-example-dropdown-input", $("#fiyistack-example-dropdown-input").val());
                 formData.append("fiyistack-example-options-input", $(".fiyistack-example-options-a.active").next().val());
@@ -88,6 +87,7 @@ $(document).ready(function () {
                 formData.append("fiyistack-example-texteditor-input", fiyistackexampletexteditorquill.root.innerHTML);
                 formData.append("fiyistack-example-url-input", $("#fiyistack-example-url-input").val());
                 formData.append("fiyistack-example-time-input", $("#fiyistack-example-time-input").val());
+                formData.append("fiyistack-example-datetime-input", $("#fiyistack-example-datetime-input").val());
                 
 
                 //Setup request

@@ -9,7 +9,6 @@
 
     int ExampleId;
     bool Boolean;
-    DateTime DateTime;
     decimal Decimal;
     int DropDown;
     int Options;
@@ -25,6 +24,7 @@
     string TextEditor;
     string URL;
     TimeSpan Time;
+    DateTime DateTime;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?ExampleId=0"))
@@ -34,7 +34,6 @@
 
         ExampleId = 0;
         Boolean = false;
-        DateTime = DateTime.Now;
         Decimal = 5M;
         DropDown = 0;
         Options = 0;
@@ -50,6 +49,7 @@
         TextEditor = "";
         URL = "http://";
         Time = TimeSpan.Parse("00:00");
+        DateTime = DateTime.Now;
         
     }
     else
@@ -62,7 +62,6 @@
 
         ExampleId = ExampleModel.ExampleId;
         Boolean = ExampleModel.Boolean;
-        DateTime = ExampleModel.DateTime;
         Decimal = ExampleModel.Decimal;
         DropDown = ExampleModel.DropDown;
         Options = ExampleModel.Options;
@@ -78,6 +77,7 @@
         TextEditor = ExampleModel.TextEditor;
         URL = ExampleModel.URL;
         Time = ExampleModel.Time;
+        DateTime = ExampleModel.DateTime;
         
     }
 
@@ -93,7 +93,7 @@
  */
     
 //Stack: 11
-//Last modification on: 19/02/2023 11:08:32
+//Last modification on: 02/03/2023 8:51:23
 
 }
 <!-- Header -->
@@ -176,20 +176,6 @@
                                 <p class="text-danger text-sm">
                                     <b>This value is required.</b>
                                 </p>
-                            </div>
-                        <!-- DateTime -->
-                            <div class="form-group mb-3">
-                                <label class="form-control-label">
-                                    <i class="fas fa-calendar"></i> DateTime
-                                </label>
-                                <input id="examples-example-datetime-input" 
-                                    value="@DateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm")" 
-                                    type="datetime-local" 
-                                    min="1753-01-01T00:00" 
-                                    max="9998-12-30T23:59" 
-                                    class="form-control"
-                                    />
-                                
                             </div>
                         <!-- Decimal -->
                         <div class="form-group mb-3">
@@ -431,7 +417,6 @@
                                 id="fiyistack-example-textarea-input" 
                                 rows="3" 
                                 resize="none" 
-                                maxlength="8000"
                                 required>
                                     @TextArea
                             </textarea>
@@ -478,6 +463,20 @@
                                 />
                             
                         </div>
+                        <!-- DateTime -->
+                            <div class="form-group mb-3">
+                                <label class="form-control-label">
+                                    <i class="fas fa-calendar"></i> DateTime
+                                </label>
+                                <input id="fiyistack-example-datetime-input" 
+                                    value="@DateTime.ToString("yyyy'-'MM'-'dd'T'HH':'mm")" 
+                                    type="datetime-local" 
+                                    min="1753-01-01T00:00" 
+                                    max="9998-12-30T23:59" 
+                                    class="form-control"
+                                    />
+                                
+                            </div>
                         
                         <!-- Buttons -->
                         <div class="row justify-content-between">
