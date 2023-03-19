@@ -245,18 +245,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                   <table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""88%"" style=""width: 88% !important; min-width: 88%; max-width: 88%;"">
                      <tr>
                         <td class=""mob_left"" align=""center"" valign=""top"">
-                           <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
-                           <a href=""https://localhost:44341/Index"" target=""_blank"" style=""display: block; max-width: 128px;"">
-                              <img src=""https://localhost:44341/img/FiyiStackImageTransparent.png"" alt=""img"" width=""128"" border=""0"" style=""display: block; width: 128px;"" />
-                           </a>
-                           <div class=""top_pad2"" style=""height: 78px; line-height: 78px; font-size: 76px;"">&nbsp;</div>
-                        </td>
-                     </tr>
-                  </table>
-
-                  <table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""88%"" style=""width: 88% !important; min-width: 88%; max-width: 88%;"">
-                     <tr>
-                        <td class=""mob_left"" align=""center"" valign=""top"">
                            <font class=""mob_title1"" face=""'Source Sans Pro', sans-serif"" color=""#1a1a1a"" style=""font-size: 44px; line-height: 55px; font-weight: 300; letter-spacing: -1.5px;"">
                               <span class=""mob_title1"" style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 44px; line-height: 55px; font-weight: 300; letter-spacing: -1.5px;"">Please, finish registration</span>
                            </font>
@@ -268,7 +256,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                            <table class=""mob_btn"" cellpadding=""0"" cellspacing=""0"" border=""0"" style=""background: #27cbcc; border-radius: 4px;"">
                               <tr>
                                  <td align=""center"" valign=""top""> 
-                                    <a href=""http://localhost:44341/CMSCore/RecordActivation?RegistrationToken={RegistrationToken}"" target=""_blank"" style=""display: block; border: 1px solid #27cbcc; border-radius: 4px; padding: 19px 26px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
+                                    <a href=""https://fiyistack.com/CMSCore/RecordActivation?RegistrationToken={RegistrationToken}"" target=""_blank"" style=""display: block; border: 1px solid #27cbcc; border-radius: 4px; padding: 19px 26px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 20px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
                                        <font face=""'Source Sans Pro', sans-serif"" color=""#ffffff"" style=""font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">
                                           <span style=""font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;"">Yes,&nbsp;register</span>
                                        </font>
@@ -429,18 +417,6 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
                      <tr>
                         <td align=""right"" valign=""top"">
                            <div class=""top_pad"" style=""height: 25px; line-height: 25px; font-size: 23px;"">&nbsp;</div>
-                        </td>
-                     </tr>
-                  </table>
-
-                  <table cellpadding=""0"" cellspacing=""0"" border=""0"" width=""88%"" style=""width: 88% !important; min-width: 88%; max-width: 88%;"">
-                     <tr>
-                        <td align=""left"" valign=""top"">
-                           <div style=""height: 39px; line-height: 39px; font-size: 37px;"">&nbsp;</div>
-                           <a href=""https://localhost:44341/Index"" target=""_blank"" style=""display: block; max-width: 128px;"">
-                              <img src=""https://localhost:44341/img/FiyiStackImageTransparent.png"" alt=""img"" width=""128"" border=""0"" style=""display: block; width: 128px;"" />
-                           </a>
-                           <div style=""height: 73px; line-height: 73px; font-size: 71px;"">&nbsp;</div>
                         </td>
                      </tr>
                   </table>

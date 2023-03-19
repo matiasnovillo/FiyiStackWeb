@@ -19,16 +19,19 @@ $(document).ready(function () {
             if (form.checkValidity() === true) {
                 if ($("#fantasy-name").val() == "" || $("#email").val() == "" || $("#password").val() == "" || $("#confirm-password").val() == "" || $("#captcha-text").val() == "") {
                     //Complete all fields
+                    $.notify({ message: "Complete all fields, please" }, { type: "info", placement: { from: "bottom", align: "center" } });
                     return;
                 }
 
                 if ($("#password").val().length < 6 || $("#confirm-password").val().length < 6) {
                     //Minimum required for password = 6 characters
+                    $.notify({ message: "Minimum required for password are 6 characters" }, { type: "info", placement: { from: "bottom", align: "center" } });
                     return;
                 }
 
                 if ($("#password").val() != $("#confirm-password").val()) {
                     //New password and confirm password must be equal
+                    $.notify({ message: "New password and Confirm password must be equal" }, { type: "info", placement: { from: "bottom", align: "center" } });
                     return;
                 }
 
@@ -42,6 +45,7 @@ $(document).ready(function () {
                 //Set event listeners
                 xmlHttpRequest.upload.addEventListener("loadstart", function (e) {
                     //Registering. Please, wait...
+                    $.notify({ message: "Registering. Please, wait..." }, { type: "info", placement: { from: "bottom", align: "center" } });
                 });
                 xmlHttpRequest.onload = function () {
                     if (xmlHttpRequest.status >= 400) {
