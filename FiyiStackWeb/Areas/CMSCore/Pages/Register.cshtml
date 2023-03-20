@@ -190,26 +190,7 @@ Coded by www.creative-tim.com
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-3">
-                                    <div class="col-4"></div>
-                                    <div class="col-4 text-center">
-                                        <div class="form-group mb-3">
-                                            <img id="captcha-image" 
-                                                src="~/api/CMSCore/User/1/GetCaptchaImage" />
-                                            <br />
-                                            <i id="reset-captcha" class="fas btn btn-sm fa-redo"></i>
-                                            <br />
-                                            <input id="captcha-text" 
-                                                class="form-control" 
-                                                type="text"
-                                                required>
-                                            <div class="invalid-feedback">
-                                                Captcha is required
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4"></div>
-                                </div>
+                                <input type="hidden" id="hdnGoogleRecaptcha" required>
                                 
                                 <div class="text-center">
                                     <button id="register-button" 
@@ -251,6 +232,7 @@ Coded by www.creative-tim.com
         application: "argon-design-system-pro"
         });
     </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdNEI8jAAAAAMgLFOALMJb1FLcpc1DvLMyrwpM4"></script>
 
     <script src="/js/CMSCore/User/jQuery/Register.js"></script>
 </body>

@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using System.Text;
 using System.IO;
-using SixLaborsCaptcha.Core;
+using System.Net.Http;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
@@ -41,11 +43,13 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
     public partial class UserValuesController : ControllerBase
     {
         private readonly IWebHostEnvironment _WebHostEnvironment;
+        private readonly IConfiguration _configuration;
         private readonly IUser _IUser;
-
-        public UserValuesController(IWebHostEnvironment WebHostEnvironment, IUser IUser) 
+        
+        public UserValuesController(IWebHostEnvironment WebHostEnvironment, IConfiguration configuration, IUser IUser) 
         {
             _WebHostEnvironment = WebHostEnvironment;
+            _configuration = configuration;
             _IUser = IUser;
         }
 
@@ -510,21 +514,62 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
 
         [HttpPost("~/api/CMSCore/User/1/Register")]
 
-        public IActionResult Register()
+        public async Task<IActionResult> Register()
         {
             try
             {
                 string FantasyName = HttpContext.Request.Form["fantasy-name"];
                 string Email = HttpContext.Request.Form["email"];
                 string Password = HttpContext.Request.Form["password"];
-                string CaptchaText = HttpContext.Request.Form["captcha-text"];
 
-                string CaptchaTextInSession = HttpContext.Session.GetString("CaptchaKey");
+                #region Google ReCaptcha validation
+                string GoogleRecaptchaToken = HttpContext.Request.Form["google-recaptcha"];
 
-                if (CaptchaText != CaptchaTextInSession)
+                string SecretKey = _configuration.GetValue<string>("AppSettings:RecaptchaSecretKey");
+
+                var Dictionary = new Dictionary<string, string>
                 {
-                    return StatusCode(200, "The captcha is invalid");
+                    { "secret", SecretKey },
+                    { "response", GoogleRecaptchaToken }
+                };
+                var PostContent = new FormUrlEncodedContent(Dictionary);
+                HttpResponseMessage GoogleRecaptchaResponse = null;
+                string StringContentResponse = "";
+
+                // Call Google Recaptcha API and validate the token
+                using (var HttpClient = new HttpClient())
+                {
+                    GoogleRecaptchaResponse = await HttpClient.PostAsync("https://www.google.com/recaptcha/api/siteverify", PostContent);
+                    StringContentResponse = await GoogleRecaptchaResponse.Content.ReadAsStringAsync();
                 }
+
+                if (!GoogleRecaptchaResponse.IsSuccessStatusCode)
+                {
+                    return StatusCode(400, "Unable to verify Google ReCaptcha token - Error S03");
+                }
+                if (string.IsNullOrEmpty(StringContentResponse))
+                {
+                    return StatusCode(400, "Invalid Google ReCaptcha verification response - Error S04");
+                }
+                var googleReCaptchaResponse = JsonConvert.DeserializeObject<googleReCaptchaResponse>(StringContentResponse);
+
+                if (!googleReCaptchaResponse.Success)
+                {
+                    var errors = string.Join(",", googleReCaptchaResponse.ErrorCodes);
+                    return StatusCode(400, "Error during Google ReCaptcha verification - Error S05");
+                }
+                if (!googleReCaptchaResponse.Action.Equals("signup", StringComparison.OrdinalIgnoreCase))
+                {
+                    // This is important just to verify that the exact action has been performed from the UI
+                    return StatusCode(400, "Error during Google ReCaptcha verification - Error S06");
+                }
+                // Captcha was success , let's check the score, in our case, for example, anything less than 0.5 is considered as a bot user which we would not allow ...
+                // the passing score might be higher or lower according to the sensitivity of your action
+                if (googleReCaptchaResponse.Score < 0.5)
+                {
+                    return StatusCode(400, "This is a potential bot. Signup request rejected - Error S07");
+                } 
+                #endregion
 
                 string Message = _IUser.Register(FantasyName, Email, Password);
 
@@ -723,17 +768,6 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
                 FailureModel.Insert();
                 return StatusCode(500, ex.Message);
             }
-        }
-
-        [HttpGet("~/api/CMSCore/User/1/GetCaptchaImage")]
-        public FileResult GetCaptchaImage([FromServices] ISixLaborsCaptchaModule sixLaborsCaptcha)
-        {
-            string CaptchaKey = Extensions.GetUniqueKey(6);
-            var Image = sixLaborsCaptcha.Generate(CaptchaKey);
-
-            HttpContext.Session.SetString("CaptchaKey", CaptchaKey);
-
-            return File(Image, "Image/Png");
         }
         #endregion
     }

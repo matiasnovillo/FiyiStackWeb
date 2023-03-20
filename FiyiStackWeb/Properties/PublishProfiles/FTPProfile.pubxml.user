@@ -7,7 +7,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAvwJcmDrAMECAZWa5k89GEgAAAAACAAAAAAAQZgAAAAEAACAAAABJnR/A4yOE516m0cFZsJmiyqY5xrUfoi8qdBBCZg6hnAAAAAAOgAAAAAIAACAAAAC+mdViIS2RH/B0NiBJSB5pdwYkLPzoGwov0i1db61DhyAAAABKruX8jWdG85R7+plep3Y5U9xpDbL5hxVog3I7xFvGQkAAAACySnmNazFt0fLcuPryVGZwbkFCzZJ40g+UssWKY2xiakpAgXMTgxR+5jJcvVaBWYgxBTpN4GuL1/Ui/Q426F9X</EncryptedPassword>
-    <History>False|2023-02-21T11:22:05.2765840Z;True|2023-02-21T07:52:07.6955527-03:00;True|2023-02-21T07:19:13.6028312-03:00;True|2023-01-13T20:50:38.4725818-03:00;False|2023-01-11T22:32:10.0249611-03:00;False|2023-01-11T22:00:13.4672999-03:00;False|2023-01-11T21:10:03.7954610-03:00;True|2023-01-10T17:58:22.1270514-03:00;False|2023-01-10T15:40:30.5511036-03:00;False|2023-01-10T15:07:25.1702406-03:00;False|2023-01-06T10:31:18.6873360-03:00;False|2023-01-06T10:23:46.9077822-03:00;True|2023-01-05T20:59:02.3262475-03:00;False|2023-01-05T20:54:14.4946330-03:00;True|2023-01-05T19:57:47.4271167-03:00;False|2023-01-05T19:13:56.8717610-03:00;True|2023-01-05T12:23:48.0987162-03:00;False|2023-01-05T12:10:40.0523390-03:00;False|2023-01-05T11:59:43.5585598-03:00;True|2023-01-05T10:50:01.0760853-03:00;False|2023-01-05T10:45:01.5148061-03:00;True|2023-01-05T10:21:42.6948978-03:00;False|2023-01-05T10:15:45.3496123-03:00;True|2023-01-05T10:04:30.1657968-03:00;True|2023-01-04T04:59:37.4321861-03:00;False|2023-01-04T04:53:56.6467631-03:00;False|2023-01-04T04:51:01.5586297-03:00;False|2023-01-04T04:47:46.9897967-03:00;False|2023-01-04T04:42:47.2720571-03:00;True|2023-01-04T04:16:09.3695789-03:00;False|2023-01-04T03:31:56.4027855-03:00;False|2023-01-04T03:29:14.4471250-03:00;True|2023-01-03T23:15:01.0341179-03:00;False|2023-01-03T21:31:19.8799653-03:00;True|2023-01-03T08:48:49.3464637-03:00;True|2023-01-03T07:49:00.5827707-03:00;False|2023-01-03T07:08:50.4124499-03:00;False|2023-01-03T00:45:05.5518469-03:00;False|2023-01-02T20:17:45.5423062-03:00;False|2023-01-02T19:16:06.9852918-03:00;</History>
+    <History>True|2023-03-20T14:38:49.4064358Z;False|2023-03-20T11:35:53.1471908-03:00;True|2023-03-20T11:29:03.0749658-03:00;False|2023-03-20T11:24:42.5440499-03:00;False|2023-03-20T11:20:17.0809187-03:00;True|2023-03-20T11:13:10.9623286-03:00;False|2023-02-21T08:22:05.2765840-03:00;True|2023-02-21T07:52:07.6955527-03:00;True|2023-02-21T07:19:13.6028312-03:00;True|2023-01-13T20:50:38.4725818-03:00;False|2023-01-11T22:32:10.0249611-03:00;False|2023-01-11T22:00:13.4672999-03:00;False|2023-01-11T21:10:03.7954610-03:00;True|2023-01-10T17:58:22.1270514-03:00;False|2023-01-10T15:40:30.5511036-03:00;False|2023-01-10T15:07:25.1702406-03:00;False|2023-01-06T10:31:18.6873360-03:00;False|2023-01-06T10:23:46.9077822-03:00;True|2023-01-05T20:59:02.3262475-03:00;False|2023-01-05T20:54:14.4946330-03:00;True|2023-01-05T19:57:47.4271167-03:00;False|2023-01-05T19:13:56.8717610-03:00;True|2023-01-05T12:23:48.0987162-03:00;False|2023-01-05T12:10:40.0523390-03:00;False|2023-01-05T11:59:43.5585598-03:00;True|2023-01-05T10:50:01.0760853-03:00;False|2023-01-05T10:45:01.5148061-03:00;True|2023-01-05T10:21:42.6948978-03:00;False|2023-01-05T10:15:45.3496123-03:00;True|2023-01-05T10:04:30.1657968-03:00;True|2023-01-04T04:59:37.4321861-03:00;False|2023-01-04T04:53:56.6467631-03:00;False|2023-01-04T04:51:01.5586297-03:00;False|2023-01-04T04:47:46.9897967-03:00;False|2023-01-04T04:42:47.2720571-03:00;True|2023-01-04T04:16:09.3695789-03:00;False|2023-01-04T03:31:56.4027855-03:00;False|2023-01-04T03:29:14.4471250-03:00;True|2023-01-03T23:15:01.0341179-03:00;False|2023-01-03T21:31:19.8799653-03:00;True|2023-01-03T08:48:49.3464637-03:00;True|2023-01-03T07:49:00.5827707-03:00;False|2023-01-03T07:08:50.4124499-03:00;False|2023-01-03T00:45:05.5518469-03:00;False|2023-01-02T20:17:45.5423062-03:00;False|2023-01-02T19:16:06.9852918-03:00;</History>
     <_PublishTargetUrl>ftp://fiyistack.com/httpdocs/</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
@@ -15,7 +15,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/07/2022 16:52:49</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>12/07/2022 16:52:49</publishTime>
+      <publishTime>03/19/2023 12:53:29</publishTime>
     </File>
     <File Include="Azure.Core.dll">
       <publishTime>04/04/2022 18:38:52</publishTime>
@@ -39,25 +39,25 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/13/2020 06:36:50</publishTime>
     </File>
     <File Include="FiyiStackWeb.deps.json">
-      <publishTime>02/21/2023 08:31:10</publishTime>
+      <publishTime>03/20/2023 11:33:08</publishTime>
     </File>
     <File Include="FiyiStackWeb.dll">
-      <publishTime>02/21/2023 08:31:09</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="FiyiStackWeb.exe">
-      <publishTime>02/21/2023 08:31:09</publishTime>
+      <publishTime>03/20/2023 11:33:03</publishTime>
     </File>
     <File Include="FiyiStackWeb.pdb">
-      <publishTime>02/21/2023 08:31:09</publishTime>
+      <publishTime>03/20/2023 11:33:03</publishTime>
     </File>
     <File Include="FiyiStackWeb.runtimeconfig.json">
-      <publishTime>02/21/2023 07:12:07</publishTime>
+      <publishTime>03/20/2023 11:10:02</publishTime>
     </File>
     <File Include="FiyiStackWeb.Views.dll">
-      <publishTime>02/21/2023 08:31:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="FiyiStackWeb.Views.pdb">
-      <publishTime>02/21/2023 08:31:10</publishTime>
+      <publishTime>03/20/2023 11:33:08</publishTime>
     </File>
     <File Include="IronPdf.dll">
       <publishTime>11/09/2022 02:00:18</publishTime>
@@ -110,6 +110,12 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="Microsoft.Data.SqlClient.dll">
       <publishTime>10/07/2022 20:35:40</publishTime>
     </File>
+    <File Include="Microsoft.Extensions.Configuration.Abstractions.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
     <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
       <publishTime>10/22/2021 20:48:30</publishTime>
     </File>
@@ -120,10 +126,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Extensions.Primitives.dll">
-      <publishTime>10/22/2021 20:50:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Identity.Client.dll">
-      <publishTime>06/22/2022 16:59:58</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Identity.Client.Extensions.Msal.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -147,7 +153,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>07/01/2022 15:33:56</publishTime>
     </File>
     <File Include="Microsoft.SqlServer.Server.dll">
-      <publishTime>01/27/2022 14:19:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Win32.Registry.dll">
       <publishTime>10/19/2020 15:37:46</publishTime>
@@ -162,10 +168,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/27/2018 15:07:34</publishTime>
     </File>
     <File Include="package-lock.json">
-      <publishTime>02/20/2023 11:24:31</publishTime>
+      <publishTime>02/22/2023 17:59:41</publishTime>
     </File>
     <File Include="package.json">
-      <publishTime>02/20/2023 11:24:31</publishTime>
+      <publishTime>02/22/2023 17:59:41</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll">
       <publishTime>10/19/2020 15:46:26</publishTime>
@@ -720,10 +726,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/26/2022 04:46:26</publishTime>
     </File>
     <File Include="System.Configuration.ConfigurationManager.dll">
-      <publishTime>10/19/2020 15:52:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Diagnostics.DiagnosticSource.dll">
-      <publishTime>10/19/2020 15:38:16</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Drawing.Common.dll">
       <publishTime>02/16/2021 19:00:12</publishTime>
@@ -744,7 +750,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:52:34</publishTime>
     </File>
     <File Include="System.Runtime.CompilerServices.Unsafe.dll">
-      <publishTime>10/22/2021 20:40:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Security.AccessControl.dll">
       <publishTime>10/19/2020 15:37:22</publishTime>
@@ -756,7 +762,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/19/2020 15:52:26</publishTime>
     </File>
     <File Include="System.Security.Permissions.dll">
-      <publishTime>10/19/2020 15:53:40</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Security.Principal.Windows.dll">
       <publishTime>10/19/2020 15:37:20</publishTime>
@@ -777,7 +783,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/23/2022 11:05:54</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>02/21/2023 08:31:14</publishTime>
+      <publishTime>03/20/2023 11:33:13</publishTime>
     </File>
     <File Include="wwwroot/assets/css/argon-design-system.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -9189,16 +9195,16 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/12/2022 05:52:12</publishTime>
     </File>
     <File Include="wwwroot/dist/blogcustomjquery.bundle.js">
-      <publishTime>02/20/2023 15:57:19</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/blogcustomjquery.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
     </File>
     <File Include="wwwroot/dist/blogcustomjquery.bundle.js.map">
-      <publishTime>02/16/2023 15:01:37</publishTime>
+      <publishTime>02/22/2023 18:04:53</publishTime>
     </File>
     <File Include="wwwroot/dist/blogjquery.bundle.js">
-      <publishTime>02/19/2023 10:51:49</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/blogjquery.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9206,8 +9212,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/blogjquery.bundle.js.map">
       <publishTime>02/19/2023 10:51:49</publishTime>
     </File>
+    <File Include="wwwroot/dist/blogselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/blogselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/blogtsmodel.bundle.js">
-      <publishTime>02/16/2023 15:03:24</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/blogtsmodel.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9219,7 +9231,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/08/2022 06:48:21</publishTime>
     </File>
     <File Include="wwwroot/dist/cityjquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/cityjquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9227,8 +9239,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/cityjquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/cityselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/cityselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/citytsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/citytsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9237,7 +9255,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/commentforblogjquery.bundle.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/commentforblogjquery.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9245,8 +9263,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/commentforblogjquery.bundle.js.map">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="wwwroot/dist/commentforblogselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/commentforblogselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/commentforblogtsmodel.bundle.js">
-      <publishTime>02/16/2023 15:03:24</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/commentforblogtsmodel.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9255,7 +9279,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/16/2023 15:01:37</publishTime>
     </File>
     <File Include="wwwroot/dist/countryjquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/countryjquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9263,8 +9287,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/countryjquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/countryselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/countryselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/countrytsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/countrytsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9273,7 +9303,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/examplejquery.bundle.js">
-      <publishTime>02/19/2023 11:19:37</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/examplejquery.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9281,8 +9311,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/examplejquery.bundle.js.map">
       <publishTime>02/19/2023 11:19:37</publishTime>
     </File>
+    <File Include="wwwroot/dist/exampleselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/exampleselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/exampletsmodel.bundle.js">
-      <publishTime>02/19/2023 11:19:37</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/exampletsmodel.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9294,7 +9330,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/08/2022 06:48:21</publishTime>
     </File>
     <File Include="wwwroot/dist/failurejquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/failurejquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9302,8 +9338,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/failurejquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/failureselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/failureselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/failuretsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/failuretsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9324,7 +9366,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/08/2022 06:48:28</publishTime>
     </File>
     <File Include="wwwroot/dist/menujquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/menujquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9332,8 +9374,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/menujquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/menuselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/menuselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/menutsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/menutsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9342,7 +9390,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/pagepermissions.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/pagepermissions.bundle.js.LICENSE.txt">
       <publishTime>01/04/2023 02:44:17</publishTime>
@@ -9351,7 +9399,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
     <File Include="wwwroot/dist/parameterjquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/parameterjquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9359,8 +9407,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/parameterjquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/parameterselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/parameterselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/parametertsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/parametertsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9369,7 +9423,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/planetjquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/planetjquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9377,8 +9431,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/planetjquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/planetselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/planetselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/planettsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/planettsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9387,7 +9447,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/provincejquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/provincejquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9395,8 +9455,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/provincejquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/provinceselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/provinceselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/provincetsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/provincetsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9405,7 +9471,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/rolejquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/rolejquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9414,7 +9480,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
     <File Include="wwwroot/dist/rolemenujquery.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/rolemenujquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9422,8 +9488,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/rolemenujquery.bundle.js.map">
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
+    <File Include="wwwroot/dist/rolemenuselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/rolemenuselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/rolemenutsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/rolemenutsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9431,8 +9503,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/rolemenutsmodel.bundle.js.map">
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
+    <File Include="wwwroot/dist/roleselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/roleselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/roletsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/roletsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9441,7 +9519,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/sexjquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/sexjquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9449,8 +9527,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/sexjquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/sexselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/sexselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/sextsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/sextsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9459,7 +9543,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/04/2023 15:40:48</publishTime>
     </File>
     <File Include="wwwroot/dist/userjquery.bundle.js">
-      <publishTime>02/16/2023 15:35:22</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/userjquery.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9467,8 +9551,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/dist/userjquery.bundle.js.map">
       <publishTime>02/16/2023 15:35:22</publishTime>
     </File>
+    <File Include="wwwroot/dist/userselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/userselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
     <File Include="wwwroot/dist/usertsmodel.bundle.js">
-      <publishTime>02/16/2023 15:33:18</publishTime>
+      <publishTime>02/28/2023 17:32:57</publishTime>
     </File>
     <File Include="wwwroot/dist/usertsmodel.bundle.js.LICENSE.txt">
       <publishTime>12/12/2022 04:15:00</publishTime>
@@ -9487,6 +9577,24 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     </File>
     <File Include="wwwroot/dist/vendor.js.LICENSE.txt">
       <publishTime>12/08/2022 06:48:21</publishTime>
+    </File>
+    <File Include="wwwroot/dist/visitorcounterjquery.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/visitorcounterjquery.bundle.js.map">
+      <publishTime>02/22/2023 07:50:53</publishTime>
+    </File>
+    <File Include="wwwroot/dist/visitorcounterselectallpaged.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/visitorcounterselectallpaged.bundle.js.map">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/visitorcountertsmodel.bundle.js">
+      <publishTime>02/28/2023 17:32:57</publishTime>
+    </File>
+    <File Include="wwwroot/dist/visitorcountertsmodel.bundle.js.map">
+      <publishTime>02/22/2023 07:50:53</publishTime>
     </File>
     <File Include="wwwroot/favicon.ico">
       <publishTime>12/07/2022 16:52:49</publishTime>
@@ -9566,8 +9674,11 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="wwwroot/img/FiyiStack/VSFiyiRequirements.png">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="wwwroot/js/BasicCore/chart.js">
+      <publishTime>02/22/2023 08:05:10</publishTime>
+    </File>
     <File Include="wwwroot/js/BasicCore/Failure/jQuery/FailureNonQuery_jQuery.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/03/2023 07:39:49</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCore/jasny-bootstrap.js">
       <publishTime>12/21/2022 14:19:33</publishTime>
@@ -9579,67 +9690,73 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/17/2022 16:02:53</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCore/notify.interfaces.js">
-      <publishTime>02/14/2023 07:34:28</publishTime>
+      <publishTime>02/21/2023 21:55:05</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCore/notify.interfaces.js.map">
       <publishTime>02/14/2023 07:34:28</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCore/Parameter/jQuery/ParameterNonQuery_jQuery.js">
-      <publishTime>02/15/2023 17:34:54</publishTime>
+      <publishTime>03/03/2023 07:40:24</publishTime>
+    </File>
+    <File Include="wwwroot/js/BasicCore/VisitorCounter/jQuery/VisitorCounterNonQuery_jQuery.js">
+      <publishTime>03/03/2023 07:40:56</publishTime>
+    </File>
+    <File Include="wwwroot/js/BasicCore/VisitorCounter/visitors-chart.js">
+      <publishTime>02/22/2023 14:38:34</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCore/_LayoutDashboard.js">
-      <publishTime>02/20/2023 10:44:57</publishTime>
+      <publishTime>02/22/2023 17:26:54</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCulture/City/jQuery/CityNonQuery_jQuery.js">
-      <publishTime>02/15/2023 17:56:48</publishTime>
+      <publishTime>03/03/2023 07:41:17</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCulture/Country/jQuery/CountryNonQuery_jQuery.js">
-      <publishTime>02/15/2023 17:43:03</publishTime>
+      <publishTime>03/03/2023 07:41:39</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCulture/Planet/jQuery/PlanetNonQuery_jQuery.js">
-      <publishTime>02/15/2023 17:38:02</publishTime>
+      <publishTime>03/03/2023 07:41:56</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCulture/Province/jQuery/ProvinceNonQuery_jQuery.js">
-      <publishTime>02/15/2023 17:48:12</publishTime>
+      <publishTime>03/03/2023 07:42:17</publishTime>
     </File>
     <File Include="wwwroot/js/BasicCulture/Sex/jQuery/SexNonQuery_jQuery.js">
-      <publishTime>02/15/2023 18:02:20</publishTime>
+      <publishTime>03/03/2023 07:42:34</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/Menu/jQuery/MenuNonQuery_jQuery.js">
-      <publishTime>02/15/2023 18:14:40</publishTime>
+      <publishTime>03/03/2023 07:42:53</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/Role/jQuery/RoleNonQuery_jQuery.js">
-      <publishTime>02/15/2023 18:47:10</publishTime>
+      <publishTime>03/03/2023 07:43:09</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/RoleMenu/jQuery/RoleMenuNonQuery_jQuery.js">
       <publishTime>12/21/2022 12:02:01</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/User/jQuery/ChangePassword.js">
-      <publishTime>02/15/2023 22:35:54</publishTime>
+      <publishTime>02/22/2023 17:26:54</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/User/jQuery/Login.js">
       <publishTime>02/15/2023 19:43:36</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/User/jQuery/RecoverPassword.js">
-      <publishTime>02/15/2023 21:15:57</publishTime>
+      <publishTime>02/22/2023 17:26:54</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/User/jQuery/Register.js">
-      <publishTime>02/15/2023 20:15:10</publishTime>
+      <publishTime>03/20/2023 10:27:24</publishTime>
     </File>
     <File Include="wwwroot/js/CMSCore/User/jQuery/UserNonQuery_jQuery.js">
-      <publishTime>02/15/2023 18:51:39</publishTime>
+      <publishTime>03/03/2023 07:43:26</publishTime>
     </File>
     <File Include="wwwroot/js/FiyiStack/Blog/jQuery/BlogNonQuery_jQuery.js">
-      <publishTime>02/19/2023 10:49:59</publishTime>
+      <publishTime>03/03/2023 07:43:39</publishTime>
     </File>
     <File Include="wwwroot/js/FiyiStack/CommentForBlog/jQuery/CommentForBlogNonQuery_jQuery.js">
-      <publishTime>02/19/2023 11:19:29</publishTime>
+      <publishTime>03/03/2023 07:43:56</publishTime>
     </File>
     <File Include="wwwroot/js/FiyiStack/ContactMe.js">
       <publishTime>02/19/2023 09:46:29</publishTime>
     </File>
     <File Include="wwwroot/js/FiyiStack/Example/jQuery/ExampleNonQuery_jQuery.js">
-      <publishTime>02/20/2023 11:29:31</publishTime>
+      <publishTime>03/03/2023 07:44:06</publishTime>
     </File>
     <File Include="wwwroot/js/site.js">
       <publishTime>12/07/2022 16:52:49</publishTime>
@@ -10033,6 +10150,9 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     </File>
     <File Include="wwwroot/Uploads/FiyiStack/Example/2.jpg">
       <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Uploads/FiyiStack/Example/2020-bmw-x6-series_100738258_h.jpg">
+      <publishTime>02/03/2023 08:59:50</publishTime>
     </File>
   </ItemGroup>
 </Project>
