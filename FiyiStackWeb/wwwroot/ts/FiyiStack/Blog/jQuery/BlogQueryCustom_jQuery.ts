@@ -53,73 +53,39 @@ class BlogQuery {
                         //Read data book
                         response_blogQuery?.lstBlogModel?.forEach(row => {
 
-                            ListContent += `<section class="section section-blog-info">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="h3 mb-0">${row.Title}</h5>
-            </div>
-            <div class="card-header d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <a href="javascript:;">
-                  <img src="/img/FiyiStack/Me.jpg" class="avatar">
+                            ListContent += `
+<div class="card card-blog card-plain blog-horizontal mb-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card-image">
+                <a href="/BlogPost/${row.BlogId}">
+                    <img class="img rounded" src="${row.BackgroundImage}" />
                 </a>
-                <div class="mx-3">
-                  <a href="javascript:;" class="text-dark font-weight-600 text-sm">Matias Novillo</a>
-                  <small class="d-block text-muted">${format(Date.parse(row.DateTimeLastModification))}</small>
-                </div>
-              </div>
             </div>
-            <div class="card-body">
-              <p class="mb-4">
-                ${row.Body}
-              </p>
-              <img alt="Image placeholder" src="${row.BackgroundImage}" class="img-fluid rounded mb-4">
-              <!-- Comments -->
-              <div class="mb-1">
-                ${row.lstCommentForBlogModel?.map(row2 => {
-
-                    return `<div class="media media-comment">
-                  <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/CMSCore/User.png">
-                  <div class="media-body">
-                    <div class="media-comment-text">
-                      <h6 class="h5 mt-0">${row2.FantasyName}</h6>
-                      <p class="text-sm lh-160">${row2.Comment}</p>
-                      <div class="icon-actions">
-                          <p class="text-muted">${format(Date.parse(row2.DateTimeCreation))}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>` }).join("")}
-                <div class="media align-items-center mt-5">
-                  <div class="media-body">
-                    <form>
-                        <div class="row">
-                            <div class="col text-right">
-                                <textarea class="form-control mt-4"
-                                placeholder="Write your comment"
-                                rows="3"
-                                resize="none"
-                                maxlength="8000">
-                                </textarea>
-                                <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
-                                <input type="hidden" value="${row.BlogId}"></input>
-                                </br>
-                                <p class="text-danger mt-2 message-post-comment"></p>
-                            </div>
-                        </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="col-lg-8">
+            <div class="card-body">
+                <h3 class="card-title">
+                    <a class="text-default" href="/BlogPost/${row.BlogId}">${row.Title}</a>
+                </h3>
+                <p class="card-description">
+                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/BlogPost/${row.BlogId}"> Read More </a>
+                </p>
+                <div class="author">
+                    <img src="/img/FiyiStack/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
+                    <div class="text">
+                        <span class="name">
+                            Matias Novillo - Full Stack Web Developer
+                        </span>
+                        <div class="meta">
+                            ${format(Date.parse(row.DateTimeLastModification))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>`;
+</div>`;
                         })
 
                         //If view table is activated, clear table view, if not, clear list view
