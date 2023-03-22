@@ -45,7 +45,6 @@ export class BlogModel {
     }
     
     static SelectAllPaged(blogSelectAllPaged: blogSelectAllPaged) {
-        debugger;
         let URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";
         let Body = {
             QueryString: blogSelectAllPaged.QueryString,
