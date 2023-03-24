@@ -13,7 +13,7 @@ using System;
  * 
  */
 
-//Last modification on: 22/02/2023 6:53:01
+//Last modification on: 24/03/2023 17:29:07
 
 namespace FiyiStackWeb.Areas.FiyiStack.Filters
 {
@@ -21,7 +21,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
     /// Stack:             7 <br/>
     /// Name:              C# Filter. <br/>
     /// Function:          Allow you to intercept HTPP inside a pipeline.<br/>
-    /// Last modification: 22/02/2023 6:53:01
+    /// Last modification: 24/03/2023 17:29:07
     /// </summary>
     public class BlogFilter : ActionFilterAttribute
     {
@@ -46,7 +46,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Filters
             //if (UserId == null || UserId == 0)
             //{
             //    context.HttpContext.Response.Redirect("/BasicCore/Error?ErrorId=401");
-            //}
         }
 
         public override void OnResultExecuted(ResultExecutedContext context)

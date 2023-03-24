@@ -20,7 +20,7 @@ import "bootstrap-notify";
 
 //Stack: 10
 
-//Last modification on: 19/02/2023 10:48:50
+//Last modification on: 24/03/2023 17:29:07
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -49,7 +49,7 @@ class BlogQuery {
         </th>
         <th scope="col">
             <button value="BlogId" class="btn btn-outline-secondary btn-sm" type="button">
-                Blog ID
+                BlogId
             </button>
         </th>
         <th scope="col">
@@ -59,22 +59,22 @@ class BlogQuery {
         </th>
         <th scope="col">
             <button value="DateTimeCreation" class="btn btn-outline-secondary btn-sm" type="button">
-                Date Time Creation
+                DateTimeCreation
             </button>
         </th>
         <th scope="col">
             <button value="DateTimeLastModification" class="btn btn-outline-secondary btn-sm" type="button">
-                Date Time Last Modification
+                DateTimeLastModification
             </button>
         </th>
         <th scope="col">
             <button value="UserCreationId" class="btn btn-outline-secondary btn-sm" type="button">
-                User Creation
+                UserCreationId
             </button>
         </th>
         <th scope="col">
             <button value="UserLastModificationId" class="btn btn-outline-secondary btn-sm" type="button">
-                User Last Modification
+                UserLastModificationId
             </button>
         </th>
         <th scope="col">
@@ -89,7 +89,17 @@ class BlogQuery {
         </th>
         <th scope="col">
             <button value="BackgroundImage" class="btn btn-outline-secondary btn-sm" type="button">
-                Background Image
+                BackgroundImage
+            </button>
+        </th>
+        <th scope="col">
+            <button value="NumberOfLikes" class="btn btn-outline-secondary btn-sm" type="button">
+                NumberOfLikes
+            </button>
+        </th>
+        <th scope="col">
+            <button value="NumberOfComments" class="btn btn-outline-secondary btn-sm" type="button">
+                NumberOfComments
             </button>
         </th>
         
@@ -118,7 +128,7 @@ class BlogQuery {
                         TotalPages = response_blogQuery.TotalPages ?? 0;
 
                         //Query string
-                        $("#fiyistack-blog-query-string").attr("placeholder", `Search... (${TotalRows} blogs)`);
+                        $("#fiyistack-blog-query-string").attr("placeholder", `Search... (${TotalRows} records)`);
                         //Total pages of pagination
                         $("#fiyistack-blog-total-pages-lg, #fiyistack-blog-total-pages").html(TotalPages.toString());
                         //Actual page number of pagination
@@ -207,6 +217,16 @@ class BlogQuery {
             </strong>
         </a>
     </td>
+    <td class="text-left">
+        <strong><i class="fas fa-divide">
+            </i> ${row.NumberOfLikes}
+        </strong>
+    </td>
+    <td class="text-left">
+        <strong><i class="fas fa-divide">
+            </i> ${row.NumberOfComments}
+        </strong>
+    </td>
     
     <!-- Actions -->
     <td class="text-right">
@@ -243,7 +263,7 @@ class BlogQuery {
                 <div class="row">
                     <div class="col text-truncate">
                         <span class="text-white text-light mb-4">
-                           Blog ID <i class="fas fa-key"></i> ${row.BlogId}
+                           BlogId <i class="fas fa-key"></i> ${row.BlogId}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -251,19 +271,19 @@ class BlogQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           Date Time Creation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
+                           DateTimeCreation <i class="fas fa-calendar"></i> ${row.DateTimeCreation}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           Date Time Last Modification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
+                           DateTimeLastModification <i class="fas fa-calendar"></i> ${row.DateTimeLastModification}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           User Creation <i class="fas fa-key"></i> ${row.UserCreationIdFantasyName}
+                           UserCreationId <i class="fas fa-key"></i> ${row.UserCreationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           User Last Modification <i class="fas fa-key"></i> ${row.UserLastModificationIdFantasyName}
+                           UserLastModificationId <i class="fas fa-key"></i> ${row.UserLastModificationIdFantasyName}
                         </span>
                         <br/>
                         <span class="text-white mb-4">
@@ -275,7 +295,15 @@ class BlogQuery {
                         </span>
                         <br/>
                         <span class="text-white mb-4">
-                           Background Image <i class="fas fa-file"></i> ${row.BackgroundImage}
+                           BackgroundImage <i class="fas fa-file"></i> ${row.BackgroundImage}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                            NumberOfLikes <i class="fas fa-divide"></i> ${row.NumberOfLikes}
+                        </span>
+                        <br/>
+                        <span class="text-white mb-4">
+                            NumberOfComments <i class="fas fa-divide"></i> ${row.NumberOfComments}
                         </span>
                         <br/>
                         

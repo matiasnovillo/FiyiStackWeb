@@ -16,7 +16,7 @@
   \**************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
-eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.blogSelectAllPaged = void 0;\r\nvar blogSelectAllPaged = /** @class */ (function () {\r\n    function blogSelectAllPaged() {\r\n    }\r\n    return blogSelectAllPaged;\r\n}());\r\nexports.blogSelectAllPaged = blogSelectAllPaged;\r\n//# sourceMappingURL=blogSelectAllPaged.js.map\n\n//# sourceURL=webpack://fiyistackweb/./wwwroot/ts/FiyiStack/Blog/DTOs/blogSelectAllPaged.js?");
+eval("\r\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\r\nexports.blogSelectAllPaged = void 0;\r\n/*\r\n * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b\r\n *\r\n * Coded by fiyistack.com\r\n * Copyright © 2023\r\n *\r\n * The above copyright notice and this permission notice shall be included\r\n * in all copies or substantial portions of the Software.\r\n *\r\n*/\r\nvar blogSelectAllPaged = /** @class */ (function () {\r\n    function blogSelectAllPaged() {\r\n    }\r\n    return blogSelectAllPaged;\r\n}());\r\nexports.blogSelectAllPaged = blogSelectAllPaged;\r\n//# sourceMappingURL=blogSelectAllPaged.js.map\n\n//# sourceURL=webpack://fiyistackweb/./wwwroot/ts/FiyiStack/Blog/DTOs/blogSelectAllPaged.js?");
 
 /***/ })
 

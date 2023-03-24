@@ -11,6 +11,8 @@
     string Title;
     string Body;
     string BackgroundImage;
+    int NumberOfLikes;
+    int NumberOfComments;
     
 
     if(HttpContext.Request.QueryString.Value.Contains("?BlogId=0"))
@@ -22,6 +24,8 @@
         Title = "";
         Body = "";
         BackgroundImage = "";
+        NumberOfLikes = 0;
+        NumberOfComments = 0;
         
     }
     else
@@ -36,6 +40,8 @@
         Title = BlogModel.Title;
         Body = BlogModel.Body;
         BackgroundImage = BlogModel.BackgroundImage;
+        NumberOfLikes = BlogModel.NumberOfLikes;
+        NumberOfComments = BlogModel.NumberOfComments;
         
     }
 
@@ -51,7 +57,7 @@
  */
     
 //Stack: 11
-//Last modification on: 19/02/2023 10:48:50
+//Last modification on: 24/03/2023 17:29:07
 
 }
 <!-- Header -->
@@ -189,6 +195,40 @@
                                         Download file
                                 </a>
                             }
+                        </div>
+                        <!-- NumberOfLikes -->
+                        <div class="form-group mb-3">
+                            <label for="fiyistack-blog-numberoflikes-input" class="form-control-label">
+                                <i class="fas fa-divide"></i> 
+                                NumberOfLikes
+                            </label>
+                            <input class="form-control" 
+                                type="number" 
+                                id="fiyistack-blog-numberoflikes-input" 
+                                value="@NumberOfLikes" 
+                                min="0" 
+                                max="2147483647" 
+                                step="1" 
+                                pattern="[^0-9]"
+                                />
+                            
+                        </div>
+                        <!-- NumberOfComments -->
+                        <div class="form-group mb-3">
+                            <label for="fiyistack-blog-numberofcomments-input" class="form-control-label">
+                                <i class="fas fa-divide"></i> 
+                                NumberOfComments
+                            </label>
+                            <input class="form-control" 
+                                type="number" 
+                                id="fiyistack-blog-numberofcomments-input" 
+                                value="@NumberOfComments" 
+                                min="0" 
+                                max="2147483647" 
+                                step="1" 
+                                pattern="[^0-9]"
+                                />
+                            
                         </div>
                         
                         <!-- Buttons -->

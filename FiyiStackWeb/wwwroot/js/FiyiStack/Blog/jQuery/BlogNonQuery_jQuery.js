@@ -13,7 +13,7 @@
 
 //Stack: 10
 
-//Last modification on: 19/02/2023 10:48:50
+//Last modification on: 24/03/2023 17:29:08
 
 //Create a formdata object
 var formData = new FormData();
@@ -74,6 +74,8 @@ $(document).ready(function () {
                 if (!fiyistackblogbackgroundimageboolfileadded) {
                     formData.append("fiyistack-blog-backgroundimage-input", $("#fiyistack-blog-backgroundimage-readonly").val());
                 }
+                formData.append("fiyistack-blog-numberoflikes-input", $("#fiyistack-blog-numberoflikes-input").val());
+                formData.append("fiyistack-blog-numberofcomments-input", $("#fiyistack-blog-numberofcomments-input").val());
                 
 
                 //Setup request

@@ -15,7 +15,7 @@ using System.Collections.Generic;
  * 
  */
 
-//Last modification on: 22/02/2023 6:53:01
+//Last modification on: 24/03/2023 17:29:07
 
 namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
 {
@@ -25,7 +25,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
     /// Function:          This interface allow you to standardize the C# service associated. 
     ///                    In other words, define the functions that has to implement the C# service. <br/>
     /// Note:              Raise exception in case of missing any function declared here but not in the service. <br/>
-    /// Last modification: 22/02/2023 6:53:01
+    /// Last modification: 24/03/2023 17:29:07
     /// </summary>
     public partial interface IBlog
     {

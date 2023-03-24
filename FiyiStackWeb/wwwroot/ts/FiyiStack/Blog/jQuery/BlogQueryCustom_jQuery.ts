@@ -3,6 +3,7 @@ import { BlogModel } from "../../Blog/TsModels/Blog_TsModel";
 import { blogSelectAllPaged } from "../DTOs/blogSelectAllPaged";
 import * as $ from "jquery";
 import { format } from "timeago.js";
+var numeral = require('numeral');
 
 //Set default values
 let LastTopDistance: number = 0;
@@ -71,14 +72,22 @@ class BlogQuery {
                 <p class="card-description">
                     ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/BlogPost/${row.BlogId}"> Read More </a>
                 </p>
-                <div class="author">
-                    <img src="/img/FiyiStack/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
-                    <div class="text">
-                        <span class="name">
-                            Matias Novillo - Full Stack Web Developer
-                        </span>
-                        <div class="meta">
-                            ${format(Date.parse(row.DateTimeLastModification))}
+                <div class="row">
+                    <div class="col-2">
+                        <img src="/img/FiyiStack/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
+                    </div>
+                    <div class="col-10">
+                        <div class="author">
+                            <div class="text">
+                                <span class="name">
+                                    Matias Novillo - Full Stack Web Developer
+                                </span>
+                                <div class="meta">
+                                    ${format(Date.parse(row.DateTimeLastModification))} -
+                                    ${numeral(row.NumberOfLikes).format('0,0.')} likes -
+                                    ${numeral(row.NumberOfComments).format('0,0.')} comments
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

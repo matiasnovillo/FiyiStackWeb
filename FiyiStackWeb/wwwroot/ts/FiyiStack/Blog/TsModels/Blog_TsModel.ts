@@ -8,27 +8,29 @@ import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlo
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
  * 
  * Coded by fiyistack.com
- * Copyright © 2022
+ * Copyright © 2023
  * 
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
  * 
 */
 
-//9 fields | Last modification on: 21/12/2022 11:52:12 | Stack: 9
+//11 fields | Sub-models: 1 models  | Last modification on: 24/03/2023 17:29:07 | Stack: 9
 
 export class BlogModel {
 
     //Fields
     BlogId?: number;
 	Active?: boolean;
-	DateTimeCreation: string;
-	DateTimeLastModification: string;
+    DateTimeCreation: string;
+    DateTimeLastModification: string;
 	UserCreationId?: number;
 	UserLastModificationId?: number;
 	Title?: string | string[] | number | undefined;
 	Body?: string | string[] | number | undefined;
-    BackgroundImage?: string | string[] | number | undefined;
+	BackgroundImage?: string | string[] | number | undefined;
+	NumberOfLikes?: number;
+    NumberOfComments?: number;
     lstCommentForBlogModel?: CommentForBlogModel[] | undefined;
     UserCreationIdFantasyName?: string | string[] | number | undefined;
     UserLastModificationIdFantasyName?: string | string[] | number | undefined;

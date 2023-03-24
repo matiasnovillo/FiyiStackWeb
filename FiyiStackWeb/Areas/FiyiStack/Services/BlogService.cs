@@ -23,7 +23,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 22/02/2023 6:53:01
+//Last modification on: 24/03/2023 17:29:07
 
 namespace FiyiStackWeb.Areas.FiyiStack.Services
 {
@@ -32,7 +32,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
     /// Name:              C# Service. <br/>
     /// Function:          Allow you to separate data contract stored in C# model from business with your clients. <br/>
     /// Also, allow dependency injection inside controllers/web apis<br/>
-    /// Last modification: 22/02/2023 6:53:01
+    /// Last modification: 24/03/2023 17:29:07
     /// </summary>
     public partial class BlogService : IBlog
     {
@@ -226,6 +226,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                 <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">BackgroundImage&nbsp;&nbsp;&nbsp;</span>
             </font>
             <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NumberOfLikes&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
+        </th><th align=""left"" valign=""top"" style=""border-width: 1px; border-style: solid; border-color: #e8e8e8; border-top: none; border-left: none; border-right: none;"">
+            <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px; font-weight: 600;"">
+                <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px; font-weight: 600;"">NumberOfComments&nbsp;&nbsp;&nbsp;</span>
+            </font>
+            <div style=""height: 10px; line-height: 10px; font-size: 8px;"">&nbsp;</div>
         </th>
     </tr>
     {RowsAsHTML}
@@ -300,6 +310,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnBackgroundImageFordtBlogCopy.ColumnName = "BackgroundImage";
                     dtBlogCopy.Columns.Add(dtColumnBackgroundImageFordtBlogCopy);
 
+                    DataColumn dtColumnNumberOfLikesFordtBlogCopy = new DataColumn();
+                    dtColumnNumberOfLikesFordtBlogCopy.DataType = typeof(string);
+                    dtColumnNumberOfLikesFordtBlogCopy.ColumnName = "NumberOfLikes";
+                    dtBlogCopy.Columns.Add(dtColumnNumberOfLikesFordtBlogCopy);
+
+                    DataColumn dtColumnNumberOfCommentsFordtBlogCopy = new DataColumn();
+                    dtColumnNumberOfCommentsFordtBlogCopy.DataType = typeof(string);
+                    dtColumnNumberOfCommentsFordtBlogCopy.ColumnName = "NumberOfComments";
+                    dtBlogCopy.Columns.Add(dtColumnNumberOfCommentsFordtBlogCopy);
+
                     
                 #endregion
 
@@ -373,6 +393,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
                     dtColumnBackgroundImageFordtBlogCopy.DataType = typeof(string);
                     dtColumnBackgroundImageFordtBlogCopy.ColumnName = "BackgroundImage";
                     dtBlogCopy.Columns.Add(dtColumnBackgroundImageFordtBlogCopy);
+
+                    DataColumn dtColumnNumberOfLikesFordtBlogCopy = new DataColumn();
+                    dtColumnNumberOfLikesFordtBlogCopy.DataType = typeof(string);
+                    dtColumnNumberOfLikesFordtBlogCopy.ColumnName = "NumberOfLikes";
+                    dtBlogCopy.Columns.Add(dtColumnNumberOfLikesFordtBlogCopy);
+
+                    DataColumn dtColumnNumberOfCommentsFordtBlogCopy = new DataColumn();
+                    dtColumnNumberOfCommentsFordtBlogCopy.DataType = typeof(string);
+                    dtColumnNumberOfCommentsFordtBlogCopy.ColumnName = "NumberOfComments";
+                    dtBlogCopy.Columns.Add(dtColumnNumberOfCommentsFordtBlogCopy);
 
                     
                     #endregion

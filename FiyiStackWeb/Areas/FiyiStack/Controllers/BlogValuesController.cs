@@ -25,7 +25,7 @@ using System.IO;
  * 
  */
 
-//Last modification on: 22/02/2023 6:53:01
+//Last modification on: 24/03/2023 17:29:07
 
 namespace FiyiStackWeb.Areas.FiyiStack.Controllers
 {
@@ -33,7 +33,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     /// Stack:             6<br/>
     /// Name:              C# Web API Controller. <br/>
     /// Function:          Allow you to intercept HTPP calls and comunicate with his C# Service using dependency injection.<br/>
-    /// Last modification: 22/02/2023 6:53:01
+    /// Last modification: 24/03/2023 17:29:07
     /// </summary>
     [ApiController]
     [BlogFilter]
@@ -147,7 +147,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Non-Queries
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/InsertOrUpdateAsync")]
         public async Task<IActionResult> InsertOrUpdateAsync()
         {
@@ -172,6 +172,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 {
                     BackgroundImage = $@"/Uploads/FiyiStack/Blog/{HttpContext.Request.Form.Files[0].FileName}";
                 }
+                int NumberOfLikes = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-numberoflikes-input"]);
+                int NumberOfComments = Convert.ToInt32(HttpContext.Request.Form["fiyistack-blog-numberofcomments-input"]);
                 
                 #endregion
 
@@ -191,6 +193,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                         Title = Title,
                         Body = Body,
                         BackgroundImage = BackgroundImage,
+                        NumberOfLikes = NumberOfLikes,
+                        NumberOfComments = NumberOfComments,
                         
                     };
                     
@@ -206,6 +210,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                     BlogModel.Title = Title;
                     BlogModel.Body = Body;
                     BlogModel.BackgroundImage = BackgroundImage;
+                    BlogModel.NumberOfLikes = NumberOfLikes;
+                    BlogModel.NumberOfComments = NumberOfComments;
                                        
 
                     RowsAffected = _IBlog.UpdateByBlogId(BlogModel);
@@ -268,7 +274,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpDelete("~/api/FiyiStack/Blog/1/DeleteByBlogId/{BlogId:int}")]
         public IActionResult DeleteByBlogId(int BlogId)
         {
@@ -302,7 +308,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/DeleteManyOrAll/{DeleteType}")]
         public IActionResult DeleteManyOrAll([FromBody] Ajax Ajax, string DeleteType)
         {
@@ -337,7 +343,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/CopyByBlogId/{BlogId:int}")]
         public IActionResult CopyByBlogId(int BlogId)
         {
@@ -372,7 +378,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/CopyManyOrAll/{CopyType}")]
         public IActionResult CopyManyOrAll([FromBody] Ajax Ajax, string CopyType)
         {
@@ -416,7 +422,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         #endregion
 
         #region Other actions
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/ExportAsPDF/{ExportationType}")]
         public IActionResult ExportAsPDF([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -451,7 +457,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/ExportAsExcel/{ExportationType}")]
         public IActionResult ExportAsExcel([FromBody] Ajax Ajax, string ExportationType)
         {
@@ -486,7 +492,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
             }
         }
 
-        //[Produces("text/plain")] For production mode, uncomment this line
+        //[Produces("text/plain")] //For production mode, uncomment this line
         [HttpPost("~/api/FiyiStack/Blog/1/ExportAsCSV/{ExportationType}")]
         public IActionResult ExportAsCSV([FromBody] Ajax Ajax, string ExportationType)
         {
