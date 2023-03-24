@@ -336,6 +336,20 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					BlogModel.NumberOfComments = blog.NumberOfComments;
                 }
 
+                DynamicParameters dpForCommentForBlogModel = new DynamicParameters();
+                dpForCommentForBlogModel.Add("BlogId", BlogModel.BlogId, DbType.Int32, ParameterDirection.Input);
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    List<CommentForBlogModel> lstCommentForBlogModel = new List<CommentForBlogModel>();
+                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogIdCustom]", dpForCommentForBlogModel, commandType: CommandType.StoredProcedure);
+
+                    //Add list item inside another list
+                    foreach (var CommentForBlogModel in lstCommentForBlogModel)
+                    {
+                        BlogModel.lstCommentForBlogModel.Add(CommentForBlogModel);
+                    }
+                }
+
                 return BlogModel;
             }
             catch (Exception ex) { throw ex; }
@@ -378,8 +392,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 }
 
                 blogSelectAllPaged.TotalPages = Library.Math.Divide(blogSelectAllPaged.TotalRows, blogSelectAllPaged.RowsPerPage, Library.Math.RoundType.RoundUp);
-
-                
 
                 return blogSelectAllPaged;
             }
