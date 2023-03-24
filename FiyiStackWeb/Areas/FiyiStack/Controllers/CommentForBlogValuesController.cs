@@ -41,11 +41,13 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
     {
         private readonly IWebHostEnvironment _WebHostEnvironment;
         private readonly ICommentForBlog _ICommentForBlog;
+        private readonly IBlog _IBlog;
 
-        public CommentForBlogValuesController(IWebHostEnvironment WebHostEnvironment, ICommentForBlog ICommentForBlog) 
+        public CommentForBlogValuesController(IWebHostEnvironment WebHostEnvironment, ICommentForBlog ICommentForBlog, IBlog IBlog) 
         {
             _WebHostEnvironment = WebHostEnvironment;
             _ICommentForBlog = ICommentForBlog;
+            _IBlog = IBlog;
         }
 
         #region Queries
@@ -434,6 +436,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     Message = _ICommentForBlog.PostComment(UserId, BlogId, Comment);
+                    BlogModel BlogModel = new BlogModel(BlogId);
+                    BlogModel.NumberOfComments += 1;
+                    _IBlog.UpdateByBlogId(BlogModel);
                 }
 
                 return StatusCode(200, Message);

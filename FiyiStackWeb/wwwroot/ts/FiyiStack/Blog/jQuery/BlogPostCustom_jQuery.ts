@@ -64,10 +64,10 @@ class BlogQuery {
                         <div class="row">
                             <div class="col text-right">
                                 <textarea class="form-control mt-4"
-                                placeholder="Write your comment"
-                                rows="3"
-                                resize="none"
-                                maxlength="8000">
+                                    placeholder="Write your comment"
+                                    rows="3"
+                                    resize="none"
+                                    maxlength="8000">
                                 </textarea>
                                 <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
                                 <input type="hidden" value="${response_blogQuery.BlogId}"></input>
