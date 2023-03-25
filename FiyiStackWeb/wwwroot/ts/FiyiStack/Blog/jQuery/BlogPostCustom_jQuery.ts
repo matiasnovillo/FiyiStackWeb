@@ -42,11 +42,28 @@ class BlogQuery {
                 ${response_blogQuery.Body}
               </p>
               <img alt="Image placeholder" src="${response_blogQuery.BackgroundImage}" class="img-fluid rounded mb-4">
+              <div class="row align-items-center mb-5">
+                  <div class="col-sm-6">
+                    <div class="icon-actions">
+                      <a href="javascript:;" class="like active">
+                        <i class="fas fa-2x fa-thumbs-up"></i>
+                        <span class="text-muted">${response_blogQuery.NumberOfLikes}</span>
+                      </a>
+                      <a href="javascript:;">
+                        <i class="fas fa-2x fa-comment"></i>
+                        <span class="text-muted">${response_blogQuery.NumberOfComments}</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 d-none d-sm-block">
+                    &nbsp;
+                  </div>
+                </div>
               <!-- Comments -->
               <div class="mb-1">
                 ${response_blogQuery.lstCommentForBlogModel?.map(row2 => {
 
-                            return `<div class="media media-comment">
+                            return `<div class="media media-comment mb--2">
                   <img alt="Image placeholder" class="media-comment-avatar rounded-circle" src="/img/CMSCore/User.png">
                   <div class="media-body">
                     <div class="media-comment-text">
@@ -58,7 +75,7 @@ class BlogQuery {
                     </div>
                   </div>
                 </div>` }).join("")}
-                <div class="media align-items-center mt-5">
+                <div class="media align-items-center mt-2">
                   <div class="media-body">
                     <form>
                         <div class="row">
