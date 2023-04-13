@@ -2,6 +2,7 @@
 import { BlogModel } from "../TsModels/Blog_TsModel";
 import * as $ from "jquery";
 import { format } from "timeago.js";
+import "bootstrap-notify";
 
 class BlogQuery {
     static Select1ByBlogIdToHTML(request_blogSelect1ByBlogId: number) {
@@ -45,10 +46,11 @@ class BlogQuery {
               <div class="row align-items-center mb-5">
                   <div class="col-sm-6">
                     <div class="icon-actions">
-                      <a href="javascript:;" class="like active">
+                      <a href="javascript:;" class="btn-post-like">
                         <i class="fas fa-2x fa-thumbs-up"></i>
                         <span class="text-muted">${response_blogQuery.NumberOfLikes}</span>
                       </a>
+                      <input type="hidden" value="${response_blogQuery.BlogId}"></input>
                       <a href="javascript:;">
                         <i class="fas fa-2x fa-comment"></i>
                         <span class="text-muted">${response_blogQuery.NumberOfComments}</span>
@@ -88,8 +90,6 @@ class BlogQuery {
                                 </textarea>
                                 <button class="btn btn-sm mt-2 mr-0 btn-primary btn-post-comment" type="button">Post comment</button>
                                 <input type="hidden" value="${response_blogQuery.BlogId}"></input>
-                                </br>
-                                <p class="text-danger mt-2 message-post-comment"></p>
                             </div>
                         </div>
                     </form>
@@ -114,13 +114,9 @@ class BlogQuery {
                     //Post comment button
                     $(".btn-post-comment").on("click", function (e) {
 
-                        //Button -> Input -> Break -> Message
-                        let Message = $(this).next().next().next();
-
                         if ($(this).prev().val() == "") {
-                            Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
-                                                    Write a comment
-                                            </strong>`);
+                            // @ts-ignore
+                            $.notify({ icon: "fas fa-info", message: "Write a comment" }, { type: "info", placement: { from: "bottom", align: "center" } });
                             return;
                         }
 
@@ -128,7 +124,7 @@ class BlogQuery {
 
                         let BlogId = $(this).next().val()?.toString();
                         if (BlogId === undefined) {
-                            BlogId = "";
+                            return;
                         }
                         formData.append("BlogId", BlogId);
 
@@ -143,17 +139,17 @@ class BlogQuery {
                         var xmlHttpRequest = new XMLHttpRequest();
                         xmlHttpRequest.onload = function () {
                             if (xmlHttpRequest.status >= 400) {
-                                Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
-                                                    An error has occurred, try again
-                                            </strong>`);
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-exclamation-triangle", message: "An error has occurred, try again" }, { type: "danger", placement: { from: "bottom", align: "center" } });
                             }
                             else {
                                 if (xmlHttpRequest.response == "You have to login first") {
-                                    Message.html(`<strong><i class='fas fa-exclamation-triangle'></i> 
-                                                    You have to login first
-                                            </strong>`);
+                                    // @ts-ignore
+                                    $.notify({ icon: "fas fa-info", message: "You have to login first" }, { type: "info", placement: { from: "bottom", align: "center" } });
                                 }
                                 else {
+                                    // @ts-ignore
+                                    $.notify({ icon: "fas fa-check", message: "Comment posted successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
                                     ValidateAndSearch();
                                 }
                                 
@@ -165,6 +161,37 @@ class BlogQuery {
                         xmlHttpRequest.send(formData);
                     });
 
+
+                    //Post like
+                    $(".btn-post-like").on("click", function (e) {
+
+                        let formData = new FormData();
+
+                        let BlogId = $(this).next().val()?.toString();
+                        if (BlogId === undefined) {
+                            return;
+                        }
+                        formData.append("BlogId", BlogId);
+
+                        //Setup request
+                        var xmlHttpRequest = new XMLHttpRequest();
+                        xmlHttpRequest.onload = function () {
+                            if (xmlHttpRequest.status >= 400) {
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-exclamation-triangle", message: "An error has occurred, try again" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                            }
+                            else {
+                                // @ts-ignore
+                                $.notify({ icon: "fas fa-check", message: "Like posted successfully" }, { type: "success", placement: { from: "bottom", align: "center" } });
+                                ValidateAndSearch();
+
+                            }
+                        };
+                        //Open connection
+                        xmlHttpRequest.open("POST", "/api/FiyiStack/CommentForBlog/1/PostLike", true);
+                        //Send request
+                        xmlHttpRequest.send(formData);
+                    });
                 },
                 error: err => {
                 }

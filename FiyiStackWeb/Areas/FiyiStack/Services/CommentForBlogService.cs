@@ -140,7 +140,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
 
         public string PostComment(int UserId, int BlogId, string Comment)
         {
-
             CommentForBlogModel CommentForBlogModel = new CommentForBlogModel()
             {
                 UserCreationId = UserId,
@@ -316,8 +315,16 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
             }
             catch (Exception ex) { throw ex; }
             #endregion
+        }
 
-            return NewEnteredId;
+        public void PostLike(int BlogId)
+        {
+
+            BlogModel BlogModel = new BlogModel(BlogId);
+
+            BlogModel.NumberOfLikes += 1;
+
+            BlogModel.UpdateByBlogId();
         }
         #endregion
 

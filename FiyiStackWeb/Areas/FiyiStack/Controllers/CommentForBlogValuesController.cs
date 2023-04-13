@@ -464,6 +464,44 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        //[Produces("text/plain")] For production mode, uncomment this line
+        [HttpPost("~/api/FiyiStack/CommentForBlog/1/PostLike")]
+
+        public IActionResult PostLike()
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                int BlogId = Convert.ToInt32(HttpContext.Request.Form["BlogId"]);
+
+                _ICommentForBlog.PostLike(BlogId);
+
+                return StatusCode(200);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex);
+            }
+        }
         #endregion
 
         #region Other actions

@@ -71,6 +71,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
         int[] CopyManyOrAll(Ajax Ajax, string CopyType);
 
         string PostComment(int UserId, int BlogId, string Comment);
+
+        void PostLike(int BlogId);
         #endregion
 
         #region Other actions
