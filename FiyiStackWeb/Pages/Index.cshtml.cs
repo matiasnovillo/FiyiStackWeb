@@ -49,11 +49,11 @@ namespace FiyiStackWeb.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The low-code generator"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code (for the moment)"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low-code generator that convert 10 words in 5.000 lines of code (for the moment)"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The C# low-code generator"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Create C# web applications quickly with FiyiStack. Design a database diagram and turn it into ready-to-run code"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Create C# web applications quickly with FiyiStack. Design a database diagram and turn it into ready-to-run code"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"FiyiStack: The low-code generator";
+            ViewData["title"] = $@"FiyiStack: The C# low-code generator";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
