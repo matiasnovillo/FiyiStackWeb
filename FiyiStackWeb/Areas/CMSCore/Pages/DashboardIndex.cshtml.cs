@@ -14,10 +14,14 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
             int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
             UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
 
+            int NumberOfUsers = 
+
             string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
+
 
             ViewData["FantasyName"] = UserModel.FantasyName;
             ViewData["Menues"] = Menues;
+            ViewData["NumberOfUsers"] = NumberOfUsers;
         }
     }
 }

@@ -36,11 +36,16 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+    <PackageReference Include="PayPal" Version="1.9.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\FiyiStack\Models\" />
+    <Folder Include="Areas\FiyiStack\Pages\en\" />
+    <Folder Include="Areas\FiyiStack\Pages\es\" />
     <Folder Include="BDBackups\" />
+    <Folder Include="Pages\en\" />
+    <Folder Include="Pages\es\" />
     <Folder Include="wwwroot\CSVFiles\" />
     <Folder Include="wwwroot\ExcelFiles\" />
     <Folder Include="wwwroot\PDFFiles\" />
