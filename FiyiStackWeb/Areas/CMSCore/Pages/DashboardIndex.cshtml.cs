@@ -14,7 +14,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
             int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;
             UserModel UserModel = new UserModel().Select1ByUserIdToModel(UserId);
 
-            int NumberOfUsers = 
+            int NumberOfUsers = UserModel.Count();
 
             string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
 
