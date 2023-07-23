@@ -1,13 +1,13 @@
 using FiyiStackWeb.Areas.FiyiStack.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
-using FiyiStackWeb.Areas.BasicCore.Models;
 using System;
+using FiyiStackWeb.Areas.BasicCore.Models;
 
-namespace FiyiStackWeb.Areas.FiyiStack.Pages
+namespace FiyiStackWeb.Areas.FiyiStack
 {
     [FiyiStackFilter]
-    public class ContactMeModel : PageModel
+    public class EsPricingModel : PageModel
     {
         public void OnGet()
         {
@@ -33,22 +33,22 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                                 <a href='/CMSCore/DashboardIndex' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
-                                                        Enter dashboard
+                                                        Entrar al tablero
                                                     </span>
                                                 </a>
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Contact me - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Contact me, I will answer ASAP. My e-mail is novillo.matias1@gmail.com"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""Contact me, I will answer ASAP. My e-mail is novillo.matias1@gmail.com"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Precios - FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Obtén FiyiStack. Elige tu mejor opción y obtén una fabrica de software"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Obtén FiyiStack. Elige tu mejor opción y obtén una fabrica de software"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"Contact me - FiyiStack";
+            ViewData["title"] = $@"Precios - FiyiStack";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "/ContactMe",
+                Page = "es/Pricing",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,

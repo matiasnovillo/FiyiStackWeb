@@ -1,12 +1,13 @@
-using Microsoft.AspNetCore.Mvc;
+using FiyiStackWeb.Areas.FiyiStack.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using System;
 using FiyiStackWeb.Areas.BasicCore.Models;
 
-namespace FiyiStackWeb.Areas.FiyiStack.Pages
+namespace FiyiStackWeb.Areas.FiyiStack
 {
-    public class LearnMoreModel : PageModel
+    [FiyiStackFilter]
+    public class PricingModel : PageModel
     {
         public void OnGet()
         {
@@ -38,16 +39,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Learn more - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more)"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Pricing - FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"Learn more - FiyiStack";
+            ViewData["title"] = $@"Pricing - FiyiStack";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "/LearnMore",
+                Page = "en/Pricing",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,

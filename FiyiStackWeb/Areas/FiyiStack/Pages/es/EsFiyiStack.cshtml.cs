@@ -1,13 +1,12 @@
-using FiyiStackWeb.Areas.FiyiStack.Filters;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Http;
-using System;
 using FiyiStackWeb.Areas.BasicCore.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 
-namespace FiyiStackWeb.Areas.FiyiStack
+namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
-    [FiyiStackFilter]
-    public class PricingModel : PageModel
+    public class EsFiyiStackModel : PageModel
     {
         public void OnGet()
         {
@@ -25,6 +24,14 @@ namespace FiyiStackWeb.Areas.FiyiStack
                                                     </span>
                                                 </a>
                                             </li>";
+
+                //User not found
+                ViewData["LoginButton"] = $@"<a href='/Login' class='btn btn-outline-white mt-1 ml-2'>
+                                                    <i class='fas fa-user'></i> 
+                                                    <span class='nav-link-inner--text'>
+                                                        Login
+                                                    </span>
+                                                </a>";
             }
             else
             {
@@ -39,16 +46,16 @@ namespace FiyiStackWeb.Areas.FiyiStack
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Pricing - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The C# low-code generator"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Learn how to use FiyiStack, design a database diagram and turn it into ready-to-run code"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Learn how to use FiyiStack, design a database diagram and turn it into ready-to-run code"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"Pricing - FiyiStack";
+            ViewData["title"] = $@"FiyiStack: The C# low-code generator";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "/Pricing",
+                Page = "es/FiyiStack",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,
