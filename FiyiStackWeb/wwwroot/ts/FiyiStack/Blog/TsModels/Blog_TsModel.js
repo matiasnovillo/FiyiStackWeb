@@ -20,11 +20,11 @@ var BlogModel = /** @class */ (function () {
     //Queries
     BlogModel.Select1ByBlogIdAndIdiom = function (BlogId, Idiom) {
         var URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/" + BlogId + "/" + Idiom;
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     BlogModel.SelectAll = function () {
         var URL = "/api/FiyiStack/Blog/1/SelectAllToJSON";
-        return Rx.from(ajax_1.ajax(URL));
+        return Rx.from((0, ajax_1.ajax)(URL));
     };
     BlogModel.SelectAllPaged = function (blogSelectAllPaged) {
         var URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";

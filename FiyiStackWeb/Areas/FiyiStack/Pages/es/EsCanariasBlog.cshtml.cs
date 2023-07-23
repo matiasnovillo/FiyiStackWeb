@@ -6,7 +6,7 @@ using System;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
-    public class FiyiRequirementsModel : PageModel
+    public class EsCanariasBlogModel : PageModel
     {
         public void OnGet()
         {
@@ -32,22 +32,22 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                                 <a href='/CMSCore/DashboardIndex' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
-                                                        Enter dashboard
+                                                        Entrar al tablero
                                                     </span>
                                                 </a>
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack. Create requirements, see what your users need."">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""CanariasBlog: El código de ejemplo de FiyiStack. Disfruta compartiendo contenido, consigue seguidores y hazte un profesional de los posts."">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""CanariasBlog es el código de ejemplo hecho con FiyiStack, el generador C# low-code."">";
+            ViewData["description"] = $@"<meta name=""description"" content=""CanariasBlog es el código de ejemplo hecho con FiyiStack, el generador C# low-code."">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"FiyiRequirements: The example code of FiyiStack. Create requirements, see what your users need.";
+            ViewData["title"] = $@"CanariasBlog: El código de ejemplo de FiyiStack. Disfruta compartiendo contenido, consigue seguidores y hazte un profesional de los posts.";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "/FiyiRequirements",
+                Page = "es/CanariasBlog",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,
