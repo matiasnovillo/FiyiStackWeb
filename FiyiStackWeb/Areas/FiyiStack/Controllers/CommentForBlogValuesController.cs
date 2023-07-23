@@ -436,7 +436,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     Message = _ICommentForBlog.PostComment(UserId, BlogId, Comment);
-                    BlogModel BlogModel = new BlogModel(BlogId);
+                    BlogModel BlogModel = new BlogModel(BlogId, "en");
                     BlogModel.NumberOfComments += 1;
                     _IBlog.UpdateByBlogId(BlogModel);
                 }

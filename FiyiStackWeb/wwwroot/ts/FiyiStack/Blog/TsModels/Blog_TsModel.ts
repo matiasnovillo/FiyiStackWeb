@@ -15,7 +15,7 @@ import { CommentForBlogModel } from "../../CommentForBlog/TsModels/CommentForBlo
  * 
 */
 
-//11 fields | Sub-models: 1 models  | Last modification on: 24/03/2023 17:29:07 | Stack: 9
+//12 fields | Sub-models: 1 models  | Last modification on: 23/07/2023 11:33:01 | Stack: 9
 
 export class BlogModel {
 
@@ -30,14 +30,15 @@ export class BlogModel {
 	Body?: string | string[] | number | undefined;
 	BackgroundImage?: string | string[] | number | undefined;
 	NumberOfLikes?: number;
-    NumberOfComments?: number;
+	NumberOfComments?: number;
+	Idiom?: string | string[] | number | undefined;
     lstCommentForBlogModel?: CommentForBlogModel[] | undefined;
     UserCreationIdFantasyName?: string | string[] | number | undefined;
     UserLastModificationIdFantasyName?: string | string[] | number | undefined;
 
     //Queries
-    static Select1ByBlogId(BlogId: number) {
-        let URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdToJSON/" + BlogId;
+    static Select1ByBlogIdAndIdiom(BlogId: number, Idiom: string) {
+        let URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/" + BlogId + "/" + Idiom;
         return Rx.from(ajax(URL));
     }
 
@@ -56,6 +57,7 @@ export class BlogModel {
             SortToggler: blogSelectAllPaged.SortToggler,
             RowCount: blogSelectAllPaged.TotalRows,
             TotalPages: blogSelectAllPaged.TotalPages,
+            Idiom: blogSelectAllPaged.Idiom,
             lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         let Header: any = {

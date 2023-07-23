@@ -35,7 +35,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Interfaces
         /// </summary>
         /// <param name="BlogId"></param>
         /// <returns></returns>
-        BlogModel Select1ByBlogIdToModel(int BlogId);
+        BlogModel Select1ByBlogIdAndIdiomToModel(int BlogId, string Idiom);
 
         List<BlogModel> SelectAllToList();
 

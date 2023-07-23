@@ -29,15 +29,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
     {
         public void OnGet(int PostId)
         {
-            BlogModel BlogModel = new BlogModel(PostId);
+            BlogModel BlogModel = new BlogModel(PostId, "es");
             if (BlogModel.BlogId == 0)
             {
                 // TODO This is not working but is not a big problem
-                RedirectToPage("/Blog");
+                RedirectToPage("/en/Blog");
             }
             else
             {
                 ViewData["PostId"] = PostId;
+                ViewData["Idiom"] = "es";
 
                 //Get UserId from Session
                 int UserId = HttpContext.Session.GetInt32("UserId") ?? 0;

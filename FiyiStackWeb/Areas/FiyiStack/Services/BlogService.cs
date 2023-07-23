@@ -44,9 +44,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
         }
 
         #region Queries
-        public BlogModel Select1ByBlogIdToModel(int BlogId)
+        public BlogModel Select1ByBlogIdAndIdiomToModel(int BlogId, string Idiom)
         {
-            return new BlogModel().Select1ByBlogIdToModel(BlogId);
+            return new BlogModel().Select1ByBlogIdAndIdiomToModel(BlogId, Idiom);
         }
 
         public List<BlogModel> SelectAllToList()

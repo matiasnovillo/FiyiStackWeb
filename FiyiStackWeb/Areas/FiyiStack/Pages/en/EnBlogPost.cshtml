@@ -27,7 +27,7 @@
         <div class="header-body">
             <div class="row align-items-center py-4">
                 <div class="col-12 text-center">
-                    <a href="/Blog" class="btn btn-default">
+                    <a href="~/en/Blog" class="btn btn-default">
                         <i class="fas fa-arrow-left"></i>
                         Go back
                     </a>
@@ -45,6 +45,7 @@
                 <div class="tab-content mt--5">
                     <!-- List View -->
                     <input type="hidden" value="@ViewData["PostId"]" id="post-id" />
+                    <input type="hidden" value="@ViewData["Idiom"]" id="idiom" />
                     <div class="tab-pane fade show active" id="tab-list" role="tabpanel" aria-labelledby="fiyistack-blog-list-view-button">
                         <div id="fiyistack-blog-body-list"></div>
                     </div>

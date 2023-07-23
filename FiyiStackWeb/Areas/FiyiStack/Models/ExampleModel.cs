@@ -35,7 +35,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     public partial class ExampleModel
     {
         [NotMapped]
-        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Development();
+        private string _ConnectionString = ConnectionStrings.ConnectionStrings.Production();
 
         #region Fields
         [Library.ModelAttributeValidator.Key("ExampleId")]

@@ -154,7 +154,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
             string NewEnteredId = CommentForBlogModel.Insert().ToString();
 
             UserModel UserModel = new UserModel(UserId);
-            BlogModel BlogModel = new BlogModel(BlogId);
+            BlogModel BlogModel = new BlogModel(BlogId, "en");
 
             #region Send email to me
             try
@@ -320,7 +320,7 @@ html {{ -webkit-text-size-adjust: none; -ms-text-size-adjust: none;}}
         public void PostLike(int BlogId)
         {
 
-            BlogModel BlogModel = new BlogModel(BlogId);
+            BlogModel BlogModel = new BlogModel(BlogId, "en");
 
             BlogModel.NumberOfLikes += 1;
 

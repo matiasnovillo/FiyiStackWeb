@@ -13,18 +13,18 @@ var ajax_1 = require("rxjs/ajax");
  * in all copies or substantial portions of the Software.
  *
 */
-//11 fields | Sub-models: 1 models  | Last modification on: 24/03/2023 17:29:07 | Stack: 9
+//12 fields | Sub-models: 1 models  | Last modification on: 23/07/2023 11:33:01 | Stack: 9
 var BlogModel = /** @class */ (function () {
     function BlogModel() {
     }
     //Queries
-    BlogModel.Select1ByBlogId = function (BlogId) {
-        var URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdToJSON/" + BlogId;
-        return Rx.from((0, ajax_1.ajax)(URL));
+    BlogModel.Select1ByBlogIdAndIdiom = function (BlogId, Idiom) {
+        var URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/" + BlogId + "/" + Idiom;
+        return Rx.from(ajax_1.ajax(URL));
     };
     BlogModel.SelectAll = function () {
         var URL = "/api/FiyiStack/Blog/1/SelectAllToJSON";
-        return Rx.from((0, ajax_1.ajax)(URL));
+        return Rx.from(ajax_1.ajax(URL));
     };
     BlogModel.SelectAllPaged = function (blogSelectAllPaged) {
         var URL = "/api/FiyiStack/Blog/1/SelectAllPagedToJSON";
@@ -36,6 +36,7 @@ var BlogModel = /** @class */ (function () {
             SortToggler: blogSelectAllPaged.SortToggler,
             RowCount: blogSelectAllPaged.TotalRows,
             TotalPages: blogSelectAllPaged.TotalPages,
+            Idiom: blogSelectAllPaged.Idiom,
             lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         var Header = {

@@ -125,7 +125,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Fields:       12 <br/> 
         /// Dependencies: 1 models depend on this model <br/>
         /// </summary>
-        public BlogModel(int BlogId)
+        public BlogModel(int BlogId, string Idiom)
         {
             try
             {
@@ -138,11 +138,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 DynamicParameters dp = new DynamicParameters();
 
                 dp.Add("BlogId", BlogId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Idiom", Idiom, DbType.String, ParameterDirection.Input);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
                     //In case of not finding anything, Dapper return a List<BlogModel>
-                    lstBlogModel = (List<BlogModel>)sqlConnection.Query<BlogModel>("[dbo].[FiyiStack.Blog.Select1ByBlogId]", dp, commandType: CommandType.StoredProcedure);
+                    lstBlogModel = (List<BlogModel>)sqlConnection.Query<BlogModel>("[dbo].[FiyiStack.Blog.Select1ByBlogIdAndIdiom]", dp, commandType: CommandType.StoredProcedure);
                 }
 
                 if (lstBlogModel.Count > 1)
@@ -323,9 +324,66 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 {
                     lstBlogModel = (List<BlogModel>)sqlConnection.Query<BlogModel>("[dbo].[FiyiStack.Blog.Select1ByBlogId]", dp, commandType: CommandType.StoredProcedure);
                 }
-        
+
                 if (lstBlogModel.Count > 1)
                 { throw new Exception("The stored procedure [dbo].[FiyiStack.Blog.Select1ByBlogId] returned more than one register/row"); }
+
+                foreach (BlogModel blog in lstBlogModel)
+                {
+                    BlogModel.BlogId = blog.BlogId;
+                    BlogModel.Active = blog.Active;
+                    BlogModel.DateTimeCreation = blog.DateTimeCreation;
+                    BlogModel.DateTimeLastModification = blog.DateTimeLastModification;
+                    BlogModel.UserCreationId = blog.UserCreationId;
+                    BlogModel.UserLastModificationId = blog.UserLastModificationId;
+                    BlogModel.Title = blog.Title;
+                    BlogModel.Body = blog.Body;
+                    BlogModel.BackgroundImage = blog.BackgroundImage;
+                    BlogModel.NumberOfLikes = blog.NumberOfLikes;
+                    BlogModel.NumberOfComments = blog.NumberOfComments;
+                    BlogModel.Idiom = blog.Idiom;
+                }
+
+                DynamicParameters dpForCommentForBlogModel = new DynamicParameters();
+                dpForCommentForBlogModel.Add("BlogId", BlogModel.BlogId, DbType.Int32, ParameterDirection.Input);
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    List<CommentForBlogModel> lstCommentForBlogModel = new List<CommentForBlogModel>();
+                    lstCommentForBlogModel = (List<CommentForBlogModel>)sqlConnection.Query<CommentForBlogModel>("[dbo].[FiyiStack.CommentForBlog.SelectAllByBlogIdCustom]", dpForCommentForBlogModel, commandType: CommandType.StoredProcedure);
+
+                    //Add list item inside another list
+                    foreach (var CommentForBlogModel in lstCommentForBlogModel)
+                    {
+                        BlogModel.lstCommentForBlogModel.Add(CommentForBlogModel);
+                    }
+                }
+
+                return BlogModel;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        /// <summary>
+        /// Note: Raise exception when the query find duplicated IDs
+        /// </summary>
+        public BlogModel Select1ByBlogIdAndIdiomToModel(int BlogId, string Idiom)
+        {
+            try
+            {
+                BlogModel BlogModel = new BlogModel();
+                List<BlogModel> lstBlogModel = new List<BlogModel>();
+                DynamicParameters dp = new DynamicParameters();
+
+                dp.Add("BlogId", BlogId, DbType.Int32, ParameterDirection.Input);
+                dp.Add("Idiom", Idiom, DbType.String, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstBlogModel = (List<BlogModel>)sqlConnection.Query<BlogModel>("[dbo].[FiyiStack.Blog.Select1ByBlogIdAndIdiom]", dp, commandType: CommandType.StoredProcedure);
+                }
+        
+                if (lstBlogModel.Count > 1)
+                { throw new Exception("The stored procedure [dbo].[FiyiStack.Blog.Select1ByBlogIdAndIdiom] returned more than one register/row"); }
 
                 foreach (BlogModel blog in lstBlogModel)
                 {
@@ -390,7 +448,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 dp.Add("RowsPerPage", blogSelectAllPaged.RowsPerPage, DbType.Int32, ParameterDirection.Input);
                 dp.Add("SorterColumn", blogSelectAllPaged.SorterColumn, DbType.String, ParameterDirection.Input);
                 dp.Add("SortToggler", blogSelectAllPaged.SortToggler, DbType.Boolean, ParameterDirection.Input);
+                dp.Add("Idiom", blogSelectAllPaged.Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("TotalRows", blogSelectAllPaged.TotalRows, DbType.Int32, ParameterDirection.Output);
+                
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
