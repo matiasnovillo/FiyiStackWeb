@@ -27,9 +27,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     /// Function:          Allow you to manipulate information from database using stored procedures.
     ///                    Also, let you make other related actions with the model in question or
     ///                    make temporal copies with random data. <br/>
-    /// Fields:            11 <br/> 
-    /// Sub-models:      0 models <br/>
-    /// Last modification: 24/03/2023 17:29:07
+    /// Fields:            12 <br/> 
+    /// Sub-models:      1 models <br/>
+    /// Last modification: 23/07/2023 10:50:29
     /// </summary>
     [Serializable]
     public partial class BlogModel
@@ -84,6 +84,9 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         [Library.ModelAttributeValidator.Int("NumberOfComments", false, 0, 2147483647)]
         public int NumberOfComments { get; set; }
 
+        [Library.ModelAttributeValidator.String("Idiom", false, 1, 10, "")]
+        public string Idiom { get; set; }
+
         public string UserCreationIdFantasyName { get; set; }
 
         public string UserLastModificationIdFantasyName { get; set; }
@@ -99,7 +102,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Function:     Create fastly this model with field BlogId = 0 <br/>
         /// Note 1:       Generally used to have fast access to functions of object. <br/>
         /// Note 2:       Need construction with [new] reserved word, as all constructors. <br/>
-        /// Fields:       11 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 1 models depend on this model <br/>
         /// </summary>
         public BlogModel()
@@ -110,7 +113,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 
                 //Initialize sub-lists
                 lstCommentForBlogModel = new List<CommentForBlogModel>();
-
+                
             }
             catch (Exception ex) { throw ex; }
         }
@@ -119,7 +122,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model with stored information in database using BlogId <br/>
         /// Note:         Raise exception on duplicated IDs <br/>
-        /// Fields:       11 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 1 models depend on this model <br/>
         /// </summary>
         public BlogModel(int BlogId)
@@ -130,8 +133,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 
                 //Initialize sub-lists
                 lstCommentForBlogModel = new List<CommentForBlogModel>();
-
-
+                
+                
                 DynamicParameters dp = new DynamicParameters();
 
                 dp.Add("BlogId", BlogId, DbType.Int32, ParameterDirection.Input);
@@ -160,6 +163,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					this.BackgroundImage = blog.BackgroundImage;
 					this.NumberOfLikes = blog.NumberOfLikes;
 					this.NumberOfComments = blog.NumberOfComments;
+					this.Idiom = blog.Idiom;
                 }
             }
             catch (Exception ex) { throw ex; }
@@ -170,16 +174,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model with filled parameters <br/>
         /// Note:         Raise exception on duplicated IDs <br/>
-        /// Fields:       11 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 1 models depend on this model <br/>
         /// </summary>
-        public BlogModel(int BlogId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Title, string Body, string BackgroundImage, int NumberOfLikes, int NumberOfComments)
+        public BlogModel(int BlogId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Title, string Body, string BackgroundImage, int NumberOfLikes, int NumberOfComments, string Idiom)
         {
             try
             {
                 //Initialize sub-lists
                 lstCommentForBlogModel = new List<CommentForBlogModel>();
-
+                
 
                 this.BlogId = BlogId;
 				this.Active = Active;
@@ -192,6 +196,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				this.BackgroundImage = BackgroundImage;
 				this.NumberOfLikes = NumberOfLikes;
 				this.NumberOfComments = NumberOfComments;
+				this.Idiom = Idiom;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -200,7 +205,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Stack:        3 <br/>
         /// Function:     Create this model (copy) using the given model (original), blog, passed by parameter. <br/>
         /// Note:         This constructor is generally used to execute functions using the copied fields <br/>
-        /// Fields:       11 <br/> 
+        /// Fields:       12 <br/> 
         /// Dependencies: 1 models depend on this model <br/>
         /// </summary>
         public BlogModel(BlogModel blog)
@@ -209,7 +214,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
             {
                 //Initialize sub-lists
                 lstCommentForBlogModel = new List<CommentForBlogModel>();
-
+                
 
                 BlogId = blog.BlogId;
 				Active = blog.Active;
@@ -222,6 +227,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				BackgroundImage = blog.BackgroundImage;
 				NumberOfLikes = blog.NumberOfLikes;
 				NumberOfComments = blog.NumberOfComments;
+				Idiom = blog.Idiom;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -334,6 +340,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 					BlogModel.BackgroundImage = blog.BackgroundImage;
 					BlogModel.NumberOfLikes = blog.NumberOfLikes;
 					BlogModel.NumberOfComments = blog.NumberOfComments;
+					BlogModel.Idiom = blog.Idiom;
                 }
 
                 DynamicParameters dpForCommentForBlogModel = new DynamicParameters();
@@ -392,7 +399,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 }
 
                 blogSelectAllPaged.TotalPages = Library.Math.Divide(blogSelectAllPaged.TotalRows, blogSelectAllPaged.RowsPerPage, Library.Math.RoundType.RoundUp);
-
                 return blogSelectAllPaged;
             }
             catch (Exception ex) { throw ex; }
@@ -422,6 +428,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("BackgroundImage", BackgroundImage, DbType.String, ParameterDirection.Input);
 				dp.Add("NumberOfLikes", NumberOfLikes, DbType.Int32, ParameterDirection.Input);
 				dp.Add("NumberOfComments", NumberOfComments, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Idiom", Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -460,6 +467,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("BackgroundImage", blog.BackgroundImage, DbType.String, ParameterDirection.Input);
 				dp.Add("NumberOfLikes", blog.NumberOfLikes, DbType.Int32, ParameterDirection.Input);
 				dp.Add("NumberOfComments", blog.NumberOfComments, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Idiom", blog.Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
                 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -480,7 +488,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Note: Raise exception when the function did not made a succesfull insertion in database
         /// </summary>
         /// <returns>The ID of the last registry inserted in Blog table</returns>
-        public int Insert(bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Title, string Body, string BackgroundImage, int NumberOfLikes, int NumberOfComments)
+        public int Insert(bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Title, string Body, string BackgroundImage, int NumberOfLikes, int NumberOfComments, string Idiom)
         {
             try
             {
@@ -498,6 +506,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("BackgroundImage", BackgroundImage, DbType.String, ParameterDirection.Input);
 				dp.Add("NumberOfLikes", NumberOfLikes, DbType.Int32, ParameterDirection.Input);
 				dp.Add("NumberOfComments", NumberOfComments, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Idiom", Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("NewEnteredId", NewEnteredId, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -537,6 +546,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("BackgroundImage", BackgroundImage, DbType.String, ParameterDirection.Input);
 				dp.Add("NumberOfLikes", NumberOfLikes, DbType.Int32, ParameterDirection.Input);
 				dp.Add("NumberOfComments", NumberOfComments, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Idiom", Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -576,6 +586,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("BackgroundImage", blog.BackgroundImage, DbType.String, ParameterDirection.Input);
 				dp.Add("NumberOfLikes", blog.NumberOfLikes, DbType.Int32, ParameterDirection.Input);
 				dp.Add("NumberOfComments", blog.NumberOfComments, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Idiom", blog.Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -596,7 +607,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         /// Note: Raise exception when the function did not made a succesfull update in database
         /// </summary>
         /// <returns>The number of rows updated in Blog table</returns>
-        public int UpdateByBlogId(int BlogId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Title, string Body, string BackgroundImage, int NumberOfLikes, int NumberOfComments)
+        public int UpdateByBlogId(int BlogId, bool Active, DateTime DateTimeCreation, DateTime DateTimeLastModification, int UserCreationId, int UserLastModificationId, string Title, string Body, string BackgroundImage, int NumberOfLikes, int NumberOfComments, string Idiom)
         {
             try
             {
@@ -615,6 +626,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				dp.Add("BackgroundImage", BackgroundImage, DbType.String, ParameterDirection.Input);
 				dp.Add("NumberOfLikes", NumberOfLikes, DbType.Int32, ParameterDirection.Input);
 				dp.Add("NumberOfComments", NumberOfComments, DbType.Int32, ParameterDirection.Input);
+				dp.Add("Idiom", Idiom, DbType.String, ParameterDirection.Input);
                 dp.Add("RowsAffected", RowsAffected, DbType.Int32, ParameterDirection.Output);
         
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
@@ -745,7 +757,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 				$"Body: {Body}, " +
 				$"BackgroundImage: {BackgroundImage}, " +
 				$"NumberOfLikes: {NumberOfLikes}, " +
-				$"NumberOfComments: {NumberOfComments}";
+				$"NumberOfComments: {NumberOfComments}, " +
+				$"Idiom: {Idiom}";
         }
 
         public string ToStringOnlyValuesForHTML()
@@ -815,6 +828,12 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
         <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
             <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{NumberOfComments}</span>
+        </font>
+        <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
+    </td><td align=""left"" valign=""top"">
+        <div style=""height: 12px; line-height: 12px; font-size: 10px;"">&nbsp;</div>
+        <font face=""'Source Sans Pro', sans-serif"" color=""#000000"" style=""font-size: 20px; line-height: 28px;"">
+            <span style=""font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #000000; font-size: 20px; line-height: 28px;"">{Idiom}</span>
         </font>
         <div style=""height: 40px; line-height: 40px; font-size: 38px;"">&nbsp;</div>
     </td>
