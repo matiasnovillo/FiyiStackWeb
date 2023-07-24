@@ -56,7 +56,7 @@
                     <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
                     <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
                 </svg>
-                <h4 class="display-4 text-white">Project form</h4>
+                <h4 class="display-4 text-white">Formulario de proyectos</h4>
                 <p class="lead text-italic text-white">
                   En este formulario puedes crear o editar tus proyectos
                 </p>
@@ -65,7 +65,7 @@
                     <li class="mt-2">Aquí puedes editar tus proyectos colocando 
                         <span class="badge badge-danger">Project name</span>,
                         <span class="badge badge-danger">General history user</span>, usado para guardar información relacionada
-                        a los requerimientos de tus clientes y <span class="badge badge-danger">Path</span> para elegir la ubicación de tu proyecto
+                        a los requerimientos de tus clientes, y <span class="badge badge-danger">Path</span> para elegir la ubicación de tu proyecto
                     </li>
                     <li class="mt-2">Este botón es usado para crear un proyecto.
                     </li>
@@ -98,78 +98,71 @@
                         de bases de datos <span class="badge badge-danger">2</span> y su correspondiente información a la  
                         <span class="badge badge-danger">3</span> derecha.
                     </li>
-                    <li class="mt-2">Here the project databases are displayed. You can add what you want.</li>
-                    <li class="mt-2">Here the information of each database appears. The 
-                        <span class="badge badge-danger">Name</span>, the option if it is
-                        <span class="badge badge-danger">Microsoft SQL Server</span> (only option at the moment), and the
-                        <span class="badge badge-danger">Connection string</span>. As you can see, the database is local
-                        because the data source is a dot (.). 
+                    <li class="mt-2">Aquí se muestran las bases de datos. Puedes agregar cuantas tú quieras.</li>
+                    <li class="mt-2">Aquí se muestra la información de cada base de datos. El 
+                        <span class="badge badge-danger">Name</span>, la opción
+                        <span class="badge badge-danger">Microsoft SQL Server</span> (única opción por el momento), y
+                        <span class="badge badge-danger">Connection string</span>. Como puedes ver, la base de datos es local porque tiene un (.). 
                         <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-                            <span class="alert-inner--text">Remember, the database Name must be the same as the one placed in the
-                                Connection string (initial catalog property)</span>
+                            <span class="alert-inner--text">Recuerda, el nombre de la base de datos debe ser igual al colocado en Connection string (initial catalog property)</span>
                         </div>
                     </li>
-                    <li class="mt-2">These buttons are for delete the selected databases and add 
-                        a new database.</li>
-                    <li class="mt-2">This button is to enter the generator configuration.</li>
-                    <li class="mt-2">This button is to generate the selected tables
+                    <li class="mt-2">Estos botones son para eliminar y agregar bases de datos.</li>
+                    <li class="mt-2">Este botón es para ingresar a la configuración del generador.</li>
+                    <li class="mt-2">Este botón es para generar el código de las tablas seleccionadas
                         <span class="badge badge-danger">7</span>.
                     </li>
-                    <li class="mt-2">Here is a list of the tables corresponding to the selected database. 
-                        As you can see, each table has a schema in the database as <u>dbo</u>, an area as
-                        <u>BasicCore</u> and the name of the table as <u>Failure</u>: 
-                        <u>[dbo].[BasicCore.Failure]</u>, to give an example.
+                    <li class="mt-2">Aquí hay una lista de las tablas correspondientes a la base de datos seleccionada. 
+                        Como puedes ver, cada tabla tiene un esquema como <u>dbo</u>, un área
+                        <u>BasicCore</u> y el nombre de la tabla como <u>Failure</u>: 
+                        <u>[dbo].[BasicCore.Failure]</u>, para dar un ejemplo.
                     </li>
-                    <li class="mt-2">Here are the data of a selected table. For example, if I select
-                        <u>[dbo].[BasicCore.Failure]</u>, the table <span class="badge badge-danger">Name</span> 
-                        will be Failure, the <span class="badge badge-danger">Database Scheme</span> will be dbo, and the 
-                        <span class="badge badge-danger">Area</span> will be BasicCore. You can also
-                        add the <span class="badge badge-danger">Version</span> to be able to have different versions of
-                        the table, I, for example, put 1.
+                    <li class="mt-2">Aquí se muestran los datos de la tabla seleccionada. Por ejemplo, si selecciono
+                        <u>[dbo].[BasicCore.Failure]</u>, la tabla <span class="badge badge-danger">Name</span> 
+                        será Failure, el <span class="badge badge-danger">esquema de base de datos</span> será dbo, y el
+                        <span class="badge badge-danger">Área</span> será BasicCore. También puedes
+                        agregar la <span class="badge badge-danger">Version</span> para tener diferentes versiones de la tabla, yo por ejemplo puse 1.
                          <div class="alert alert-info alert-dismissible fade show my-3" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-                            <span class="alert-inner--text">There are several types
-                        of schemas in the databases, the one that is recommended is dbo (database owner)</span>
+                            <span class="alert-inner--text">Hay muchas cantidades de esquemas, la que se recomienda es dbo (database owner)</span>
                         </div>
                         <div class="alert alert-info alert-dismissible fade show my-3" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-                            <span class="alert-inner--text">Place a name, an area and a version without spaces or
-                        special characters, just text and numbers. And if you can, put the first letter capitalized.
-                        It's a good practice</span>
+                            <span class="alert-inner--text">Coloca un nombre, un área, y una versión sin espacios o carácteres especiales, solo texto y números, 
+                                y si puedes coloca la primer letra en mayúscula.
+                        Es una buena práctica</span>
                         </div>
                     </li>
-                    <li class="mt-2">These buttons are for removing selected tables, selecting all tables, 
-                        and for adding a new table.
+                    <li class="mt-2">Estos botones son para remover tablas, seleccionar todas las tablas y para agregar nuevas tablas.
                     </li>
-                    <li class="mt-2">Once you select a table you can go to the Columns tab to add the columns
-                        of the selected table, they will be displayed in the list of columns.
+                    <li class="mt-2">Una vez seleccionada la tabla puedes ir al tab de columnas para agregar nuevas columnas a la tabla seleccionada.
                     </li>
-                    <li class="mt-2">Here the configuration of each column is shown. If I select the Message
-                        column, it will show Message as a <span class="badge badge-danger">Name</span>, the
-                        <span class="badge badge-danger">Nullable</span> option indicating whether the
-                        column allows null values or not, a <span class="badge badge-danger">History user</span> 
-                        indicating what the column is for, and a <span class="badge badge-danger">Data type</span> 
-                        <span class="badge badge-danger">13</span>. For example, Message has the data type Text: TextArea,
-                        this option displays other options to the right, the <span class="badge badge-danger">Min</span>  
-                        and <span class="badge badge-danger">Max</span>  number of characters that the column allows, and
-                        also a regular expression, <span class="badge badge-danger">Regex</span> , to filter  which
-                        characters are allowed by the column.
+                    <li class="mt-2">Aquí se muestra la configuración de cada columna. Si selecciono la columna Message, 
+                        va a mostrar Message como <span class="badge badge-danger">Name</span>, la opción 
+                        <span class="badge badge-danger">Nullable</span> indica si la columna acepta valores nulos o no,
+                        un <span class="badge badge-danger">History user</span> 
+                        indicando para que sirve la columna, y un <span class="badge badge-danger">Data type</span> 
+                        <span class="badge badge-danger">13</span>. Por ejemplo, Message tiene el data type de tipo Text: TextArea,
+                        esta opción muestra más información a la derecha, <span class="badge badge-danger">Min</span>  
+                        y <span class="badge badge-danger">Max</span> números de carácteres que la columna permite, y
+                        también un campo para expresiones regulares, <span class="badge badge-danger">Regex</span> , para filtrar que 
+                        carácteres son permitidos en la columna.
                         <div class="alert alert-info alert-dismissible fade show my-3" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-                            <span class="alert-inner--text">Here is the same: Place a name without spaces or
-                        special characters, just text and numbers. And if you can, put the first letter capitalized.
-                        It's a good practice</span>
+                            <span class="alert-inner--text">Aquí es lo mismo: Coloca un nombre sin espacios o caracteres especiales,
+                            solo texto y números. Y si puedes, coloca la primer letra en mayúscula.
+                            Es una buena práctica.</span>
                         </div>
                     </li>
-                    <li class="mt-2">These buttons are for removing columns, selecting all columns, 
-                        and for adding a new column.
+                    <li class="mt-2">Estos botones son para remover columnas, seleccionar todas las columnas, 
+                        y para agregar una nueva columna.
                     </li>
-                    <li class="mt-2">This dropdown option allows you to add columns with different data types, for example,
-                        you can add:
+                    <li class="mt-2">Este listado de opciones te permite agregar columnas con diferentes tipos de datos, por ejemplo,
+                        puedes agregar:
                         <ul>
-                            <li class="mt-2">Boolean. To save 1 and 0 values. Used for example for IsActive, 
-                                IsOnline or WantDiscount columns.</li>
+                            <li class="mt-2">Boolean. Para guardar valores de 0 o 1. Usado para columnas como IsActive, 
+                                IsOnline o WantDiscount.</li>
 
                             <li class="mt-4">Date and time</li>
                             <li class="mt-2">Time</li>
@@ -177,19 +170,19 @@
                             <li class="mt-4">Decimal</li>
                             <li class="mt-2">Integer</li>
 
-                            <li class="mt-4">Primary Key. This one is for the primary key of a table. Each table has
-                                a primary key and don't accept zero or null values.
+                            <li class="mt-4">Primary Key. Esta es para la llave primaria de cada tabla. Cada tabla tiene
+                                una llave primaria y no acepta 0 o valores nulos.
                             </li>
-                            <li class="mt-2">Foreign keys with dropdowns</li>
-                            <li class="mt-2">Foreign keys with options</li>
+                            <li class="mt-2">Foreign keys con listas desplegables</li>
+                            <li class="mt-2">Foreign keys con opciones</li>
 
                             <li class="mt-4">Text: Basic</li>
                             <li class="mt-2">Text: Email</li>
-                            <li class="mt-2">Text: File. Path files are saved in databases as text.</li>
+                            <li class="mt-2">Text: File. Las direcciones de los archivos son guardadas como texto en la base de datos.</li>
                             <li class="mt-2">Text: Hex colour</li>
                             <li class="mt-2">Text: Password</li>
                             <li class="mt-2">Text: Phone number</li>
-                            <li class="mt-2">Text: Tag. A tag example is Paris,Roma,Buenos Aires,London.</li>
+                            <li class="mt-2">Text: Tag. Un ejemplo de tag puede ser Buenos Aires, Roma, Paris o Londres</li>
                             <li class="mt-2">Text: Text Area</li>
                             <li class="mt-2">Text: Text Editor</li>
                             <li class="mt-2">Text: URL</li>
@@ -207,15 +200,15 @@
                     <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
                     <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
                 </svg>
-                <span class="badge badge-pill badge-success">GIF Image above</span>
-                <h4 class="display-4 text-white">Configuration form</h4>
+                <span class="badge badge-pill badge-success">Imagen GIF arriba</span>
+                <h4 class="display-4 text-white">Formulario de configuración</h4>
                 <p class="lead text-italic text-white">
-                  Here you can configure the generator
+                  Aquí puedes configurar el generador
                 </p>
                 <ol class="text-white">
-                    <li class="mt-2">Here there are 3 options to configure the generator, the first is about
-                        the <span class="badge badge-danger">database</span>, the second is the
-                        <span class="badge badge-danger">paths</span> of the files, and the third is 
+                    <li class="mt-2">Aquí hay 3 opciones para configurar el generador, la primera es
+                        the <span class="badge badge-danger">database</span>, la segunda son los
+                        <span class="badge badge-danger">paths</span> de los archivos, and the third is 
                         the <span class="badge badge-danger">interface</span> with which we generate.
                     </li>
                     <li class="mt-2">This edit button is to save the selected configuration.</li>
