@@ -105,6 +105,9 @@
          exampletsmodel: ["./wwwroot/ts/FiyiStack/Example/TsModels/Example_TsModel"],
          examplejquery: ["./wwwroot/ts/FiyiStack/Example/jQuery/ExampleQuery_jQuery"],
          exampleselectallpaged: ["./wwwroot/ts/FiyiStack/Example/DTOs/exampleSelectAllPaged"],
+         sendusdbdiagramtsmodel: ["./wwwroot/ts/FiyiStack/SendUsDBDiagram/TsModels/SendUsDBDiagram_TsModel"],
+         sendusdbdiagramjquery: ["./wwwroot/ts/FiyiStack/SendUsDBDiagram/jQuery/SendUsDBDiagramQuery_jQuery"],
+         sendusdbdiagramselectallpaged: ["./wwwroot/ts/FiyiStack/SendUsDBDiagram/DTOs/sendusdbdiagramSelectAllPaged"],
      },
      output: {
          filename: "[name].bundle.js",                       //Path to save bundles: __dirname + "/wwwroot/dist" (__dirname is a Node.js variable)

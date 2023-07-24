@@ -1,12 +1,34 @@
-using FiyiStackWeb.Areas.BasicCore.Models;
+using FiyiStackWeb.Areas.CMSCore.Models;
+using FiyiStackWeb.Areas.FiyiStack.Models;
+using FiyiStackWeb.Areas.FiyiStack.Filters;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 using System;
+using FiyiStackWeb.Areas.BasicCore.Models;
 
-namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
+/*
+ * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
+ * 
+ * Coded by fiyistack.com
+ * Copyright © 2023
+ * 
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ */
+
+//Last modification on: 23/07/2023 22:31:08
+
+namespace FiyiStackWeb.Areas.FiyiStack.Pages
 {
-    public class FiyiRequirementsModel : PageModel
+    /// <summary>
+    /// Stack:             9 <br/>
+    /// Name:              C# Razor Page. <br/>
+    /// Function:          Allow you to show HTML files using Razor Page technology. <br/>
+    /// Last modification: 23/07/2023 22:31:08
+    /// </summary>
+    public partial class EnSendUsDBDiagramNonQueryPageModel : PageModel
     {
         public void OnGet()
         {
@@ -38,24 +60,22 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack. Create requirements, see what your users need."">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Send us your DB diagram - FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""If you need help with your DB diagram, send to us and we will convert it in a FiyiStack project"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""If you need help with your DB diagram, send to us and we will convert it in a FiyiStack project"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"FiyiRequirements: The example code of FiyiStack. Create requirements, see what your users need.";
+            ViewData["title"] = $@"Send us your DB diagram - FiyiStack";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "en/FiyiRequirements",
+                Page = "en/SendUsDBDiagram",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,
                 UserCreationId = 1,
                 UserLastModificationId = 1,
             };
-
-            VisitorCounterModel.Insert();
         }
     }
 }

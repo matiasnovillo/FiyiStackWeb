@@ -39,7 +39,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             }
 
             ViewData["og:title"] = $@"<meta property=""og:title"" content=""Learn more - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more)"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more"">";
             ViewData["description"] = $@"<meta name=""description"" content=""FiyiStack is a low code generator that works with C#, .NET Core, Microsoft SQL Server, Node.js, JavaScript, TypeScript and more"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Learn more - FiyiStack";
