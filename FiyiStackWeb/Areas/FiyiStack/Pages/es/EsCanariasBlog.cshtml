@@ -23,7 +23,7 @@
                             <ol class="text-white">
                                 <li class="mt-2"><a class="text-white" href="#1">¿Qué es CanariasBlog?</a></li>
                                 <li class="mt-2"><a class="text-white" href="#2">¿Qué contiene CanariasBlog adentro?</a></li>
-                                <li class="mt-2"><a class="text-white" href="#3">Esquema de base de datos</a></li>
+                                <li class="mt-2"><a class="text-white" href="#3">Diagrama de base de datos</a></li>
                                 <li class="mt-2"><a class="text-white" href="#4">Un CMS adentro de CanariasBlog</a></li>
                             </ol>
                         </div>
@@ -41,31 +41,36 @@
                         <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
                         <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
                     </svg>
-                    <h4 class="display-4 text-white">What is CanariasBlog?</h4>
+                    <h4 class="display-4 text-white">¿Qué es CanariasBlog?</h4>
                     <p class="text-italic text-white">
-                        CanariasBlog is a web application made with FiyiStack.
-                        It is a web application developed with 
-                        <span class="badge badge-success">C# .NET Core 3.1</span>.
+                        CanariasBlog es una aplicación web realizada con FiyiStack. Es una aplicación web
+                        desarrollada con
+                        <span class="badge badge-success">C# .NET Core 3.1</span>, 
+                        <span class="badge badge-success">MS SQL Server</span>, 
+                        <span class="badge badge-success">JavaScript</span> y
+                        <span class="badge badge-success">TypeScript</span>.
                     </p>
                     <p class="text-italic text-white">
-                        The application serves as an example of what FiyiStack is capable of generating.
-                        With CanariasBlog create your own blog, manage posts, languages, comments and likes.
-                        It is also composed of a <span class="badge badge-success">CMS</span>
-                        (Control Management System) so that you can manage failures, 
-                        parameters, users, roles, permissions, requirements, states and assign
-                        the requirements to your employees, if you have.
+                        La aplicación sirve como ejemplo de lo que FiyiStack es capaz de generar. 
+                        Con CanariasBlog crea tu propio blog, gestiona publicaciones, idiomas, 
+                        comentarios y me gusta. También está compuesto por un
+                        <span class="badge badge-success">CMS</span> (Sistema de 
+                        Gestión de Control) para que puedas gestionar fallos, parámetros, usuarios,
+                        roles y permisos.
                     </p>
                     <p class="text-italic text-white">
-                        It also contains the basic pages of any web application:
+                        También contiene las páginas básicas de cualquier aplicación web:
                     </p>
                     <ul class="text-white">
-                        <li class="mt-2">Login page</li>
-                        <li class="mt-2">Page to create an account</li>
-                        <li class="mt-2">Password recovery page</li>
-                        <li class="mt-2">Page to change password</li>
+                        <li class="mt-2">Página de login</li>
+                        <li class="mt-2">Página para crear una cuenta</li>
+                        <li class="mt-2">Página para recuperar la contraseña</li>
+                        <li class="mt-2">Página para cambiar la contraseña</li>
                     </ul>
                     <p class="text-italic text-white">
-                        To see more details here is a video hosted in <span class="badge badge-warning">YouTube</span> : 
+                        Para más detalles puedes ver un video en 
+                        <span class="badge badge-warning">YouTube</span>: 
+                        
                     </p>
                 </blockquote>
             </div>
@@ -77,75 +82,76 @@
                         <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
                         <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
                     </svg>
-                    <h4 class="display-4 text-white">What does CanariasBlog contain inside?</h4>
+                    <h4 class="display-4 text-white">¿Qué contiene CanariasBlog adentro?</h4>
                     <p class="text-italic text-white">
-                        CanariasBlog was made in Visual Studio. 
-                        If you open the solution 
+                        CanariasBlog fue hecho con Visual Studio. 
+                        Si abres la solución
                         <span class="badge badge-success">CanariasBlog.sln</span> 
-                        you will see the screen above. As you can see, the following files and folders 
-                        are found:
+                        verás la pantalla de arriba. 
+                        Como puede ver, se encuentran los siguientes archivos y carpetas:
                     </p>
                     <ul class="text-white">
-                        <li class="mt-2"><span class="badge badge-success">Dependencies</span> like 
-                            Nuget packages.
+                        <li class="mt-2"><span class="badge badge-success">Dependencias</span> 
+                            como paquetes Nuget o NPM. 
                         </li>
-                        <li class="mt-2">Folder: <span class="badge badge-success">wwwroot</span>. This
-                            is where JavaScript files, TypeScript files, images, and CSS files are stored. 
-                            PDF, Excel and CSV files that you generate are also saved. Files uploaded by
-                            your users are also saved here.
+                        <li class="mt-2">Carpeta: <span class="badge badge-success">wwwroot</span>. 
+                            Aquí se guardan los archivos JavaScript, TypeScript, imagenes,
+                            archivos CSS, archivos PDF, Excel y CSV. 
+                            Los archivos subidos por tus usuarios también son guardados aquí.
                         </li>
-                        <li class="mt-2">Folder: <span class="badge badge-success">Areas</span>. 
-                            In .NET Core 3.1 you can define areas of your application. 
-                            For example, CanariasBlog has the BasicCore, BasicCulture, CMSCore, and 
-                            Blog areas.
-                            In these areas, C# files such as Web APIs, services, filters, models, and 
-                            interfaces are defined.
+                        <li class="mt-2">Carpeta: <span class="badge badge-success">Areas</span>. 
+                            En .NET Core 3.1 puedes definir áreas de tu aplicación. 
+                            Por ejemplo, CanariasBlog tiene las áreas BasicCore, BasicCulture,
+                            CMSCore y CanariasBlog.
+                            En estas áreas, los archivos C# como Web APIs, servicios, filtros, modelos, e 
+                            interfaces son definidas.
                         </li>
-                        <li class="mt-2">Folder: <span class="badge badge-success">BDBackups</span>.
-                            This folder contains a backup of the CanariasBlog 
-                            database with all the tables and stored procedures.
+                        <li class="mt-2">Carpeta: <span class="badge badge-success">BDBackups</span>.
+                            Esta carpeta contiene un backup de la base de datos de CanariasBlog con 
+                            todas las tablas y procedimientos almacenados listos.
                         </li>
                         <li class="mt-2">Folder: <span class="badge badge-success">BDScheme</span>. 
-                            This folder contains a schematic of the database so that
-                            you can guide yourself.
+                            Esta carpeta contiene un esquema de la base de datos para que te sirva
+                            como guia.
                         </li>
                         <li class="mt-2">Folder: <span class="badge badge-success">JSONScripts</span>. 
-                            This folder contains .json files to be able to test the
-                            application with Postman.
+                            Esta carpeta contiene archivos .json para que puedas testear la aplicación
+                            usando Postman.
                         </li>
                         <li class="mt-2">Folder: <span class="badge badge-success">Library</span>. 
-                            This folder contains C# libraries to reuse in the application.
-                            Libraries contain attribute validators, structures like trees, and graphs.
-                            They also contain converters, math library, security library and validators.
+                            Esta carpeta contiene librerias C# para reusar en tus aplicaciones.
+                            Las librerias contienen validadores de atributos para los modelos C#, 
+                            estructuras como arboles y grafos.
+                            También contiene conversores, clases de seguridad y validadores.
                         </li>
-                        <li class="mt-2">Folder: <span class="badge badge-success">node_modules</span>.
-                            This folder contains all the libraries installed by NPM.
+                        <li class="mt-2">Carpeta: <span class="badge badge-success">node_modules</span>.
+                            Esta carpeta contiene todas las librerias creadas por NPM.
                         </li>
-                        <li class="mt-2">Folder: <span class="badge badge-success">Pages</span>. 
-                            This folder contains the basic CanariasBlog pages like
-                            the Index page and the Error page. It also contains the commonly used templates.
+                        <li class="mt-2">Carpeta: <span class="badge badge-success">Pages</span>. 
+                            Esta carpeta contiene las páginas básicas como Index o Error. También contiene
+                            las plantillas usadas por las páginas Razor.
                         </li>
-                        <li class="mt-2">Folder: <span class="badge badge-success">SQLScripts</span>. 
-                            This folder contains the SQL scripts generated 
-                            by FiyiStack.
+                        <li class="mt-2">Carpeta: <span class="badge badge-success">SQLScripts</span>. 
+                            Esta carpeta contiene los scripts SQL creados por FiyiStack.
                         </li>
-                        <li class="mt-2">File: <span class="badge badge-success">package.json</span>. 
-                            This file contains the necessary configuration to use
-                            NPM in the project. Here the libraries that will later be saved in
-                            node_modules are defined.
+                        <li class="mt-2">Archivo: <span class="badge badge-success">package.json</span>. 
+                            Este archivo contiene la configuración necesaria para usar
+                            NPM en el proyecto. Las librerias que se definan aquí seran guardadas 
+                            en la carpeta node_modules.
                         </li>
-                        <li class="mt-2">File: <span class="badge badge-success">Startup.cs</span>.
-                            This file is in charge of executing the application when 
-                            a user logs in. Here basic configurations such as the use of session, 
-                            controllers, views and services with their respective interfaces are defined.
+                        <li class="mt-2">Archivo: <span class="badge badge-success">Startup.cs</span>.
+                            Este archivo es el encargado de ejecutar la aplicación cuando un usuario inicia
+                            sesión. Aquí se definen configuraciones básicas como el uso de sesión,
+                            controladores, vistas y servicios con sus respectivas interfaces.
                         </li>
-                        <li class="mt-2">File: <span class="badge badge-success">tsconfig.json</span>. 
-                            This file contains the necessary information for the TypeScript compiler to work.
+                        <li class="mt-2">Archivo: <span class="badge badge-success">tsconfig.json</span>. 
+                            Este archivo contiene la información necesaria para que funcione el 
+                            compilador de TypeScript.
                         </li>
-                        <li class="mt-2">File: <span class="badge badge-success">webpack.config.js</span>. 
-                            This file contains the information necessary for the
-                            Webpack wrapper to work. For example, TypeScript files are defined with their
-                            respective paths for the wrapper to convert into JavaScript.
+                        <li class="mt-2">Archivo: <span class="badge badge-success">webpack.config.js</span>. 
+                            Este archivo contiene la información necesaria para que funcione el empaquetador
+                            Webpack. Por ejemplo, los archivos TypeScript se definen con sus respectivas
+                            rutas para que el contenedor los convierta en JavaScript.
                         </li>
                     </ul>
                 </blockquote>
@@ -158,55 +164,55 @@
                         <polygon points="0,52 583,95 0,95" class="fill-default"></polygon>
                         <polygon points="0,42 583,95 683,0 0,95" opacity=".2" class="fill-default"></polygon>
                     </svg>
-                    <h4 class="display-4 text-white">Database schema</h4>
+                    <h4 class="display-4 text-white">Diagrama de base de datos</h4>
                     <p class="text-italic text-white">
-                        These are the areas of the application, there are 4 in total
+                        Estas son las áreas de la aplicación, en total son 4.
                     </p>
                     <ul class="text-white">
                         <li class="mt-2"><span class="badge badge-warning">Basic.Core</span>.
-                            This area is the most important, here the Failure and Parameter tables
-                            are defined. These tables store the crashes generated by the application
-                            so that you can review them, and the private parameters of the application
-                            such as site mail, passwords and so on.
+                            Esta área es la más importante, aquí se definen las tablas de Fallas y 
+                            Parámetros. Estas tablas almacenan los bloqueos generados por la aplicación
+                            para que puedas revisarlos y los parámetros privados de la aplicación, 
+                            como el correo del sitio, las contraseñas, etc.
                         </li>
                         <li class="mt-2"><span class="badge badge-success">Basic.Culture</span>.
-                            This area is also important, although not essential. Here the City, Province
-                            (State), Country, Planet (joking), and Sex tables are defined.
+                            Esta área también es importante, aunque no imprescindible. Aquí se definen
+                            las tablas Ciudad, Provincia, País, Planeta (broma) y Sexo.
                         </li>
                         <li class="mt-2"><span class="badge badge-primary">CMS.Core</span>.
-                            This area is also important. Here the necessary tables are defined for the CMS
-                            to come alive. In these tables the users, roles, permissions and menus are
-                            defined.
+                            Esta área es también importante. Aquí se definen las tablas necesarias para
+                            que el CMS cobre vida. En estas tablas se definen los usuarios, roles, 
+                            permisos y menús.
                         </li>
                         <li class="mt-2"><span class="badge badge-danger">Blog</span>.
-                            This area belongs to application CanariasBlog. With these tables you can
-                            create and manage post blogs, idioms, comments and likes.
+                            Esta área pertenece a la aplicación CanariasBlog. Con estas tablas puedes
+                            crear y administrar posts, idiomas,
+                            comentarios y me gustas.
                         </li>
                     </ul>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
-                        <span class="alert-inner--text">The advantage of defining areas in the 
-                            application is that you can reuse areas that are common in every 
-                            application like Basic.Core, Basic.Culture and CMS.Core.</span>
+                        <span class="alert-inner--text">La ventaja de definir áreas en la aplicación
+                            es que puedes reutilizar áreas que son comunes en todas las aplicaciones
+                            como Basic.Core, Basic.Culture y CMS.Core.</span>
                     </div>
                 </blockquote>
             </div>
             <!-- A CMS inside CanariasBlog -->
             <div id="3" class="card bg-default shadow border-0">
                 <blockquote class="card-blockquote">
-                    <h4 class="display-4 text-white">A CMS inside CanariasBlog</h4>
+                    <h4 class="display-4 text-white">Un CMS dentro de FiyiRequirements</h4>
                     <p class="text-italic text-white">
-                        Due to the CMSCore area, <span class="badge badge-success">CanariasBlog</span> 
-                        <u>contains a CMS inside</u>, but what is a CMS? 
-                        A CMS (Content Management System) is an <u>online system capable of managing dynamic 
-                        content in a web application</u>, for example a <span class="badge badge-info">blog</span>, 
-                        an <span class="badge badge-info">e-commerce</span> or 
-                        <span class="badge badge-info">any type of web page</span>. 
-                        <u>Management is performed by application administrators, editors, or participants</u>.
-                        The system allows <u>independent management of content and design</u>. Thus, it is possible 
-                        to manage the content and give a different design to the website at any time without
-                        having to format the content again, in addition to allowing <u>easy and controlled 
-                        publication</u> on the site to various publishers.
+                        Debido al área CMSCore, <span class="badge badge-success">CanariasBlog</span> 
+                        <u>contiene un CMS dentro</u>, ¿pero qué es un CMS? 
+                        Un CMS (Content Management System) es un <u>sistema capaz de manipular el contenido
+                        de una aplicación web</u>. Por ejemplo un <span class="badge badge-info">blog</span> o 
+                        un <span class="badge badge-info">e-commerce</span> contienen un CMS dentro. 
+                        <u>La edición es hecha por administradores de aplicaciones, editores y participantes.</u>.
+                        El sistema permite <u>gestión independiente de contenidos y diseño</u>. Así, 
+                        es posible administrar el contenido y darle un diseño diferente al sitio web
+                        en cualquier momento sin tener que volver a formatear el contenido, además de
+                        permitir una <u>publicación fácil y controlada</u> en el sitio a varios editores.
                     </p>
                 </blockquote>
             </div>

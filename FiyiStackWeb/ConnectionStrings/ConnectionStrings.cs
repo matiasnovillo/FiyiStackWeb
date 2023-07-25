@@ -12,5 +12,9 @@
             return "data source =.; initial catalog = fiyistack_FiyiStackWeb; Integrated Security = SSPI; MultipleActiveResultSets=True;Pooling=false;Persist Security Info=True;App=EntityFramework;TrustServerCertificate=True";
         }
 
+        public static string FiyiStackAppProduction()
+        {
+            return "Password=2Mr4h$t00;Persist Security Info=True;User ID=fiyistac_FiyiStackAppAdmin;Initial Catalog=fiyistac_FiyiStackApp;Data Source=www4.baehost.com;TrustServerCertificate=True";
+    }
     }
 }

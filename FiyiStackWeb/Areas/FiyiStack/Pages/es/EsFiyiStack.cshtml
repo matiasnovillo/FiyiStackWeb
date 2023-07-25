@@ -93,7 +93,7 @@
                 <ol class="text-white">
                     <li class="mt-2">Acá hay 3 partes, las <span class="badge badge-danger">Databases</span> (puedes crear tanto como quieras), 
                         sus <span class="badge badge-danger">Tables</span>, y las  
-                        <span class="badge badge-danger">Columns</span> de cada tabla. Puede navegar entre cada una de ellas
+                        <span class="badge badge-danger">Columns</span> de cada tabla. Puedes navegar entre cada una de ellas
                         para ver su contenido creado a partir de tu diagrama de base de datos. Por ejemplo, seleccionando la opción de bases de datos despliega una lista
                         de bases de datos <span class="badge badge-danger">2</span> y su correspondiente información a la  
                         <span class="badge badge-danger">3</span> derecha.
@@ -102,7 +102,7 @@
                     <li class="mt-2">Aquí se muestra la información de cada base de datos. El 
                         <span class="badge badge-danger">Name</span>, la opción
                         <span class="badge badge-danger">Microsoft SQL Server</span> (única opción por el momento), y
-                        <span class="badge badge-danger">Connection string</span>. Como puedes ver, la base de datos es local porque tiene un (.). 
+                        <span class="badge badge-danger">Connection string</span>. Como puedes ver, la base de datos es local porque tiene un punto (.). 
                         <div class="alert alert-warning alert-dismissible fade show my-3" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
                             <span class="alert-inner--text">Recuerda, el nombre de la base de datos debe ser igual al colocado en Connection string (initial catalog property)</span>
@@ -207,50 +207,49 @@
                 </p>
                 <ol class="text-white">
                     <li class="mt-2">Aquí hay 3 opciones para configurar el generador, la primera es
-                        the <span class="badge badge-danger">database</span>, la segunda son los
-                        <span class="badge badge-danger">paths</span> de los archivos, and the third is 
-                        the <span class="badge badge-danger">interface</span> with which we generate.
+                        la <span class="badge badge-danger">database</span>, la segunda son los
+                        <span class="badge badge-danger">paths</span> de los archivos, y la tercera es  
+                        es <span class="badge badge-danger">interface</span> con la cual generamos (deprecado).
                     </li>
-                    <li class="mt-2">This edit button is to save the selected configuration.</li>
-                    <li class="mt-2">With this button you can create the necessary files and folders 
-                        for the project:
+                    <li class="mt-2">Este botón sirve para guardar la configuración seleccionada.</li>
+                    <li class="mt-2">Con este botón puedes crear los archivos y carpetas necesarias para tu proyecto:
                         <ul>
-                            <li class="mt-2">File: <u>Startup.cs</u>. This file is in charge of starting your project,
-                                it loads the configurations and services necessary for your project to work.</li>
-                            <li class="mt-2">File: <u>package.json</u>. This file works in conjunction with the 
-                                Node.js package manager (npm), it is mainly used to install and manage 
-                                external Node.js modules. It also contains the necessary commands to execute
-                                while the web application is being developed.</li>
-                            <li class="mt-2">File: <u>tsconfig.json</u>. This file indicates that the project works
-                                with TypeScript. All the necessary information for the TypeScript compiler
-                                is stored here.</li>
-                            <li class="mt-2">File: <u>webpack.config.js</u>. This JavaScript code file contains the
-                                necessary configuration for you to work with the WebPack module wrapper.</li>
-                            <li class="mt-2">File: <u>Webpack.config.vendor.js</u>. This JavaScript configuration
-                                file is similar to the previous one, but it differs in that it contains
-                                the necessary vendor modules such as Bootstrap, jQuery, Backbone and
+                            <li class="mt-2">Archivo: <u>Startup.cs</u>. Este archivo esta a cargo de levantar la aplicación,
+                                carga las configuraciones y servicios para que el proyecto funcione.</li>
+                            <li class="mt-2">Archivo: <u>package.json</u>. Este archivo trabaja en conjunto con 
+                                Node.js package manager (npm), es principalmente utilizado para instalar y configurar 
+                                módulos Node.js externos. También contiene los comandos necesarios a ejecutar
+                                mientras la aplicación web esta siendo desarrollada.</li>
+                            <li class="mt-2">Archivo: <u>tsconfig.json</u>. Este archivo indica que el proyecto web trabaja
+                                con TypeScript. Toda la información necesaria para el transpilador TypeScript 
+                                se guarda aquí.</li>
+                            <li class="mt-2">Archivo: <u>webpack.config.js</u>. Este archivo JavaScript contiene
+                                la configuración necesaria para trabajar con el empaquetador Webpack.</li>
+                            <li class="mt-2">File: <u>Webpack.config.vendor.js</u>. Este archivo de configuración JavaScript
+                                es similar al previo, pero se diferencia en que contiene los modulos necesarios de terceros
+                                como Bootstrap, jQuery, Backbone y
                                 FontAwesome</li>
-                            <li class="mt-2">Folders: <u>Uploads, PDFFiles, ExcelFiles and CSVFiles</u></li>
+                            <li class="mt-2">Carpetas: <u>Uploads, PDFFiles, ExcelFiles y CSVFiles</u></li>
                         </ul>
                     </li>
-                    <li class="mt-2">These checkboxes belong to the Databases tab. Here you can define if
-                        you want to add the <u>audit columns as Active, DateTimeCreation, DateTimeLastModification,
-                        UserCreationId and UserLastModificationId</u>. You can also define if you want to <u>remove
-                        existing tables, fields and stored procedures</u> during generation in the database.</li>
-                    <li class="mt-2">This list contains the checkboxes to define what you want to generate in 
-                        the <u>back-end</u>
+                    <li class="mt-2">Estos checkboxes pertenecen al tab Databases. Aquí puedes definir si
+                        quieres agregar <u>columnas de auditoria como Active, DateTimeCreation, DateTimeLastModification,
+                        UserCreationId y UserLastModificationId</u>. También puedes definir si quieres <u>remover
+                        tablas, columnas y procedimientos almacenados</u> durante la generación en la base de datos.</li>
+                    <li class="mt-2">Esta lista contiene los checkboxes para definir que quieres generar en 
+                        el <u>back-end</u>
                     </li>
-                    <li class="mt-2">This list contains the checkboxes to define what you want to generate in 
-                        the <u>front-end</u>
+                    <li class="mt-2">Esta lista contiene los checkboxes para definir que quieres generar en
+                        el <u>front-end</u>
                     </li>
-                    <li class="mt-2">Here you can define if you want to <u>remove existing files</u> during generation
-                        of front-end and back-end files.
+                    <li class="mt-2">Aquí puedes definir si quieres <u>remover archivos existentes</u> durante la generación
+                        de archivos del front-end y back-end.
                     </li>
-                    <li class="mt-2">This dropdown define the templates used in the HTML and CSS files. 
-                        For the moment you can choose one, <u>Argon design (from Creative-Tim)</u>.
+                    <li class="mt-2">Esta lista desplegable define las plantillas HTML y CSS. 
+                        Por el momento puedes generar en Argon, <u>Argon design (from Creative-Tim)</u> (deprecado).
                         <div class="alert alert-info alert-dismissible fade show my-3" role="alert">
                             <span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
-                            <span class="alert-inner--text">New templates will be added</span>
+                            <span class="alert-inner--text">Nuevas plantillas serán agregadas</span>
                         </div>
                     </li>
                 </ol>
@@ -261,23 +260,23 @@
             <div class="card-body text-white">
                 <h4 class="display-4 text-white">Example pages</h4>
                 <p>
-                    Here you can see an example page generated by FiyiStack. You should know that I
-                    have not made any changes, I have only used the generator and added a line to
-                    <u>Startup.cs</u> to indicate the Example interface so that it can be read by the
-                    application. I have also added two lines in <u>webpack.config.js</u> so that you
-                    can transpile the TypeScript files generated by the application. Also, I made a little change
-                    in the web API of Example to allow zero values in foreign keys. That is, I have only added 3 lines
-                    after generating.
+                    Aquí puedes ver una página de ejemplo generada por FiyiStack. Debes saber que
+                    no he hecho ningún cambio, solo use el generador y agregué una línea en el 
+                    <u>Startup.cs</u> para indicar el uso del servicio Example para que pueda ser usada por la 
+                    aplicación. También agregué tres líneas en el <u>webpack.config.js</u> para que puedas
+                    transpilar los archivos TypeScript generados por la aplicación. También, hice un pequeño cambio
+                    en la API de Example para permitir que las llaves foraneas acepten valores igual a 0. Eso es todo, solo agregue cuatro
+                    líneas después de generar con FiyiStack.
                 </p>
-                <p>If you want to see it and upload data you must be logged in first. @Html.Raw(ViewData["LoginButton"])</p> 
-                <a href="/FiyiStack/ExampleQueryPage" class="btn btn-white mb-3">Example page</a>
+                <p>Si lo quieres ver y guardar información debes estar logueado primero. @Html.Raw(ViewData["LoginButton"])</p> 
+                <a href="/FiyiStack/ExampleQueryPage" class="btn btn-white mb-3">Página de ejemplo</a>
                 <br/>
                 <p>
-                    Another example page created by FiyiStack is FiyiStack's blog. This page was generated
-                    automatically, only changes were made to the HTML to make it look like a blog, 
-                    and other changes to display comments from users who visit the page.
+                    Otro ejemplo creado por FiyiStack es el blog de FiyiStack. Esta página fue generada en segundos,
+                    solo se hicieron cambios en el HTML para que se pareciera a un blog, 
+                    y otros cambios para mostrar los comentarios de usuarios que visitan el blog.
                 </p>
-                <a href="/Blog" class="btn btn-white">Visit blog</a>
+                <a href="~/es/Blog" class="btn btn-white">Visitar blog</a>
                 <br/>
             </div>
         </div>

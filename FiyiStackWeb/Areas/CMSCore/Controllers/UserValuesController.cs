@@ -770,5 +770,40 @@ namespace FiyiStackWeb.Areas.CMSCore.Controllers
             }
         }
         #endregion
+
+        //Payment endpoint
+        [HttpPost("~/api/CMSCore/User/1/PaymentEndpoint/{Email}/{UserAccountTypeId:int}")]
+        public IActionResult PaymentEndpoint(string Email, int UserAccountTypeId)
+        {
+            try
+            {
+                var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
+                if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
+
+                //???
+
+                return StatusCode(200);
+            }
+            catch (Exception ex)
+            {
+                DateTime Now = DateTime.Now;
+                FailureModel FailureModel = new FailureModel()
+                {
+                    HTTPCode = 500,
+                    Message = ex.Message,
+                    EmergencyLevel = 1,
+                    StackTrace = ex.StackTrace ?? "",
+                    Source = ex.Source ?? "",
+                    Comment = "",
+                    Active = true,
+                    UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+                    DateTimeCreation = Now,
+                    DateTimeLastModification = Now
+                };
+                FailureModel.Insert();
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
