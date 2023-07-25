@@ -448,7 +448,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 dp.Add("RowsPerPage", blogSelectAllPaged.RowsPerPage, DbType.Int32, ParameterDirection.Input);
                 dp.Add("SorterColumn", blogSelectAllPaged.SorterColumn, DbType.String, ParameterDirection.Input);
                 dp.Add("SortToggler", blogSelectAllPaged.SortToggler, DbType.Boolean, ParameterDirection.Input);
-                dp.Add("Idiom", blogSelectAllPaged.Idiom, DbType.String, ParameterDirection.Input);
+                dp.Add("Idiom", blogSelectAllPaged.Idiom ?? "", DbType.String, ParameterDirection.Input);
                 dp.Add("TotalRows", blogSelectAllPaged.TotalRows, DbType.Int32, ParameterDirection.Output);
                 
 
