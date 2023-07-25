@@ -39,8 +39,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             }
 
             ViewData["og:title"] = $@"<meta property=""og:title"" content=""Descargas - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Descarga FiyiStack, FiyiRequirements o CanariasBlog"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""Descarga FiyiStack, FiyiRequirements o CanariasBlog"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Descargas - FiyiStack";
 
