@@ -16,6 +16,7 @@ using System.IO;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using FiyiStackWeb.Areas.FiyiStack.Models;
 
 /*
  * GUID:e6c09dfe-3a3e-461b-b3f9-734aee05fc7b
