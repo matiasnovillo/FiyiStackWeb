@@ -43,7 +43,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
         {
             try
             {
-                int NewEnteredId = 0;
                 DynamicParameters dp = new DynamicParameters();
                 DataTable DataTable = new DataTable();
 
@@ -57,14 +56,11 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 
                 using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
                 {
-                    var dataReader = sqlConnection.ExecuteReader("[dbo].[CMSCore.User.Insert]", commandType: CommandType.StoredProcedure, param: dp);
+                    var dataReader = sqlConnection.ExecuteReader("[dbo].[User.Add]", commandType: CommandType.StoredProcedure, param: dp);
                     DataTable.Load(dataReader);
-                    NewEnteredId = dp.Get<int>("NewEnteredId");
                 }
 
-                if (NewEnteredId == 0) { throw new Exception("NewEnteredId with no value"); }
-
-                return NewEnteredId;
+                return 1;
             }
             catch (Exception ex) { throw ex; }
         }
