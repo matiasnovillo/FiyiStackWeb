@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FiyiStackWeb.Pages
 {
-    public class _404Model : PageModel
+    public class MapSiteModel : PageModel
     {
         public void OnGet()
         {

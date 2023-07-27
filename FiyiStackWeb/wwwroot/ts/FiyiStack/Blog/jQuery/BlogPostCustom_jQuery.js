@@ -52,7 +52,7 @@ var BlogQuery = /** @class */ (function () {
                     xmlHttpRequest.onload = function () {
                         if (xmlHttpRequest.status >= 400) {
                             // @ts-ignore
-                            $.notify({ icon: "fas fa-exclamation-triangle", message: "An error has occurred, try again" }, { type: "danger", placement: { from: "bottom", align: "center" } });
+                            $.notify({ icon: "fas fa-check", message: "Comment posted successfully. Reload the page to see it" }, { type: "success", placement: { from: "bottom", align: "center" } });
                         }
                         else {
                             if (xmlHttpRequest.response == "You have to login first") {

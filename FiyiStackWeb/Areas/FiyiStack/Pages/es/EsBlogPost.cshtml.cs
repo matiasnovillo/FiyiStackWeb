@@ -62,7 +62,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                                 <a href='/CMSCore/DashboardIndex' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
-                                                        Enter dashboard
+                                                        Entrar al tablero
                                                     </span>
                                                 </a>
                                             </li>";
