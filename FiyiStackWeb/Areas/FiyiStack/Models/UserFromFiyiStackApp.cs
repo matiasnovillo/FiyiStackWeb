@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Models
@@ -8,6 +9,10 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
     public partial class UserFromFiyiStackApp
     {
         private string _ConnectionString = ConnectionStrings.ConnectionStrings.FiyiStackAppProduction();
+
+        public string Email { get; set; }
+        public int GenerationsLeft { get; set; }
+        public int UserAccountTypeId { get; set; }
 
         public int Count()
         {
@@ -61,6 +66,38 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
                 }
 
                 return 1;
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public UserFromFiyiStackApp Select1ByEmail(string Email)
+        {
+            try
+            {
+
+                UserFromFiyiStackApp UserFromFiyiStackApp = new UserFromFiyiStackApp();
+                List<UserFromFiyiStackApp> lstUserFromFiyiStackApp = new List<UserFromFiyiStackApp>();
+                DynamicParameters dp = new DynamicParameters();
+                DataTable DataTable = new DataTable();
+
+                dp.Add("Email", Email, DbType.String, ParameterDirection.Input);
+
+                using (SqlConnection sqlConnection = new SqlConnection(_ConnectionString))
+                {
+                    lstUserFromFiyiStackApp = (List<UserFromFiyiStackApp>)sqlConnection.Query<UserFromFiyiStackApp>("[dbo].[User.GetOneByEmail]", dp, commandType: CommandType.StoredProcedure);
+                }
+
+                if (lstUserFromFiyiStackApp.Count > 1)
+                { throw new Exception("The stored procedure [dbo].[User.Select1ByEmail] returned more than one register/row"); }
+
+                foreach (UserFromFiyiStackApp userFromFiyiStackApp in lstUserFromFiyiStackApp)
+                {
+                    UserFromFiyiStackApp.Email = userFromFiyiStackApp.Email;
+                    UserFromFiyiStackApp.UserAccountTypeId = userFromFiyiStackApp.UserAccountTypeId;
+                    UserFromFiyiStackApp.GenerationsLeft = userFromFiyiStackApp.GenerationsLeft;
+                }
+
+                return UserFromFiyiStackApp;
             }
             catch (Exception ex) { throw ex; }
         }
