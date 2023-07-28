@@ -1,6 +1,7 @@
 ﻿@page
 @using Microsoft.AspNetCore.Http;
 @using FiyiStackWeb.Areas.CMSCore.Models;
+@using FiyiStackWeb.Areas.BasicCore.Models;
 @using FiyiStackWeb.Areas.FiyiStack.Models;
 @model FiyiStackWeb.Areas.CMSCore.Pages.DashboardIndexModel
 @{
@@ -12,21 +13,45 @@
 
     string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForDashboardIndex(UserModel.RoleId);
 
-    //Save in database fiyistac_FiyiStackApp
-    UserFromFiyiStackApp UserFromFiyiStackApp = new UserFromFiyiStackApp().Select1ByEmail(UserModel.Email);
-    //RoleId = 2 Client, AccountTypeId = 1 FREE TRIAL, 20 generations left
     string AccountType = "";
-    switch (UserFromFiyiStackApp.UserAccountTypeId)
+
+    try
     {
-        case 1:
-            AccountType = @$"FREE TRIAL - {UserFromFiyiStackApp.GenerationsLeft} generations left";
-            break;
-        case 2:
-            AccountType = @$"AMATEUR - {UserFromFiyiStackApp.GenerationsLeft} generations left";
-            break;
-        case 3:
-            AccountType = @$"PRO VERSION - Unlimited generations";
-            break;
+        //Save in database fiyistac_FiyiStackApp
+        UserFromFiyiStackApp UserFromFiyiStackApp = new UserFromFiyiStackApp().Select1ByEmail(UserModel.Email);
+        //RoleId = 2 Client, AccountTypeId = 1 FREE TRIAL, 20 generations left
+        
+        switch (UserFromFiyiStackApp.UserAccountTypeId)
+        {
+            case 1:
+                AccountType = @$"FREE TRIAL - {UserFromFiyiStackApp.GenerationsLeft} generations left";
+                break;
+            case 2:
+                AccountType = @$"AMATEUR - {UserFromFiyiStackApp.GenerationsLeft} generations left";
+                break;
+            case 3:
+                AccountType = @$"PRO VERSION - Unlimited generations";
+                break;
+        }
+    }
+    catch (Exception ex) 
+    { 
+        DateTime Now = DateTime.Now;
+        FailureModel FailureModel = new FailureModel()
+        {
+            HTTPCode = 500,
+            Message = ex.Message,
+            EmergencyLevel = 1,
+            StackTrace = ex.StackTrace ?? "",
+            Source = ex.Source ?? "",
+            Comment = "",
+            Active = true,
+            UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+            UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
+            DateTimeCreation = Now,
+            DateTimeLastModification = Now
+        };
+        FailureModel.Insert();
     }
 
     

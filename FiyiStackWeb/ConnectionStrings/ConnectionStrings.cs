@@ -14,7 +14,7 @@
 
         public static string FiyiStackAppProduction()
         {
-            return "Password=2Mr4h$t00;Persist Security Info=True;User ID=fiyistac_FiyiStackAppAdmin;Initial Catalog=fiyistac_FiyiStackApp;Data Source=www4.baehost.com;TrustServerCertificate=True";
+            return "Password=2Mr4h$t00;Persist Security Info=True;User ID=fiyistac_FiyiStackAppAdmin;Initial Catalog=fiyistac_FiyiStackApp;Data Source=192.168.28.14;TrustServerCertificate=True";
     }
     }
 }
