@@ -47,7 +47,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "en/FiyiRequirements",
+                Page = "/FiyiRequirements",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,

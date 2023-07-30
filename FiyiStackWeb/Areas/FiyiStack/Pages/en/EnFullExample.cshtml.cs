@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using FiyiStackWeb.Areas.BasicCore.Models;
+using System;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Pages.es
 {
@@ -34,6 +36,19 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages.es
                                                 </a>
                                             </li>";
             }
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/FullExample",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

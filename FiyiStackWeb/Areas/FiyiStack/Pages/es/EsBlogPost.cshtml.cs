@@ -67,12 +67,6 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                                 </a>
                                             </li>";
                 }
-
-                ViewData["og:title"] = $@"<meta property=""og:title"" content=""Blog - FiyiStack"">";
-                ViewData["og:description"] = $@"<meta property=""og:description"" content=""This is the blog of FiyiStack, here I will update all data related to new generations of software in many languages"">";
-                ViewData["description"] = $@"<meta name=""description"" content=""This is the blog of FiyiStack, here I will update all data related to new generations of software in many languages"">";
-                ViewData["robot"] = $@"<meta name=""robots"" content=""noindex"">";
-                ViewData["title"] = $@"Blog - FiyiStack";
             }
         }
     }

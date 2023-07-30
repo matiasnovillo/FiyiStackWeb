@@ -46,16 +46,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: The C# low-code generator"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Learn how to use FiyiStack, design a database diagram and turn it into ready-to-run code"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""Learn how to use FiyiStack, design a database diagram and turn it into ready-to-run code"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiStack: El generador low-code C#"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""Aprenda a usar FiyiStack, diseñe un diagrama de base de datos y conviértalo en código listo para ejecutar"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""Aprenda a usar FiyiStack, diseñe un diagrama de base de datos y conviértalo en código listo para ejecutar"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"FiyiStack: The C# low-code generator";
+            ViewData["title"] = $@"FiyiStack: El generador low-code C#";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "es/FiyiStack",
+                Page = "/FiyiStack",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,

@@ -69,13 +69,15 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "en/SendUsDBDiagram",
+                Page = "/SendUsDBDiagram",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,
                 UserCreationId = 1,
                 UserLastModificationId = 1,
             };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

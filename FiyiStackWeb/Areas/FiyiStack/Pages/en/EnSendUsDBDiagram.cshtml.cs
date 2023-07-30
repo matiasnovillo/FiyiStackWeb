@@ -60,16 +60,10 @@ namespace FiyiStackWeb.Areas.FiyiStack.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""Send us your DB diagram - FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""If you need help with your DB diagram, send to us and we will convert it in a FiyiStack project"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""If you need help with your DB diagram, send to us and we will convert it in a FiyiStack project"">";
-            ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"Send us your DB diagram - FiyiStack";
-
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "en/SendUsDBDiagram",
+                Page = "/SendUsDBDiagram",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,
