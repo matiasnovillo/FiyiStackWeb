@@ -320,7 +320,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Services
         public void PostLike(int BlogId)
         {
 
-            BlogModel BlogModel = new BlogModel(BlogId, "en");
+            BlogModel BlogModel = new BlogModel(BlogId, "");
 
             BlogModel.NumberOfLikes += 1;
 

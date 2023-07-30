@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Pages.es
 {
-    public class DatabaseModel : PageModel
+    public class FullExampleModel : PageModel
     {
         public void OnGet()
         {
