@@ -1,0 +1,166 @@
+﻿@page "/Checkout/{AccountType}"
+@model FiyiStackWeb.Pages.CheckoutModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="wrapper">
+    <div class="section-shaped mt--6 skew-separator skew-mini">
+      <div class="page-header page-header-small header-filter">
+        <div class="page-header-image" style="background-image: url('../img/FiyiStack/Checkout.jpg');">
+        </div>
+        <div class="container">
+          <div class="header-body text-center mb-7">
+            <div class="row justify-content-center">
+              <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+                <h1 class="text-white">Checkout</h1>
+                <h3 class="text-lead text-white">@ViewData["AccountType"]</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="upper">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="container">
+              <h3 class="title text-white mt-3">Order summary</h3>
+              <div class="row">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="media align-items-center mb-3">
+                      <div class="col-md-5 col-6">
+                        <img src="/img/FiyiStack/FiyiStackImageTransparent.png" alt="Rounded image" class="img-fluid">
+                      </div>
+                      <div class="media-body">
+                        <h2 class="h6">@ViewData["AccountType"]</h2>
+                      </div>
+                      <div class="media-body text-right">
+                        <span>$@ViewData["Price"]</span>
+                      </div>
+                    </div>
+                    <hr class="line-info mb-3">
+                    <div class="media align-items-center">
+                      <h3 class="h6">Total</h3>
+                      <div class="media-body text-right">
+                        <span class="font-weight-semi-bold">$@ViewData["Price"]</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card">
+              <form class="js-validate">
+                <div class="container">
+                  <h3 class="title mt-3">Billing address</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="labels">
+                        First name
+                        <span class="text-danger">*</span>
+                      </label>
+                      <input type="text" class="form-control" name="firstName" placeholder="Cristopher" aria-label="Cristopher" required="">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="labels">
+                        Last name
+                        <span class="text-danger">*</span>
+                      </label>
+                      <input type="text" class="form-control" name="lastName" placeholder="Thompson" aria-label="Thompson" required="">
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="js-form-message">
+                        <label class="labels">
+                          Email address
+                          <span class="text-danger">*</span>
+                        </label>
+                        <input type="email" class="form-control" name="emailAddress" placeholder="thompson@gmail.com" aria-label="thompson@gmail.com" required="">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="js-form-message">
+                        <label class="labels">
+                          Phone
+                        </label>
+                        <input type="text" class="form-control" placeholder="+4 (0762) 230991" aria-label="+4 (0762) 230991">
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <h4 class="title">Payment method</h4>
+                  <div class="nav nav-tabs nav-tabs-primary btn-group" role="tablist">
+                    <a class="btn btn-sm btn-outline-info active" data-toggle="tab" href="#link1" role="tablist">
+                      Credit Card
+                    </a>
+                    <a class="btn btn-sm btn-outline-info" data-toggle="tab" href="#link2" role="tablist">
+                      PayPal
+                    </a>
+                  </div>
+                  <div class="tab-content tab-space">
+                    <div id="link1" class="tab-pane active">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="js-form-message">
+                            <label class="form-label">
+                              Card number
+                            </label>
+                            <input type="text" class="form-control" name="cardNumber" placeholder="**** **** **** ***" aria-label="**** **** **** ***" required="">
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="js-form-message mb-4">
+                            <label class="form-label">
+                              Card holder
+                            </label>
+                            <input type="text" class="form-control" name="cardHolder" placeholder="Jack Wayley" aria-label="Jack Wayley" required="">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="js-form-message mb-4">
+                            <label class="form-label">
+                              Expiration
+                            </label>
+                            <input type="text" class="form-control" name="cardExpirationDate" placeholder="MM/YY" aria-label="MM/YY" required="">
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="js-form-message mb-4">
+                            <label class="form-label">
+                              CVC
+                            </label>
+                            <input type="text" class="form-control" name="cardCVC" placeholder="***" aria-label="***" required="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button type="submit" class="btn btn-info">Order now</button>
+                      </div>
+                    </div>
+                    <div id="link2" class="tab-pane">
+                      <h5 class="text-white">Send payment to:</h5>
+                      <input type="text" class="form-control" placeholder="Name or email" required="">
+                      <br>
+                      <button type="submit" class="btn btn-info">
+                        Pay with PayPal
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
