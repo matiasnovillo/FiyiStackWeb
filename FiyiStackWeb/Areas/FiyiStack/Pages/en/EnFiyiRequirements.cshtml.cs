@@ -39,8 +39,8 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
             }
 
             ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack. Create requirements, see what your users need."">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with the low-code generator FiyiStack"">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with the C# low-code generator FiyiStack"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with the C# low-code generator FiyiStack"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"FiyiRequirements: The example code of FiyiStack. Create requirements, see what your users need.";
 

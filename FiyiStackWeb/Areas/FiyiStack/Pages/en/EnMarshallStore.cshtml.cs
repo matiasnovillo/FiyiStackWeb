@@ -6,7 +6,7 @@ using System;
 
 namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
 {
-    public class EsFiyiRequirementsModel : PageModel
+    public class MarshallStoreModel : PageModel
     {
         public void OnGet()
         {
@@ -38,16 +38,16 @@ namespace FiyiStackWeb.Areas.FiyiStack.Products.Pages
                                             </li>";
             }
 
-            ViewData["og:title"] = $@"<meta property=""og:title"" content=""FiyiRequirements: The example code of FiyiStack"">";
-            ViewData["og:description"] = $@"<meta property=""og:description"" content=""FiyiRequirements is the example code made with the C# low-code generator FiyiStack"">";
-            ViewData["description"] = $@"<meta name=""description"" content=""FiyiRequirements is the example code made with the C# low-code generator FiyiStack"">";
+            ViewData["og:title"] = $@"<meta property=""og:title"" content=""MarshallStore: The example code of FiyiStack. Take this full e-commerce."">";
+            ViewData["og:description"] = $@"<meta property=""og:description"" content=""MarshallStore is the example code made with the C# low-code generator FiyiStack"">";
+            ViewData["description"] = $@"<meta name=""description"" content=""MarshallStore is the example code made with the C# low-code generator FiyiStack"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
-            ViewData["title"] = $@"FiyiRequirements: The example code of FiyiStack";
+            ViewData["title"] = $@"MarshallStore: The example code of FiyiStack. Take this full e-commerce.";
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
                 Active = true,
-                Page = "/FiyiRequirements",
+                Page = "/MarshallStore",
                 DateTime = DateTime.Now,
                 DateTimeCreation = DateTime.Now,
                 DateTimeLastModification = DateTime.Now,

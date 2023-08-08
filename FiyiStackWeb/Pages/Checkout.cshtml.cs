@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using FiyiStackWeb.Areas.BasicCore.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 
 namespace FiyiStackWeb.Pages
 {
@@ -46,6 +47,19 @@ namespace FiyiStackWeb.Pages
                 ViewData["AccountType"] = "PRO account";
                 ViewData["Price"] = "8";
             }
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "/Checkout",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }
