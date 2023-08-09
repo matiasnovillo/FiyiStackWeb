@@ -203,7 +203,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     //Update
-                    BlogModel BlogModel = new BlogModel(BlogId, "en");
+                    BlogModel BlogModel = new BlogModel(BlogId, "");
                     
                     BlogModel.UserLastModificationId = UserId;
                     BlogModel.DateTimeLastModification = DateTime.Now;

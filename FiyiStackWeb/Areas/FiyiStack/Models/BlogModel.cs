@@ -148,7 +148,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Models
 
                 if (lstBlogModel.Count > 1)
                 {
-                    throw new Exception("The stored procedure [dbo].[FiyiStack.Blog.Select1ByBlogId] returned more than one register/row");
+                    throw new Exception("The stored procedure [dbo].[FiyiStack.Blog.Select1ByBlogIdAndIdiom] returned more than one register/row");
                 }
         
                 foreach (BlogModel blog in lstBlogModel)
