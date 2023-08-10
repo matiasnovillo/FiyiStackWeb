@@ -9,7 +9,7 @@
 
         public static string Development()
         {
-            return "data source=LAPTOP-KU80G0KV\\SQLEXPRESS; initial catalog=fiyistac_FiyiStackWeb; Integrated Security=SSPI; MultipleActiveResultSets=True; Pooling=false; Persist Security Info=True; App=EntityFramework; TrustServerCertificate=True";
+            return "data source =.; initial catalog = fiyistack_FiyiStackWeb; Integrated Security = SSPI; MultipleActiveResultSets=True;Pooling=false;Persist Security Info=True;App=EntityFramework;TrustServerCertificate=True";
         }
 
         public static string FiyiStackAppProduction()
