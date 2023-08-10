@@ -54,19 +54,6 @@ namespace FiyiStackWeb.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""Create C# web applications quickly with FiyiStack. Design a database diagram and turn it into ready-to-run code"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"FiyiStack: The C# low-code generator";
-
-            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
-            {
-                Active = true,
-                Page = "/",
-                DateTime = DateTime.Now,
-                DateTimeCreation = DateTime.Now,
-                DateTimeLastModification = DateTime.Now,
-                UserCreationId = 1,
-                UserLastModificationId = 1,
-            };
-
-            VisitorCounterModel.Insert();
         }
     }
 }
