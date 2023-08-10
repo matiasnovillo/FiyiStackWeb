@@ -1,4 +1,4 @@
-﻿@page "/Checkout/{AccountType}"
+﻿@page "/Checkout/{AccountType}/{SubPlanId}"
 @model FiyiStackWeb.Pages.CheckoutModel
 @{
     Layout = "_Layout";
@@ -9,6 +9,7 @@
       <div class="page-header page-header-small header-filter">
         <div class="page-header-image" style="background-image: url('../img/FiyiStack/Checkout.jpg');">
         </div>
+            <script src="https://www.paypal.com/sdk/js?client-id=@ViewData["ClientId"]&currency=USD&vault=true"></script>
         <div class="container">
           <div class="header-body text-center mb-7">
             <div class="row justify-content-center">
@@ -57,104 +58,55 @@
             <div class="card">
               <form class="js-validate">
                 <div class="container">
-                  <h3 class="title mt-3">Billing address</h3>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label class="labels">
-                        First name
-                        <span class="text-danger">*</span>
-                      </label>
-                      <input type="text" class="form-control" name="firstName" placeholder="Cristopher" aria-label="Cristopher" required="">
-                    </div>
-                    <div class="col-md-6">
-                      <label class="labels">
-                        Last name
-                        <span class="text-danger">*</span>
-                      </label>
-                      <input type="text" class="form-control" name="lastName" placeholder="Thompson" aria-label="Thompson" required="">
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="js-form-message">
-                        <label class="labels">
-                          Email address
-                          <span class="text-danger">*</span>
-                        </label>
-                        <input type="email" class="form-control" name="emailAddress" placeholder="thompson@gmail.com" aria-label="thompson@gmail.com" required="">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="js-form-message">
-                        <label class="labels">
-                          Phone
-                        </label>
-                        <input type="text" class="form-control" placeholder="+4 (0762) 230991" aria-label="+4 (0762) 230991">
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <h4 class="title">Payment method</h4>
-                  <div class="nav nav-tabs nav-tabs-primary btn-group" role="tablist">
-                    <a class="btn btn-sm btn-outline-info active" data-toggle="tab" href="#link1" role="tablist">
-                      Credit Card
-                    </a>
-                    <a class="btn btn-sm btn-outline-info" data-toggle="tab" href="#link2" role="tablist">
-                      PayPal
-                    </a>
-                  </div>
+                  
+                 
+                 
                   <div class="tab-content tab-space">
-                    <div id="link1" class="tab-pane active">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="js-form-message">
-                            <label class="form-label">
-                              Card number
-                            </label>
-                            <input type="text" class="form-control" name="cardNumber" placeholder="**** **** **** ***" aria-label="**** **** **** ***" required="">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-md-8">
-                          <div class="js-form-message mb-4">
-                            <label class="form-label">
-                              Card holder
-                            </label>
-                            <input type="text" class="form-control" name="cardHolder" placeholder="Jack Wayley" aria-label="Jack Wayley" required="">
-                          </div>
-                        </div>
-                        <div class="col-md-2">
-                          <div class="js-form-message mb-4">
-                            <label class="form-label">
-                              Expiration
-                            </label>
-                            <input type="text" class="form-control" name="cardExpirationDate" placeholder="MM/YY" aria-label="MM/YY" required="">
-                          </div>
-                        </div>
-                        <div class="col-md-2">
-                          <div class="js-form-message mb-4">
-                            <label class="form-label">
-                              CVC
-                            </label>
-                            <input type="text" class="form-control" name="cardCVC" placeholder="***" aria-label="***" required="">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <button type="submit" class="btn btn-info">Order now</button>
-                      </div>
-                    </div>
-                    <div id="link2" class="tab-pane">
-                      <h5 class="text-white">Send payment to:</h5>
-                      <input type="text" class="form-control" placeholder="Name or email" required="">
-                      <br>
-                      <button type="submit" class="btn btn-info">
-                        Pay with PayPal
-                      </button>
-                    </div>
+                   <div id="link2" class="tab-pane active">
+                       <div id="payment-methods">
+                                        <!-- Set up a container element for the button -->
+                                        <div id="paypal-button-container"></div>
+
+                                        <!-- Include the PayPal JavaScript SDK -->
+
+                                         <script>
+                                            // Render the PayPal button into #paypal-button-container
+                                            paypal.Buttons({
+
+                                                style: {
+                                                    color: 'blue',
+                                                    label: 'pay',
+                                                    height: 40
+                                                },
+
+                                               createSubscription:function(data,actions){
+                                                   return actions.subscription.create({
+                                                   'plan_id':'@ViewData["SubPlanId"]',
+                                                   'custom_id': '@ViewData["UserId"]'
+                                                   });
+                                               },
+
+                                                // Call your server to finalize the transaction
+                                                onApprove: function (data, actions) {
+                                                        showThankYou();
+                                                }
+
+                                            }).render('#paypal-button-container');
+                                                function showThankYou() {
+                                                    document.getElementById('thank-you').style.display = 'block';
+                                                    document.getElementById('payment-methods').style.display = 'none';
+                                                }
+                                               </script>
+                       </div>
+                       <div id="thank-you" style="display:none">
+                                            <h4>
+                                                Thank You for Subscribing!
+                                            </h4>
+                                            <p>
+                                                We are excited to welcome you as a subscriber to our service! Your subscription is now active, and you're all set to enjoy the benefits of our premium offerings.
+                                            </p>
+                           </div>
+                   </div>
                   </div>
                 </div>
               </form>
