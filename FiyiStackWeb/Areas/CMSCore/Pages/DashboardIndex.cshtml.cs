@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Http;
 using FiyiStackWeb.Areas.CMSCore.Models;
+using Microsoft.Data.SqlClient;
+using System;
 
 namespace FiyiStackWeb.Areas.CMSCore.Pages
 {
@@ -17,11 +19,38 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
             int NumberOfUsers = UserModel.Count();
 
             string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
+            
+            string _ConnectionString = ConnectionStrings.ConnectionStrings.Development(); // Change it for Production
 
+            int totalSubscriber = 0;
+            try
+            {
+                 totalSubscriber = GetTotalSubscriptionCount(_ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
 
             ViewData["FantasyName"] = UserModel.FantasyName;
             ViewData["Menues"] = Menues;
             ViewData["NumberOfUsers"] = NumberOfUsers;
+            ViewData["totalSubscriber"] = totalSubscriber;
+        }
+        static int GetTotalSubscriptionCount(string connectionString)
+        {
+            string countQuery = "SELECT COUNT(*) FROM dbo.Subscription";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(countQuery, connection))
+                {
+                    int totalCount = (int)command.ExecuteScalar();
+                    return totalCount;
+                }
+            }
         }
     }
 }
