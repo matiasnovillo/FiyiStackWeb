@@ -240,7 +240,7 @@ namespace FiyiStackWeb.Pages
         }
         public void LogSubscription(Subscription subscription)
         {
-            string _ConnectionString = ConnectionStrings.ConnectionStrings.Development();// Change it for Production
+            string _ConnectionString = ConnectionStrings.ConnectionStrings.Production();// Change it for Production
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {

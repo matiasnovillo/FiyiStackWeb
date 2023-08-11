@@ -44,6 +44,10 @@ namespace FiyiStackWeb.Areas.FiyiStack
             ViewData["description"] = $@"<meta name=""description"" content=""Get FiyiStack (the generator), FiyiStackWeb (the sample) or both. Make your best choice and enter into this programming world with a modern software factory"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"Pricing - FiyiStack";
+            PayPalConfiguration.PayPalConfiguration PaypalConfig = new PayPalConfiguration.PayPalConfiguration();
+            ViewData["PlanProID"] = PaypalConfig.PlanProID;
+            ViewData["PlanAmateurID"] = PaypalConfig.PlanAmateurID;
+
 
             VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
             {
