@@ -20,7 +20,7 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
 
             string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
             
-            string _ConnectionString = ConnectionStrings.ConnectionStrings.Development(); // Change it for Production
+            string _ConnectionString = ConnectionStrings.ConnectionStrings.Production(); // Change it for Production
 
             int totalSubscriber = 0;
             try

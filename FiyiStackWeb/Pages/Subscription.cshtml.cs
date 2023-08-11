@@ -16,7 +16,7 @@ namespace FiyiStackWeb.Pages
 
         public void OnGet(int page = 1) // Accept page as a parameter
         {
-            string _ConnectionString = ConnectionStrings.ConnectionStrings.Development(); // Change it for Production
+            string _ConnectionString = ConnectionStrings.ConnectionStrings.Production(); // Change it for Production
 
             using (SqlConnection connection = new SqlConnection(_ConnectionString))
             {
