@@ -12,62 +12,9 @@
     string FantasyName = UserModel.FantasyName;
 
     string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForDashboardIndex(UserModel.RoleId);
-
-    string AccountType = "";
-
-    try
-    {
-        //Save in database fiyistac_FiyiStackApp
-        UserFromFiyiStackApp UserFromFiyiStackApp = new UserFromFiyiStackApp().Select1ByEmail(UserModel.Email);
-        //RoleId = 2 Client, AccountTypeId = 1 FREE TRIAL, 20 generations left
-        
-        switch (UserFromFiyiStackApp.UserAccountTypeId)
-        {
-            case 1:
-                AccountType = @$"FREE TRIAL - {UserFromFiyiStackApp.GenerationsLeft} generations left";
-                break;
-            case 2:
-                AccountType = @$"AMATEUR - {UserFromFiyiStackApp.GenerationsLeft} generations left";
-                break;
-            case 3:
-                AccountType = @$"PRO VERSION - Unlimited generations";
-                break;
-        }
-    }
-    catch (Exception ex) 
-    { 
-        DateTime Now = DateTime.Now;
-        FailureModel FailureModel = new FailureModel()
-        {
-            HTTPCode = 500,
-            Message = ex.Message,
-            EmergencyLevel = 1,
-            StackTrace = ex.StackTrace ?? "",
-            Source = ex.Source ?? "",
-            Comment = "",
-            Active = true,
-            UserCreationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-            UserLastModificationId = HttpContext.Session.GetInt32("UserId") ?? 1,
-            DateTimeCreation = Now,
-            DateTimeLastModification = Now
-        };
-        FailureModel.Insert();
-    }
-
-    
-
-
 }
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-title">
-                <h1 class="lead-3 ml-2 mt-2">Subscription details</h1>
-            </div>
-            <div class="card-body">
-                <p class="lead-4"><strong>@AccountType</strong></p>
-            </div>
-        </div>
         @{
         if (UserModel.RoleId == 1)
             {
@@ -99,14 +46,9 @@
                 <!-- Card body -->
                 <div class="card-body">
                   <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Subscribers</h5>
-                      <span class="h2 font-weight-bold mb-0">@ViewData["totalSubscriber"]</span>
+                      <div class="col">
                     </div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                        <i class="ni ni-active-40"></i>
-                      </div>
                     </div>
                   </div>
                 </div>

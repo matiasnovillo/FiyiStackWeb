@@ -20,22 +20,22 @@ namespace FiyiStackWeb.Areas.CMSCore.Pages
 
             string Menues = new RoleMenuModel().SelectMenuesByRoleIdToStringForLayoutDashboard(UserModel.RoleId);
             
-            string _ConnectionString = ConnectionStrings.ConnectionStrings.Production(); // Change it for Production
+            //string _ConnectionString = ConnectionStrings.ConnectionStrings.Production(); // Change it for Production
 
-            int totalSubscriber = 0;
-            try
-            {
-                 totalSubscriber = GetTotalSubscriptionCount(_ConnectionString);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
+            //int totalSubscriber = 0;
+            //try
+            //{
+            //     totalSubscriber = GetTotalSubscriptionCount(_ConnectionString);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"An error occurred: {ex.Message}");
+            //}
 
             ViewData["FantasyName"] = UserModel.FantasyName;
             ViewData["Menues"] = Menues;
             ViewData["NumberOfUsers"] = NumberOfUsers;
-            ViewData["totalSubscriber"] = totalSubscriber;
+            //ViewData["totalSubscriber"] = totalSubscriber;
         }
         static int GetTotalSubscriptionCount(string connectionString)
         {

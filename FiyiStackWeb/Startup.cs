@@ -63,7 +63,6 @@ namespace FiyiStackWeb
             services.AddScoped<IFiyiStack, FiyiStackService>();
             services.AddScoped<IBlog, BlogService>();
             services.AddScoped<ICommentForBlog, CommentForBlogService>();
-            services.AddScoped<IExample, ExampleService>();
             services.AddScoped<ISendUsDBDiagram, SendUsDBDiagramService>();
 
             services.AddMvc();

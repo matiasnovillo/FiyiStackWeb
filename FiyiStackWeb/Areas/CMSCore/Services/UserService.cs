@@ -188,9 +188,9 @@ namespace FiyiStackWeb.Areas.CMSCore.Services
                 UserModel.Insert();
 
                 //Save in database fiyistac_FiyiStackApp
-                UserFromFiyiStackApp UserFromFiyiStackApp = new UserFromFiyiStackApp();
+                //UserFromFiyiStackApp UserFromFiyiStackApp = new UserFromFiyiStackApp();
                 //RoleId = 2 Client, AccountTypeId = 1 FREE TRIAL, 20 generations left
-                UserFromFiyiStackApp.Insert(FantasyName,FantasyName,Email,Password,2,1,20);
+                //UserFromFiyiStackApp.Insert(FantasyName,FantasyName,Email,Password,2,1,20);
 
                 #region Send registration email
                 string EmailContent = $@"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN"" ""http://www.w3.org/TR/html4/loose.dtd"">
