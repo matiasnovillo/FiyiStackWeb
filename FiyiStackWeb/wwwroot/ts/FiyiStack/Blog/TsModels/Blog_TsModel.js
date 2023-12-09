@@ -18,8 +18,8 @@ var BlogModel = /** @class */ (function () {
     function BlogModel() {
     }
     //Queries
-    BlogModel.Select1ByBlogIdAndIdiom = function (BlogId, Idiom) {
-        var URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/" + BlogId + "/" + Idiom;
+    BlogModel.Select1ByBlogIdAndIdiom = function (BlogId) {
+        var URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdToJSON/" + BlogId;
         return Rx.from((0, ajax_1.ajax)(URL));
     };
     BlogModel.SelectAll = function () {
@@ -36,7 +36,6 @@ var BlogModel = /** @class */ (function () {
             SortToggler: blogSelectAllPaged.SortToggler,
             RowCount: blogSelectAllPaged.TotalRows,
             TotalPages: blogSelectAllPaged.TotalPages,
-            Idiom: blogSelectAllPaged.Idiom,
             lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         var Header = {

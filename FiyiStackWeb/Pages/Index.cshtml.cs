@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FiyiStackWeb.Areas.BasicCore.Models;
 
 namespace FiyiStackWeb.Pages
@@ -43,7 +39,7 @@ namespace FiyiStackWeb.Pages
                                                 <a href='/CMSCore/DashboardIndex' class='btn btn-white mt-1 ml-2'>
                                                     <i class='fas fa-user'></i> 
                                                     <span class='nav-link-inner--text'>
-                                                        Enter dashboard
+                                                        Entrar
                                                     </span>
                                                 </a>
                                             </li>";
@@ -54,6 +50,19 @@ namespace FiyiStackWeb.Pages
             ViewData["description"] = $@"<meta name=""description"" content=""Create C# web applications quickly with FiyiStack. Design a database diagram and turn it into ready-to-run code"">";
             ViewData["robot"] = $@"<meta name=""robots"" content=""index"">";
             ViewData["title"] = $@"FiyiStack: The C# low-code generator";
+
+            VisitorCounterModel VisitorCounterModel = new VisitorCounterModel()
+            {
+                Active = true,
+                Page = "es/",
+                DateTime = DateTime.Now,
+                DateTimeCreation = DateTime.Now,
+                DateTimeLastModification = DateTime.Now,
+                UserCreationId = 1,
+                UserLastModificationId = 1,
+            };
+
+            VisitorCounterModel.Insert();
         }
     }
 }

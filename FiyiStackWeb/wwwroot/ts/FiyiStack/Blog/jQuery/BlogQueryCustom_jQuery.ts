@@ -16,7 +16,6 @@ let TotalPages: number = 0;
 let TotalRows: number = 0;
 let ViewToggler: string = "List";
 let ScrollDownNSearchFlag: boolean = false;
-let Idiom = "en";
 
 class BlogQuery {
     static SelectAllPagedToHTML(request_blogSelectAllPaged: blogSelectAllPaged) {
@@ -41,7 +40,6 @@ class BlogQuery {
                         SortToggler = response_blogQuery.SortToggler ?? false;
                         TotalRows = response_blogQuery.TotalRows ?? 0;
                         TotalPages = response_blogQuery.TotalPages ?? 0;
-                        Idiom = response_blogQuery.Idiom ?? "en";
 
                         //Query string
                         $("#fiyistack-blog-query-string").attr("placeholder", `Search... (${TotalRows} posts)`);
@@ -58,13 +56,12 @@ class BlogQuery {
 
 
                             //Read data book
-                            if (Idiom == "en") {
-                                ListContent += `
+                            ListContent += `
 <div class="card card-blog card-plain blog-horizontal mb-5">
     <div class="row">
         <div class="col-lg-4">
             <div class="card-image">
-                <a href="/en/BlogPost/${row.BlogId}">
+                <a href="/BlogPost/${row.BlogId}">
                     <img class="img rounded" src="${row.BackgroundImage}" />
                 </a>
             </div>
@@ -72,10 +69,10 @@ class BlogQuery {
         <div class="col-lg-8">
             <div class="card-body">
                 <h3 class="card-title">
-                    <a class="text-default" href="/en/BlogPost/${row.BlogId}">${row.Title}</a>
+                    <a class="text-default" href="/BlogPost/${row.BlogId}">${row.Title}</a>
                 </h3>
                 <p class="card-description">
-                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/en/BlogPost/${row.BlogId}"> Read More </a>
+                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/BlogPost/${row.BlogId}"> Read More </a>
                 </p>
                 <div class="row">
                     <div class="col-2">
@@ -100,50 +97,6 @@ class BlogQuery {
         </div>
     </div>
 </div>`;
-                            }
-                            else {
-                                ListContent += `
-<div class="card card-blog card-plain blog-horizontal mb-5">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card-image">
-                <a href="/es/BlogPost/${row.BlogId}">
-                    <img class="img rounded" src="${row.BackgroundImage}" />
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-8">
-            <div class="card-body">
-                <h3 class="card-title">
-                    <a class="text-default" href="/es/BlogPost/${row.BlogId}">${row.Title}</a>
-                </h3>
-                <p class="card-description">
-                    ${row.Body?.toString().substring(0, 160)} <a class="text-default" href="/es/BlogPost/${row.BlogId}"> Read More </a>
-                </p>
-                <div class="row">
-                    <div class="col-2">
-                        <img src="/img/FiyiStack/Me.jpg" alt="MatiasNovillo" class="avatar img-raised">
-                    </div>
-                    <div class="col-10">
-                        <div class="author">
-                            <div class="text">
-                                <span class="name">
-                                    Matias Novillo - Full Stack Web Developer
-                                </span>
-                                <div class="meta">
-                                    ${format(Date.parse(row.DateTimeLastModification))} -
-                                    ${numeral(row.NumberOfLikes).format('0,0.')} likes -
-                                    ${numeral(row.NumberOfComments).format('0,0.')} comments
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>`;
-                            }
                         })
 
                         //If view table is activated, clear table view, if not, clear list view
@@ -242,28 +195,12 @@ function ValidateAndSearch() {
         SorterColumn,
         SortToggler,
         TotalRows,
-        TotalPages,
-        Idiom
+        TotalPages
     };
 
     BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
 }
 
-//LOAD EVENT
-if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
-    //Set to default values
-    QueryString = "";
-    ActualPageNumber = 1;
-    RowsPerPage = 50;
-    SorterColumn = "DateTimeCreation";
-    SortToggler = true;
-    TotalRows = 0;
-    TotalPages = 0;
-    ViewToggler = "List";
-    Idiom = "en";
-
-    ValidateAndSearch();
-}
 if ($("#fiyistack-blog-title-page").html().includes("El blog de FiyiStack")) {
     //Set to default values
     QueryString = "";
@@ -274,7 +211,6 @@ if ($("#fiyistack-blog-title-page").html().includes("El blog de FiyiStack")) {
     TotalRows = 0;
     TotalPages = 0;
     ViewToggler = "List";
-    Idiom = "es";
 
     ValidateAndSearch();
 }

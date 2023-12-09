@@ -5,13 +5,13 @@ import { format } from "timeago.js";
 import "bootstrap-notify";
 
 class BlogQuery {
-    static Select1ByBlogIdAndIdiomToHTML(BlogId: number, Idiom: string) {
+    static Select1ByBlogIdToHTML(BlogId: number) {
         //Used for list view
         $(window).off("scroll");
 
         var Content: string = ``;
 
-        BlogModel.Select1ByBlogIdAndIdiom(BlogId, Idiom).subscribe(
+        BlogModel.Select1ByBlogIdAndIdiom(BlogId).subscribe(
             {
                 next: newrow => {
                     //Only works when there is data available
@@ -203,10 +203,8 @@ function ValidateAndSearch() {
 
     // @ts-ignore
     let PostId: number = $("#post-id").val();
-    // @ts-ignore
-    let Idiom: string = $("#idiom").val();
 
-    BlogQuery.Select1ByBlogIdAndIdiomToHTML(PostId, Idiom);
+    BlogQuery.Select1ByBlogIdToHTML(PostId);
 }
 
 //LOAD EVENT

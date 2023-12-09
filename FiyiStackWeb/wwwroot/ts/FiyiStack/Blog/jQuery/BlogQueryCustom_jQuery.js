@@ -16,7 +16,6 @@ var TotalPages = 0;
 var TotalRows = 0;
 var ViewToggler = "List";
 var ScrollDownNSearchFlag = false;
-var Idiom = "en";
 var BlogQuery = /** @class */ (function () {
     function BlogQuery() {
     }
@@ -26,7 +25,7 @@ var BlogQuery = /** @class */ (function () {
         var ListContent = "";
         Blog_TsModel_1.BlogModel.SelectAllPaged(request_blogSelectAllPaged).subscribe({
             next: function (newrow) {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+                var _a, _b, _c, _d, _e, _f, _g, _h;
                 //Only works when there is data available
                 if (newrow.status != 204) {
                     var response_blogQuery = newrow.response;
@@ -38,7 +37,6 @@ var BlogQuery = /** @class */ (function () {
                     SortToggler = (_e = response_blogQuery.SortToggler) !== null && _e !== void 0 ? _e : false;
                     TotalRows = (_f = response_blogQuery.TotalRows) !== null && _f !== void 0 ? _f : 0;
                     TotalPages = (_g = response_blogQuery.TotalPages) !== null && _g !== void 0 ? _g : 0;
-                    Idiom = (_h = response_blogQuery.Idiom) !== null && _h !== void 0 ? _h : "en";
                     //Query string
                     $("#fiyistack-blog-query-string").attr("placeholder", "Search... (" + TotalRows + " posts)");
                     //If we are at the final of book disable next and last buttons in pagination
@@ -49,15 +47,10 @@ var BlogQuery = /** @class */ (function () {
                         //Scroll arrow for list view
                         $("#fiyistack-blog-search-more-button-in-list").html("<i class='fas fa-2x fa-chevron-down'></i>");
                     }
-                    (_j = response_blogQuery === null || response_blogQuery === void 0 ? void 0 : response_blogQuery.lstBlogModel) === null || _j === void 0 ? void 0 : _j.forEach(function (row) {
-                        var _a, _b;
+                    (_h = response_blogQuery === null || response_blogQuery === void 0 ? void 0 : response_blogQuery.lstBlogModel) === null || _h === void 0 ? void 0 : _h.forEach(function (row) {
+                        var _a;
                         //Read data book
-                        if (Idiom == "en") {
-                            ListContent += "\n<div class=\"card card-blog card-plain blog-horizontal mb-5\">\n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <div class=\"card-image\">\n                <a href=\"/en/BlogPost/" + row.BlogId + "\">\n                    <img class=\"img rounded\" src=\"" + row.BackgroundImage + "\" />\n                </a>\n            </div>\n        </div>\n        <div class=\"col-lg-8\">\n            <div class=\"card-body\">\n                <h3 class=\"card-title\">\n                    <a class=\"text-default\" href=\"/en/BlogPost/" + row.BlogId + "\">" + row.Title + "</a>\n                </h3>\n                <p class=\"card-description\">\n                    " + ((_a = row.Body) === null || _a === void 0 ? void 0 : _a.toString().substring(0, 160)) + " <a class=\"text-default\" href=\"/en/BlogPost/" + row.BlogId + "\"> Read More </a>\n                </p>\n                <div class=\"row\">\n                    <div class=\"col-2\">\n                        <img src=\"/img/FiyiStack/Me.jpg\" alt=\"MatiasNovillo\" class=\"avatar img-raised\">\n                    </div>\n                    <div class=\"col-10\">\n                        <div class=\"author\">\n                            <div class=\"text\">\n                                <span class=\"name\">\n                                    Matias Novillo - Full Stack Web Developer\n                                </span>\n                                <div class=\"meta\">\n                                    " + (0, timeago_js_1.format)(Date.parse(row.DateTimeLastModification)) + " -\n                                    " + numeral(row.NumberOfLikes).format('0,0.') + " likes -\n                                    " + numeral(row.NumberOfComments).format('0,0.') + " comments\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
-                        }
-                        else {
-                            ListContent += "\n<div class=\"card card-blog card-plain blog-horizontal mb-5\">\n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <div class=\"card-image\">\n                <a href=\"/es/BlogPost/" + row.BlogId + "\">\n                    <img class=\"img rounded\" src=\"" + row.BackgroundImage + "\" />\n                </a>\n            </div>\n        </div>\n        <div class=\"col-lg-8\">\n            <div class=\"card-body\">\n                <h3 class=\"card-title\">\n                    <a class=\"text-default\" href=\"/es/BlogPost/" + row.BlogId + "\">" + row.Title + "</a>\n                </h3>\n                <p class=\"card-description\">\n                    " + ((_b = row.Body) === null || _b === void 0 ? void 0 : _b.toString().substring(0, 160)) + " <a class=\"text-default\" href=\"/es/BlogPost/" + row.BlogId + "\"> Read More </a>\n                </p>\n                <div class=\"row\">\n                    <div class=\"col-2\">\n                        <img src=\"/img/FiyiStack/Me.jpg\" alt=\"MatiasNovillo\" class=\"avatar img-raised\">\n                    </div>\n                    <div class=\"col-10\">\n                        <div class=\"author\">\n                            <div class=\"text\">\n                                <span class=\"name\">\n                                    Matias Novillo - Full Stack Web Developer\n                                </span>\n                                <div class=\"meta\">\n                                    " + (0, timeago_js_1.format)(Date.parse(row.DateTimeLastModification)) + " -\n                                    " + numeral(row.NumberOfLikes).format('0,0.') + " likes -\n                                    " + numeral(row.NumberOfComments).format('0,0.') + " comments\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
-                        }
+                        ListContent += "\n<div class=\"card card-blog card-plain blog-horizontal mb-5\">\n    <div class=\"row\">\n        <div class=\"col-lg-4\">\n            <div class=\"card-image\">\n                <a href=\"/BlogPost/" + row.BlogId + "\">\n                    <img class=\"img rounded\" src=\"" + row.BackgroundImage + "\" />\n                </a>\n            </div>\n        </div>\n        <div class=\"col-lg-8\">\n            <div class=\"card-body\">\n                <h3 class=\"card-title\">\n                    <a class=\"text-default\" href=\"/BlogPost/" + row.BlogId + "\">" + row.Title + "</a>\n                </h3>\n                <p class=\"card-description\">\n                    " + ((_a = row.Body) === null || _a === void 0 ? void 0 : _a.toString().substring(0, 160)) + " <a class=\"text-default\" href=\"/BlogPost/" + row.BlogId + "\"> Read More </a>\n                </p>\n                <div class=\"row\">\n                    <div class=\"col-2\">\n                        <img src=\"/img/FiyiStack/Me.jpg\" alt=\"MatiasNovillo\" class=\"avatar img-raised\">\n                    </div>\n                    <div class=\"col-10\">\n                        <div class=\"author\">\n                            <div class=\"text\">\n                                <span class=\"name\">\n                                    Matias Novillo - Full Stack Web Developer\n                                </span>\n                                <div class=\"meta\">\n                                    " + timeago_js_1.format(Date.parse(row.DateTimeLastModification)) + " -\n                                    " + numeral(row.NumberOfLikes).format('0,0.') + " likes -\n                                    " + numeral(row.NumberOfComments).format('0,0.') + " comments\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
                     });
                     //If view table is activated, clear table view, if not, clear list view
                     if (ViewToggler === "Table") {
@@ -138,24 +131,9 @@ function ValidateAndSearch() {
         SorterColumn: SorterColumn,
         SortToggler: SortToggler,
         TotalRows: TotalRows,
-        TotalPages: TotalPages,
-        Idiom: Idiom
+        TotalPages: TotalPages
     };
     BlogQuery.SelectAllPagedToHTML(_blogSelectAllPaged);
-}
-//LOAD EVENT
-if ($("#fiyistack-blog-title-page").html().includes("The FiyiStack blog")) {
-    //Set to default values
-    QueryString = "";
-    ActualPageNumber = 1;
-    RowsPerPage = 50;
-    SorterColumn = "DateTimeCreation";
-    SortToggler = true;
-    TotalRows = 0;
-    TotalPages = 0;
-    ViewToggler = "List";
-    Idiom = "en";
-    ValidateAndSearch();
 }
 if ($("#fiyistack-blog-title-page").html().includes("El blog de FiyiStack")) {
     //Set to default values
@@ -167,7 +145,6 @@ if ($("#fiyistack-blog-title-page").html().includes("El blog de FiyiStack")) {
     TotalRows = 0;
     TotalPages = 0;
     ViewToggler = "List";
-    Idiom = "es";
     ValidateAndSearch();
 }
 //CLICK, SCROLL AND KEYBOARD EVENTS

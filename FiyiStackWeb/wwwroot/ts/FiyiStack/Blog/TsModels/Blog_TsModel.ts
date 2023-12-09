@@ -31,14 +31,13 @@ export class BlogModel {
 	BackgroundImage?: string | string[] | number | undefined;
 	NumberOfLikes?: number;
 	NumberOfComments?: number;
-	Idiom?: string | string[] | number | undefined;
     lstCommentForBlogModel?: CommentForBlogModel[] | undefined;
     UserCreationIdFantasyName?: string | string[] | number | undefined;
     UserLastModificationIdFantasyName?: string | string[] | number | undefined;
 
     //Queries
-    static Select1ByBlogIdAndIdiom(BlogId: number, Idiom: string) {
-        let URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/" + BlogId + "/" + Idiom;
+    static Select1ByBlogIdAndIdiom(BlogId: number) {
+        let URL = "/api/FiyiStack/Blog/1/Select1ByBlogIdToJSON/" + BlogId;
         return Rx.from(ajax(URL));
     }
 
@@ -57,7 +56,6 @@ export class BlogModel {
             SortToggler: blogSelectAllPaged.SortToggler,
             RowCount: blogSelectAllPaged.TotalRows,
             TotalPages: blogSelectAllPaged.TotalPages,
-            Idiom: blogSelectAllPaged.Idiom,
             lstBlogModel: blogSelectAllPaged.lstBlogModel
         };
         let Header: any = {

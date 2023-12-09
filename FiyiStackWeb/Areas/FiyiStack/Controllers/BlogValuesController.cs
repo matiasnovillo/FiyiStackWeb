@@ -49,15 +49,15 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
         }
 
         #region Queries
-        [HttpGet("~/api/FiyiStack/Blog/1/Select1ByBlogIdAndIdiomToJSON/{BlogId:int}/{Idiom}")]
-        public BlogModel Select1ByBlogIdToJSON(int BlogId, string Idiom)
+        [HttpGet("~/api/FiyiStack/Blog/1/Select1ByBlogIdToJSON/{BlogId:int}")]
+        public BlogModel Select1ByBlogIdToJSON(int BlogId)
         {
             try
             {
                 var SyncIO = HttpContext.Features.Get<IHttpBodyControlFeature>();
                 if (SyncIO != null) { SyncIO.AllowSynchronousIO = true; }
 
-                return _IBlog.Select1ByBlogIdAndIdiomToModel(BlogId, Idiom);
+                return _IBlog.Select1ByBlogIdToModel(BlogId);
             }
             catch (Exception ex) 
             { 
@@ -203,7 +203,7 @@ namespace FiyiStackWeb.Areas.FiyiStack.Controllers
                 else
                 {
                     //Update
-                    BlogModel BlogModel = new BlogModel(BlogId, "");
+                    BlogModel BlogModel = new BlogModel(BlogId);
                     
                     BlogModel.UserLastModificationId = UserId;
                     BlogModel.DateTimeLastModification = DateTime.Now;

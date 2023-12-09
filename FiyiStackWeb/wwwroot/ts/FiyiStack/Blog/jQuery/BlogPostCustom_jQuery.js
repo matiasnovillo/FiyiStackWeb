@@ -8,11 +8,11 @@ require("bootstrap-notify");
 var BlogQuery = /** @class */ (function () {
     function BlogQuery() {
     }
-    BlogQuery.Select1ByBlogIdAndIdiomToHTML = function (BlogId, Idiom) {
+    BlogQuery.Select1ByBlogIdToHTML = function (BlogId) {
         //Used for list view
         $(window).off("scroll");
         var Content = "";
-        Blog_TsModel_1.BlogModel.Select1ByBlogIdAndIdiom(BlogId, Idiom).subscribe({
+        Blog_TsModel_1.BlogModel.Select1ByBlogIdAndIdiom(BlogId).subscribe({
             next: function (newrow) {
                 var _a;
                 //Only works when there is data available
@@ -108,9 +108,7 @@ var BlogQuery = /** @class */ (function () {
 function ValidateAndSearch() {
     // @ts-ignore
     var PostId = $("#post-id").val();
-    // @ts-ignore
-    var Idiom = $("#idiom").val();
-    BlogQuery.Select1ByBlogIdAndIdiomToHTML(PostId, Idiom);
+    BlogQuery.Select1ByBlogIdToHTML(PostId);
 }
 //LOAD EVENT
 $(document).ready(function () {
